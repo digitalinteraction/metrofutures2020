@@ -1,4 +1,7 @@
 module.exports = (req, res) => {
-  const { data = 'test' } = req.query
-  res.status(200).send(`Response was: ${data}!`)
+  res.json({
+    body: req.body,
+    query: req.query,
+    cookies: req.cookies,
+  })
 }
