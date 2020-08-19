@@ -1,6 +1,7 @@
 require('dotenv').config()
 import { v4 as uuidv4 } from 'uuid';
 import isEmail from 'validator/lib/isEmail';
+const sgMail = require('@sendgrid/mail');
 
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(process.env.pg_db, process.env.pg_user, process.env.pg_pass, {
@@ -55,6 +56,7 @@ module.exports = async(req, res) => {
           sendResponse(req, res, 400, "Duplicated email address");
         } else {
           let subid = uuidv4();
+          // For testing
           await Email.create({email: subEmail, subid: subid});
           let emailSuccess = await confirmationEmail(subEmail, subid);
           if(emailSuccess) {
@@ -82,11 +84,36 @@ module.exports = async(req, res) => {
   }
 }
 
-function confirmationEmail (email, subid) {
-  // Sendgrid email from here
-  // Generated link can use the subid as it is unique
-  console.log(`Placeholder: sending confirmation email to ${email} with subid: ${subid}`);
-  return true
+
+
+async function confirmationEmail (recipEmail, subid) {
+  //  Testing email
+  // recipEmail = "tfeltwell@gmail.com";
+  let url = urlFormatter(subid)
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  const msg = {
+    to: recipEmail,
+    from: process.env.mailing_list_sender,
+    subject: 'Confirmation of signup to MetroFutures Mailing List',
+    text: `Message to subscriber, including link: ${url}`,
+    html: `Message to subscriber, including link: <a href="${url}">${url}</a>`,
+  };
+  try {
+    await sgMail.send(msg);
+    console.log(`Sent confirmation email to ${recipEmail} with subid: ${subid}`);
+    return true;
+  } catch (error) {
+    console.error(error);
+    if (error.response) {
+      console.error(error.response.body)
+    }
+    return false
+  }
+}
+
+function urlFormatter (subid) {
+  // Generate an unsubscribe link using the uuid of the submission
+  return `${process.env.UNSUBSCRIBE_API}?authid=${subid}`
 }
 
 function sendResponse (req, res, status, message) {
