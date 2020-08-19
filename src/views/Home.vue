@@ -9,6 +9,13 @@
                   <p class="metroFont">Your Metro is arriving soon.</p>
                   <p>Join our mailing list to. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
 
+
+                  <form>
+                      <input type="text" v-model="email" required> <br>
+                      <p v-if="msg.email">{{msg.email}}</p>
+                      <button v-on:click="register">Register</button>
+                  </form>
+
               </div>
 <!--              <b-img id="bgroundImg" src="../assets/Teaser1_2_rails_longer.png" fluid alt="Metro image"></b-img>-->
               <div class="footer" >
@@ -52,7 +59,74 @@ export default {
   components: {
   //  Footer,
    // Header
-  }
+  },
+    data() {
+      return {
+          email: null,
+          msg: [],
+          error: false
+      }
+    },
+    watch: {
+        email(value){
+            // binding this to the data value in the email input
+            this.email = value;
+            this.validateEmail(value);
+        }
+    },
+    methods: {
+        validateEmail(value){
+            var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            if (re.test(value))
+            {
+                this.error = false;
+                this.msg['email'] = '';
+            } else{
+                this.error = true;
+                this.msg['email'] = 'Invalid Email Address';
+            }
+        },
+        register() {
+            if (!this.error && this.email) {
+                console.log('submit');
+
+            }
+        }
+    }
+
+
+
+
+
+    //     checkForm: function (e) {
+    //         console.log('form submitted');
+    //         this.submitted = false;
+    //         this.errors = [];
+    //
+    //         if (!this.email) {
+    //             console.log('no email');
+    //             this.submitted = true;
+    //             this.error = true;
+    //             this.message = 'Email required.';
+    //         } else if (!this.validEmail(this.email)) {
+    //             console.log('invalid email');
+    //             this.submitted = true;
+    //             this.error = true;
+    //             this.message = 'Email required.';
+    //         }
+    //
+    //         if (!this.errors.length) {
+    //             console.log('ready to send');
+    //             return true;
+    //         }
+    //
+    //         e.preventDefault();
+    //     },
+    //     validEmail: function (email) {
+    //         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    //         return re.test(email);
+    //     }
+    // }
 
 }
 </script>
@@ -61,6 +135,9 @@ export default {
     .home {
         height: 100vh;
         width: auto;
+    }
+    .metroFont {
+
     }
 
     .mainBody {
