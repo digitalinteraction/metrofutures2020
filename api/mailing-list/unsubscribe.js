@@ -18,6 +18,10 @@ const Email = sequelize.define('Email', {
   email: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  subid: {
+    type: DataTypes.UUIDV4,
+    allowNull: false
   }
 }, {
   tableName: 'mailing-list'
@@ -30,6 +34,8 @@ module.exports = async(req, res) => {
   } else {
     console.log('valid cookie');
     try {
+      // Can search using using UUID
+      
       // await sequelize.authenticate();
       // console.log('connected successfully');
       // await sequelize.sync({ alter: true });
