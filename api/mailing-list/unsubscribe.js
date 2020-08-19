@@ -1,5 +1,4 @@
 require('dotenv').config()
-import isEmail from 'validator/lib/isEmail';
 
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(process.env.pg_db, process.env.pg_user, process.env.pg_pass, {
@@ -28,35 +27,30 @@ const Email = sequelize.define('Email', {
 });
 
 module.exports = async(req, res) => {
-  if(!req.cookies.mfsid){
-    console.log('Unauthorized');
-    res.status(403);
-  } else {
-    console.log('valid cookie');
-    try {
-      // Can search using using UUID
-      
-      // await sequelize.authenticate();
-      // console.log('connected successfully');
-      // await sequelize.sync({ alter: true });
-      if(req.body.email && isEmail(req.body.email)) {
-        await Email.create({email: req.body.email});
-        res.json({
-          body: "Successfully saved"
-        });
-      } else {
-        // not email
-        res.status(400);
-        res.json({
-          body: 'fail, incorrect formatting'
-        });
-      }
-    } catch (error) {
-      console.log('unable to connect', error)
-      res.status(400);
-      res.json({
-        body: 'fail'
+  try {
+    if (req.query && req.query.authid) {
+      let result = await Email.findAll({
+        where: {
+          subid: req.query.authid
+        }
       });
+      if (result && result.length > 0) {
+        // TO DO - implement logic to handle the query and remove said record
+        console.log(`remove ${req.query.authid} from db`);
+        sendResponse(req, res, 200, "OK");
+      }
+    } else {
+      // Failed on formatting, no authid
+      sendResponse(req, res, 400, "Failed");
     }
+  } catch (error) {
+    sendResponse(req, res, 400, "Failed");
   }
+}
+
+function sendResponse (req, res, status, message) {
+  res.status(status);
+  res.json({
+    body: message
+  });
 }
