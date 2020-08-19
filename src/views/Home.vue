@@ -5,18 +5,30 @@
           <b-img id="metroLogo" src="../assets/Image4.png" fluid alt="Metro logo"></b-img>
       </div>
           <div class="mainBody">
-              <div class="centreText">
+<!--              text to display before user has registered-->
+              <div v-if="!confirmed" class="registerText">
                   <p class="metroFont">Your Metro is arriving soon.</p>
-                  <p>Join our mailing list to. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                  <p id="mailListInfo">Join our mailing list to. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
 
 
-                  <form>
-                      <input type="text" v-model="email" required> <br>
+                  <b-form class="emailForm">
+                      <b-form-input type="email" v-model="email" required placeholder="Insert Email address"></b-form-input> <br>
                       <p v-if="msg.email">{{msg.email}}</p>
-                      <button v-on:click="register">Register</button>
-                  </form>
+                      <b-button id="registerBtn" variant="primary" v-on:click="register" :disabled="alreadySubmitted">Register</b-button>
+                  </b-form>
+
+                  <p class="smallText">* By registering your email i hereby consent to be contacted by the Metro Futures team in regards to ….</p>
 
               </div>
+
+<!--              text to display after user has registered-->
+          <div v-if="confirmed" class="confirmedText">
+              <p class="metroFont">Thank You</p>
+              <p id="confirmedEmail">{{email}}<b-icon icon="check2" variant="success"></b-icon></p>
+              <p>is successfully registered. Stay tuned to hear the latest announcements on your new Metro.</p>
+              <b-button id="homeBtn" variant="primary" v-on:click="resetRegister">Go Home</b-button>
+          </div>
+
 <!--              <b-img id="bgroundImg" src="../assets/Teaser1_2_rails_longer.png" fluid alt="Metro image"></b-img>-->
               <div class="footer" >
                   <b-row>
@@ -27,10 +39,10 @@
                       </b-col>
                       <b-col id="centreCol">
                           <!--    todo privacy policy and t's and c's-->
-                          <p class="float-right">Privacy Policy</p>
+                          <router-link to="/privacypolicy"><p class="float-right">Privacy Policy</p></router-link>
                       </b-col>
                       <b-col id="terms">
-                          <p class="float-left">Terms & Conditions</p>
+                          <router-link to="/terms"><p class="float-left">Terms & Conditions</p></router-link>
                       </b-col>
                       <b-col id="lab">
                           <!--                    todo get white openlab logo-->
@@ -64,7 +76,9 @@ export default {
       return {
           email: null,
           msg: [],
-          error: false
+          error: false,
+          alreadySubmitted: false,
+          confirmed:  false,
       }
     },
     watch: {
@@ -75,7 +89,10 @@ export default {
         }
     },
     methods: {
+        // todo replace with correct URLs
+
         validateEmail(value){
+            // Vue doc's email validation regex
             var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             if (re.test(value))
             {
@@ -86,58 +103,54 @@ export default {
                 this.msg['email'] = 'Invalid Email Address';
             }
         },
-        register() {
+        register(e) {
+            e.preventDefault();
             if (!this.error && this.email) {
+
+                //todo check for indication email has already been submitted and prevent sending if it has
+
                 console.log('submit');
-
+                //todo sort CORS issue and attach cookie
+                // this.axios.post( 'https://metrofutures2020-git-master.tfeltwell.vercel.app/api/mailing-list/subscribe', {
+                //     email: this.email,
+                // })
+                //     .then(response => {
+                //         console.log(response.data)
+                //         this.confirmed = true;
+                //     })
+                //     .catch(error => console.log(error.response.data))
+                this.confirmed = true;
             }
+
+            },
+        resetRegister() {
+            this.confirmed = false;
         }
+
+    },
+    async mounted() {
+        console.log('request session cookie');
+        this.axios.get('https://metrofutures2020-git-master.tfeltwell.vercel.app/api/get-session')
+        .then(response => {
+            console.log(response);
+        })
+
     }
-
-
-
-
-
-    //     checkForm: function (e) {
-    //         console.log('form submitted');
-    //         this.submitted = false;
-    //         this.errors = [];
-    //
-    //         if (!this.email) {
-    //             console.log('no email');
-    //             this.submitted = true;
-    //             this.error = true;
-    //             this.message = 'Email required.';
-    //         } else if (!this.validEmail(this.email)) {
-    //             console.log('invalid email');
-    //             this.submitted = true;
-    //             this.error = true;
-    //             this.message = 'Email required.';
-    //         }
-    //
-    //         if (!this.errors.length) {
-    //             console.log('ready to send');
-    //             return true;
-    //         }
-    //
-    //         e.preventDefault();
-    //     },
-    //     validEmail: function (email) {
-    //         var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    //         return re.test(email);
-    //     }
-    // }
 
 }
 </script>
 
 <style>
+
     .home {
         height: 100vh;
         width: auto;
     }
+    /*todo get correct Calvert font (this is causing borwser error)*/
     .metroFont {
-
+        font-family: "Calvert", serif;
+        font-size: 5em;
+        text-shadow: 3px 3px 10px #FFF2A877;
     }
 
     .mainBody {
@@ -185,4 +198,69 @@ export default {
     #metroLogo {
         margin: 2px auto;
     }
+
+    #registerBtn {
+        /*background-color: #FEC600;*/
+        /*color: black;*/
+        font-family: "Open Sans", Arial,serif;
+        width: 40%;
+        font-size: small;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+    }
+
+    .emailForm {
+        width: 40%;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top: 15px;
+    }
+    .smallText {
+        font-size: x-small;
+    }
+
+
+
+    #mailListInfo {
+        width: 50%;
+        margin: auto;
+    }
+
+    .registerText {
+    position: absolute;
+        top: 45%;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 80%;
+        font-family: "Open Sans", Arial,serif;
+    }
+
+    .confirmedText {
+        position: absolute;
+        top: 45%;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        width: 80%;
+        font-family: "Open Sans", Arial,serif;
+    }
+
+    #homeBtn {
+        width: 20%;
+        font-size: small;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+        margin-top: 1.5em;
+    }
+
+    #confirmedEmail {
+        margin: 1em;
+        font-size: medium;
+    }
+
+
+
 </style>

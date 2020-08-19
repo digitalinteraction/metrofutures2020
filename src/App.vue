@@ -15,6 +15,7 @@
 <script>
 //import Header from '@/components/Header.vue'
 
+
 export default {
   name: 'App',
   components: {
@@ -25,10 +26,9 @@ export default {
 </script>
 
 <style lang="scss">
-    @font-face {
-        font-family: "Open Sans";
-        src: url("./fonts/Open_Sans/OpenSans-Regular.ttf") format("truetype")
-    }
+    @import './assets/custom.scss';
+    /*@import '../node_modules/bootstrap/scss/bootstrap.scss';*/
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
