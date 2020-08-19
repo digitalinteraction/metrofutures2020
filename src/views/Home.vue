@@ -110,20 +110,23 @@ export default {
                 //todo check for indication email has already been submitted and prevent sending if it has
 
                 console.log('submit');
-                //todo sort CORS issue and attach cookie
-                // this.axios.post( 'https://metrofutures2020-git-master.tfeltwell.vercel.app/api/mailing-list/subscribe', {
-                //     email: this.email,
-                // })
-                //     .then(response => {
-                //         console.log(response.data)
-                //         this.confirmed = true;
-                //     })
-                //     .catch(error => console.log(error.response.data))
-                this.confirmed = true;
+                //todo sort CORS issue, check cookie sending
+                this.axios.post( 'https://metrofutures2020-git-master.tfeltwell.vercel.app/api/mailing-list/subscribe', {
+                    email: this.email,
+                })
+                    .then(response => {
+                        console.log(response.data)
+                        this.confirmed = true;
+                    })
+                    .catch(error => console.log(error.response.data))
+
             }
 
             },
         resetRegister() {
+            // reset and display register text again
+            this.email= null;
+            this.error = false;
             this.confirmed = false;
         }
 
