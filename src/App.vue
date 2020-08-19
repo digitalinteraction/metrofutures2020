@@ -1,30 +1,34 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <Header msg="Welcome"/>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/survey">Survey</router-link> |
-      <router-link to="/idoc">Documentary</router-link> |
-      <router-link to="/walkthrough">Walkthroughs</router-link>
-    </div>
+<!--    <div id="nav">-->
+<!--      <Header msg="Welcome"/>-->
+<!--      <router-link to="/">Home</router-link> |-->
+<!--      <router-link to="/about">About</router-link> |-->
+<!--      <router-link to="/survey">Survey</router-link> |-->
+<!--      <router-link to="/idoc">Documentary</router-link> |-->
+<!--      <router-link to="/walkthrough">Walkthroughs</router-link>-->
+<!--    </div>-->
     <router-view/>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
+//import Header from '@/components/Header.vue'
 
 export default {
   name: 'App',
   components: {
-    Header
+    // Header
   }
 }
 
 </script>
 
 <style lang="scss">
+    @font-face {
+        font-family: "Open Sans";
+        src: url("./fonts/Open_Sans/OpenSans-Regular.ttf") format("truetype")
+    }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
