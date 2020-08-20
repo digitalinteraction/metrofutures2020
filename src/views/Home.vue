@@ -1,75 +1,72 @@
 <template>
   <div class="home">
 
-      <div class="header">
-          <b-img alt="Metro logo" fluid id="metroLogo" src="../assets/Image4.png"></b-img>
-      </div>
-          <div class="mainBody">
-<!--              text to display before user has registered-->
-              <div class="registerText" v-if="!confirmed">
-                  <p class="metroFont calvert">Your new Metro is arriving soon.</p>
-                  <p id="mailListInfo">Join our mailing list for updates on when and how you can help us put the finishing touches to trains.</p>
+    <div class="header">
+        <b-img alt="Metro logo" fluid id="metroLogo" src="../assets/Image4.png"></b-img>
+    </div>
+
+    <div class="mainBody">
+        <!-- text to display before user has registered-->
+        <div class="registerText" v-if="!confirmed">
+            <p class="metroFont calvert">Your new Metro is arriving soon.</p>
+            <p id="mailListInfo">Join our mailing list for updates on when and how you can help us put the finishing touches to trains.</p>
+
+            <b-form class="emailForm">
+                <b-form-input placeholder="Insert Email address" required type="email" v-model="email"></b-form-input> <br>
+                <p v-if="msg.email">{{msg.email}}</p>
+                <b-button :disabled="alreadySubmitted" id="registerBtn" v-on:click="register" variant="primary">Register</b-button>
+            </b-form>
+
+            <p class="smallText">* By registering your email i hereby consent to be contacted by the Metro Futures team in regards to ….</p>
+
+        </div>
+
+        <!--text to display after user has registered-->
+        <div class="confirmedText" v-if="confirmed">
+            <p class="metroFont">Thank You</p>
+            <p id="confirmedEmail">{{email}}<b-icon icon="check2" variant="success"></b-icon></p>
+            <p>is successfully registered. Stay tuned to hear the latest announcements on your new Metro.</p>
+            <b-button id="homeBtn" v-on:click="resetRegister" variant="primary">Go Home</b-button>
+        </div>
 
 
-                  <b-form class="emailForm">
-                      <b-form-input placeholder="Insert Email address" required type="email" v-model="email"></b-form-input> <br>
-                      <p v-if="msg.email">{{msg.email}}</p>
-                      <b-button :disabled="alreadySubmitted" id="registerBtn" v-on:click="register" variant="primary">Register</b-button>
-                  </b-form>
+        <!--<b-img id="bgroundImg" src="../assets/Teaser1_2_rails_longer.png" fluid alt="Metro image"></b-img>-->
+        <div class="footer" >
+            <b-row>
+                <b-col class="float-left">
+                    <b-img fluid src="../assets/nexusLogo.png"></b-img>
+                    <b-img fluid id="stadlerLogo" src="../assets/stadlerLogo.svg"></b-img>
+                </b-col>
+                <b-col id="centreCol">
+                    <p class="float-right"> <a href="#" v-b-modal.privacy-modal>Privacy Policy</a></p>
+                </b-col>
+                <b-col id="terms">
+                    <p class="float-left"> <a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
+                </b-col>
+                <b-col id="lab">
+                    <p>Powered by<b-img id="openlabLogo" fluid src="../assets/openlabLogoWhite.svg"></b-img></p>
+                </b-col>
+            </b-row>
 
-                  <p class="smallText">* By registering your email i hereby consent to be contacted by the Metro Futures team in regards to ….</p>
+        </div>
+    </div>
 
-              </div>
-
-<!--              text to display after user has registered-->
-          <div class="confirmedText" v-if="confirmed">
-              <p class="metroFont">Thank You</p>
-              <p id="confirmedEmail">{{email}}<b-icon icon="check2" variant="success"></b-icon></p>
-              <p>is successfully registered. Stay tuned to hear the latest announcements on your new Metro.</p>
-              <b-button id="homeBtn" v-on:click="resetRegister" variant="primary">Go Home</b-button>
-          </div>
-
-<!--              <b-img id="bgroundImg" src="../assets/Teaser1_2_rails_longer.png" fluid alt="Metro image"></b-img>-->
-              <div class="footer" >
-                  <b-row>
-                      <b-col class="float-left">
-                          <b-img fluid src="../assets/nexusLogo.png"></b-img>
-                          <!--    todo STADLER logo-->
-                          <b-img fluid id="stadlerLogo" src="../assets/stadlerLogo.svg"></b-img>
-                      </b-col>
-                      <b-col id="centreCol">
-                          <!--    todo privacy policy and t's and c's-->
-                          <router-link to="/privacypolicy"><p class="float-right">Privacy Policy</p></router-link>
-                      </b-col>
-                      <b-col id="terms">
-                          <router-link to="/terms"><p class="float-left">Terms & Conditions</p></router-link>
-                      </b-col>
-                      <b-col id="lab">
-                          <p>Powered by<b-img id="openlabLogo" fluid src="../assets/openlabLogoWhite.svg"></b-img></p>
-                      </b-col>
-                  </b-row>
-
-              </div>
-          </div>
-
-
-
-
-
-
+    <!-- Compontents for modals -->
+    <Privacy />
+    <Terms />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-//import Footer from "@/components/Footer";
-//import Header from "@/components/Header";
+import Privacy from "@/components/Privacy";
+import Terms from "@/components/Terms";
 
 export default {
   name: 'Home',
   components: {
-  //  Footer,
-   // Header
+      Privacy,
+      Terms
   },
     data() {
       return {
@@ -110,6 +107,7 @@ export default {
 
                 console.log('submit');
                 //todo sort CORS issue, check cookie sending
+                // Consider using vue-resource instead of axios ?
                 this.axios.post( 'https://metrofutures2020-git-master.tfeltwell.vercel.app/api/mailing-list/subscribe', {
                     email: this.email,
                 })
@@ -117,7 +115,7 @@ export default {
                         console.log(response.data)
                         this.confirmed = true;
                     })
-                    .catch(error => console.log(error.response.data))
+                    .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
             }
 
