@@ -29,13 +29,27 @@ export default {
     @import './assets/custom.scss';
     /*@import '../node_modules/bootstrap/scss/bootstrap.scss';*/
 
+    @font-face {
+        font-family: "Open Sans";
+        src: url("fonts/OpenSans-Regular.ttf") format("truetype")
+    }
+
+    @font-face {
+        font-family: "Calvert";
+        src: url("fonts/CalvertMT.ttf") format("truetype")
+    }
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
+
+    .calvert {
+        font-family: Calvert, serif;
+    }
 
 #nav {
   padding: 30px;

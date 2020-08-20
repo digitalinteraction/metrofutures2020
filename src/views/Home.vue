@@ -7,8 +7,8 @@
           <div class="mainBody">
 <!--              text to display before user has registered-->
               <div v-if="!confirmed" class="registerText">
-                  <p class="metroFont">Your Metro is arriving soon.</p>
-                  <p id="mailListInfo">Join our mailing list to. Maecenas sed diam eget risus varius blandit sit amet non magna. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+                  <p class="metroFont calvert">Your new Metro is arriving soon.</p>
+                  <p id="mailListInfo">Join our mailing list for updates on when and how you can help us put the finishing touches to trains.</p>
 
 
                   <b-form class="emailForm">
@@ -151,7 +151,7 @@ export default {
     }
     /*todo get correct Calvert font (this is causing borwser error)*/
     .metroFont {
-        font-family: "Calvert", serif;
+        font-family: Calvert, serif;
         font-size: 5em;
         text-shadow: 3px 3px 10px #FFF2A877;
     }
@@ -205,7 +205,7 @@ export default {
     #registerBtn {
         /*background-color: #FEC600;*/
         /*color: black;*/
-        font-family: "Open Sans", Arial,serif;
+        /*font-family: "Open Sans", Arial,serif;*/
         width: 40%;
         font-size: small;
         padding-top: 1em;
@@ -226,7 +226,7 @@ export default {
 
 
     #mailListInfo {
-        width: 50%;
+        width: 40%;
         margin: auto;
     }
 
@@ -237,7 +237,7 @@ export default {
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
         width: 80%;
-        font-family: "Open Sans", Arial,serif;
+        /*font-family: $font-family-sans-serif;*/
     }
 
     .confirmedText {
