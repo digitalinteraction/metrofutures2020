@@ -31,12 +31,12 @@ export default {
 
     @font-face {
         font-family: "Open Sans";
-        src: url("fonts/OpenSans-Regular.ttf") format("truetype")
+        src: url("./fonts/OpenSans-Regular.ttf") format("truetype")
     }
 
     @font-face {
         font-family: "Calvert";
-        src: url("fonts/CalvertMT.ttf") format("truetype")
+        src: url("./fonts/CalvertMT.ttf") format("truetype")
     }
 
 #app {
@@ -63,4 +63,6 @@ export default {
     }
   }
 }
+
+/* todo implement responsive font sizing*/
 </style>

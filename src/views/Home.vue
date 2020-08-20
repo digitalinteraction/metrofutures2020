@@ -2,19 +2,19 @@
   <div class="home">
 
       <div class="header">
-          <b-img id="metroLogo" src="../assets/Image4.png" fluid alt="Metro logo"></b-img>
+          <b-img alt="Metro logo" fluid id="metroLogo" src="../assets/Image4.png"></b-img>
       </div>
           <div class="mainBody">
 <!--              text to display before user has registered-->
-              <div v-if="!confirmed" class="registerText">
+              <div class="registerText" v-if="!confirmed">
                   <p class="metroFont calvert">Your new Metro is arriving soon.</p>
                   <p id="mailListInfo">Join our mailing list for updates on when and how you can help us put the finishing touches to trains.</p>
 
 
                   <b-form class="emailForm">
-                      <b-form-input type="email" v-model="email" required placeholder="Insert Email address"></b-form-input> <br>
+                      <b-form-input placeholder="Insert Email address" required type="email" v-model="email"></b-form-input> <br>
                       <p v-if="msg.email">{{msg.email}}</p>
-                      <b-button id="registerBtn" variant="primary" v-on:click="register" :disabled="alreadySubmitted">Register</b-button>
+                      <b-button :disabled="alreadySubmitted" id="registerBtn" v-on:click="register" variant="primary">Register</b-button>
                   </b-form>
 
                   <p class="smallText">* By registering your email i hereby consent to be contacted by the Metro Futures team in regards to ….</p>
@@ -22,11 +22,11 @@
               </div>
 
 <!--              text to display after user has registered-->
-          <div v-if="confirmed" class="confirmedText">
+          <div class="confirmedText" v-if="confirmed">
               <p class="metroFont">Thank You</p>
               <p id="confirmedEmail">{{email}}<b-icon icon="check2" variant="success"></b-icon></p>
               <p>is successfully registered. Stay tuned to hear the latest announcements on your new Metro.</p>
-              <b-button id="homeBtn" variant="primary" v-on:click="resetRegister">Go Home</b-button>
+              <b-button id="homeBtn" v-on:click="resetRegister" variant="primary">Go Home</b-button>
           </div>
 
 <!--              <b-img id="bgroundImg" src="../assets/Teaser1_2_rails_longer.png" fluid alt="Metro image"></b-img>-->
@@ -35,7 +35,7 @@
                       <b-col class="float-left">
                           <b-img fluid src="../assets/nexusLogo.png"></b-img>
                           <!--    todo STADLER logo-->
-                          <b-img fluid id="stadlerLogo" src="../assets/StadlerTemp.jpg"></b-img>
+                          <b-img fluid id="stadlerLogo" src="../assets/stadlerLogo.svg"></b-img>
                       </b-col>
                       <b-col id="centreCol">
                           <!--    todo privacy policy and t's and c's-->
@@ -45,8 +45,7 @@
                           <router-link to="/terms"><p class="float-left">Terms & Conditions</p></router-link>
                       </b-col>
                       <b-col id="lab">
-                          <!--                    todo get white openlab logo-->
-                          <p>Powered by <b-img fluid src="../assets/openLabTemp.png"></b-img></p>
+                          <p>Powered by<b-img id="openlabLogo" fluid src="../assets/openlabLogoWhite.svg"></b-img></p>
                       </b-col>
                   </b-row>
 
@@ -157,7 +156,7 @@ export default {
     }
 
     .mainBody {
-        position: relative;
+        /*position: relative;*/
         background-image: url("../assets/Teaser1_2_rails_longer.png");
         background-position: center;
         background-repeat: no-repeat;
@@ -185,7 +184,7 @@ export default {
     p {
          margin: 0;
          font-family: "Open Sans", Arial,serif;
-         font-size: small;
+         font-size: 0.8em;
          color: #FFFFFF;
      }
     .footer {
@@ -207,7 +206,7 @@ export default {
         /*color: black;*/
         /*font-family: "Open Sans", Arial,serif;*/
         width: 40%;
-        font-size: small;
+        font-size: 0.8em;
         padding-top: 1em;
         padding-bottom: 1em;
         margin-bottom: 1em;
@@ -220,7 +219,7 @@ export default {
         margin-top: 15px;
     }
     .smallText {
-        font-size: x-small;
+        font-size: 0.6em;
     }
 
 
@@ -231,8 +230,8 @@ export default {
     }
 
     .registerText {
-    position: absolute;
-        top: 45%;
+        position: absolute;
+        top: 52%;
         left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
@@ -252,7 +251,7 @@ export default {
 
     #homeBtn {
         width: 20%;
-        font-size: small;
+        font-size: 0.8em;
         padding-top: 1em;
         padding-bottom: 1em;
         margin-bottom: 1em;
@@ -261,9 +260,12 @@ export default {
 
     #confirmedEmail {
         margin: 1em;
-        font-size: medium;
+        font-size: 0.9em;
     }
 
+    #openlabLogo {
+        padding-left: 0.8em;
+    }
 
 
 </style>
