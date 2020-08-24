@@ -8,7 +8,7 @@
     <div class="mainBody">
         <!-- text to display before user has registered-->
         <div class="registerText" v-if="!confirmed">
-            <p class="metroFont calvert">Your new Metro is arriving soon.</p>
+            <h1 class="metroFont calvert">Your new Metro is arriving soon.</h1>
             <p id="mailListInfo">Join our mailing list for updates on when and how you can help us put the finishing touches to trains.</p>
 
             <b-form class="emailForm">
@@ -17,13 +17,13 @@
                 <b-button :disabled="alreadySubmitted" id="registerBtn" v-on:click="register" variant="primary">Register</b-button>
             </b-form>
 
-            <p class="smallText">* By registering your email i hereby consent to be contacted by the Metro Futures team in regards to ….</p>
+            <p class="smallText">* By registering your email I hereby consent to be contacted by the Metro Futures team in regards to ….</p>
 
         </div>
 
         <!--text to display after user has registered-->
         <div class="confirmedText" v-if="confirmed">
-            <p class="metroFont">Thank You</p>
+            <h1 class="metroFont">Thank You</h1>
             <p id="confirmedEmail">{{email}}<b-icon icon="check2" variant="success"></b-icon></p>
             <p>is successfully registered. Stay tuned to hear the latest announcements on your new Metro.</p>
             <b-button id="homeBtn" v-on:click="resetRegister" variant="primary">Go Home</b-button>
@@ -149,7 +149,7 @@ export default {
     /*todo get correct Calvert font (this is causing borwser error)*/
     .metroFont {
         font-family: Calvert, serif;
-        font-size: 5em;
+        color: #FFFFFF;
         text-shadow: 3px 3px 10px #FFF2A877;
     }
 
@@ -182,7 +182,7 @@ export default {
     p {
          margin: 0;
          font-family: "Open Sans", Arial,serif;
-         font-size: 0.8em;
+         /*font-size: 1.4vmin;*/
          color: #FFFFFF;
      }
     .footer {
@@ -200,22 +200,25 @@ export default {
     }
 
     #registerBtn {
-        /*background-color: #FEC600;*/
-        /*color: black;*/
-        /*font-family: "Open Sans", Arial,serif;*/
-        width: 40%;
         font-size: 0.8em;
         padding-top: 1em;
         padding-bottom: 1em;
         margin-bottom: 1em;
+
     }
 
     .emailForm {
-        width: 40%;
+        width: 40vw;
         margin-left:auto;
         margin-right:auto;
         margin-top: 15px;
     }
+    /*placeholder text size*/
+    .form-control {
+        font-size: 1.8vmin;
+    }
+
+
     .smallText {
         font-size: 0.6em;
     }
@@ -223,7 +226,6 @@ export default {
 
 
     #mailListInfo {
-        width: 40%;
         margin: auto;
     }
 
@@ -233,9 +235,7 @@ export default {
         left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
-        width: 80%;
-        /*font-family: $font-family-sans-serif;*/
-    }
+       }
 
     .confirmedText {
         position: absolute;
@@ -243,12 +243,35 @@ export default {
         left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
-        width: 80%;
         font-family: "Open Sans", Arial,serif;
     }
 
+    /* Extra small devices (phones, 600px and down) */
+    @media only screen and (max-width: 600px)  {
+        p {
+            font-size: 2vmin;
+        }
+
+    }
+
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    @media only screen and (min-width: 600px) {
+        p {
+            font-size: 1.6vmin;
+        }
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 768px) {
+        p {
+            font-size: 1.4vmin;
+        }
+        h1 {
+            font-size: 8vmin;
+        }
+    }
+
     #homeBtn {
-        width: 20%;
         font-size: 0.8em;
         padding-top: 1em;
         padding-bottom: 1em;
@@ -264,6 +287,9 @@ export default {
     #openlabLogo {
         padding-left: 0.8em;
     }
+
+
+
 
 
 </style>
