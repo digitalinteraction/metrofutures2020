@@ -41,10 +41,11 @@ module.exports = async(req, res) => {
   } else {
     console.log('Valid cookie');
     try {
+      // console.log(req.body.data);
       // Can be used to test connection
       // await sequelize.authenticate();
-      if(req.body.email && isEmail(req.body.email)) {
-        let subEmail = req.body.email;
+      if(req.body.data.email && isEmail(req.body.data.email)) {
+        let subEmail = req.body.data.email;
         await sequelize.sync({ alter: true });
         let result = await Email.findAll({
           where: {
@@ -87,8 +88,6 @@ module.exports = async(req, res) => {
 
 
 async function confirmationEmail (recipEmail, subid) {
-  //  Testing email
-  // recipEmail = "tfeltwell@gmail.com";
   let url = urlFormatter(subid)
   sgMail.setApiKey(process.env.SENDGRID_API_KEY);
   const msg = {
