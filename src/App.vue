@@ -35,8 +35,17 @@ export default {
     }
 
     @font-face {
+        font-family: "Inconsolata";
+        src: url("./fonts/Inconsolata-Black.ttf") format("truetype")
+    }
+
+
+
+    @font-face {
         font-family: "Calvert";
-        src: url("./fonts/CalvertMT.ttf") format("truetype")
+        src: url("./fonts/CalvertMTW04Regular.woff2") format("woff2"),
+             url("./fonts/CalvertMTW04Regular.woff") format("wof2"),
+             url("./fonts/CalvertMT.ttf") format("truetype")
     }
 
 #app {
@@ -47,9 +56,6 @@ export default {
   color: #2c3e50;
 }
 
-    .calvert {
-        font-family: Calvert, serif;
-    }
 
 #nav {
   padding: 30px;

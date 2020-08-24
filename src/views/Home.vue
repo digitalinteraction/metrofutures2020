@@ -142,19 +142,19 @@ export default {
 
 <style>
 
+
     .home {
         height: 100vh;
         width: auto;
     }
-    /*todo get correct Calvert font (this is causing borwser error)*/
+    /*todo get correct Calvert font (this is causing browser error) Currently using random font to demonstrate strategy works*/
     .metroFont {
-        font-family: Calvert, serif;
+        font-family: Inconsolata, serif;
         color: #FFFFFF;
         text-shadow: 3px 3px 10px #FFF2A877;
     }
 
     .mainBody {
-        /*position: relative;*/
         background-image: url("../assets/Teaser1_2_rails_longer.png");
         background-position: center;
         background-repeat: no-repeat;
