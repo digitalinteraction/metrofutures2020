@@ -1,6 +1,6 @@
 <template>
     <div class="header">
-        <h1>Metro Futures 2020</h1>
+        <b-img id="metroLogo" src="../assets/Image4.png" fluid alt="Metro logo"></b-img>
     </div>
     
 </template>
@@ -13,5 +13,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.header {
+    background-color: #FFFFFF;
+}
 
+    #metroLogo {
+        margin: 2px auto;
+    }
 </style>

@@ -1,0 +1,22 @@
+
+
+
+// Override / set color variables
+$yellow: #FEC600;
+$primary: $yellow;
+
+$enable-responsive-font-sizes: true;
+$font-family-sans-serif: "Open Sans", Arial, sans-serif !default;
+$font-family-serif:      Calvert, Times, serif !default;
+$font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-family-base:       $font-family-sans-serif !default;
+
+
+
+// Include Bootstrap and BootstrapVue SCSS files
+@import '~bootstrap/scss/bootstrap.scss';
+@import '~bootstrap-vue/src/index.scss';
+
+
+
+

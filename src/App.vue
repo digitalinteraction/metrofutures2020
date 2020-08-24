@@ -1,37 +1,61 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <Header msg="Welcome"/>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/survey">Survey</router-link> |
-      <router-link to="/idoc">Documentary</router-link> |
-      <router-link to="/walkthrough">Walkthroughs</router-link>
-    </div>
+<!--    <div id="nav">-->
+<!--      <Header msg="Welcome"/>-->
+<!--      <router-link to="/">Home</router-link> |-->
+<!--      <router-link to="/about">About</router-link> |-->
+<!--      <router-link to="/survey">Survey</router-link> |-->
+<!--      <router-link to="/idoc">Documentary</router-link> |-->
+<!--      <router-link to="/walkthrough">Walkthroughs</router-link>-->
+<!--    </div>-->
     <router-view/>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue'
+//import Header from '@/components/Header.vue'
+
 
 export default {
   name: 'App',
   components: {
-    Header
+    // Header
   }
 }
 
 </script>
 
 <style lang="scss">
+    @import './assets/custom.scss';
+    /*@import '../node_modules/bootstrap/scss/bootstrap.scss';*/
+
+    @font-face {
+        font-family: "Open Sans";
+        src: url("./fonts/OpenSans-Regular.ttf") format("truetype")
+    }
+
+    @font-face {
+        font-family: "Inconsolata";
+        src: url("./fonts/Inconsolata-Black.ttf") format("truetype")
+    }
+
+
+
+    @font-face {
+        font-family: "Calvert";
+        src: url("./fonts/CalvertMTW04Regular.woff2") format("woff2"),
+             url("./fonts/CalvertMTW04Regular.woff") format("wof2"),
+             url("./fonts/CalvertMT.ttf") format("truetype")
+    }
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
+
 
 #nav {
   padding: 30px;
@@ -45,4 +69,6 @@ export default {
     }
   }
 }
+
+/* todo implement responsive font sizing*/
 </style>
