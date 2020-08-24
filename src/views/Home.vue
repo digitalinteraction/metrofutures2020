@@ -115,7 +115,7 @@
 
                     //todo sort CORS issue, check cookie sending
                     // Consider using vue-resource instead of axios ?
-                    this.axios.post('https://metrofutures2020-git-master.tfeltwell.vercel.app/api/mailing-list/subscribe', {
+                    this.axios.post('http://localhost:3000/api/mailing-list/subscribe', {
                         headers: {
                             Cookie: this.$cookies.get('mfsid')
                         },
@@ -142,7 +142,7 @@
         },
         async mounted() {
             console.log('request session cookie');
-            this.axios.get('https://metrofutures2020-git-master.tfeltwell.vercel.app/api/get-session')
+            this.axios.get('http://localhost:3000/api/get-session')
                 .then(response => {
                     console.log(response);
                 })
