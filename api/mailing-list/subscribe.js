@@ -17,27 +17,24 @@ const sequelize = new Sequelize(process.env.pg_db, process.env.pg_user, process.
 });
 
 const Email = sequelize.define('Email', {
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  subid: {
-    type: Sequelize.UUID,
-    defaultType: Sequelize.UUIDV4,
-    allowNull: false
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    subid: {
+      type: Sequelize.UUID,
+      defaultType: Sequelize.UUIDV4,
+      allowNull: false
+    }
+  }, {
+    tableName: 'mailing-list'
   }
-}, {
-  tableName: 'mailing-list'
-});
+);
 
 module.exports = async(req, res) => {
   if(!req.cookies.mfsid){
     console.log('Unauthorized');
     sendResponse(req, res, 403, "Unauthorized");
-    // res.status(403);
-    // res.json({
-    //   body: "Unauthorized"
-    // });
   } else {
     console.log('Valid cookie');
     try {
@@ -70,22 +67,15 @@ module.exports = async(req, res) => {
         
       } else {
         // Sanitisation failed
-        res.status(400);
-        res.json({
-          body: 'Fail, incorrect formatting'
-        });
+        console.log('Sanitisation failed');
+        sendResponse(req, res, 400, 'Fail, incorrect formatting');
       }
     } catch (error) {
-      console.log('Unable to connect', error)
-      res.status(400);
-      res.json({
-        body: 'Failed to connect'
-      });
+      console.log('Unable to connect', error);
+      sendResponse(req, res, 400, 'Failed to connect');
     }
   }
 }
-
-
 
 async function confirmationEmail (recipEmail, subid) {
   let url = urlFormatter(subid)
