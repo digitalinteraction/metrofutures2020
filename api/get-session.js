@@ -8,7 +8,7 @@ module.exports = (req, res) => {
     });
   } else {
     let cookie = uuidv4();
-    res.setHeader('Set-Cookie', [`mfsid=${cookie}`]);
+    res.setHeader('Set-Cookie', [`mfsid=${cookie}; SameSite=Strict`]);
     res.status(200);
     res.json({
       body: "Session cookie stored."
