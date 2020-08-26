@@ -22,8 +22,8 @@
                     </b-button>
                 </b-form>
 
-                <p class="smallText">* By registering your email I hereby consent to be contacted by the Metro Futures
-                    team in regards to ….</p>
+                <p class="smallText">* By registering your email you hereby consent to be contacted by the Metro Futures
+                    team as outlined in the Privacy Policy</p>
 
             </div>
 

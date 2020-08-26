@@ -10,7 +10,7 @@
       <li><a href="https://vercel.com/legal/privacy-policy">Vercel</a></li>
     </ul>
 
-  <p class="privacyText">We will only share the personal data that is necessary and will take measures to ensure that it is protected and does not remain stored with us, or with third parties any longer than necessary. Your personal data will not be used for purposes beyond being notified about the Metro Futures consultation in September and October 2020. </p>
+  <p class="privacyText">We will only share the personal data that is necessary and will take measures to ensure that it is protected and does not remain stored with us (Open Lab on behalf of Nexus), or with third parties any longer than necessary. Your personal data will not be used for purposes beyond being notified about the Metro Futures consultation in September and October 2020. </p>
 
   <p class="privacyText">The following personal data will be collected and processed for the reasons outlined below:</p>
 
