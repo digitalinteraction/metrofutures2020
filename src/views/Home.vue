@@ -8,9 +8,8 @@
         <div class="mainBody">
             <!-- text to display before user has registered-->
             <div class="registerText" v-if="!confirmed">
-                <h1 class="metroFont calvert">Your new Metro is arriving soon.</h1>
-                <p id="mailListInfo">Join our mailing list for updates on when and how you can help us put the finishing
-                    touches to trains.</p>
+                <h1 class="metroFont calvert">Create your new Metro. Get aboard.</h1>
+                <p id="mailListInfo">Join our mailing list for updates on when and how you can have your say.</p>
 
                 <b-form class="emailForm">
                     <b-form-input placeholder="Insert Email address" required type="email"

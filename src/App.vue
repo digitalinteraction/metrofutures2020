@@ -47,6 +47,9 @@ export default {
              url("./fonts/CalvertMTW04Regular.woff") format("wof2"),
              url("./fonts/CalvertMT.ttf") format("truetype")
     }
+body {
+  overflow: hidden;
+}
 
 #app {
   font-family: "Open Sans", sans-serif;
@@ -54,6 +57,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  overflow: hidden;
 }
 
 
