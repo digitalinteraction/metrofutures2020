@@ -19,6 +19,11 @@ Vue.use(VueRouter)
   //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   // },
   // {
+  //   path: '/signup',
+  //   name: 'Signup',
+  //   component: () => import(/* webpackChunkName: "Signup" */ '../views/Signup.vue')
+  // },
+  // {
   //   path: '/survey',
   //   name: 'Survey',
   //   component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue')
