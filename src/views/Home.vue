@@ -17,12 +17,12 @@
                                   v-model="email"></b-form-input>
                     <br>
                     <p v-if="msg.email">{{msg.email}}</p>
-                    <b-button :disabled="alreadySubmitted" id="registerBtn" v-on:click="register" variant="primary">
-                        Register
+                    <b-button :disabled="alreadySubmitted || error" id="registerBtn" v-on:click="register" variant="primary">
+                        Register*
                     </b-button>
                 </b-form>
 
-                <p class="smallText">* By registering your email you hereby consent to be contacted by the Metro Futures
+                <p class="smallText">*By registering your email you hereby consent to be contacted by the Metro Futures
                     team as outlined in the Privacy Policy</p>
 
             </div>
@@ -98,15 +98,18 @@
             // todo replace with correct URLs
 
             validateEmail(value) {
-                // Vue doc's email validation regex
-                var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-                if (re.test(value)) {
-                    this.error = false;
-                    this.msg['email'] = '';
-                } else {
-                    this.error = true;
-                    this.msg['email'] = 'Invalid Email Address';
+                if(value.length > 0) {
+                    // Vue doc's email validation regex
+                    var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                    if (re.test(value)) {
+                        this.error = false;
+                        this.msg['email'] = '';
+                    } else {
+                        this.error = true;
+                        this.msg['email'] = 'Invalid Email Address';
+                    }
                 }
+                
             },
             register(e) {
                 e.preventDefault();
@@ -128,9 +131,7 @@
                             this.confirmed = true;
                         })
                         .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
                 }
-
             },
             resetRegister() {
                 // reset and display register text again
