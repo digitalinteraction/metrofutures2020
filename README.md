@@ -1,4 +1,4 @@
-# mf2020-ui
+# Metro Futures 2020 Consultation
 
 ## Project setup
 ```

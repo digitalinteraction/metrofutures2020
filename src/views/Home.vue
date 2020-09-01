@@ -200,7 +200,7 @@
     }
 
     #stadlerLogo {
-        padding-left: 0.5em;
+        padding-left: 1em;
     }
 
     #centreCol {
@@ -248,6 +248,7 @@
 
     .emailForm {
         width: 60vw;
+        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 15px;
