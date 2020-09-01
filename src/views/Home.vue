@@ -168,11 +168,10 @@
     }
 
     .mainBody {
-        background-image: url("../assets/Teaser1_2_rails_longer.png");
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 100%;
+        height: 100vh;
         width: auto;
         padding-top: 50px;
     }
@@ -221,23 +220,20 @@
 
     #registerBtn {
         font-size: 0.8em;
-        padding-top: 1em;
-        padding-bottom: 1em;
         margin-bottom: 1em;
-
     }
 
     .emailForm {
-        width: 40vw;
+        width: 60vw;
         margin-left: auto;
         margin-right: auto;
         margin-top: 15px;
     }
 
-    /*placeholder text size*/
-    .form-control {
-        font-size: 1.8vmin;
-    }
+    /*!*placeholder text size*!*/
+    /*.form-control {*/
+    /*    font-size: 1.8vmin;*/
+    /*}*/
 
 
     .smallText {
@@ -251,19 +247,18 @@
 
     .registerText {
         position: absolute;
-        top: 52%;
-        left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
+        width: 80vw;
+        left: 50%;
     }
 
     .confirmedText {
         position: absolute;
-        top: 45%;
-        left: 50%;
         -webkit-transform: translateX(-50%);
         transform: translateX(-50%);
         font-family: "Open Sans", Arial, serif;
+        left: 50%;
     }
 
     .smallText {
@@ -282,11 +277,16 @@
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
+
+        .mainBody {
+            background-image: url("../assets/teaserSmallBackground.png");
+        }
+
         p {
             font-size: 2.3vmin;
         }
         .registerText {
-            top: 50%;
+            top: 49%;
         }
         .confirmedText {
             top: 42%;
@@ -322,6 +322,11 @@
     /*}*/
     /* Medium devices (landscape tablets, 768px and up) */
     @media only screen and (min-width: 600px) {
+
+        .mainBody {
+            background-image: url("../assets/Teaser1_2_rails_longer.png");
+        }
+
         p {
             font-size: 1.4vmin;
         }
