@@ -240,6 +240,7 @@
 
     .emailForm {
         width: 60vw;
+        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 15px;
