@@ -20,6 +20,9 @@ export default {
   name: 'App',
   components: {
     // Header
+  },
+  meta: {
+    title: "Metro Futures"
   }
 }
 
