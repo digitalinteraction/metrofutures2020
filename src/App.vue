@@ -20,14 +20,6 @@ export default {
   name: 'App',
   components: {
     // Header
-  },
-  // meta: {
-  //   title: "Metro Futures"
-  // }
-  data() {
-    return {
-      title: "Metro Futures"
-    }
   }
 }
 
