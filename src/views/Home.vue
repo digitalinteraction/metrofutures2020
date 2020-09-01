@@ -5,7 +5,7 @@
             <b-img alt="Metro logo" fluid id="metroLogo" src="../assets/Image4.png"></b-img>
         </div>
 
-        <div class="mainBody" v-bind:style="{height: windowHeight}">
+        <div class="mainBody">
             <!-- text to display before user has registered-->
             <div class="registerText" v-if="!confirmed">
                 <h1 class="metroFont calvert">Create your new Metro. Get aboard.</h1>
@@ -95,7 +95,7 @@
             }
         },
         created() {
-
+            window.addEventListener('resize', this.handleResize)
         },
         methods: {
             // todo replace with correct URLs
@@ -141,6 +141,12 @@
                 this.email = null;
                 this.error = false;
                 this.confirmed = false;
+            },
+            handleResize() {
+                //prevent screen resizing
+                console.log('handle resize');
+                document.getElementsByClassName('mainBody')[0].setAttribute('height', this.windowHeight);
+                console.log(document.getElementsByClassName('mainBody')[0].getAttribute('height'));
             }
 
         },
@@ -189,6 +195,7 @@
         background-repeat: no-repeat;
         background-size: cover;
         width: auto;
+        height: 100vh;
     }
 
     #stadlerLogo {
@@ -304,7 +311,7 @@
             top: 49%;
         }
         .confirmedText {
-            top: 42%;
+            top: 49%;
         }
         .smallText {
             font-size: 0.5em;
