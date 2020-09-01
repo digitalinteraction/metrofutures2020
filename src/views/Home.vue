@@ -12,12 +12,12 @@
                 <p id="mailListInfo">Join our mailing list for updates on when and how you can have your say.</p>
 
                 <b-form class="emailForm">
-                    <b-form-input placeholder="Insert Email address" required type="email"
+                    <b-form-input id="emailInput" v-on:focus="hideFooter()" v-on:blur="showFooter()" placeholder="Insert Email address" required type="email"
                                   v-model="email"></b-form-input>
                     <br>
                     <p v-if="msg.email">{{msg.email}}</p>
                     <b-button :disabled="alreadySubmitted || error" id="registerBtn" v-on:click="register" variant="primary">
-                        {{ windowHeight}}Register*
+                        Register*
                     </b-button>
                 </b-form>
 
@@ -141,7 +141,15 @@
                 this.email = null;
                 this.error = false;
                 this.confirmed = false;
+            },
+            
+            hideFooter() {
+                document.getElementsByClassName('footer')[0].classList.add('hideFooter');
+            },
+            showFooter() {
+                document.getElementsByClassName('footer')[0].classList.remove('hideFooter');
             }
+
 
         },
         async mounted() {
@@ -292,6 +300,10 @@
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
+
+        .hideFooter {
+            display: none;
+        }
 
         .mainBody {
             background-image: url("../assets/teaserSmallBackground.png");
