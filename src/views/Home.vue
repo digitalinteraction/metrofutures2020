@@ -5,7 +5,7 @@
             <b-img alt="Metro logo" fluid id="metroLogo" src="../assets/Image4.png"></b-img>
         </div>
 
-        <div class="mainBody">
+        <div class="mainBody" v-bind:style="{height: windowHeight}">
             <!-- text to display before user has registered-->
             <div class="registerText" v-if="!confirmed">
                 <h1 class="metroFont calvert">Create your new Metro. Get aboard.</h1>
@@ -17,7 +17,7 @@
                     <br>
                     <p v-if="msg.email">{{msg.email}}</p>
                     <b-button :disabled="alreadySubmitted || error" id="registerBtn" v-on:click="register" variant="primary">
-                        Register*
+                        {{ windowHeight}}Register*
                     </b-button>
                 </b-form>
 
@@ -84,6 +84,7 @@
                 error: false,
                 alreadySubmitted: false,
                 confirmed: false,
+                windowHeight: '100vh'
             }
         },
         watch: {
@@ -92,6 +93,9 @@
                 this.email = value;
                 this.validateEmail(value);
             }
+        },
+        created() {
+
         },
         methods: {
             // todo replace with correct URLs
@@ -141,11 +145,12 @@
 
         },
         async mounted() {
-            console.log('request session cookie');
             this.axios.get('http://localhost:3000/api/get-session')
                 .then(response => {
                     console.log(response);
                 })
+            this.windowHeight = window.innerHeight;
+            console.log(this.windowHeight);
 
         }
 
@@ -171,9 +176,7 @@
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 100vh;
         width: auto;
-        padding-top: 50px;
     }
 
     #stadlerLogo {
