@@ -192,7 +192,7 @@
     }
 
     #stadlerLogo {
-        padding-left: 0.5em;
+        padding-left: 1em;
     }
 
     #centreCol {
