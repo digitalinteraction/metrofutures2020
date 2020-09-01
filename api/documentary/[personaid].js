@@ -1,6 +1,7 @@
 // Dynamic routing: This clever format will take the variable in [] in the filename (e.g. personaid) and make it available on req.query
 
 require('dotenv').config()
+const pg = require('pg');  // Needed by Vercel
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(process.env.pg_db, process.env.pg_user, process.env.pg_pass, {
   host: process.env.pg_host,
