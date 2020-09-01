@@ -17,7 +17,7 @@
                     <br>
                     <p v-if="msg.email">{{msg.email}}</p>
                     <b-button :disabled="alreadySubmitted || error" id="registerBtn" v-on:click="register" variant="primary">
-                        {{ windowHeight}}Register*
+                        Register*
                     </b-button>
                 </b-form>
 
