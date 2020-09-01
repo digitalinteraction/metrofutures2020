@@ -21,8 +21,13 @@ export default {
   components: {
     // Header
   },
-  meta: {
-    title: "Metro Futures"
+  // meta: {
+  //   title: "Metro Futures"
+  // }
+  data() {
+    return {
+      title: "Metro Futures"
+    }
   }
 }
 

@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import isEmail from 'validator/lib/isEmail';
 const sgMail = require('@sendgrid/mail');
 
+const pg = require('pg');  // Needed by Vercel
 const { Sequelize, DataTypes } = require('sequelize');
 const sequelize = new Sequelize(process.env.pg_db, process.env.pg_user, process.env.pg_pass, {
   host: process.env.pg_host,
