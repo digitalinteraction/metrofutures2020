@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+// import PrivacyNotice from '../components/PrivacyNotice.vue'
+// import Terms from '../components/Terms.vue'
 
 Vue.use(VueRouter)
 
@@ -13,14 +15,30 @@ Vue.use(VueRouter)
       title: 'Metro Futures'
     }
   },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  }
+  // {
+  //   path: '/privacy',
+  //   name: 'Privacy',
+  //   component: PrivacyNotice,
+  //   meta: {
+  //     title: 'Metro Futures Privacy Policy'
+  //   }
+  // },
+  // {
+  //   path: '/terms',
+  //   name: 'Terms',
+  //   component: Terms,
+  //   meta: {
+  //     title: 'Metro Futures Terms and Conditions'
+  //   }
+  // },
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   // route level code-splitting
+  //   // this generates a separate chunk (about.[hash].js) for this route
+  //   // which is lazy-loaded when the route is visited.
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+  // }
   // {
   //   path: '/signup',
   //   name: 'Signup',
