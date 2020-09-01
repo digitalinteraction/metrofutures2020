@@ -38,10 +38,10 @@
 
 
             <!--<b-img id="bgroundImg" src="../assets/Teaser1_2_rails_longer.png" fluid alt="Metro image"></b-img>-->
-            <div class="footer">
+            <b-container fluid class="footer">
                 <b-row>
                     <b-col class="float-left">
-                        <b-img fluid src="../assets/nexusLogo.png"></b-img>
+                        <b-img fluid id="nexusLogo" src="../assets/nexusLogo.png"></b-img>
                         <b-img fluid id="stadlerLogo" src="../assets/stadlerLogo.svg"></b-img>
                     </b-col>
                     <b-col id="centreCol">
@@ -57,7 +57,7 @@
                     </b-col>
                 </b-row>
 
-            </div>
+            </b-container>
         </div>
 
         <!-- Compontents for modals -->
@@ -160,20 +160,21 @@
         width: auto;
     }
 
-    /*todo get correct Calvert font (this is causing browser error) Currently using random font to demonstrate strategy works*/
+
     .metroFont {
-        font-family: Inconsolata, serif;
+        font-family: Calvert, serif;
         color: #FFFFFF;
-        text-shadow: 3px 3px 10px #FFF2A877;
+        /*text-shadow: 3px 3px 10px #FFF2A877;*/
     }
 
     .mainBody {
         background-image: url("../assets/Teaser1_2_rails_longer.png");
-        background-position: center;
+        background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
         height: 100%;
         width: auto;
+        padding-top: 50px;
     }
 
     #stadlerLogo {
@@ -205,7 +206,7 @@
 
     .footer {
         width: 100%;
-        position: absolute;
+        position: fixed;
         bottom: 0;
         left: 0;
     }
@@ -265,31 +266,88 @@
         font-family: "Open Sans", Arial, serif;
     }
 
+    .smallText {
+        font-size: 0.5em;
+    }
+    #openlabLogo {
+        width: 40px;
+    }
+    #stadlerLogo {
+        width: 60px;
+    }
+    #nexusLogo {
+        height: 20px;
+    }
+
+
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
         p {
-            font-size: 2vmin;
+            font-size: 2.3vmin;
+        }
+        .registerText {
+            top: 50%;
+        }
+        .confirmedText {
+            top: 42%;
+        }
+        .smallText {
+            font-size: 0.5em;
         }
 
     }
-
-    /* Small devices (portrait tablets and large phones, 600px and up) */
-    @media only screen and (min-width: 600px) {
-        p {
-            font-size: 1.6vmin;
-        }
-    }
-
+    /*!* Small devices (portrait tablets and large phones, 600px and up) *!*/
+    /*@media only screen and (min-width: 600px) {*/
+    /*    p {*/
+    /*        font-size: 1.9vmin;*/
+    /*    }*/
+    /*    .registerText {*/
+    /*        top: 30%;*/
+    /*    }*/
+    /*    .confirmedText {*/
+    /*        top: 35%;*/
+    /*    }*/
+    /*    .smallText {*/
+    /*        font-size: 0.5em;*/
+    /*    }*/
+    /*    #openlabLogo {*/
+    /*        width: 40px;*/
+    /*    }*/
+    /*    #stadlerLogo {*/
+    /*        width: 60px;*/
+    /*    }*/
+    /*    #nexusLogo {*/
+    /*        height: 30px;*/
+    /*    }*/
+    /*}*/
     /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 600px) {
         p {
             font-size: 1.4vmin;
         }
-
         h1 {
-            font-size: 8vmin;
+            font-size: 7vmin;
+        }
+        .registerText {
+            top: 50%;
+        }
+        .confirmedText {
+            top: 54%;
+        }
+        .smallText {
+            font-size: 0.6em;
+        }
+        #openlabLogo {
+            width: 80px;
+        }
+        #stadlerLogo {
+            width: 100px;
+        }
+        #nexusLogo {
+            height: 70px;
         }
     }
+
 
     #homeBtn {
         font-size: 0.8em;
