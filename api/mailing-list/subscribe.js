@@ -84,8 +84,20 @@ async function confirmationEmail (recipEmail, subid) {
     to: recipEmail,
     from: process.env.mailing_list_sender,
     subject: 'Confirmation of signup to MetroFutures Mailing List',
-    text: `Message to subscriber, including link: ${url}`,
-    html: `Message to subscriber, including link: <a href="${url}">${url}</a>`,
+    text: `Thank you for subscribing to be notified about your future Metro.
+
+    We'll use your email address to make you aware of when the website is live, and a few other opportunities to comment on the new design. 
+    
+    When the engagement closes, we'll delete your email address.
+    
+    Our full privacy policy can be viewed at: metrofutures.org.uk
+    
+    If you did not do this, or you would like to unsubscribe, please click here: ${url}`,
+    html: `Thank you for subscribing to be notified about your future Metro.<br/><br/>
+    We'll use your email address to make you aware of when the website is live, and a few other opportunities to comment on the new design.<br/><br/>
+    When the engagement closes, we'll delete your email address.<br/><br/>
+    Our full privacy policy can be viewed at: <a href="metrofutures.org.uk">metrofutures.org.uk</a><br/><br/>
+    If you did not do this, or you would like to unsubscribe, please click here: <a href="${url}">${url}</a>`,
   };
   try {
     await sgMail.send(msg);
