@@ -6,5 +6,10 @@ export default {
     if (state.index < state.questions.length - 1) {
       state.index += 1;
     }
+  },
+  reduceIndex(state) {
+    if (state.index > 0) {
+      state.index -= 1;
+    }
   }
 }

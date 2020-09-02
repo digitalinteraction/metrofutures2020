@@ -68,6 +68,7 @@ export default {
   },
   methods: {
     next: function() {
+      // todo update classes to make breadcrumbs move along
       if (this.index < this.questions.length - 1) {
         this.index++
       }

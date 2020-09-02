@@ -1,39 +1,65 @@
 <template>
-    <b-container>
+    <b-container fluid>
         <b-row class="survey-question">
-            <b-col>
-                <p><span class="bold">Question {{ index + 1 }}:</span> {{ question.question }}</p>
+<!--image column-->
+            <b-col cols="">
+<!--                 todo image should change with each question-->
+                <b-img fluid src="../assets/Sample.png"></b-img>
+            </b-col>
+
+<!--            interaction column-->
+            <b-col cols="3">
+
+                <b-row>
+                    <b-col>
+<!--                        todo go back to previous question without breaking answer submission-->
+                        <p @click="previousQuestion">Back</p>
+                    </b-col>
+                </b-row>
+<!--                Question-->
+                <b-row id="questionTextRow">
+                    <p class="calvert"><span class="bold">{{ question.question }}</span></p>
+                </b-row>
+
+<!--Options-->
+                <b-row class="survey-option">
+                    <b-col>
+                        <b-row align-v="center" v-for="(option, x) in question.options"
+                           :key="x"
+                           @click="selectOption(x)"
+                           :class="selectClass(x)">
+<!--                            todo replace with appropriate choices per question using {{ option.img }}-->
+                        <b-img class="optionImg" fluid src="../assets/metroLogoTemp.png"></b-img>
+                            <p class = "surveyOptionText">{{ option.desc }}</p>
+
+                        <!-- <b-form-checkbox>
+                          {{ option.desc }}
+                        </b-form-checkbox> -->
+                            </b-row>
+                    </b-col>
+                </b-row>
+
+<!--                feedback section-->
+                <b-row>
+                    <b-col>
+                        <div class="surveyFreeText">
+                            <label class="calvert" for="survey-text-response">Leave Feedback (optional) </label>
+                            <textarea v-model="surveyText" placeholder="Got something to say? Let us know..." class="form-control" rows="2" ></textarea>
+                        </div>
+                    </b-col>
+                </b-row>
+
+                <b-row>
+                    <b-col>
+                        <b-button block variant="outline-secondary" @click="nextQuestion">Continue</b-button>
+                    </b-col>
+                </b-row>
+
+
             </b-col>
         </b-row>
 
-        <b-row class="survey-option">
-            <b-col v-for="(option, x) in question.options" 
-              :key="x"
-              @click="selectOption(x)"
-              :class="selectClass(x)">
-                <!-- {{ option.img }} -->
-                {{ option.desc }}
 
-                <!-- <b-form-checkbox>
-                  {{ option.desc }}
-                </b-form-checkbox> -->
-            </b-col>
-        </b-row>
-
-        <b-row>
-          <b-col>
-            <div class="survey-text">
-              <label for="survey-text-response">Are there any other comments you'd like to make on these choices?</label>
-              <textarea v-model="surveyText" placeholder="Enter text here" class="form-control" rows="2" ></textarea>
-            </div>
-          </b-col>
-        </b-row>
-
-        <b-row>
-            <b-col>
-                <b-button @click="nextQuestion">Next</b-button>
-            </b-col>
-        </b-row>
     </b-container>
     
 </template>
@@ -56,11 +82,14 @@ export default {
   },
   methods: {
     ...mapMutations([
-    'incrementIndex'
+    'incrementIndex',
+        'reduceIndex'
     ]),
 
     nextQuestion() {
-      // Fire off the response to the API
+      // todo Fire off the response to the API
+        // todo get session from cookies?
+        // given there's a back option we need to be able to update response if it is sent a second time
       let session_id = "aASDykeasdACAE34234"
         let payload = {
           q_id: this.index,
@@ -72,6 +101,12 @@ export default {
         this.incrementIndex()
         this.resetSelected()
     },
+
+      previousQuestion() {
+        console.log('go back to previous question')
+        this.reduceIndex();
+        this.resetSelected();
+      },
 
     selectOption(x) {
       this.selected = x
@@ -96,13 +131,43 @@ export default {
 </script>
 
 <style scoped lang="scss">
+ /*todo for smaller screens perhaps stack image and question columns?*/
+    .survey-question {
+        width: 100%;
+    }
+
+ #questionTextRow {
+     border-bottom: 2px solid #FEC600;
+     & p {
+         padding: 2em;
+     }
+ }
+
+ .calvert {
+     font-family: Calvert, serif;
+ }
 
 .bold {
     font-weight: bold;
 }
 
 .selected {
-  background-color: lightblue;
+  /*   todo add tick to image*/
+  background-color: #DDDDDD;
+    & img {
+        border-right: 2px solid black;
+    }
 }
+
+    .surveyOptionText {
+        padding-left: 2em;
+    }
+
+    .surveyFreeText {
+    text-align: left;
+    padding: 1em;
+        font-weight: bold;
+        font-size: small;
+    }
 
 </style>
