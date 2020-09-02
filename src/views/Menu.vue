@@ -5,7 +5,7 @@
                 <b-col>
 
                 </b-col>
-                <b-col>
+                <b-col align="center">
                     <b-img id="metroLogo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
                 </b-col>
                 <b-col>

@@ -40,6 +40,7 @@
 
 <style scoped lang="scss">
     .footer {
+        position: relative;
     }
     #stadlerLogo {
         padding-left: 0.5em;
