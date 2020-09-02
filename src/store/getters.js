@@ -4,5 +4,8 @@ export default {
     },
     getIndex(state) {
         return state.index
+    },
+    getConfigAnswer(state) {
+        return state.configAnswers;
     }
 }

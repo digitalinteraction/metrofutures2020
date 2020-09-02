@@ -78,16 +78,20 @@ export default {
     }
   },
   computed: {
+
   },
   methods: {
     ...mapMutations([
     'incrementIndex',
-        'reduceIndex'
+        'reduceIndex',
+        'addConfigAnswer'
     ]),
 
     nextQuestion() {
+console.log(this.selected);
       // todo Fire off the response to the API
         // todo get session from cookies?
+        // todo prevent navigation without answering?
 
       let session_id = "aASDykeasdACAE34234"
         let payload = {
@@ -96,6 +100,9 @@ export default {
           text: this.surveyText,
           s_id: session_id
         }
+        // update stored answers
+        this.addConfigAnswer(payload);
+
         console.log(payload)
         this.incrementIndex()
         this.resetSelected()

@@ -60,7 +60,8 @@ export default {
   computed: {
     ...mapState([
       'questions',
-      'index'
+      'index',
+      'configAnswers'
     ]),
     ...mapGetters([
       'privacyNotice'
@@ -77,7 +78,7 @@ export default {
     },
     clickBreadcrumb(breadcrumbIndex) {
       // navigate back to previously completed questions (not forward)
-
+console.log(this.configAnswers);
       // todo check if this questions has already been answered
       this.setIndex(breadcrumbIndex);
     },

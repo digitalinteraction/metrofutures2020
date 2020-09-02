@@ -14,5 +14,8 @@ export default {
   },
   setIndex(state, newValue) {
     state.index = newValue;
+  },
+  addConfigAnswer(state, answer) {
+    state.configAnswers[answer.q_id] = answer.option;
   }
 }
