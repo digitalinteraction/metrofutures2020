@@ -3,13 +3,13 @@
     <b-container>
       <b-row>
         <b-col align="center">
-          <b-img id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
+          <b-img align="center" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
         </b-col>
       </b-row>
 
       <b-row>
         <b-col>
-          <a v-on:click="goBackAPage()" id="backOption"><b-icon-chevron-left></b-icon-chevron-left>Back</a>
+          <a @click="$router.go(-1)" id="backOption"><b-icon-chevron-left></b-icon-chevron-left>Back</a>
         </b-col>
       </b-row>
 
