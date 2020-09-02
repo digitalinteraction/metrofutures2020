@@ -59,6 +59,7 @@ export default {
 
   ul {
       font-size: 2.3vmin;
+      margin-bottom: 0.5em;
   }
 
 }
