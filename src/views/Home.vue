@@ -8,11 +8,12 @@
         <div class="mainBody" v-bind:style="{height: windowHeight}">
             <!-- text to display before user has registered-->
             <div class="registerText" v-if="!confirmed">
-                <h1 class="metroFont calvert">Create your new Metro. Get aboard.</h1>
+                <h1 class="metroFont calvert">Shape your new Metro. Get aboard.</h1>
                 <p id="mailListInfo">Join our mailing list for updates on when and how you can have your say.</p>
 
                 <b-form class="emailForm">
-                    <b-form-input placeholder="Insert Email address" required type="email"
+                    <label class="sr-only" for="emailInput">Email Address</label>
+                    <b-form-input id="emailInput" v-on:focus="hideFooter()" v-on:blur="showFooter()" placeholder="Insert Email address" required type="email"
                                   v-model="email"></b-form-input>
                     <br>
                     <p v-if="msg.email">{{msg.email}}</p>
@@ -41,7 +42,7 @@
             <b-container fluid class="footer">
                 <b-row>
                     <b-col class="float-left">
-                        <b-img fluid id="nexusLogo" src="../assets/nexusLogo.png"></b-img>
+                        <b-img fluid id="nexusLogo" src="../assets/Nexus-logo-reversed.png"></b-img>
                         <b-img fluid id="stadlerLogo" src="../assets/stadlerLogo.svg"></b-img>
                     </b-col>
                     <b-col id="centreCol">
@@ -141,7 +142,15 @@
                 this.email = null;
                 this.error = false;
                 this.confirmed = false;
+            },
+            
+            hideFooter() {
+                document.getElementsByClassName('footer')[0].classList.add('hideFooter');
+            },
+            showFooter() {
+                document.getElementsByClassName('footer')[0].classList.remove('hideFooter');
             }
+
 
         },
         async mounted() {
@@ -175,6 +184,7 @@
     .home {
         height: 100vh;
         width: auto;
+        /* min-height: 100%; */
     }
 
 
@@ -192,7 +202,7 @@
     }
 
     #stadlerLogo {
-        padding-left: 0.5em;
+        padding-left: 1em;
     }
 
     #centreCol {
@@ -213,7 +223,8 @@
 
     p {
         margin: 0;
-        font-family: "Open Sans", Arial, serif;
+        /* font-family: "Open Sans", Arial, serif; */
+        font-family: Calvert, serif; /* Nexus want everything to be Calvert */
         /*font-size: 1.4vmin;*/
         color: #FFFFFF;
     }
@@ -236,10 +247,12 @@
     #registerBtn {
         font-size: 0.8em;
         margin-bottom: 1em;
+        font-family: Calvert, serif;
     }
 
     .emailForm {
         width: 60vw;
+        max-width: 600px;
         margin-left: auto;
         margin-right: auto;
         margin-top: 15px;
@@ -292,6 +305,10 @@
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
+
+        .hideFooter {
+            display: none;
+        }
 
         .mainBody {
             background-image: url("../assets/teaserSmallBackground.png");
