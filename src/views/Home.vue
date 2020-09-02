@@ -116,10 +116,7 @@
             register(e) {
                 e.preventDefault();
                 if (!this.error && this.email) {
-                    console.log('submit');
 
-                    //todo sort CORS issue, check cookie sending
-                    // Consider using vue-resource instead of axios ?
                     this.axios.post(`${process.env.VUE_APP_API_URL}/api/mailing-list/subscribe`, {
                         headers: {
                             Cookie: this.$cookies.get('mfsid')
@@ -153,12 +150,10 @@
         },
         async mounted() {
             this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
-                .then(response => {
-                    console.log(response);
-                })
+                // .then(response => {
+                //     console.log(response);
+                // })
             this.windowHeight = window.innerHeight;
-            console.log(this.windowHeight);
-
 
             // google analytics post
 
@@ -291,7 +286,7 @@
         font-size: 0.5em;
     }
     #openlabLogo {
-        width: 40px;
+        width: 60px;
     }
     #stadlerLogo {
         width: 60px;
@@ -299,7 +294,55 @@
     #nexusLogo {
         height: 20px;
     }
+    #homeBtn {
+        font-size: 0.8em;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+        margin-top: 1.5em;
+    }
 
+    #confirmedEmail {
+        margin: 1em;
+        font-size: 0.9em;
+    }
+
+    #openlabLogo {
+        padding-left: 0.8em;
+    }
+
+    /* Medium devices (landscape tablets, 768px and up) */
+    @media only screen and (min-width: 600px) {
+
+        .mainBody {
+            background-image: url("../assets/Teaser1_2_rails_longer.png");
+        }
+
+        p {
+            font-size: 1.4vmin;
+        }
+        h1 {
+            font-size: 7vmin;
+        }
+        .registerText {
+            top: 50%;
+        }
+        .confirmedText {
+            top: 54%;
+        }
+        .smallText {
+            font-size: 0.6em;
+        }
+        #openlabLogo {
+            width: 120px;
+        }
+        #stadlerLogo {
+            width: 120px;
+        }
+        #nexusLogo {
+            height: 70px;
+        }
+    }
 
     /* Extra small devices (phones, 600px and down) */
     @media only screen and (max-width: 600px) {
@@ -331,80 +374,9 @@
         }
 
     }
-    /*!* Small devices (portrait tablets and large phones, 600px and up) *!*/
-    /*@media only screen and (min-width: 600px) {*/
-    /*    p {*/
-    /*        font-size: 1.9vmin;*/
-    /*    }*/
-    /*    .registerText {*/
-    /*        top: 30%;*/
-    /*    }*/
-    /*    .confirmedText {*/
-    /*        top: 35%;*/
-    /*    }*/
-    /*    .smallText {*/
-    /*        font-size: 0.5em;*/
-    /*    }*/
-    /*    #openlabLogo {*/
-    /*        width: 40px;*/
-    /*    }*/
-    /*    #stadlerLogo {*/
-    /*        width: 60px;*/
-    /*    }*/
-    /*    #nexusLogo {*/
-    /*        height: 30px;*/
-    /*    }*/
-    /*}*/
-    /* Medium devices (landscape tablets, 768px and up) */
-    @media only screen and (min-width: 600px) {
 
-        .mainBody {
-            background-image: url("../assets/Teaser1_2_rails_longer.png");
-        }
-
-        p {
-            font-size: 1.4vmin;
-        }
-        h1 {
-            font-size: 7vmin;
-        }
-        .registerText {
-            top: 50%;
-        }
-        .confirmedText {
-            top: 54%;
-        }
-        .smallText {
-            font-size: 0.6em;
-        }
-        #openlabLogo {
-            width: 80px;
-        }
-        #stadlerLogo {
-            width: 100px;
-        }
-        #nexusLogo {
-            height: 70px;
-        }
-    }
-
-
-    #homeBtn {
-        font-size: 0.8em;
-        padding-top: 1em;
-        padding-bottom: 1em;
-        margin-bottom: 1em;
-        margin-top: 1.5em;
-    }
-
-    #confirmedEmail {
-        margin: 1em;
-        font-size: 0.9em;
-    }
-
-    #openlabLogo {
-        padding-left: 0.8em;
-    }
+    
+    
 
 
 </style>
