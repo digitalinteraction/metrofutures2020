@@ -12,6 +12,7 @@
                 <p id="mailListInfo">Join our mailing list for updates on when and how you can have your say.</p>
 
                 <b-form class="emailForm">
+                    <label class="sr-only" for="emailInput">Email Address</label>
                     <b-form-input id="emailInput" v-on:focus="hideFooter()" v-on:blur="showFooter()" placeholder="Insert Email address" required type="email"
                                   v-model="email"></b-form-input>
                     <br>
@@ -41,7 +42,7 @@
             <b-container fluid class="footer">
                 <b-row>
                     <b-col class="float-left">
-                        <b-img fluid id="nexusLogo" src="../assets/nexusLogo.png"></b-img>
+                        <b-img fluid id="nexusLogo" src="../assets/Nexus-logo-reversed.png"></b-img>
                         <b-img fluid id="stadlerLogo" src="../assets/stadlerLogo.svg"></b-img>
                     </b-col>
                     <b-col id="centreCol">
@@ -183,6 +184,7 @@
     .home {
         height: 100vh;
         width: auto;
+        /* min-height: 100%; */
     }
 
 
