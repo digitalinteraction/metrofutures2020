@@ -8,7 +8,7 @@
         <div class="mainBody" v-bind:style="{height: windowHeight}">
             <!-- text to display before user has registered-->
             <div class="registerText" v-if="!confirmed">
-                <h1 class="metroFont calvert">Create your new Metro. Get aboard.</h1>
+                <h1 class="metroFont calvert">Shape your new Metro. Get aboard.</h1>
                 <p id="mailListInfo">Join our mailing list for updates on when and how you can have your say.</p>
 
                 <b-form class="emailForm">
@@ -221,7 +221,8 @@
 
     p {
         margin: 0;
-        font-family: "Open Sans", Arial, serif;
+        /* font-family: "Open Sans", Arial, serif; */
+        font-family: Calvert, serif; /* Nexus want everything to be Calvert */
         /*font-size: 1.4vmin;*/
         color: #FFFFFF;
     }
@@ -244,6 +245,7 @@
     #registerBtn {
         font-size: 0.8em;
         margin-bottom: 1em;
+        font-family: Calvert, serif;
     }
 
     .emailForm {

@@ -89,6 +89,7 @@ export default {
 
 .termsText {
   color: black;
+  font-family: "Open Sans", Arial, serif;
 }
 
 </style>

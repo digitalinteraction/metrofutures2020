@@ -45,6 +45,7 @@ export default {
 
 .privacyText {
   color: black;
+  font-family: "Open Sans", Arial, serif;
 }
 
 </style>
