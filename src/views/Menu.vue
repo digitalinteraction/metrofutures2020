@@ -9,7 +9,7 @@
                     <b-img id="metroLogo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
                 </b-col>
                 <b-col>
-                    <p id="aboutText">About Metro Futures</p>
+                    <p id="aboutText" v-on:click="goTo('/about')">About Metro Futures  <b-icon-chevron-down variant="primary"></b-icon-chevron-down></p>
                 </b-col>
             </b-row>
 
@@ -122,15 +122,41 @@
                 hoverYourChoice: false,
                 hoverYourJourney: false
             }
+        },
+        async mounted() {
+            this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+                .then(response => {
+                    console.log(response);
+                })
+            this.windowHeight = window.innerHeight;
+            console.log(this.windowHeight);
+
+
+            // google analytics post
+            const measurementID = "UA-85374573-24";
+            const clientID = this.$cookies.get('mfsid');
+            const page= this.$route.path;
+            const pageName = this.$route.name;
+            const documentHost = location.host;
+
+            const fullURL = 'https://www.google-analytics.com/collect?v=1&t=pageview&tid=' + measurementID + '&cid=' + clientID + '&t=pageview&dh=' + documentHost + '&dp=' + page + '&dt=' + pageName;
+            this.axios.post(fullURL);
         }
-        // todo Google Analytics check in
-        // todo get session cookie
     }
 </script>
 
 <style lang="scss">
+
+    /*todo -  on horizontal smaller screens the footer overlaps menu items */
+
     #aboutText {
         color: black;
+        float: right;
+        margin-top: 3em;
+        cursor: pointer;
+        border-bottom: 1px solid #FEC600;
+       padding-bottom: 0.8em;
+
     }
     .menuCol {
         padding-left: 0 !important;
