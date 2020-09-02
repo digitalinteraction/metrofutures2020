@@ -13,7 +13,7 @@
 
                 <b-form class="emailForm">
                     <label class="sr-only" for="emailInput">Email Address</label>
-                    <b-form-input id="emailInput" v-on:focus="hideFooter()" v-on:blur="showFooter()" placeholder="Insert Email address" required type="email"
+                    <b-form-input id="emailInput" v-on:focus="hideFooter()" v-on:blur="showFooter()" placeholder="Insert Email Address" required type="email"
                                   v-model="email"></b-form-input>
                     <br>
                     <p v-if="msg.email">{{msg.email}}</p>
@@ -188,8 +188,7 @@
 
     .metroFont {
         font-family: Calvert, serif;
-        color: #FFFFFF;
-        /*text-shadow: 3px 3px 10px #FFF2A877;*/
+        color: #FFFFFF;        
     }
 
     .mainBody {
@@ -263,7 +262,8 @@
 
 
     .smallText {
-        font-size: 0.6em;
+        font-size: 1em;
+        font-family: 'Open Sans';
     }
 
 
@@ -315,6 +315,11 @@
         p {
             font-size: 2.3vmin;
         }
+
+        .metroFont {
+            text-shadow: 3px 3px 10px #110B00;
+        }
+
         .registerText {
             top: 49%;
         }
