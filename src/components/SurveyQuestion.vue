@@ -9,11 +9,10 @@
 
 <!--            interaction column-->
             <b-col cols="3">
-
                 <b-row>
                     <b-col>
 <!--                        todo go back to previous question without breaking answer submission-->
-                        <p @click="previousQuestion">Back</p>
+                        <p id="backOption" @click="previousQuestion"><b-icon-chevron-left></b-icon-chevron-left>Back</p>
                     </b-col>
                 </b-row>
 <!--                Question-->
@@ -149,6 +148,10 @@ export default {
 
 .bold {
     font-weight: bold;
+}
+#backOption {
+    cursor: pointer;
+    text-decoration: none;
 }
 
 .selected {
