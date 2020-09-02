@@ -183,7 +183,7 @@
 
         & p {
             margin: 1.5em 2em 2em 2em;
-
+            color: white;
         }
 
         & h3 {
