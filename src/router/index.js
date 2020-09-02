@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Menu from '../views/Menu.vue'
 // import PrivacyNotice from '../components/PrivacyNotice.vue'
 // import Terms from '../components/Terms.vue'
 
@@ -15,6 +16,15 @@ Vue.use(VueRouter)
       title: 'Metro Futures'
     }
   },
+    {
+    path: '/menu',
+    name: 'Menu',
+    component: Menu,
+    meta: {
+      title: 'Metro Futures'
+    }
+  },
+
   // {
   //   path: '/privacy',
   //   name: 'Privacy',
