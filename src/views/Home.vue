@@ -171,8 +171,8 @@
     }
 </script>
 
-<style>
-
+<style lang="scss">
+    @import '@/assets/_variables.scss';
 
     .home {
         height: 100vh;
@@ -183,7 +183,7 @@
 
     .metroFont {
         font-family: Calvert, serif;
-        color: #FFFFFF;        
+        color: #FFFFFF;
     }
 
     .mainBody {
