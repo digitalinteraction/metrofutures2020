@@ -18,14 +18,14 @@
       </b-row>
 
       <b-row class="surveyBreadcrumb" align-v="center">
-          <b-col class="firstMenuCol breadItem breadSelected">Metro</b-col>
-          <b-col class="breadItem">Seating Design</b-col>
-          <b-col class="breadItem">Priority Seating</b-col>
-          <b-col class="breadItem">Grab Pole & Doors</b-col>
-          <b-col class="breadItem">Centre Poles</b-col>
-          <b-col class="breadItem">Bike Racks</b-col>
-          <b-col class="breadItem">Side Walls</b-col>
-          <b-col class="lastMenuCol breadItem">Summary</b-col>
+          <b-col id="breadcrumb0" class="firstMenuCol breadItem breadSelected" v-on:click="clickBreadcrumb(0)" >Metro</b-col>
+          <b-col id="breadcrumb1" class="breadItem" v-on:click="clickBreadcrumb(0)">Seating Design</b-col>
+          <b-col id="breadcrumb2" class="breadItem" v-on:click="clickBreadcrumb(1)">Priority Seating</b-col>
+          <b-col id="breadcrumb3" class="breadItem" v-on:click="clickBreadcrumb(2)">Grab Pole & Doors</b-col>
+          <b-col id="breadcrumb4" class="breadItem" v-on:click="clickBreadcrumb(3)">Centre Poles</b-col>
+          <b-col id="breadcrumb5" class="breadItem" v-on:click="clickBreadcrumb(4)">Bike Racks</b-col>
+          <b-col id="breadcrumb6" class="breadItem" v-on:click="clickBreadcrumb(5)">Side Walls</b-col>
+          <b-col id="breadcrumb7" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb()">Summary</b-col>
       </b-row>
 
       <b-row>
@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+  import {mapState, mapGetters, mapMutations} from 'vuex'
 
 // @ is an alias to /src
 import SurveyQuestion from '@/components/SurveyQuestion.vue'
@@ -67,12 +67,43 @@ export default {
     ])   
   },
   methods: {
+    ...mapMutations([
+      'setIndex'
+    ]),
     next: function() {
-      // todo update classes to make breadcrumbs move along
       if (this.index < this.questions.length - 1) {
         this.index++
       }
+    },
+    clickBreadcrumb(breadcrumbIndex) {
+      // navigate back to previously completed questions (not forward)
+
+      // todo check if this questions has already been answered
+      this.setIndex(breadcrumbIndex);
+    },
+    clickSummaryBreadcrumb() {
+      // todo nav to summary only if user has answered all questions
     }
+  },
+  async mounted() {
+    this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+            .then(response => {
+              console.log(response);
+            })
+    this.windowHeight = window.innerHeight;
+    console.log(this.windowHeight);
+
+
+    // google analytics post
+
+    const measurementID = "UA-85374573-24";
+    const clientID = this.$cookies.get('mfsid');
+    const page= this.$route.path;
+    const pageName = this.$route.name;
+    const documentHost = location.host;
+
+    const fullURL = 'https://www.google-analytics.com/collect?v=1&t=pageview&tid=' + measurementID + '&cid=' + clientID + '&t=pageview&dh=' + documentHost + '&dp=' + page + '&dt=' + pageName;
+    this.axios.post(fullURL);
   }
 }
 

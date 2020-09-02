@@ -88,7 +88,7 @@ export default {
     nextQuestion() {
       // todo Fire off the response to the API
         // todo get session from cookies?
-        // given there's a back option we need to be able to update response if it is sent a second time
+
       let session_id = "aASDykeasdACAE34234"
         let payload = {
           q_id: this.index,

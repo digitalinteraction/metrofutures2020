@@ -11,5 +11,8 @@ export default {
     if (state.index > 0) {
       state.index -= 1;
     }
+  },
+  setIndex(state, newValue) {
+    state.index = newValue;
   }
 }
