@@ -52,9 +52,7 @@
                         <p class="float-left"><a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
                     </b-col>
                     <b-col id="lab">
-                        <p>Powered by
-                            <b-img id="openlabLogo" fluid src="../assets/openlabLogoWhite.svg"></b-img>
-                        </p>
+                        <b-img id="openlabLogo" fluid src="../assets/openlabLogoWhite.svg"></b-img>
                     </b-col>
                 </b-row>
 
