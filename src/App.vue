@@ -47,8 +47,8 @@ body {
   font-family: "Open Sans", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  //text-align: center;
+  color: black;
   overflow: hidden;
 }
 
@@ -66,5 +66,5 @@ body {
   }
 }
 
-/* todo implement responsive font sizing*/
+
 </style>

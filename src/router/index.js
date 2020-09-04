@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Menu from '../views/Menu.vue'
+import About from '../views/About.vue'
 // import PrivacyNotice from '../components/PrivacyNotice.vue'
 // import Terms from '../components/Terms.vue'
 
@@ -15,6 +17,23 @@ Vue.use(VueRouter)
       title: 'Metro Futures'
     }
   },
+    {
+    path: '/menu',
+    name: 'Menu',
+    component: Menu,
+    meta: {
+      title: 'Metro Futures'
+    }
+  },
+    {
+    path: '/about',
+    name: 'About',
+    component: About,
+    meta: {
+      title: 'Metro Futures'
+    }
+  },
+
   // {
   //   path: '/privacy',
   //   name: 'Privacy',
@@ -44,21 +63,21 @@ Vue.use(VueRouter)
   //   name: 'Signup',
   //   component: () => import(/* webpackChunkName: "Signup" */ '../views/Signup.vue')
   // },
-  // {
-  //   path: '/survey',
-  //   name: 'Survey',
-  //   component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue')
-  // },
-  // {
-  //   path: '/idoc',
-  //   name: 'Interactive Documentary',
-  //   component: () => import(/* webpackChunkName: "idoc" */ '../views/InteractiveDocumentary.vue')
-  // },
-  // {
-  //   path: '/walkthrough',
-  //   name: 'Metro Walkthroughs',
-  //   component: () => import(/* webpackChunkName: "walthrough" */ '../views/Walkthrough.vue')
-  // }
+  {
+    path: '/survey',
+    name: 'Survey',
+    component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue')
+  },
+  {
+    path: '/idoc',
+    name: 'Interactive Documentary',
+    component: () => import(/* webpackChunkName: "idoc" */ '../views/InteractiveDocumentary.vue')
+  },
+  {
+    path: '/walkthrough',
+    name: 'Metro Walkthroughs',
+    component: () => import(/* webpackChunkName: "walthrough" */ '../views/Walkthrough.vue')
+  }
 ];
 
 const router = new VueRouter({
