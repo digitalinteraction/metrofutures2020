@@ -96,6 +96,7 @@ function validateQuery(query) {
     console.log("incorrect formatting")
     return false
   }
+}
 
 function urlFormatter(opt) {
   // All options start from 1 (0 = option not visible)
@@ -105,7 +106,7 @@ function urlFormatter(opt) {
 }
 
 function outsideRange(optNum, value) {
-  if(value === 0) return true
+  if(value === 0) {return true;}
   switch(optNum){
     case 1:
       return (value > 3) ? true : false;
@@ -121,5 +122,7 @@ function outsideRange(optNum, value) {
       return (value !== "ON" || value !== "OFF") ? true : false;
     case 7:
       return (value > 2) ? true : false;
+    default:
+      return false;
   }
 }
