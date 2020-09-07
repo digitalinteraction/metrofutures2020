@@ -17,5 +17,8 @@ export default {
   },
   addConfigAnswer(state, answer) {
     state.configAnswers[answer.q_id] = answer.option;
+  },
+  lastQuestion(state, currentIndex) {
+    return currentIndex === state.questions.length - 1;
   }
 }

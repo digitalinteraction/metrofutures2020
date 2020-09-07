@@ -5,7 +5,7 @@ export default {
     getIndex(state) {
         return state.index
     },
-    getConfigAnswer(state) {
+    getConfigAnswers(state) {
         return state.configAnswers;
     }
 }

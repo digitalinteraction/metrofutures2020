@@ -18,14 +18,13 @@
       </b-row>
 
       <b-row class="surveyBreadcrumb" align-v="center">
-          <b-col id="breadcrumb0" v-bind:class="checkSelected(0)" class="firstMenuCol breadItem" v-on:click="clickBreadcrumb(0)" >Metro</b-col>
-          <b-col id="breadcrumb1" v-bind:class="checkSelected(1)" class="breadItem" v-on:click="clickBreadcrumb(0)">Seating Design</b-col>
-          <b-col id="breadcrumb2" class="breadItem" v-on:click="clickBreadcrumb(1)">Priority Seating</b-col>
-          <b-col id="breadcrumb3" class="breadItem" v-on:click="clickBreadcrumb(2)">Grab Pole & Doors</b-col>
-          <b-col id="breadcrumb4" class="breadItem" v-on:click="clickBreadcrumb(3)">Centre Poles</b-col>
-          <b-col id="breadcrumb5" class="breadItem" v-on:click="clickBreadcrumb(4)">Bike Racks</b-col>
-          <b-col id="breadcrumb6" class="breadItem" v-on:click="clickBreadcrumb(5)">Side Walls</b-col>
-          <b-col id="breadcrumb7" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb()">Summary</b-col>
+          <b-col id="breadcrumb0" v-bind:class="checkSelected(0)" class="firstMenuCol breadItem" v-on:click="clickBreadcrumb(0)" >Floor, seats and glass partitions</b-col>
+          <b-col id="breadcrumb1" v-bind:class="checkSelected(1)" class="breadItem" v-on:click="clickBreadcrumb(1)">Doors, grab poles and floor markings</b-col>
+          <b-col id="breadcrumb3" v-bind:class="checkSelected(2)" class="breadItem" v-on:click="clickBreadcrumb(2)">Centre grab poles</b-col>
+          <b-col id="breadcrumb4" v-bind:class="checkSelected(3)" class="breadItem" v-on:click="clickBreadcrumb(3)">Bike racks</b-col>
+          <b-col id="breadcrumb5" v-bind:class="checkSelected(4)" class="breadItem" v-on:click="clickBreadcrumb(4)">Seats</b-col>
+          <b-col id="breadcrumb6" v-bind:class="checkSelected(5)" class="breadItem" v-on:click="clickBreadcrumb(5)">Lower side wall</b-col>
+          <b-col id="breadcrumb7" v-bind:class="checkSelected(6)" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb(6)">Summary</b-col>
       </b-row>
 
       <b-row>
@@ -72,8 +71,11 @@ export default {
       'setIndex'
     ]),
       checkSelected: function(breadcrumbIndex) {
+        if (breadcrumbIndex === 6 && this.summary === true) {
+            //highlight summary
+            return 'breadSelected';
+        }
           if (this.index === breadcrumbIndex) {
-              console.log('found');
               return 'breadSelected';
           }
       },
@@ -90,6 +92,7 @@ export default {
     },
     clickSummaryBreadcrumb() {
       // todo nav to summary only if user has answered all questions
+        this.summary = true;
     }
   },
   async mounted() {

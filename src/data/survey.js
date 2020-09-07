@@ -1,75 +1,65 @@
 export default [
   {
     id: 0,
-    question: "Material, colour and pattern of seat cushions, seat shell, lower side wall panelling, floor patter and colour, side wall, door panelling and ceiling colour",
+    question: "Select your preferred seating style:",
     options: [
       {
-        desc: "Colour, Material and Finish 1",
+        desc: "Light grey, dots, dots, LEATHER",
         img: "Img src"
       },
       {
-        desc: "Colour, Material and Finish 2",
+        desc: "Green, plain, stripes, LEATHER",
         img: "Img src 2"
       },
       {
-        desc: "Colour, Material and Finish 3",
+        desc: "Dark grey, logo, logo, LEATHER",
         img: "Img src 3"
       }
     ]
   },
   {
     id: 1,
-    question: "Doors - Interior Colour",
+    question: "Select your preferred combination of pole and door colours, and floor markings:",
     options: [
       {
-        desc: "Melon yellow RAL 1028",
+        desc: "Yellow door, metal pole, yellow floor marking",
         img: "img src 1"
       },
       {
-        desc: "Telegrey 2 RAL 7046",
+        desc: "Grey door, yellow pole, white floor marking",
         img: "img src 2"
       },
       {
-        desc: "Stone grey RAL 7030",
+        desc: "Yellow door, grey pole, yellow floor marking",
         img: "img src 3"
+      },
+      {
+        desc: "Grey door, metal pole, white floor marking",
+        img: "img src 4"
       }
     ]
   },
   {
     id: 2,
-    question: "Grabpoles - colour and finish",
+    question: "Select your preferred pole design:",
     options: [
       {
-        desc: "Melon yellow RAL 1028",
+        desc: "Single pole",
         img: "img src 1"
       },
       {
-        desc: "Chrome steel brushed",
+        desc: "Double pole",
+        img: "img src 2"
+      },
+      {
+        desc: "Ring",
         img: "img src 2"
       }
     ]
   },
   {
     id: 3,
-    question: "Centre grabpole - Shape",
-    options: [
-      {
-        desc: "Straight",
-        img: "img src 1"
-      },
-      {
-        desc: "Split",
-        img: "img src 2"
-      },
-      {
-        desc: "Ring",
-        img: "img src 3"
-      }
-    ]
-  },
-  {
-    id: 4,
-    question: "Type of bicycle stands",
+    question: "Select your preferred bike stand:",
     options: [
       {
         desc: "Strap",
@@ -86,95 +76,35 @@ export default [
     ]
   },
   {
+    id: 4,
+    question: "Select whether priority seats should be indicated with separate colours:",
+    options: [
+      {
+        desc: "Yes",
+        img: "img src 1"
+      },
+      {
+        desc: "No",
+        img: "img src 2"
+      }
+    ]
+  },
+  {
     id: 5,
-    question: "Driver's cab end wall - design",
+    question: "Select your preferred side wall colour:",
     options: [
-      {
-        desc: "Option 1",
-        img: "img src 1"
-      },
-      {
-        desc: "Option 2",
-        img: "img src 2"
-      }
-    ]
-  },
-  {
-    id: 6,
-    question: "Digital Information Screens - location and accessibility",
-    options: [
-      {
-        desc: "Option 1",
-        img: "img src 1"
-      },
-      {
-        desc: "Option 2",
-        img: "img src 2"
-      }
-    ]
-  },
-  {
-    id: 7,
-    question: "Door Sounder - Level and Tone",
-    options: [
-      {
-        desc: "Example 1",
-        img: "img src 1"
-      },
-      {
-        desc: "Example 2",
-        img: "img src 2"
-      }
-    ]
-  },
-  {
-    id: 8,
-    question: "Audio announcements - clarity, accessibility",
-    options: [
-      {
-        desc: "Norther accent, male voice",
-        img: "img src 1"
-      },
-    ]
-  },
-  {
-    id: 9,
-    question: "Door lighting - level and contrast - flashing open and close option",
-    options: [
-      {
-        desc: "Off",
-        img: "img src 1"
-      },
       {
         desc: "White",
-        img: "img src 2"
-      },
-      {
-        desc: "Green",
-        img: "img src 3"
-      },
-      {
-        desc: "Red",
-        img: "img src 4"
-      }
-    ]
-  },
-  {
-    id: 9,
-    question: "Decal pattern of glass partition. Decals for indicating e.g. multi-use areas",
-    options: [
-      {
-        desc: "White Dots",
         img: "img src 1"
       },
       {
-        desc: "White Stripes",
+        desc: "Light grey",
         img: "img src 2"
       },
       {
-        desc: "White Gradient",
-        img: "img src 3"
+        desc: "Dark grey",
+        img: "img src 2"
       }
     ]
-  },
-]
+  }
+  ]

@@ -68,7 +68,7 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
+    import {mapMutations, mapGetters} from 'vuex'
 export default { 
   name: 'SurveyQuestion',
   props: {
@@ -83,46 +83,60 @@ export default {
     }
   },
   computed: {
-
+      ...mapGetters([
+          'getConfigAnswers'
+          ])
   },
   methods: {
     ...mapMutations([
     'incrementIndex',
         'reduceIndex',
-        'addConfigAnswer'
+        'addConfigAnswer',
+        'lastQuestion'
     ]),
 
     nextQuestion() {
-        // prevent navigation without answering
-         if (this.selected !== -1) {
-             // you've answered
+        // prevent navigation without answering (and if no stored answer)
+        const answerStored = this.getConfigAnswers[this.index]
+         if (this.selected !== -1 ||  answerStored !== undefined) {
+             // you've answered now or in the past
 
-             let payload = {
-                 q_id: this.index,
-                 option: this.selected,
-                 text: this.surveyText
+             if (this.selected !== -1) {
+                 //send new answer
+                 let payload = {
+                     q_id: this.index,
+                     option: this.selected,
+                     text: this.surveyText
+                 }
+
+
+                 this.axios.post(`${process.env.VUE_APP_API_URL}/api/send-response`, {
+                     headers: {
+                         Cookie: this.$cookies.get('mfsid')
+                     },
+                     payload
+                 })
+                     .then(response => {
+                         console.log(response);
+                     })
+                     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+                 // update stored answers
+                 this.addConfigAnswer(payload);
+
+                 console.log(payload)
              }
 
-
-             this.axios.post(`${process.env.VUE_APP_API_URL}/api/send-response`, {
-                 headers: {
-                     Cookie: this.$cookies.get('mfsid')
-                 },
-                 payload
-             })
-                 .then(response => {
-                     console.log(response);
-                 })
-                 .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-             // update stored answers
-             this.addConfigAnswer(payload);
-
-             console.log(payload)
-             // move to next question and be ready to accept next answers
+             // move to next question and be ready to accept next answers unless all questions have been completed
              this.incrementIndex()
              this.resetSelected()
              this.displayError = false;
+
+             if (this.lastQuestion()) {
+                 // todo display summary
+                 console.log('last q complete');
+             }
+
          } else {
              //you haven't answered
              console.log('error');

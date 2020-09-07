@@ -40,7 +40,7 @@ export default {
         url("./fonts/CalvertMTW04Regular.woff") format("woff")
     }
 body {
-  overflow: hidden;
+/*  overflow: hidden;*/
 }
 
 #app {
