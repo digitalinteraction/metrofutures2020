@@ -88,7 +88,7 @@ export default {
     ]),
 
     nextQuestion() {
-console.log(this.selected);
+
       // todo Fire off the response to the API
         // todo get session from cookies?
         // todo prevent navigation without answering?
@@ -137,7 +137,7 @@ console.log(this.selected);
 </script>
 
 <style scoped lang="scss">
- /*todo for smaller screens perhaps stack image and question columns?*/
+ /*todo for smaller screens stack image and question columns and make image clickable to go horizontal full screen*/
     .survey-question {
         width: 100%;
     }
