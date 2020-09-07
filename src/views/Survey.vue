@@ -18,8 +18,8 @@
       </b-row>
 
       <b-row class="surveyBreadcrumb" align-v="center">
-          <b-col id="breadcrumb0" class="firstMenuCol breadItem breadSelected" v-on:click="clickBreadcrumb(0)" >Metro</b-col>
-          <b-col id="breadcrumb1" class="breadItem" v-on:click="clickBreadcrumb(0)">Seating Design</b-col>
+          <b-col id="breadcrumb0" v-bind:class="checkSelected(0)" class="firstMenuCol breadItem" v-on:click="clickBreadcrumb(0)" >Metro</b-col>
+          <b-col id="breadcrumb1" v-bind:class="checkSelected(1)" class="breadItem" v-on:click="clickBreadcrumb(0)">Seating Design</b-col>
           <b-col id="breadcrumb2" class="breadItem" v-on:click="clickBreadcrumb(1)">Priority Seating</b-col>
           <b-col id="breadcrumb3" class="breadItem" v-on:click="clickBreadcrumb(2)">Grab Pole & Doors</b-col>
           <b-col id="breadcrumb4" class="breadItem" v-on:click="clickBreadcrumb(3)">Centre Poles</b-col>
@@ -65,22 +65,28 @@ export default {
     ]),
     ...mapGetters([
       'privacyNotice'
-    ])   
+    ])
   },
   methods: {
     ...mapMutations([
       'setIndex'
     ]),
-    next: function() {
-      if (this.index < this.questions.length - 1) {
-        this.index++
-      }
-    },
+      checkSelected: function(breadcrumbIndex) {
+          if (this.index === breadcrumbIndex) {
+              console.log('found');
+              return 'breadSelected';
+          }
+      },
+    // next: function() {
+    //   if (this.index < this.questions.length - 1) {
+    //     this.index++
+    //   }
+    // },
     clickBreadcrumb(breadcrumbIndex) {
-      // navigate back to previously completed questions (not forward)
-console.log(this.configAnswers);
-      // todo check if this questions has already been answered
-      this.setIndex(breadcrumbIndex);
+      // navigate to previously completed questions but not current index or uncompleted questions
+        if (breadcrumbIndex !== this.index && this.configAnswers[breadcrumbIndex] !== undefined) {
+            this.setIndex(breadcrumbIndex);
+        }
     },
     clickSummaryBreadcrumb() {
       // todo nav to summary only if user has answered all questions
@@ -91,8 +97,7 @@ console.log(this.configAnswers);
             .then(response => {
               console.log(response);
             })
-    this.windowHeight = window.innerHeight;
-    console.log(this.windowHeight);
+    console.log(this.selected);
 
 
     // google analytics post

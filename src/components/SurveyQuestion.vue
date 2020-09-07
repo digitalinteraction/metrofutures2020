@@ -11,7 +11,6 @@
             <b-col cols="3">
                 <b-row>
                     <b-col>
-<!--                        todo go back to previous question without breaking answer submission-->
                         <p id="backOption" @click="previousQuestion"><b-icon-chevron-left></b-icon-chevron-left>Back</p>
                     </b-col>
                 </b-row>
@@ -54,6 +53,11 @@
                     </b-col>
                 </b-row>
 
+                <b-row v-if="displayError">
+                    <b-col>
+                        <p>Please select an option to continue</p>
+                    </b-col>
+                </b-row>
 
             </b-col>
         </b-row>
@@ -74,7 +78,8 @@ export default {
   data() {
     return {
       selected: -1,
-      surveyText: ""
+      surveyText: "",
+      displayError : false
     }
   },
   computed: {
@@ -88,34 +93,53 @@ export default {
     ]),
 
     nextQuestion() {
+        // prevent navigation without answering
+         if (this.selected !== -1) {
+             // you've answered
 
-      // todo Fire off the response to the API
-        // todo get session from cookies?
-        // todo prevent navigation without answering?
+             let payload = {
+                 q_id: this.index,
+                 option: this.selected,
+                 text: this.surveyText
+             }
 
-      let session_id = "aASDykeasdACAE34234"
-        let payload = {
-          q_id: this.index,
-          option: this.selected,
-          text: this.surveyText,
-          s_id: session_id
-        }
-        // update stored answers
-        this.addConfigAnswer(payload);
 
-        console.log(payload)
-        this.incrementIndex()
-        this.resetSelected()
+             this.axios.post(`${process.env.VUE_APP_API_URL}/api/send-response`, {
+                 headers: {
+                     Cookie: this.$cookies.get('mfsid')
+                 },
+                 payload
+             })
+                 .then(response => {
+                     console.log(response);
+                 })
+                 .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+             // update stored answers
+             this.addConfigAnswer(payload);
+
+             console.log(payload)
+             // move to next question and be ready to accept next answers
+             this.incrementIndex()
+             this.resetSelected()
+             this.displayError = false;
+         } else {
+             //you haven't answered
+             console.log('error');
+             this.displayError = true;
+         }
     },
 
       previousQuestion() {
         console.log('go back to previous question')
         this.reduceIndex();
         this.resetSelected();
+        this.displayError = false;
       },
 
     selectOption(x) {
       this.selected = x
+      this.displayError = false;
     },
 
     resetSelected() {
