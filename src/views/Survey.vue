@@ -6,14 +6,14 @@
 
       <b-row id="headerRow" align-v="center">
         <b-col >
-          <b-img id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
+          <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
         </b-col>
         <b-col>
           <h3 class="calvert">Configure your Metro</h3>
         </b-col>
         <b-col>
 <!--           todo add link here-->
-          <p>Explore some of our Metro users?</p>
+          <p v-on:click="goTo('/idoc')" class="float-right personasLink" >Explore some of our Metro users?</p>
         </b-col>
       </b-row>
 
@@ -51,6 +51,7 @@
 // @ is an alias to /src
 import SurveyQuestion from '@/components/SurveyQuestion.vue'
 import PrivacyNotice from '@/components/PrivacyNotice.vue'
+  import router from "../router";
 
 export default {
   name: 'Home',
@@ -120,6 +121,9 @@ export default {
           }
           console.log('survey complete');
           return true;
+      },
+      goTo(route) {
+          router.push(route);
       }
   },
 
@@ -161,17 +165,25 @@ export default {
 }
 
 .surveyBreadcrumb {
-  padding: 1em;
-  background-color: #00000029;
-  font-size: small;
+ // padding: 1em;
+    background-color: #00000029;
+    font-size: small;
 }
 
 
 .breadItem {
   font-family: "Open Sans", sans-serif;
+    padding: 1em;
+    cursor: pointer;
+}
+
+.personasLink {
+    border-bottom: 1px solid #FEC600;
+    cursor: pointer;
 }
 
 .breadItem.breadSelected {
+  /*  todo remove space between yellow line and bottom edge of grey bar*/
   border-bottom: 2px solid #FEC600;
   color: #FEC600;
 }

@@ -2,7 +2,7 @@
     <b-container fluid>
         <b-row class="survey-question">
 <!--image column-->
-            <b-col cols="">
+            <b-col class="largeImgColumn">
 <!--                 todo image should change with each question-->
                 <b-img fluid src="../assets/Sample.png"></b-img>
             </b-col>
@@ -21,16 +21,19 @@
 
 <!--Options-->
                 <b-row class="survey-option">
-                    <b-col>
-                        <b-row align-v="center" v-for="(option, x) in question.options"
+                    <b-col >
+                        <b-row class="optionRow" align-v="center" v-for="(option, x) in question.options"
                            :key="x"
                            @click="selectOption(x)"
                            :class="selectClass(x)">
 <!--                            todo replace with appropriate choices per question using {{ option.img }}-->
-                        <b-img class="optionImg" fluid src="../assets/metroLogoTemp.png"></b-img>
-                            <p class = "surveyOptionText">{{ option.desc }}</p>
-
-                        <!-- <b-form-checkbox>
+                            <b-col class="optionImg" >
+                                <b-img class="float-left" fluid src="../assets/metroLogoTemp.png"></b-img>
+                            </b-col>
+                            <b-col class="optionText">
+                                <p>{{ option.desc }}</p>
+                            </b-col>
+                                                    <!-- <b-form-checkbox>
                           {{ option.desc }}
                         </b-form-checkbox> -->
                             </b-row>
@@ -174,16 +177,44 @@ export default {
         width: 100%;
     }
 
+ .optionImg {
+     padding-right: 0;
+     padding-left: 0;
+
+ }
+
+ .largeImgColumn {
+     padding-right: 0;
+ }
+
  #questionTextRow {
-     border-bottom: 2px solid #FEC600;
      & p {
-         padding: 2em;
+         padding-top: 2em;
+         padding-left: 1.5em;
      }
+ }
+
+ /*Fix to make a half border under question*/
+ #questionTextRow:after {
+     content: "";
+     display: block;
+     width: 40%;
+     padding-top: 1em;
+     margin-bottom: 1.5em;
+     border-bottom: 2px solid #FEC600;
  }
 
  .calvert {
      font-family: Calvert, serif;
  }
+
+.optionText {
+    padding-left: 0;
+}
+
+.optionRow {
+    padding-bottom: 0.3em;
+}
 
 .bold {
     font-weight: bold;
@@ -191,6 +222,7 @@ export default {
 #backOption {
     cursor: pointer;
     text-decoration: none;
+    padding-top: 1em;
 }
 
 .selected {
@@ -201,9 +233,7 @@ export default {
     }
 }
 
-    .surveyOptionText {
-        padding-left: 2em;
-    }
+
 
     .surveyFreeText {
     text-align: left;
