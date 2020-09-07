@@ -1,23 +1,27 @@
 <template>
     <!--    todo currently temp logos-->
     <div class="footer" >
-        <b-navbar class="nav-fill w-100" id="footer">
-            <b-row class="w-100">
-                <b-col class="float-left">
-                    <b-img fluid src="../assets/nexusLogo.png"></b-img>
-                    <b-img fluid id="stadlerLogo" src="../assets/stadlerLogo.svg"></b-img>
-                </b-col>
-                <b-col id="centreCol">
-                    <p class="float-right"><a href="#" v-b-modal.privacy-modal>Privacy Policy</a></p>
-                </b-col>
-                <b-col id="terms">
-                    <p class="float-left"><a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
-                </b-col>
-                <b-col id="lab">
-                    <p>Powered by <b-img fluid src="../assets/openLabTemp.png"></b-img></p>
-                </b-col>
-            </b-row>
-        </b-navbar>
+        <div class="w-100" id="footer">
+            <div class="w-100 footer-container">
+                <div class="footer-logo" >
+                    <b-img fluid id="nexus" alt="Nexus Logo" src="../assets/nexuslogoBW.png"></b-img>
+                </div>
+                <div class="footer-logo" >
+                    <b-img fluid id="stadler" alt="Stadler Logo" src="../assets/stadlerLogoBW.svg"></b-img>
+                </div>
+                <div class="footer-logo footer-center-left">
+                    <div class="test">
+                    <p><a href="#" v-b-modal.privacy-modal>Privacy Policy</a></p>
+                    </div>
+                </div>
+                <div class="footer-logo footer-center-right">
+                    <p><a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
+                </div>
+                <div class="footer-logo footer-openlab" id="lab">
+                    <p>Powered by <b-img fluid alt="Open Lab Logo" src="../assets/openLabTemp.png"></b-img></p>
+                </div>
+            </div>
+        </div>
         <!-- Compontents for modals -->
         <Privacy/>
         <Terms/>
@@ -42,30 +46,14 @@
     .footer {
         position: relative;
     }
-    #stadlerLogo {
+    #stadler-logo {
         padding-left: 0.5em;
     }
-    #centreCol {
-        margin-top: auto;
-        margin-bottom: auto;
-        border-right: 1px solid #FEC600;
-        & a {
-            color: black;
-        }
-
+    #nexus{
+        max-width: 50%;
     }
-    p {
-        margin: 0;
-        font-family: "Open Sans", Arial,serif;
-        font-size: small;
-    }
-    #terms {
-        margin-top: auto;
-        margin-bottom: auto;
-        & a {
-            color: black;
-        }
-
+    #stadler {
+        max-width: 70%;
     }
     #lab {
         margin-top: auto;
@@ -80,4 +68,74 @@
         }
 
     }
+
+
+p {
+     margin: 0;
+        font-family: "Open Sans", Arial,serif;
+        font-size: small;
+}
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    
+    .footer-logo {
+        margin-top: auto;
+        margin-bottom: auto;
+        flex: 1;
+        a {
+            color: black;
+        }
+    }
+
+    .footer-center-left {
+        p{
+            text-align: right;
+            padding-right: 5%;
+            
+        }
+        div {
+            border-right: 2px solid #FEC600;
+        }
+    }
+
+    .footer-center-right {
+        p{
+            padding-left: 5%;
+        }
+    }
+
+    .footer-openlab {
+        p{
+            text-align: right;
+        }
+    }
+}
+    
+      
+@media all and (max-width:800px) //800px for tablets and phones.
+{
+    .footer-container {
+        flex-direction: column;
+        .footer-logo {
+            width:100%;
+            text-align: center;
+            p{
+                text-align: center;
+                padding: 0%;
+            }   
+            div {
+            border: none;
+        }
+        }
+    }
+
+    #nexus{
+        max-width: 20%;
+    }
+    #stadler {
+        max-width: 25%;
+    }
+}
+
 </style>
