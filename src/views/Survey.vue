@@ -27,11 +27,19 @@
           <b-col id="breadcrumb7" v-bind:class="checkSelected(6)" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb(6)">Summary</b-col>
       </b-row>
 
-      <b-row>
+      <b-row v-if="!summary">
         <b-col>
           <SurveyQuestion :question="this.questions[index]" :index="index" />
         </b-col>
       </b-row>
+
+        <b-row v-if="summary">
+        <b-col>
+            <p>Summary</p>
+        </b-col>
+      </b-row>
+
+
         
     </b-container>
   </div>
@@ -52,8 +60,7 @@ export default {
   },
   data() {
     return {
-      selections: [],
-      summary: false
+      selections: []
     }
   },
   computed: {
@@ -63,8 +70,13 @@ export default {
       'configAnswers'
     ]),
     ...mapGetters([
-      'privacyNotice'
-    ])
+      'privacyNotice',
+        'getConfigAnswers'
+    ]),
+      summary: function() {
+        // view summary when question index shows the user has passed the final question
+        return this.index >= this.questions.length;
+      }
   },
   methods: {
     ...mapMutations([
@@ -91,10 +103,26 @@ export default {
         }
     },
     clickSummaryBreadcrumb() {
-      // todo nav to summary only if user has answered all questions
-        this.summary = true;
-    }
+        console.log('survey clicked');
+      // Navigate to summary if the user has answered all questions
+        if (this.surveyComplete()) {
+            this.setIndex(this.questions.length);
+        }
+    },
+      surveyComplete() {
+          for ( const answer in this.getConfigAnswers) {
+              if (Object.prototype.hasOwnProperty.call(this.getConfigAnswers, answer)) {
+                  if (this.getConfigAnswers[answer] === undefined) {
+                      console.log('survey incomplete');
+                      return false;
+                  }
+              }
+          }
+          console.log('survey complete');
+          return true;
+      }
   },
+
   async mounted() {
     this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
             .then(response => {

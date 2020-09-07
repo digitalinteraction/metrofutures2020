@@ -91,14 +91,14 @@ export default {
     ...mapMutations([
     'incrementIndex',
         'reduceIndex',
-        'addConfigAnswer',
-        'lastQuestion'
+        'addConfigAnswer'
     ]),
 
     nextQuestion() {
         // prevent navigation without answering (and if no stored answer)
         const answerStored = this.getConfigAnswers[this.index]
          if (this.selected !== -1 ||  answerStored !== undefined) {
+
              // you've answered now or in the past
 
              if (this.selected !== -1) {
@@ -108,7 +108,6 @@ export default {
                      option: this.selected,
                      text: this.surveyText
                  }
-
 
                  this.axios.post(`${process.env.VUE_APP_API_URL}/api/send-response`, {
                      headers: {
@@ -127,15 +126,10 @@ export default {
                  console.log(payload)
              }
 
-             // move to next question and be ready to accept next answers unless all questions have been completed
-             this.incrementIndex()
-             this.resetSelected()
-             this.displayError = false;
-
-             if (this.lastQuestion()) {
-                 // todo display summary
-                 console.log('last q complete');
-             }
+                 // move to next question and be ready to accept next answers unless all questions have been completed
+                 this.incrementIndex()
+                 this.resetSelected()
+                 this.displayError = false;
 
          } else {
              //you haven't answered
