@@ -30,13 +30,13 @@
           <b-col id="breadcrumb7" v-bind:class="checkSelected(6)" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb(6)">Summary</b-col>
       </b-row>
 
-      <b-row v-if="!summary">
+      <b-row v-if="summary">
         <b-col>
           <SurveyQuestion :question="this.questions[index]" :index="index" />
         </b-col>
       </b-row>
 
-        <b-row v-if="summary">
+        <b-row v-if="!summary">
         <b-col>
             <SurSummary></SurSummary>
         </b-col>
