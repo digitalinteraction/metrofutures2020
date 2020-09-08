@@ -37,9 +37,7 @@
       </b-row>
 
         <b-row v-if="!summary">
-        <b-col>
             <SurSummary></SurSummary>
-        </b-col>
       </b-row>
 
 
