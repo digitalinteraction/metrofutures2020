@@ -32,8 +32,8 @@
 
         </b-modal>
 
-        <b-modal class="text-center calvert" centered hide-footer=true id="welcomeModal" title="Welcome to your new Metro!" @hide="closeWelcomeModal()">
-            <p class="text-center">At Nexus, we want you, the public to help design your Metro for the future. Use the configurator to build your perfect Metro and make your choices known to us.</p>
+        <b-modal class="text-center calvert" centered hide-footer=true id="welcomeModal" title="Add the Finishing Touches!" @hide="closeWelcomeModal()">
+            <p class="text-center">Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media. </p>
         </b-modal>
     </b-container>
 
@@ -72,8 +72,7 @@
                 'acknowledgePrivacy'
             ]),
             closeWelcomeModal() {
-                // todo change variable in Survey to false so no longer view surwelcome component
-                console.log('closed');
+                // survey page listens for this event to show that the survey questions can begin
                 this.$emit('finishedWelcome');
             }
         }
