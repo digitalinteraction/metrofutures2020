@@ -4,7 +4,9 @@
 <!--image column-->
             <b-col class="largeImgColumn">
 <!--                 todo image should change with each question-->
-                <b-img fluid src="../assets/Sample.png"></b-img>
+<!--                todo stadler logo over image-->
+<!--                todo day and night option-->
+                <b-img fluid :src="fetchImage()"></b-img>
             </b-col>
 
 <!--            interaction column-->
@@ -72,103 +74,154 @@
 
 <script>
     import {mapMutations, mapGetters} from 'vuex'
-export default { 
-  name: 'SurveyQuestion',
-  props: {
-    question: Object,
-    index: Number
-  },
-  data() {
-    return {
-      selected: -1,
-      surveyText: "",
-      displayError : false
+export default {
+    name: 'SurveyQuestion',
+    props: {
+        question: Object,
+        index: Number
+    },
+    data() {
+        return {
+            selected: -1,
+            surveyText: "",
+            displayError: false,
+            image: ''
+        }
+    },
+    computed: {
+        ...mapGetters([
+            'getConfigAnswers'
+        ])
+    },
+    methods: {
+        ...mapMutations([
+            'incrementIndex',
+            'reduceIndex',
+            'addConfigAnswer'
+        ]),
+
+        nextQuestion() {
+            // prevent navigation without answering (and if no stored answer)
+            const answerStored = this.getConfigAnswers[this.index]
+            if (this.selected !== -1 || answerStored !== undefined) {
+
+                // you've answered now or in the past
+
+                if (this.selected !== -1) {
+                    //send new answer
+                    let payload = {
+                        type: 0,
+                        qid: this.index,
+                        resp: this.selected,
+                        comment: this.surveyText
+                    }
+
+                    this.axios.post(`${process.env.VUE_APP_API_URL}/api/send-response`, {
+                        headers: {
+                            Cookie: this.$cookies.get('mfsid')
+                        },
+                        payload
+                    })
+                        .then(response => {
+                            console.log(response);
+                        })
+                        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+                    // update stored answers
+                    this.addConfigAnswer(payload);
+
+                    console.log(payload)
+                }
+
+                // move to next question and be ready to accept next answers unless all questions have been completed
+                this.incrementIndex()
+                this.resetSelected()
+                this.displayError = false;
+
+            } else {
+                //you haven't answered
+                console.log('error');
+                this.displayError = true;
+            }
+        },
+
+        previousQuestion() {
+            console.log('go back to previous question')
+            this.reduceIndex();
+            this.resetSelected();
+            this.displayError = false;
+        },
+
+        selectOption(x) {
+            this.selected = x
+            this.displayError = false;
+        },
+
+        resetSelected() {
+            // This is potentially redundant as the component gets destroyed
+            this.selected = -1
+            this.surveyText = ""
+        },
+
+        selectClass(x) {
+            let selectClass = ''
+            if (this.selected === x) {
+                selectClass = 'selected'
+            }
+            // console.log('returning class for', x, selectClass)
+            return selectClass
+        },
+        async fetchImage() {
+            console.log('fetch image for index: ' + this.index);
+            // todo get any answers stored and replace any undefined with 1
+            let o1 = 1;
+            let o2 = 2;
+            let o3 = 3;
+            let o4 = 1;
+            let o5 = 'ON';
+            let o6 = 1;
+            let o7 = 1; // todo set time of day
+
+
+
+            //camera angle
+            let cam = 1;
+            if (this.index === 1) {
+                //todo pole, door and floor markings camera angle
+                cam = 1;
+            } else if (this.index === 2) {
+                // pole design
+                cam = 2;
+            } else if (this.index === 3) {
+                // bike stand
+                cam = 4;
+            } else if (this.index === 4 || this.index === 5) {
+                // priority seats
+                cam = 14;
+            }
+
+            const payload = {
+                cam,
+                o1,
+                o2,
+                o3,
+                o4,
+                o5,
+                o6,
+                o7,
+            }
+
+            console.log(payload);
+
+
+            return await this.axios.get('https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', {
+                responseType: 'arraybuffer'
+            })
+            .then(response => Buffer.from(response.data, 'binary').toString('base64'))
+        }
     }
-  },
-  computed: {
-      ...mapGetters([
-          'getConfigAnswers'
-          ])
-  },
-  methods: {
-    ...mapMutations([
-    'incrementIndex',
-        'reduceIndex',
-        'addConfigAnswer'
-    ]),
-
-    nextQuestion() {
-        // prevent navigation without answering (and if no stored answer)
-        const answerStored = this.getConfigAnswers[this.index]
-         if (this.selected !== -1 ||  answerStored !== undefined) {
-
-             // you've answered now or in the past
-
-             if (this.selected !== -1) {
-                 //send new answer
-                 let payload = {
-                     q_id: this.index,
-                     option: this.selected,
-                     text: this.surveyText
-                 }
-
-                 this.axios.post(`${process.env.VUE_APP_API_URL}/api/send-response`, {
-                     headers: {
-                         Cookie: this.$cookies.get('mfsid')
-                     },
-                     payload
-                 })
-                     .then(response => {
-                         console.log(response);
-                     })
-                     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-                 // update stored answers
-                 this.addConfigAnswer(payload);
-
-                 console.log(payload)
-             }
-
-                 // move to next question and be ready to accept next answers unless all questions have been completed
-                 this.incrementIndex()
-                 this.resetSelected()
-                 this.displayError = false;
-
-         } else {
-             //you haven't answered
-             console.log('error');
-             this.displayError = true;
-         }
-    },
-
-      previousQuestion() {
-        console.log('go back to previous question')
-        this.reduceIndex();
-        this.resetSelected();
-        this.displayError = false;
-      },
-
-    selectOption(x) {
-      this.selected = x
-      this.displayError = false;
-    },
-
-    resetSelected() {
-      // This is potentially redundant as the component gets destroyed
-      this.selected = -1
-      this.surveyText = ""
-    },
-
-    selectClass(x) {
-      let selectClass = ''
-      if(this.selected === x) {
-        selectClass = 'selected'
-      }
-      // console.log('returning class for', x, selectClass)
-      return selectClass
-    }
-  }
 }
+
 </script>
 
 <style scoped lang="scss">

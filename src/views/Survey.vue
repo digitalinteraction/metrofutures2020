@@ -8,8 +8,11 @@
         <b-col >
           <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
         </b-col>
-        <b-col>
+        <b-col v-if="!summary">
           <h3 class="calvert">Configure your Metro</h3>
+        </b-col>
+        <b-col v-if="summary">
+          <h3 class="calvert">Your Metro Summary</h3>
         </b-col>
         <b-col>
 <!--           todo add link here-->
@@ -35,7 +38,7 @@
 
         <b-row v-if="summary">
         <b-col>
-            <p>Summary</p>
+            <SurSummary></SurSummary>
         </b-col>
       </b-row>
 
@@ -51,13 +54,15 @@
 // @ is an alias to /src
 import SurveyQuestion from '@/components/SurveyQuestion.vue'
 import PrivacyNotice from '@/components/PrivacyNotice.vue'
+  import SurSummary from '@/components/SurSummary.vue'
   import router from "../router";
 
 export default {
   name: 'Home',
   components: {
     SurveyQuestion,
-    PrivacyNotice
+    PrivacyNotice,
+      SurSummary
   },
   data() {
     return {
