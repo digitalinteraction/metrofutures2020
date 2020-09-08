@@ -3,10 +3,10 @@
         <b-row class="survey-question">
 <!--image column-->
             <b-col class="largeImgColumn">
-<!--                 todo image should change with each question-->
+<!--                 todo insert result of fetchImage() here-->
 <!--                todo stadler logo over image-->
 <!--                todo day and night option-->
-                <b-img fluid :src="fetchImage()"></b-img>
+                <b-img fluid src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
             </b-col>
 
 <!--            interaction column-->

@@ -75,7 +75,7 @@ export default {
     return {
       images: [],
       sliding: null,
-      viewFeatures: true
+      viewFeatures: false
     }
   },
   computed: {
