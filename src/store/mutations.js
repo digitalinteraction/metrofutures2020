@@ -5,6 +5,9 @@ export default {
   incrementIndex(state) {
     if (state.index < state.questions.length - 1) {
       state.index += 1;
+    } else {
+      // return indicator to show end reached
+      state.index = state.questions.length;
     }
   },
   reduceIndex(state) {
