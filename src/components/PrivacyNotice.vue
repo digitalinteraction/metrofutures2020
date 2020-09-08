@@ -1,7 +1,5 @@
 <template>
-  <b-row>
-    <b-col>
-      <h4>Privacy Notice</h4>
+<b-modal no-close-on-esc no-close-on-backdrop hide-header-close id="privacyMoticeModal" title="Privacy Notice">
 
       <div class="privacy-text">
         <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project. </p>
@@ -22,11 +20,10 @@
       </div>
 
       <div class="privacy-buttons">
-        <b-button @click="confirmPrivacy" :disabled="tick == false">Continue</b-button>
+        <b-button modal-ok @click="confirmPrivacy" :disabled="tick === false">Continue</b-button>
       </div>
 
-    </b-col>
-  </b-row>
+</b-modal>
 </template>
 
 <script>
@@ -40,7 +37,8 @@ import { mapMutations } from 'vuex'
     },
     methods: {
     confirmPrivacy () {
-      this.acknowledgePrivacy()
+      this.acknowledgePrivacy();
+      // todo close modal
     },
     ...mapMutations([
       'acknowledgePrivacy'

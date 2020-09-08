@@ -1,15 +1,17 @@
 <template>
   <div class="survey">
-    <PrivacyNotice v-if="!privacyNotice"/>
 
-    <b-container fluid align="center" v-if="privacyNotice">
+     <b-container fluid align="center">
 
       <b-row id="headerRow" align-v="center">
         <b-col >
           <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
         </b-col>
-        <b-col>
+        <b-col v-if="!summary">
           <h3 class="calvert">Configure your Metro</h3>
+        </b-col>
+        <b-col v-if="summary">
+          <h3 class="calvert">Your Metro Summary</h3>
         </b-col>
         <b-col>
 <!--           todo add link here-->
@@ -27,16 +29,16 @@
           <b-col id="breadcrumb7" v-bind:class="checkSelected(6)" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb(6)">Summary</b-col>
       </b-row>
 
-      <b-row v-if="!summary">
-        <b-col>
+        <b-row v-if="welcomeScreen">
+            <SurWelcome @finishedWelcome="welcomeScreen=false"></SurWelcome>
+        </b-row>
+
+      <b-row v-if="!summary && !welcomeScreen">
           <SurveyQuestion :question="this.questions[index]" :index="index" />
-        </b-col>
       </b-row>
 
-        <b-row v-if="summary">
-        <b-col>
-            <p>Summary</p>
-        </b-col>
+        <b-row v-if="summary && !welcomeScreen">
+            <SurSummary></SurSummary>
       </b-row>
 
 
@@ -50,18 +52,24 @@
 
 // @ is an alias to /src
 import SurveyQuestion from '@/components/SurveyQuestion.vue'
-import PrivacyNotice from '@/components/PrivacyNotice.vue'
+// import PrivacyNotice from '@/components/PrivacyNotice.vue'
+  import SurSummary from '@/components/SurSummary.vue'
   import router from "../router";
+  import SurWelcome from "../components/SurWelcome";
 
 export default {
   name: 'Home',
   components: {
+      SurWelcome,
     SurveyQuestion,
-    PrivacyNotice
+    // PrivacyNotice,
+      SurSummary
   },
   data() {
     return {
-      selections: []
+      selections: [],
+        // todo once welcome screen works make this true on page load
+        welcomeScreen: true
     }
   },
   computed: {
