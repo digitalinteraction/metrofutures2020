@@ -151,7 +151,10 @@
             }
         },
         mounted() {
-            // todo should ever page start with get session?
+            this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+                .then(response => {
+                    console.log(response);
+                })
 
             // google analytics post request
             const measurementID = "UA-85374573-24";
