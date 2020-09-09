@@ -16,13 +16,29 @@
                 <b-row id="localAuthority">
                     <p class="calvert"><span class="bold">In which local authority do you live?</span></p>
                     <br>
-                    <b-form-select v-model="localAuthority" :options="authorities">Please select an option</b-form-select>
+                    <b-form-select @change="changeLA" v-model="localAuthority" :options="authorities">Please select an option</b-form-select>
+                    <div v-if="otherLA" id="LATextDiv">
+                        <textarea
+                                id="textarea"
+                                v-model="LAOtherText"
+                                placeholder="Enter your local authority..."
+                                rows="2" class="form-control"
+
+                        ></textarea>
+                    </div>
+                    <b-button id="LAButton" block variant="outline-secondary" @click="submitLA">Continue</b-button>
+                </b-row>
+                <b-row v-if="displayError">
+                    <b-col>
+                        <p>Please select an option to continue</p>
+                    </b-col>
                 </b-row>
             </b-col>
 
 <!--            survey-->
             <b-col v-if="survey" cols="3">
                 <b-row>
+<!--                    todo either hide back on 1st question or go back to local authority-->
                     <b-col>
                         <p id="backOption" @click="previousQuestion"><b-icon-chevron-left></b-icon-chevron-left>Back</p>
                     </b-col>
@@ -108,8 +124,11 @@ export default {
                 { value: 'SouthTyneside', text: 'South Tyneside'},
                 { value: 'OtherNorthEast', text: 'Other North East'},
                 { value: 'Other', text: 'Other'}
-            ]
+            ],
+            otherLA: false, // flag to show user has selected free text option
+            LAOtherText: '',
         }
+
     },
     computed: {
         ...mapGetters([
@@ -167,7 +186,43 @@ export default {
                 this.displayError = true;
             }
         },
+        submitLA() {
+            // todo at present user can select other and not give any extra text - check what the desired behaviour is here
+            if (!this.localAuthority) {
+                // no answer
+                console.log('error');
+                this.displayError = true;
+            } else {
+                console.log('submit');
+                //if answered 'other' and user has entered free text send that instead
+                if (this.localAuthority === 'Other' && this.LAOtherText.length > 0) {
+                    this.localAuthority = this.LAOtherText;
+                }
 
+                let payload = {
+                    0: this.localAuthority
+                }
+                console.log(payload);
+                this.axios.post(`${process.env.VUE_APP_API_URL}/api/participant`, {
+                    headers: {
+                        Cookie: this.$cookies.get('mfsid')
+                    },
+                    payload
+                })
+                    .then(response => {
+                        console.log(response);
+                    })
+                    .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+                this.survey = true;
+            }
+        },
+        changeLA() {
+            // if other is selected diplay free text box
+            if (this.localAuthority === 'Other') {
+                this.otherLA = true;
+            }
+        },
         previousQuestion() {
             console.log('go back to previous question')
             this.reduceIndex();
@@ -262,6 +317,15 @@ export default {
  #localAuthority {
      padding-left: 1em;
      padding-top: 2em;
+
+     & p:after {
+         content: "";
+         display: block;
+         width: 40%;
+         padding-top: 1em;
+         margin-bottom: 1.5em;
+         border-bottom: 2px solid #FEC600;
+     }
  }
 
  .largeImgColumn {
@@ -289,6 +353,10 @@ export default {
      font-family: Calvert, serif;
  }
 
+ #LATextDiv {
+     width: 100%;
+ }
+
 .optionText {
     padding-left: 0;
 }
@@ -314,13 +382,22 @@ export default {
     }
 }
 
+#textarea {
+    margin-top: 1em;
 
+}
 
     .surveyFreeText {
     text-align: left;
     padding: 1em;
         font-weight: bold;
         font-size: small;
+    }
+
+
+
+    #LAButton {
+        margin-top: 1em;
     }
 
 </style>
