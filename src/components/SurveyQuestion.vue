@@ -10,21 +10,32 @@
             </b-col>
 
 <!--            interaction column-->
-            <b-col cols="3">
+
+<!--            LA q-->
+            <b-col v-if="!survey" cols="3">
+                <b-row id="localAuthority">
+                    <p class="calvert"><span class="bold">In which local authority do you live?</span></p>
+                    <br>
+                    <b-form-select v-model="localAuthority" :options="authorities">Please select an option</b-form-select>
+                </b-row>
+            </b-col>
+
+<!--            survey-->
+            <b-col v-if="survey" cols="3">
                 <b-row>
                     <b-col>
                         <p id="backOption" @click="previousQuestion"><b-icon-chevron-left></b-icon-chevron-left>Back</p>
                     </b-col>
                 </b-row>
 <!--                Question-->
-                <b-row id="questionTextRow">
+                <b-row class="questionTextRow">
                     <p class="calvert"><span class="bold">{{ question.question }}</span></p>
                 </b-row>
 
-<!--Options-->
-                <b-row class="survey-option">
+                <!--Options-->
+                <b-row  class="survey-option">
                     <b-col >
-                        <b-row class="optionRow" align-v="center" v-for="(option, x) in question.options"
+                        <b-row  class="optionRow" align-v="center" v-for="(option, x) in question.options"
                            :key="x"
                            @click="selectOption(x)"
                            :class="selectClass(x)">
@@ -85,7 +96,19 @@ export default {
             selected: -1,
             surveyText: "",
             displayError: false,
-            image: ''
+            image: '', //placeholder to fill with image from API
+            survey: false, //flag to show LA question is complete so survey can begin,
+            localAuthority: '',
+            authorities: [
+                { value: 'CountyDurham', text: 'Country Durham'},
+                { value: 'Gateshead', text: 'Gateshead'},
+                { value: 'Newcastle', text: 'Newcastle'},
+                { value: 'NorthTyneside', text: 'North Tyneside'},
+                { value: 'Northumberland', text: 'Northumberland'},
+                { value: 'SouthTyneside', text: 'South Tyneside'},
+                { value: 'OtherNorthEast', text: 'Other North East'},
+                { value: 'Other', text: 'Other'}
+            ]
         }
     },
     computed: {
@@ -236,11 +259,16 @@ export default {
 
  }
 
+ #localAuthority {
+     padding-left: 1em;
+     padding-top: 2em;
+ }
+
  .largeImgColumn {
      padding-right: 0;
  }
 
- #questionTextRow {
+ .questionTextRow {
      & p {
          padding-top: 2em;
          padding-left: 1.5em;
@@ -248,7 +276,7 @@ export default {
  }
 
  /*Fix to make a half border under question*/
- #questionTextRow:after {
+ .questionTextRow:after {
      content: "";
      display: block;
      width: 40%;
