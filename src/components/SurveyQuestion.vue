@@ -2,12 +2,34 @@
     <b-container fluid>
         <b-row class="survey-question">
 <!--image column-->
-            <b-col class="largeImgColumn">
-<!--                 todo insert result of fetchImage() here-->
+
+            <b-col  class="largeImgColumn">
+
 <!--                todo stadler logo over image-->
 <!--                todo day and night option-->
-                <b-img fluid src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
+
+                <!--                 todo display front of train image here-->
+<!--                Local authority question image-->
+                <b-img v-if="!survey" fluid src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
+<!--
+ todo insert result of fetchImage() here-->
+<!--                Survey questions changing images -->
+                <b-img v-if="survey" fluid src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
+
+                <!--               day/night switch-->
+                <b-form-group id="dayNightToggle">
+                    <b-form-radio-group
+                            @change="dayNightToggle"
+                            id="btn-radios-1"
+                            buttons
+                            name="radios-btn-default" button-variant="outline-dark"
+                    >
+                        <b-form-radio  v-model="isDay" value="false"><b-icon-sun></b-icon-sun></b-form-radio>
+                        <b-form-radio v-model="isDay" value="true"><b-icon-moon></b-icon-moon></b-form-radio>
+                    </b-form-radio-group>
+                </b-form-group>
             </b-col>
+
 
 <!--            interaction column-->
 
@@ -127,6 +149,7 @@ export default {
             ],
             otherLA: false, // flag to show user has selected free text option
             LAOtherText: '',
+            isDay: true //switch between day and night images
         }
 
     },
@@ -185,6 +208,10 @@ export default {
                 console.log('error');
                 this.displayError = true;
             }
+        },
+        dayNightToggle() {
+            // request image with change to lighting
+            this.fetchImage();
         },
         submitLA() {
             // todo at present user can select other and not give any extra text - check what the desired behaviour is here
@@ -251,6 +278,12 @@ export default {
         },
         async fetchImage() {
             console.log('fetch image for index: ' + this.index);
+
+            let lighting = 1;
+            if (this.isDay === false) {
+                lighting = 2;
+            }
+
             // todo get any answers stored and replace any undefined with 1
             let o1 = 1;
             let o2 = 2;
@@ -258,7 +291,7 @@ export default {
             let o4 = 1;
             let o5 = 'ON';
             let o6 = 1;
-            let o7 = 1; // todo set time of day
+            let o7 = lighting;
 
 
 
@@ -387,11 +420,25 @@ export default {
 
 }
 
+#dayNightToggle {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+
+    & .btn {
+        background-color: white;
+    }
+
+    & svg {
+        fill: black;
+    }
+}
     .surveyFreeText {
     text-align: left;
     padding: 1em;
         font-weight: bold;
         font-size: small;
+
     }
 
 
