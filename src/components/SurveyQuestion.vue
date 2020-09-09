@@ -24,7 +24,7 @@
                             buttons
                             name="radios-btn-default" button-variant="outline-dark"
                     >
-                        <b-form-radio v-model="lighting" checked="true" value=1>
+                        <b-form-radio v-model="lighting" checked=true value=1>
                             <b-icon-sun></b-icon-sun>
                         </b-form-radio>
                         <b-form-radio  v-model="lighting" value=2>
@@ -32,7 +32,6 @@
                         </b-form-radio>
                     </b-form-radio-group>
                 </b-form-group>
-                {{lighting}}
             </b-col>
 
 
@@ -205,14 +204,12 @@
                             payload
                         })
                             .then(response => {
-                                console.log(response);
+                                console.log('get image response: ' + response);
                             })
                             .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
                         // update stored answers
                         this.addConfigAnswer(payload);
-
-                        console.log(payload)
                     }
 
                     // move to next question and be ready to accept next answers unless all questions have been completed
@@ -242,7 +239,7 @@
                     let payload = {
                         0: this.localAuthority
                     }
-                    console.log(payload);
+
                     this.axios.post(`${process.env.VUE_APP_API_URL}/api/participant`, {
                         headers: {
                             Cookie: this.$cookies.get('mfsid')
@@ -293,6 +290,7 @@
                 console.log('fetch image for index: ' + this.index);
 
                 const answers = this.getConfigAnswers;
+
                 // get any answers stored and replace any undefined with 1
                 let o1 = answers[0] !== undefined ? answers[0] : 1;
                 let o2 = answers[1] !== undefined ? answers[1] : 1;
@@ -306,11 +304,10 @@
                 //camera angle
                 let cam = 1;
                 if (this.index === 1) {
-                    //todo pole, door and floor markings camera angle
-                    cam = 1;
+                    cam = 2;
                 } else if (this.index === 2) {
                     // pole design
-                    cam = 2;
+                    cam = 3;
                 } else if (this.index === 3) {
                     // bike stand
                     cam = 4;
@@ -330,19 +327,28 @@
                     o6,
                     o7,
                 }
-
+                this.imageAPICall(payload);
+            },
+            async imageAPICall(payload) {
+                // todo update with call to API
+                console.log('requesting image with this payload: ');
                 console.log(payload);
-
-
-                return await this.axios.get('https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', {
-                    responseType: 'arraybuffer'
-                })
-                    .then(response => Buffer.from(response.data, 'binary').toString('base64'))
             }
         },
         mounted() {
+            // fetch image for local authority image
+            const payload = {
+                cam: 13,
+                o1: 1,
+                o2: 1,
+                o3: 1,
+                o4: 1,
+                o5: "ON",
+                o6: 1,
+                o7: 1,
+            }
+            this.imageAPICall(payload);
 
-            console.log(this.lighting);
         }
     }
 
