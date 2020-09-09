@@ -3,7 +3,7 @@
         <b-row class="survey-question">
             <!--image column-->
 
-            <b-col class="largeImgColumn">
+            <b-col class="largeImgColumn col-lg-9 col-12">
 
                 <!--                todo stadler logo over image-->
                 <!--                todo day and night option-->
@@ -38,7 +38,7 @@
             <!--            interaction column-->
 
             <!--            LA q-->
-            <b-col v-if="!survey" cols="3">
+            <b-col v-if="!survey" class="col-lg-3 col-12">
                 <b-row id="localAuthority">
                     <p class="calvert"><span class="bold">In which local authority do you live?</span></p>
                     <br>
@@ -252,6 +252,7 @@
                         .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
                     this.survey = true;
+                    this.incrementIndex;
                 }
             },
             changeLA() {
