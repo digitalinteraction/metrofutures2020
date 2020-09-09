@@ -73,7 +73,7 @@ export default {
   name: 'SurSummary',
   data() {
     return {
-      images: [],
+      images: [], // list of images to load into carousel
       sliding: null,
       viewFeatures: false
     }
@@ -95,32 +95,21 @@ export default {
   mounted() {
   // look at answers stored in state and use them to construct API call to retrieve
     // images for carousel
-    const answers = this.getConfigAnswers;
-    console.log(answers);
-    // todo get answers from state
-    let cam = 1;
-    let o1 = 1;
-    let o2 = 2;
-    let o3 = 3;
-    let o4 = 1;
-    let o5 = 'ON';
-    let o6 = 1;
-    let o7 = 1;
-
-    let payload = {
-      cam,
-      o1,
-      o2,
-      o3,
-      o4,
-      o5,
-      o6,
-      o7
-    }
+      const answers = this.getConfigAnswers;
+      let payload = {
+          cam: '',
+          o1: answers[0],
+          o2: answers[1],
+          o3: answers[2],
+          o4: answers[3],
+          o5: answers[4],
+          o6: answers[5],
+          o7: 1
+      }
 
     // for each camera angle, add on question answers and get image from API
     const cameraAngles = [1, 2, 4, 14];
-    for (cam of cameraAngles) {
+    for (const cam of cameraAngles) {
 
       payload.cam = cam;
       // todo call to API with each payload
