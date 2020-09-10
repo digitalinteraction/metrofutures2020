@@ -87,25 +87,31 @@
       <!--Mobile-->
       <div class="menu-col-wrapper">
       <div class='mobile-option'>
-          <b-img src="../assets/yourMetro.png" fluid alt="Responsive image"></b-img>
+       
+            <b-img class= "mobile-image" src="../assets/yourMetro.png" fluid alt="Responsive image"></b-img>
+      
             <div class="mobile-info w-100">
               <h3>Your Metro</h3>
               <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
             </div>
       </div>
       <div class='mobile-option'>
-          <b-img
+       
+            <b-img class= "mobile-image"
               src="../assets/yourChoiceTemp.png"
               fluid
               alt="Responsive image"
             ></b-img>
+        
             <div class="mobile-info w-100">
               <h3>Your Choice</h3>
               <p>Some internal options are still to be decided. Customise your Metro to help us decide.</p>
             </div>
       </div>
           <div class='mobile-option'>
-              <b-img src="../assets/yourJourneys.png" fluid alt="Responsive image"></b-img>
+          
+              <b-img  class= "mobile-image" src="../assets/yourJourneys.png" fluid alt="Responsive image"></b-img>
+    
             <div class="mobile-info w-100">
               <h3>Your Journeys</h3>
               <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
@@ -244,36 +250,46 @@ export default {
 }
 
 .mobile-option {
-    position:relative;
+    display: flex;
+    flex-direction: row;
 }
 .mobile-info {
-      position: absolute;
-  color: #ffffff;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(black, 0.5);
-  font-family: "Open Sans", sans-serif;
-  text-align: left;
+
+    flex-direction: column;
+
+    display: flex;
+    align-items: center;
+
+    color: #ffffff;
+
+    background-color: black;
+    font-family: "Open Sans", sans-serif;
+    text-align: left;
 
   & p {
-    margin: 1.5em 2em 2em 2em;
+ //   margin: 1.5em 2em 2em 2em;
     color: white;
   }
 
   & h3 {
     font-family: Calvert, serif;
-    margin-left: 1.1em;
-    margin-top: 1em;
+   // margin-left: 1.1em;
+ //   margin-top: 1em;
   }
 }
 
-@media all and (max-width:800px) //800px for tablets and phones.
+.mobile-image {
+    max-width: 60%;
+}
+
+@media all and (max-width:765px) 
 {
 
 .menu-col-wrapper {
     display: block;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .menu-row {
