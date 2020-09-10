@@ -3,7 +3,7 @@
     <b-container fluid>
 
 <!--        todo get front metro image in day from API-->
-        <b-img src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
+        <b-img src="imageURL"></b-img>
         <!--    modal-->
 
         <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Privacy Notice">
@@ -50,11 +50,42 @@
         },
         data() {
             return {
-                tick: false
+                tick: false,
+                imageURL:''
             }
+        },
+        watch: {
+            imageURL: function() {
+                // fetch image for local authority image
+                const payload = {
+                    cam: 13,
+                    o1: 1,
+                    o2: 1,
+                    o3: 1,
+                    o4: 1,
+                    o5: "ON",
+                    o6: 1,
+                    o7: 1,
+                }
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+                    headers: {
+                        Cookie: this.$cookies.get('mfsid')
+                    },
+                    params: payload
+                })
+                    .then(response => {
+                        console.log(response);
+                        this.frontImg = response.data;
+                    })
+                    .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+            }
+
         },
         mounted() {
             this.$bvModal.show('privacyNoticeModal');
+
+
         },
         computed: {
             ...mapGetters([
