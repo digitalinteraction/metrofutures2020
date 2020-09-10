@@ -22,11 +22,16 @@
       <div>[Map of train]</div>
       <div>Current view: {{ getSelectedName() }}</div>
       <b-dropdown text="Select View">
-        <b-dropdown-item v-for=" (scene, index) in pano_data.scenes" v-bind:key="scene.id" :active="selectedId===index">
+        <b-dropdown-item 
+          v-for=" (scene, index) in this.pano_data.scenes" 
+          v-bind:key="scene.id" 
+          :active="selectedId===index"
+          v-on:click="selectScene(index)"
+        >
           {{ scene.name }}
         </b-dropdown-item>
       </b-dropdown>
-      <b-button v-on:click="switchScene(1)">Scene 2</b-button>
+      <b-button v-on:click="togglePeople()">Toggle People</b-button>
     </b-col>
   </b-row>
   
@@ -44,7 +49,8 @@
       return { 
         viewer: {},
         scene: {},
-        panoScenes: [], 
+        panoScenes: [],
+        people: false,
         selectedId: 0,
         tileUrl: process.env.VUE_APP_TILE_URL_TEST+"{z}/{f}/{y}/{x}.jpg",
         previewUrl: process.env.VUE_APP_TILE_URL_TEST+"preview.jpg"
@@ -52,8 +58,8 @@
     },
     computed: {
       ...mapState([
-      'pano_data'
-    ])
+        'pano_data'
+      ])      
     },
     methods: {
       initPanoViewer() {
@@ -101,7 +107,7 @@
         }
 
         const scene = this.pano_data.scenes[sceneId]
-        console.log(`loading scene ${sceneId}`)
+        // console.log(`loading scene ${sceneId}`)
         let levels = scene.levels
         let geometry = new marzipano.CubeGeometry(levels);
 
@@ -130,8 +136,14 @@
           // console.log("Loading pano", this.panoScenes[i].id)
         }
       },
+      selectScene(dropdownIndex) {
+        // User facing - scene they have selected
+        console.log("Selected", dropdownIndex)
+        this.selectedId = dropdownIndex;
+        this.switchScene(dropdownIndex);
+      },
       switchScene(sceneId) {
-        console.log("Switching to scene", sceneId)
+        if(sceneId % 2 > 0) { console.log("odd")}
         this.panoScenes[sceneId].scene.switchTo({
           transitionDuration: 1000
         })
@@ -148,6 +160,15 @@
       },
       getSelectedName() {
         return this.pano_data.scenes[this.selectedId].name
+      },
+      togglePeople() {
+        this.people != this.people;
+      },
+      // Returns even, not sure if I'll use it
+      even: function(array) {
+        return array.filter(function (number) {
+          return number % 2 === 0
+        })
       }
     },
     mounted() {
