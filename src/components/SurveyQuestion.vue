@@ -10,12 +10,10 @@
 
                 <!--                 todo display front of train image here-->
                 <!--                Local authority question image-->
-                <b-img v-if="!survey" fluid
-                       src="frontImg"></b-img>
-                <!--
-                 todo insert result of fetchImage() here-->
+                <b-img v-if="!survey" fluid v-bind:src="image"></b-img>
+
                 <!--                Survey questions changing images -->
-                <b-img v-if="survey" fluid src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
+                <b-img v-if="survey" fluid  v-bind:src="image"></b-img>
 
                 <!--               day/night switch-->
                 <b-form-group id="dayNightToggle">
@@ -168,6 +166,9 @@
         watch: {
             lighting: function() {
                 this.fetchImage();
+            },
+            index: function() {
+                this.fetchImage();
             }
         },
         computed: {
@@ -198,16 +199,16 @@
                             comment: this.surveyText
                         }
 
-                        this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
-                            headers: {
-                                Cookie: this.$cookies.get('mfsid')
-                            },
-                            params: payload
-                        })
-                            .then(response => {
-                                console.log('get image response: ' + response);
-                            })
-                            .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+                        // this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
+                        //     headers: {
+                        //         Cookie: this.$cookies.get('mfsid')
+                        //     },
+                        //     params: payload
+                        // })
+                        //     .then(response => {
+                        //         console.log('get image response: ' + response);
+                        //     })
+                        //     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
                         // update stored answers
                         this.addConfigAnswer(payload);
@@ -217,6 +218,7 @@
                     this.incrementIndex()
                     this.resetSelected()
                     this.displayError = false;
+
 
                 } else {
                     //you haven't answered
@@ -228,10 +230,10 @@
                 // todo at present user can select other and not give any extra text - check what the desired behaviour is here
                 if (!this.localAuthority) {
                     // no answer
-                    console.log('error');
+
                     this.displayError = true;
                 } else {
-                    console.log('submit');
+
                     //if answered 'other' and user has entered free text send that instead
                     if (this.localAuthority === 'Other' && this.LAOtherText.length > 0) {
                         this.localAuthority = this.LAOtherText;
@@ -263,7 +265,7 @@
                 }
             },
             previousQuestion() {
-                console.log('go back to previous question')
+
                 this.reduceIndex();
                 this.resetSelected();
                 this.displayError = false;
@@ -294,14 +296,15 @@
                 const answers = this.getConfigAnswers;
 
                 // get any answers stored and replace any undefined with 1
-                let o1 = answers[0] !== undefined ? answers[0] : 1;
-                let o2 = answers[1] !== undefined ? answers[1] : 1;
-                let o3 = answers[2] !== undefined ? answers[2] : 1;
-                let o4 = answers[3] !== undefined ? answers[3] : 1;
-                let o5 = answers[4] !== undefined ? answers[4] : 'ON';
-                let o6 = answers[5] !== undefined ? answers[5] : 1;
+                let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
+                let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
+                let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
+                let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
+                let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
+                let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
                 let o7 = this.lighting ? parseInt(this.lighting) : 1;
 
+                // http://localhost:3000/api/images/image?cam=3&o1=0&o2=0&o3=0&o4=1&o5=1&o6=1&o7=1
 
                 //camera angle
                 let cam = 1;
@@ -317,7 +320,6 @@
                     // priority seats
                     cam = 14;
                 }
-                console.log(this.lighting);
 
                 const payload = {
                     cam,
@@ -332,21 +334,20 @@
                 this.imageAPICall(payload);
             },
             async imageAPICall(payload) {
-                // todo update with call to API
                 console.log('requesting image with this payload: ');
                 console.log(payload);
 
-                this.axios.get(`${process.env.VUE_APP_API_URL}/images/image`, {
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
                     headers: {
                         Cookie: this.$cookies.get('mfsid')
                     },
                     params: payload
                 })
                     .then(response => {
-                        console.log('get image response: ' + response);
-                        this.Frontmagemage = 'data:image/jpg;base64,'.concat(this.image.concat(response.data))
-                    })
-                    .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+                       this.image = response.data;
+                       })
+                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
             }
         },
         mounted() {
@@ -357,7 +358,7 @@
                 o2: 1,
                 o3: 1,
                 o4: 1,
-                o5: "ON",
+                o5: 1,
                 o6: 1,
                 o7: 1,
             }
@@ -368,7 +369,6 @@
             params: payload
         })
             .then(response => {
-                console.log(response);
                 this.frontImg = response.data;
             })
             .catch(error => error.response ? console.log(error.response.data) : console.log(error))
