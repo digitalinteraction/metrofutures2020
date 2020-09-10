@@ -3,7 +3,7 @@ import pano_data from "@/data/pano_data.js"
 
 export default {
     questions,
-    pano_data,
+    pano_data: pano_data[0],
     index: 0,
     privacyNotice: false,
     configAnswers: {
