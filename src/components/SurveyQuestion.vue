@@ -11,7 +11,7 @@
                 <!--                 todo display front of train image here-->
                 <!--                Local authority question image-->
                 <b-img v-if="!survey" fluid
-                       src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
+                       src="frontImg"></b-img>
                 <!--
                  todo insert result of fetchImage() here-->
                 <!--                Survey questions changing images -->
@@ -160,7 +160,8 @@
                 ],
                 otherLA: false, // flag to show user has selected free text option
                 LAOtherText: '',
-                lighting: ''
+                lighting: '',
+                frontImg:'' //image of front of train for local authority question
             }
 
         },
@@ -197,11 +198,11 @@
                             comment: this.surveyText
                         }
 
-                        this.axios.post(`${process.env.VUE_APP_API_URL}/api/send-response`, {
+                        this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
                             headers: {
                                 Cookie: this.$cookies.get('mfsid')
                             },
-                            payload
+                            params: payload
                         })
                             .then(response => {
                                 console.log('get image response: ' + response);
@@ -244,7 +245,7 @@
                         headers: {
                             Cookie: this.$cookies.get('mfsid')
                         },
-                        payload
+                        params: payload
                     })
                         .then(response => {
                             console.log(response);
@@ -334,6 +335,18 @@
                 // todo update with call to API
                 console.log('requesting image with this payload: ');
                 console.log(payload);
+
+                this.axios.get(`${process.env.VUE_APP_API_URL}/images/image`, {
+                    headers: {
+                        Cookie: this.$cookies.get('mfsid')
+                    },
+                    params: payload
+                })
+                    .then(response => {
+                        console.log('get image response: ' + response);
+                        this.Frontmagemage = 'data:image/jpg;base64,'.concat(this.image.concat(response.data))
+                    })
+                    .catch(error => error.response ? console.log(error.response.data) : console.log(error))
             }
         },
         mounted() {
@@ -348,9 +361,20 @@
                 o6: 1,
                 o7: 1,
             }
-            this.imageAPICall(payload);
+        this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+            headers: {
+                Cookie: this.$cookies.get('mfsid')
+            },
+            params: payload
+        })
+            .then(response => {
+                console.log(response);
+                this.frontImg = response.data;
+            })
+            .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
-        }
+
+    }
     }
 
 </script>
