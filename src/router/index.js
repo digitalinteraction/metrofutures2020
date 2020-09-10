@@ -74,9 +74,9 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "idoc" */ '../views/InteractiveDocumentary.vue')
   },
   {
-    path: '/walkthrough',
-    name: 'Metro Walkthroughs',
-    component: () => import(/* webpackChunkName: "walthrough" */ '../views/Walkthrough.vue')
+    path: '/pano',
+    name: 'Metro Futures - Your Metro',
+    component: () => import(/* webpackChunkName: "walthrough" */ '../views/Pano.vue')
   }
 ];
 

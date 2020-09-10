@@ -17,7 +17,7 @@
 <!--todo what happens instead of hover on touch screens?-->
             <b-row>
 <!--                --------------- Your Metro option-->
-                <b-col v-on:click="goTo('/walkthrough')"
+                <b-col v-on:click="goTo('/pano')"
                        @mouseover="hoverYourMetro = true"
                        @mouseleave="hoverYourMetro = false"
                        class="menuCol">
