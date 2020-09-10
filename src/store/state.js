@@ -1,7 +1,9 @@
 import questions from "@/data/survey.js"
+import pano_data from "@/data/pano_data.js"
 
 export default {
     questions,
+    pano_data,
     index: 0,
     privacyNotice: false,
     configAnswers: {
