@@ -3,11 +3,14 @@
     <div class="footer" >
         <div class="w-100" id="footer">
             <div class="w-100 footer-container">
-                <div class="footer-logo" >
-                    <b-img fluid id="nexus" alt="Nexus Logo" src="../assets/nexuslogoBW.png"></b-img>
-                </div>
-                <div class="footer-logo" >
-                    <b-img fluid id="stadler" alt="Stadler Logo" src="../assets/stadlerLogoBW.svg"></b-img>
+                <div class="footer-logo footer-left">
+                    <div class="sub-logo">
+                        <b-img fluid id="nexus" alt="Nexus Logo" src="../assets/nexuslogoBW.png"></b-img>
+                    </div>
+                    
+                    <div class="sub-logo">
+                        <b-img fluid id="stadler" alt="Stadler Logo" src="../assets/stadlerLogoBW.svg"></b-img>
+                    </div>
                 </div>
                 <div class="footer-logo footer-center-left">
                     <div class="test">
@@ -88,6 +91,15 @@ p {
         }
     }
 
+    .footer-left{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .sub-logo {
+            flex: 1;
+        }
+    }
+
     .footer-center-left {
         p{
             text-align: right;
@@ -128,13 +140,20 @@ p {
             border: none;
         }
         }
+        .footer-left{
+        display: flex;
+        flex-direction: column;
+        .sub-logo {
+            flex: 1;
+        }
+    }
     }
 
     #nexus{
-        max-width: 20%;
+        max-width: 10%;
     }
     #stadler {
-        max-width: 25%;
+        max-width: 50%;
     }
 }
 
