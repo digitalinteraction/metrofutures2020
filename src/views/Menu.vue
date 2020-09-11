@@ -57,7 +57,7 @@
               alt="Responsive image"
             ></b-img>
             <div class="moreInfo w-100">
-              <h3>Your Choice</h3>
+              <h3>Your Choices</h3>
               <p>Some internal options are still to be decided. Customise your Metro to help us decide.</p>
             </div>
           </div>
@@ -104,7 +104,7 @@
             ></b-img>
         
             <div class="mobile-info w-100">
-              <h3>Your Choice</h3>
+              <h3>Your Choices</h3>
               <p>Some internal options are still to be decided. Customise your Metro to help us decide.</p>
             </div>
       </div>
@@ -113,8 +113,11 @@
               <b-img  class= "mobile-image" src="../assets/yourJourneys.png" fluid alt="Responsive image"></b-img>
     
             <div class="mobile-info w-100">
-              <h3>Your Journeys</h3>
+       
+                <h3>Your Journeys</h3>
               <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
+        
+              
             </div>
           </div>
       </div>
@@ -254,14 +257,11 @@ export default {
     flex-direction: row;
 }
 .mobile-info {
-
-    flex-direction: column;
-
+    
     display: flex;
-    align-items: center;
-
+    justify-content: center;
+    flex-direction: column;
     color: #ffffff;
-
     background-color: black;
     font-family: "Open Sans", sans-serif;
     text-align: left;
