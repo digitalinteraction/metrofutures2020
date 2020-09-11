@@ -1,7 +1,7 @@
 <template>
   <div class="hotspot_container">
-    <img src="/favicon.ico" alt="" v-on:click="toggle()">
-    <div class="content">
+    <img src="/favicon.ico" alt="" class="icon" v-on:click="toggle()">
+    <div class="content" v-bind:class="{ content_visible : visible}">
       <span v-show="visible">
         <span class="hotspot_title">{{ data.title }}</span>
         <span class="hotspot_text">{{ data.text }}</span>
@@ -45,16 +45,26 @@ export default {
   .hotspot_container {
   }
 
+  .icon {
+    float: left;
+  }
+
   .content {
+    width: 0px;
+  }
+
+  .content_visible {
     width: 200px;
   }
 
   .hotspot_title {
     font-weight:bold;
-    display: inline-block
+    display: block;
+    /* float: left; */
   }
 
   .hotspot_text {
+    display: block;
   }
 
 </style>
