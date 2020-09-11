@@ -33,19 +33,29 @@
 
   <b-row>
     <b-col>
-      <div ref="hotspot_0_0" class="hotspot" v-on:click="toggleHotspot()">
-          <img src="/favicon.ico" alt="">
+      <div ref="hotspot_0_0" class="hotspot" >
+          <img src="/favicon.ico" alt="" v-on:click="toggleHotspot()">
           <span v-show="showHotspot">
             <span class="hotspot_title">{{ getHotspotData(0,0).title }}</span>
             <span class="hotspot_text">{{ getHotspotData(0,0).text }}</span>
+            <b-form inline>
+              <label for="hotspot_input"></label>
+              <b-form-input
+                id="hotspot_input"
+                v-model="hotspotText"
+                placeholder="Enter something..."
+              ></b-form-input>
+              <b-button variant="primary">Send</b-button>
+            </b-form>
           </span>
       </div>
       <div ref="hotspot_0_1" class="hotspot">
-          <img src="/favicon.ico" alt="">
+          <Hotspot :data="getHotspotData(0,1)"/>
+          <!-- <img src="/favicon.ico" alt="">
           <span v-show="showHotspot">
             <span class="hotspot_title">{{ getHotspotData(0,1).title }}</span>
             <span class="hotspot_text">{{ getHotspotData(0,1).text }}</span>
-          </span>
+          </span> -->
       </div>
       <div ref="hotspot_0_2" class="hotspot">
           <img src="/favicon.ico" alt="">
@@ -136,11 +146,13 @@
   // import {mapState, mapGetters, mapMutations} from 'vuex'
   import {mapState} from 'vuex'
   import MainHeader from '@/components/MainHeader.vue'
+  import Hotspot from '@/components/Hotspot.vue'
 
   export default {
     name: "Pano",
     components: {
-      MainHeader
+      MainHeader,
+      Hotspot
     },
     data() {
       return { 
@@ -149,8 +161,6 @@
         panoScenes: [],
         people: false,
         selectedId: 0,
-        tileUrl: process.env.VUE_APP_TILE_URL_TEST+"{z}/{f}/{y}/{x}.jpg",
-        previewUrl: process.env.VUE_APP_TILE_URL_TEST+"preview.jpg",
         showHotspot: false,
         allHotspots: [
           { id: "0", visible: false, 0: "hotspot_0_0", 1: "hotspot_0_1", 2: "hotspot_0_2"},
@@ -168,7 +178,8 @@
           { id: "12", visible: false, 0: "hotspot_12_0", 1: "hotspot_12_1", 2: "hotspot_12_2", 3: "hotspot_12_3", 4: "hotspot_12_4", 5: "hotspot_12_5", 6: "hotspot_12_5"},
           { id: "13", visible: false, 0: "hotspot_13_0", 1: "hotspot_13_1", 2: "hotspot_13_2", 3: "hotspot_13_3", 4: "hotspot_13_4", 5: "hotspot_13_5", 6: "hotspot_13_5"}
         ],
-        hotspotData: []
+        hotspotData: [],
+        hotspotText: ""
       }
     },
     computed: {
@@ -178,6 +189,7 @@
     },
     methods: {
       initPanoViewer() {
+        // Get pano ref (div) and create a Viewer attached to it
         let element = this.$refs.pano;
         let viewerOpts = {
           controls: {
@@ -193,10 +205,8 @@
         }
 
         const scene = this.pano_data.scenes[sceneId]
-        // console.log(`loading scene ${sceneId}`)
         let levels = scene.levels
         let geometry = new marzipano.CubeGeometry(levels);
-
         let tileUrl = process.env.VUE_APP_TILE_URL+scene.id+"/{z}/{f}/{y}/{x}.jpg"
         let previewUrl = process.env.VUE_APP_TILE_URL+scene.id+"/preview.jpg"
         let source = marzipano.ImageUrlSource.fromString(tileUrl, {
@@ -211,66 +221,6 @@
           geometry: geometry,
           view: view
         });
-
-        
-
-        // Apply hotspots manually for now to scene 0
-        // if(sceneId === 0) {
-        //   this.attachSingleHotspot(sceneView, scene, sceneId, 0)
-        //   this.attachSingleHotspot(sceneView, scene, sceneId, 1)
-        //   this.attachSingleHotspot(sceneView, scene, sceneId, 2)
-        //   // console.log(this.$refs)
-
-        //   // Marzipano wants to directly manipulate the element.style, so if the elements are rendered with a v-for .style is unavailable (as it's handled by Vue itself), therefore it doesn't work with Marzipano!
-        //   // let i = 0;
-        //   // for (let item of scene.infoHotspots) {
-        //   //   console.log("Hotspots",item.title, sceneId, i)
-        //   //   let name = this.getHotspotName(sceneId, i)
-        //   //   let el = this.$refs[name]
-        //   //   console.log(el[0])
-        //   //   let position = {
-        //     //     "yaw": item.yaw,
-
-        //   //     "pitch": item.pitch
-        //   //   }
-            
-        //   //   sceneView.hotspotContainer().createHotspot(el, position)
-
-        //   //   i++
-        //   // }
-
-        //   // for (let i = 0; i < scene.infoHotspots.length; i++) {
-        //   //   console.log(i)
-        //   // }
-
-        //   // console.log("generating hotspots for scene", sceneId)
-        //   // // let hotspotEl = this.$refs.hotspot1
-        //   // let dynHotspot = this.$refs[this.fetchHotspot(sceneId,0)]
-        //   // // console.log(dynHotspot)
-        //   // // console.log("returned",this.findHotspot(sceneId,0))
-        //   // let position = {
-        //   //   "yaw": -0.14023522364884577,
-        //   //   "pitch": 0.11475964612484191
-        //   // }
-        //   // sceneView.hotspotContainer().createHotspot(dynHotspot, position)
-
-        //   // let hotspot2El = this.$refs.hotspot2
-        //   // let hotspot2El = this.$refs[this.fetchHotspot(sceneId,1)]
-        //   // let position2 = {
-        //   //   "yaw": -0.8358385796154355,
-        //   //   "pitch": 0.30236171550205526
-        //   // }
-        //   // sceneView.hotspotContainer().createHotspot(hotspot2El, position2)
-
-        //   // let hotspot3El = this.$refs.imghotspot
-        //   // let hotspot3El = this.$refs[this.fetchHotspot(sceneId,2)]
-        //   // hotspot3El.classList.add('hotspot');
-        //   // let position3 = {
-        //   //   "yaw": -1.0892431152132307,
-        //   //   "pitch": 0.43463794138405376
-        //   // }
-        //   // sceneView.hotspotContainer().createHotspot(hotspot3El, position3)
-        // }
         
         this.panoScenes[sceneId].scene = sceneView;
 
@@ -280,20 +230,25 @@
         // Iterate 1 - 13 (0 indexed)
         for (let i = 1; i < this.panoScenes.length; i++) {
           this.loadPano(i)
-          // console.log("Loading pano", this.panoScenes[i].id)
         }
       },
       selectScene(dropdownIndex) {
         // User facing - scene they have selected
         console.log("Selected", dropdownIndex)
+        // Toggling users on/off will affect this
+        // There will be 0 - 6 options, but this maps to 0 - 13 options, with the higher number being without people (e.g. 1 has people, 0 does not)
+        // If not 0 (have separate case for this): double selected ID, if people===true, subtract 1
+
         this.selectedId = dropdownIndex;
         this.switchScene(dropdownIndex);
       },
       switchScene(sceneId) {
-        // this.attachSingleHotspot(this.panoScenes[sceneId].scene, this.pano_data.scenes[sceneId], sceneId, 0)
+        // Attach all the relevant hotspots to the scene
         this.attachHotspots(this.panoScenes[sceneId].scene, this.pano_data.scenes[sceneId], sceneId)
         
         if(sceneId % 2 > 0) { console.log("odd") }
+
+        // Run switchTo() on scene which loads it into the viewer
         this.panoScenes[sceneId].scene.switchTo({
           transitionDuration: 1000
         })
@@ -328,6 +283,7 @@
         this.people = !this.people;
       },
       toggleHotspot() {
+        // this.allHotspots[sceneId][index].visible = !this.allHotspots[sceneId][index].visible
         console.log("toggling hotspot")
         this.showHotspot = !this.showHotspot;
       },
@@ -355,7 +311,6 @@
     },
     mounted() {
       this.initPanoViewer();
-      // this.hotspotData = this.getAllHotspotData()  // This just becomes a proxy for pano_data.scenes - so not sure useful
       this.populateScenesId();
       this.loadPano(0);
       this.switchScene(0);
@@ -384,8 +339,8 @@
 
   .hotspot {
     background-color: gray;
-    /* display: none; */
-
+    display: none;
+    width: 200px;
   }
 
   .hotspot_title {
