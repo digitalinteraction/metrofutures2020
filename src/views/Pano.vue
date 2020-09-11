@@ -55,41 +55,76 @@
           </span>
       </div>
 
-
-      <!-- <div ref="hotspot1" class="hotspot" v-on:click="toggleHotspot()">
+      <div ref="hotspot_1_0" class="hotspot" v-on:click="toggleHotspot()">
           <img src="/favicon.ico" alt="">
           <span v-show="showHotspot">
-            <span class="hotspot_title">Livery</span>
-            <span class="hotspot_text">Tyne and Wear Metro has a completely new livery!<br>[Free text comment]</span>
+            <span class="hotspot_title">{{ getHotspotData(1,0).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(1,0).text }}</span>
           </span>
       </div>
-      <div ref="hotspot2" class="hotspot">
+      <div ref="hotspot_1_1" class="hotspot">
           <img src="/favicon.ico" alt="">
-          <span hidden>
-            <span class="hotspot_title">Lights</span>
-            <span class="hotspot_text">Your new Metro features a state-of-the-art LED head and tail light system, and a glowing "M".<br>[Free text comment]</span>
+          <span v-show="showHotspot">
+            <span class="hotspot_title">{{ getHotspotData(1,1).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(1,1).text }}</span>
           </span>
-      </div> -->
-      <!-- <img src="/favicon.ico" alt="" ref="imghotspot">  -->
-
-
-      <!-- Can't use auto generation of hotspots -->
-      <!-- <div 
-        v-for="(scene, index) of pano_data.scenes"
-        v-bind:key="index"  
-      >
-        <strong>{{ scene.id }}</strong>
-        <div
-          class="hotspot"
-          v-for="(spot, index1) of scene.infoHotspots"
-          v-bind:key="index1"
-          :ref="getHotspotName(index, index1)"
-        > 
+      </div>
+      <div ref="hotspot_1_2" class="hotspot">
           <img src="/favicon.ico" alt="">
-          <span class="hotspot_title">{{ spot.title }}</span>
-          <span class="hotspot_text">{{ spot.text }}</span>
-        </div>
-      </div> -->
+          <span v-show="showHotspot">
+            <span class="hotspot_title">{{ getHotspotData(1,2).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(1,2).text }}</span>
+          </span>
+      </div>
+
+      <div ref="hotspot_2_0" class="hotspot" v-on:click="toggleHotspot()">
+          <img src="/favicon.ico" alt="">
+          <span v-show="showHotspot">
+            <span class="hotspot_title">{{ getHotspotData(2,0).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(2,0).text }}</span>
+          </span>
+      </div>
+
+      <div ref="hotspot_2_1" class="hotspot" v-on:click="toggleHotspot()">
+          <img src="/favicon.ico" alt="">
+          <span v-show="showHotspot">
+            <span class="hotspot_title">{{ getHotspotData(2,1).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(2,1).text }}</span>
+          </span>
+      </div>
+
+      <div ref="hotspot_2_2" class="hotspot" v-on:click="toggleHotspot()">
+          <img src="/favicon.ico" alt="">
+          <span v-show="showHotspot">
+            <span class="hotspot_title">{{ getHotspotData(2,2).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(2,2).text }}</span>
+          </span>
+      </div>
+
+      <div ref="hotspot_2_3" class="hotspot" v-on:click="toggleHotspot()">
+          <img src="/favicon.ico" alt="">
+          <span v-show="showHotspot">
+            <span class="hotspot_title">{{ getHotspotData(2,3).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(2,3).text }}</span>
+          </span>
+      </div>
+
+      <div ref="hotspot_2_4" class="hotspot" v-on:click="toggleHotspot()">
+          <img src="/favicon.ico" alt="">
+          <span v-show="showHotspot">
+            <span class="hotspot_title">{{ getHotspotData(2,4).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(2,4).text }}</span>
+          </span>
+      </div>
+
+      <div ref="hotspot_2_5" class="hotspot" v-on:click="toggleHotspot()">
+          <img src="/favicon.ico" alt="">
+          <span v-show="showHotspot">
+            <span class="hotspot_title">{{ getHotspotData(2,5).title }}</span>
+            <span class="hotspot_text">{{ getHotspotData(2,5).text }}</span>
+          </span>
+      </div>
+
     </b-col>
   </b-row>
   
@@ -116,15 +151,22 @@
         selectedId: 0,
         tileUrl: process.env.VUE_APP_TILE_URL_TEST+"{z}/{f}/{y}/{x}.jpg",
         previewUrl: process.env.VUE_APP_TILE_URL_TEST+"preview.jpg",
-        showHotspot: true,
+        showHotspot: false,
         allHotspots: [
           { id: "0", visible: false, 0: "hotspot_0_0", 1: "hotspot_0_1", 2: "hotspot_0_2"},
-          { id: "2", visible: false, 0: "hotspot_0_0", 1: "hotspot_0_1", 2: "hotspot_0_2", 3: "hotspot_0_3", 4: "hotspot_0_4", 5: "hotspot_0_5"},
-          { id: "4", visible: false, 0: "hotspot_0_0", 1: "hotspot_0_1", 2: "hotspot_0_2", 3: "hotspot_0_3", 4: "hotspot_0_4", 5: "hotspot_0_5"},
-          { id: "6", visible: false, 0: "hotspot_0_0", 1: "hotspot_0_1", 2: "hotspot_0_2", 3: "hotspot_0_3", 4: "hotspot_0_4", 5: "hotspot_0_5"},
-          { id: "8", visible: false, 0: "hotspot_0_0", 1: "hotspot_0_1", 2: "hotspot_0_2", 3: "hotspot_0_3", 4: "hotspot_0_4"},
-          { id: "10", visible: false, 0: "hotspot_0_0", 1: "hotspot_0_1", 2: "hotspot_0_2", 3: "hotspot_0_3", 4: "hotspot_0_4", 5: "hotspot_0_5"},
-          { id: "12", visible: false, 0: "hotspot_0_0", 1: "hotspot_0_1", 2: "hotspot_0_2", 3: "hotspot_0_3", 4: "hotspot_0_4", 5: "hotspot_0_5", 6: "hotspot_0_5"}
+          { id: "1", visible: false, 0: "hotspot_1_0", 1: "hotspot_1_1", 2: "hotspot_1_2"},
+          { id: "2", visible: false, 0: "hotspot_2_0", 1: "hotspot_2_1", 2: "hotspot_2_2", 3: "hotspot_2_3", 4: "hotspot_2_4", 5: "hotspot_2_5"},
+          { id: "3", visible: false, 0: "hotspot_3_0", 1: "hotspot_3_1", 2: "hotspot_3_2", 3: "hotspot_3_3", 4: "hotspot_3_4", 5: "hotspot_3_5"},
+          { id: "4", visible: false, 0: "hotspot_4_0", 1: "hotspot_4_1", 2: "hotspot_4_2", 3: "hotspot_4_3", 4: "hotspot_4_4", 5: "hotspot_4_5"},
+          { id: "5", visible: false, 0: "hotspot_5_0", 1: "hotspot_5_1", 2: "hotspot_5_2", 3: "hotspot_5_3", 4: "hotspot_5_4", 5: "hotspot_5_5"},
+          { id: "6", visible: false, 0: "hotspot_6_0", 1: "hotspot_6_1", 2: "hotspot_6_2", 3: "hotspot_6_3", 4: "hotspot_6_4", 5: "hotspot_6_5"},
+          { id: "7", visible: false, 0: "hotspot_7_0", 1: "hotspot_7_1", 2: "hotspot_7_2", 3: "hotspot_7_3", 4: "hotspot_7_4", 5: "hotspot_7_5"},
+          { id: "8", visible: false, 0: "hotspot_8_0", 1: "hotspot_8_1", 2: "hotspot_8_2", 3: "hotspot_8_3", 4: "hotspot_8_4"},
+          { id: "9", visible: false, 0: "hotspot_9_0", 1: "hotspot_9_1", 2: "hotspot_9_2", 3: "hotspot_9_3", 4: "hotspot_9_4"},
+          { id: "10", visible: false, 0: "hotspot_10_0", 1: "hotspot_10_1", 2: "hotspot_10_2", 3: "hotspot_10_3", 4: "hotspot_10_4", 5: "hotspot_10_5"},
+          { id: "11", visible: false, 0: "hotspot_11_0", 1: "hotspot_11_1", 2: "hotspot_11_2", 3: "hotspot_11_3", 4: "hotspot_11_4", 5: "hotspot_11_5"},
+          { id: "12", visible: false, 0: "hotspot_12_0", 1: "hotspot_12_1", 2: "hotspot_12_2", 3: "hotspot_12_3", 4: "hotspot_12_4", 5: "hotspot_12_5", 6: "hotspot_12_5"},
+          { id: "13", visible: false, 0: "hotspot_13_0", 1: "hotspot_13_1", 2: "hotspot_13_2", 3: "hotspot_13_3", 4: "hotspot_13_4", 5: "hotspot_13_5", 6: "hotspot_13_5"}
         ],
         hotspotData: []
       }
@@ -143,33 +185,6 @@
           }
         }
         this.viewer = new marzipano.Viewer(element, viewerOpts)
-      },
-      initSinglePano(sceneId) {
-        let levels = this.pano_data.scenes[sceneId].levels
-        let geometry = new marzipano.CubeGeometry(levels);
-
-        // TO DO get dynamic tileUrl (add in the scene name)
-        let source = marzipano.ImageUrlSource.fromString(this.tileUrl, {
-          cubeMapPreviewUrl: this.previewUrl
-        });
-        let faceSize = 2048;
-        let limiter = marzipano.RectilinearView.limit.traditional(faceSize, 100*Math.PI/180, 120*Math.PI/180);
-        let initialViewParameters = {
-            "yaw": -0.19833286954484564,
-            "pitch": 0.012640525806762781,
-            "fov": 1.5084360796071108
-          }
-        let view = new marzipano.RectilinearView(initialViewParameters, limiter);
-
-        this.scene = this.viewer.createScene({
-          source: source,
-          geometry: geometry,
-          view: view
-        });
-        // let scenes = marz_data.scenes.map();
-        this.scene.switchTo({
-          transitionDuration: 1000
-        });
       },
       loadPano(sceneId) {
         if(sceneId === typeof(undefined)) { 
@@ -200,56 +215,63 @@
         
 
         // Apply hotspots manually for now to scene 0
-        if(sceneId === 0) {
-          // console.log(this.$refs)
+        // if(sceneId === 0) {
+        //   this.attachSingleHotspot(sceneView, scene, sceneId, 0)
+        //   this.attachSingleHotspot(sceneView, scene, sceneId, 1)
+        //   this.attachSingleHotspot(sceneView, scene, sceneId, 2)
+        //   // console.log(this.$refs)
 
-          // Marzipano wants to directly manipulate the element.style, so if the elements are rendered with a v-for .style is unavailable (as it's handled by Vue itself), therefore it doesn't work with Marzipano!
-          // let i = 0;
-          // for (let item of scene.infoHotspots) {
-          //   console.log("Hotspots",item.title, sceneId, i)
-          //   let name = this.getHotspotName(sceneId, i)
-          //   let el = this.$refs[name]
-          //   console.log(el[0])
-          //   let position = {
-          //     "yaw": item.yaw,
-          //     "pitch": item.pitch
-          //   }
+        //   // Marzipano wants to directly manipulate the element.style, so if the elements are rendered with a v-for .style is unavailable (as it's handled by Vue itself), therefore it doesn't work with Marzipano!
+        //   // let i = 0;
+        //   // for (let item of scene.infoHotspots) {
+        //   //   console.log("Hotspots",item.title, sceneId, i)
+        //   //   let name = this.getHotspotName(sceneId, i)
+        //   //   let el = this.$refs[name]
+        //   //   console.log(el[0])
+        //   //   let position = {
+        //     //     "yaw": item.yaw,
+
+        //   //     "pitch": item.pitch
+        //   //   }
             
-          //   sceneView.hotspotContainer().createHotspot(el, position)
+        //   //   sceneView.hotspotContainer().createHotspot(el, position)
 
-          //   i++
-          // }
+        //   //   i++
+        //   // }
 
-          console.log("generating hotspots for scene", sceneId)
-          // let hotspotEl = this.$refs.hotspot1
-          let dynHotspot = this.$refs[this.fetchHotspot(sceneId,0)]
-          // console.log(dynHotspot)
-          // console.log("returned",this.findHotspot(sceneId,0))
-          let position = {
-            "yaw": -0.14023522364884577,
-            "pitch": 0.11475964612484191
-          }
-          sceneView.hotspotContainer().createHotspot(dynHotspot, position)
+        //   // for (let i = 0; i < scene.infoHotspots.length; i++) {
+        //   //   console.log(i)
+        //   // }
 
-          // let hotspot2El = this.$refs.hotspot2
-          let hotspot2El = this.$refs[this.fetchHotspot(sceneId,1)]
-          let position2 = {
-            "yaw": -0.8358385796154355,
-            "pitch": 0.30236171550205526
-          }
-          sceneView.hotspotContainer().createHotspot(hotspot2El, position2)
+        //   // console.log("generating hotspots for scene", sceneId)
+        //   // // let hotspotEl = this.$refs.hotspot1
+        //   // let dynHotspot = this.$refs[this.fetchHotspot(sceneId,0)]
+        //   // // console.log(dynHotspot)
+        //   // // console.log("returned",this.findHotspot(sceneId,0))
+        //   // let position = {
+        //   //   "yaw": -0.14023522364884577,
+        //   //   "pitch": 0.11475964612484191
+        //   // }
+        //   // sceneView.hotspotContainer().createHotspot(dynHotspot, position)
 
-          // let hotspot3El = this.$refs.imghotspot
-          let hotspot3El = this.$refs[this.fetchHotspot(sceneId,2)]
-          hotspot3El.classList.add('hotspot');
-          let position3 = {
-            "yaw": -1.0892431152132307,
-            "pitch": 0.43463794138405376
-          }
-          sceneView.hotspotContainer().createHotspot(hotspot3El, position3)
-        }
+        //   // let hotspot2El = this.$refs.hotspot2
+        //   // let hotspot2El = this.$refs[this.fetchHotspot(sceneId,1)]
+        //   // let position2 = {
+        //   //   "yaw": -0.8358385796154355,
+        //   //   "pitch": 0.30236171550205526
+        //   // }
+        //   // sceneView.hotspotContainer().createHotspot(hotspot2El, position2)
+
+        //   // let hotspot3El = this.$refs.imghotspot
+        //   // let hotspot3El = this.$refs[this.fetchHotspot(sceneId,2)]
+        //   // hotspot3El.classList.add('hotspot');
+        //   // let position3 = {
+        //   //   "yaw": -1.0892431152132307,
+        //   //   "pitch": 0.43463794138405376
+        //   // }
+        //   // sceneView.hotspotContainer().createHotspot(hotspot3El, position3)
+        // }
         
-
         this.panoScenes[sceneId].scene = sceneView;
 
       },
@@ -268,6 +290,9 @@
         this.switchScene(dropdownIndex);
       },
       switchScene(sceneId) {
+        // this.attachSingleHotspot(this.panoScenes[sceneId].scene, this.pano_data.scenes[sceneId], sceneId, 0)
+        this.attachHotspots(this.panoScenes[sceneId].scene, this.pano_data.scenes[sceneId], sceneId)
+        
         if(sceneId % 2 > 0) { console.log("odd") }
         this.panoScenes[sceneId].scene.switchTo({
           transitionDuration: 1000
@@ -312,12 +337,20 @@
           return number % 2 === 0
         })
       },
-      findHotspot(sceneId, index) {
-        let hotspotRef = "hotspot_"+sceneId+"_"+index
-        console.log("Searching for", hotspotRef)
-        return this.$refs['dynamicHotspot'].find(
-              el => el.$attrs['data-key'] === hotspotRef
-          );
+      attachSingleHotspot(sceneView, scene, sceneId, index) {
+        console.log("attaching hotspot",index)
+        let hotspot = this.$refs[this.fetchHotspot(sceneId,index)]
+        let position = {
+            "yaw": scene.infoHotspots[index].yaw,
+            "pitch": scene.infoHotspots[index].pitch
+          }
+        sceneView.hotspotContainer().createHotspot(hotspot, position)
+        return
+      },
+      attachHotspots(sceneView, scene, sceneId) {
+        for (let i = 0; i < scene.infoHotspots.length; i++) {
+          this.attachSingleHotspot(sceneView, scene, sceneId, i)
+        }
       }
     },
     mounted() {
