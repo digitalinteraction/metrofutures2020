@@ -36,8 +36,7 @@ export default {
 
     @font-face {
         font-family: "Calvert";
-        src: url("./fonts/CalvertMT.ttf") format("truetype"),
-        url("./fonts/CalvertMTW04Regular.woff") format("woff")
+        src: url("./fonts/CalvertMTStd.otf") format("opentype");
     }
 body {
 /*  overflow: hidden;*/

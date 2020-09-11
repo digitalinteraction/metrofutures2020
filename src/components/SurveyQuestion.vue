@@ -10,7 +10,7 @@
 
                 <!--                 todo display front of train image here-->
                 <!--                Local authority question image-->
-                <b-img v-if="!survey" fluid v-bind:src="image"></b-img>
+                <b-img v-if="!survey" fluid v-bind:src="frontImg"></b-img>
 
                 <!--                Survey questions changing images -->
                 <b-img v-if="survey" fluid  v-bind:src="image"></b-img>
@@ -62,7 +62,7 @@
             </b-col>
 
             <!--            survey-->
-            <b-col v-if="survey" cols="3">
+            <b-col v-if="survey" class="col-lg-3 col-12">
                 <b-row>
                     <!--                    todo either hide back on 1st question or go back to local authority-->
                     <b-col>
@@ -167,6 +167,7 @@
             lighting: function() {
                 this.fetchImage();
             },
+            // todo this is currently not loading the first image of the survey
             index: function() {
                 this.fetchImage();
             }
@@ -199,16 +200,16 @@
                             comment: this.surveyText
                         }
 
-                        // this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
-                        //     headers: {
-                        //         Cookie: this.$cookies.get('mfsid')
-                        //     },
-                        //     params: payload
-                        // })
-                        //     .then(response => {
-                        //         console.log('get image response: ' + response);
-                        //     })
-                        //     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+                        this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
+                            headers: {
+                                Cookie: this.$cookies.get('mfsid')
+                            },
+                            params: payload
+                        })
+                            .then(response => {
+                                console.log('get image response: ' + response);
+                            })
+                            .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
                         // update stored answers
                         this.addConfigAnswer(payload);
@@ -243,7 +244,7 @@
                         0: this.localAuthority
                     }
 
-                    this.axios.post(`${process.env.VUE_APP_API_URL}/api/participant`, {
+                    this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
                         headers: {
                             Cookie: this.$cookies.get('mfsid')
                         },
@@ -304,7 +305,6 @@
                 let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
                 let o7 = this.lighting ? parseInt(this.lighting) : 1;
 
-                // http://localhost:3000/api/images/image?cam=3&o1=0&o2=0&o3=0&o4=1&o5=1&o6=1&o7=1
 
                 //camera angle
                 let cam = 1;
@@ -492,5 +492,15 @@
     #LAButton {
         margin-top: 1em;
     }
+
+    /* Medium devices */
+    @media only screen and (max-width: 600px) {
+        .optionImg {
+            width: 70px;
+            height: auto;
+        }
+    }
+
+
 
 </style>

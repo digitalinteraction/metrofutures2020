@@ -200,7 +200,8 @@ export default {
 .breadItem.breadSelected {
   /*  todo remove space between yellow line and bottom edge of grey bar*/
   border-bottom: 2px solid #FEC600;
-  color: #FEC600;
+  color: black;
+    font-weight: bold;
 }
 
 /*class to add to breadcrumb items to show question has been completed so is now clickable*/
