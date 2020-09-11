@@ -10,13 +10,34 @@
 
             <b-col class="col-lg-3 col-12">
 
+                <p class="calvert">Please tell us a little more about yourself and your Metro journeys.</p>
 
-                <p class="calvert question"><span class="bold">What is your gender?</span></p>
-                <b-form-select v-model="gender" :options="genders">Please select an
+                <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
+                <b-form-select v-model="purpose" :options="purposes">Please select an
                     option
                 </b-form-select>
 
-                <p class="calvert question"><span class="bold">What is your ethnicity?</span></p>
+                <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
+
+                <b-form-select v-model="frequency" :options="frequencies">Please select an
+                    option
+                </b-form-select>
+
+                <p class="calvert question"><span class="bold">Gender?</span></p>
+                <b-form-select @change="changeGender" v-model="gender" :options="genders">Please select an
+                    option
+                </b-form-select>
+
+                <div v-if="otherGender" id="genderTextDiv">
+                        <textarea
+                                id="textarea"
+                                v-model="genderOtherText"
+                                placeholder="Enter your gender..."
+                                rows="2" class="form-control"
+                        ></textarea>
+                </div>
+
+                <p class="calvert question"><span class="bold">Ethnicity?</span></p>
                 <b-form-select v-model="ethnicity" :options="ethnicities">Please select an
                     option
                 </b-form-select>
@@ -32,24 +53,11 @@
                 <b-form-select  v-model="disability" :options="disabilities">Please select an
                     option
                 </b-form-select>
-</div>
-                <p class="calvert question"><span class="bold">What is the main purpose of your journey?</span></p>
-                <b-form-select v-model="purpose" :options="purposes">Please select an
-                    option
-                </b-form-select>
-                <br>
-                <p class="calvert question"><span class="bold">How often do you use the Metro?</span></p>
 
-                <b-form-select v-model="frequency" :options="frequencies">Please select an
-                    option
-                </b-form-select>
-                <p>*required</p>
-                <b-row>
-                    <b-col class="submitBtn">
-                        <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
-                        <p v-if="ageError === true">Please select an age range</p>
-                    </b-col>
-                </b-row>
+
+</div>
+                <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
+
             </b-col>
 </div>
         </div>
@@ -132,7 +140,9 @@ export default {
     showQuestions: true, // participant q's or slideshow
       viewFeatures: false,
         gender: '',
-        genders: ['Male', 'Female', 'Other/ Prefer not to self-describe', 'Prefer not to say'],
+        otherGender: false,
+        genderOtherText: '',
+        genders: ['Male', 'Female', 'Other/Prefer to self-describe', 'Prefer not to say'],
         ethnicity: '',
         ethnicities: ['White', 'Black/Black British', 'Asian/Asian British', 'Chinese/Thai/Japanese', 'Mixed', 'Other'],
         dis: 'no', // yes/no asnwer to trigger options
@@ -165,7 +175,13 @@ export default {
           this.sliding = false
       },
       submitInfo() {
-      console.log(this.age.length);
+
+      // if gender other text is filled in then send this instead
+          if (this.genderOtherText) {
+          if (this.genderOtherText.length > 0) {
+              this.gender = this.genderOtherText;
+          }
+      }
           // submit answers
           let payload = {
               2:this.gender,
@@ -187,8 +203,16 @@ export default {
               .catch(error => error.response ? console.log(error.response.data) : console.log(error))
           this.showQuestions = false;
 
+      },
+      changeGender() {
+          if (this.gender === 'Other/Prefer to self-describe') {
+              this.otherGender = true;
+          } else {
+              this.otherGender = false;
+          }
       }
   },
+
  beforeMount() {
   // look at answers stored in state and use them to construct API call to retrieve
     // images for carousel

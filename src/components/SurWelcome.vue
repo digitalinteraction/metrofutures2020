@@ -15,7 +15,7 @@
             <!--            LA q-->
             <b-col class="col-lg-3 col-12">
                 <b-row id="localAuthority">
-                    <p class="calvert"><span class="bold">In which local authority do you live?</span></p>
+                    <p class="calvert"><span class="bold">Where do you live? (Which local authority?)</span></p>
                     <br>
                     <b-form-select @change="changeLA" v-model="localAuthority" :options="authorities">Please select an
                         option
@@ -105,7 +105,6 @@
                     {value: 'Other', text: 'Other'}
                 ],
                 age: '',
-                ageError: false,
                 ages: ['16 or under', '17-24', '25-34', '35-44', '45-54', '55-65', '66-75', '76+'],
                 otherLA: false,
                 displayError: false
