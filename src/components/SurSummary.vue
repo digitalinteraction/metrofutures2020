@@ -9,46 +9,46 @@
         </b-col>
 
             <b-col class="col-lg-3 col-12">
-                <p class="calvert"><span class="bold">What is your age?*</span></p>
-                <b-form-select v-model="age" :options="ages">Please select an
+                <p class="calvert question"><span class="bold">What is your age?*</span></p>
+                <b-form-select @change="changeAge" v-model="age" :options="ages">Please select an
                     option
                 </b-form-select>
 
-                <p class="calvert"><span class="bold">What is your gender?</span></p>
+                <p class="calvert question"><span class="bold">What is your gender?</span></p>
                 <b-form-select v-model="gender" :options="genders">Please select an
                     option
                 </b-form-select>
 
-                <p class="calvert"><span class="bold">What is your ethnicity?</span></p>
+                <p class="calvert question"><span class="bold">What is your ethnicity?</span></p>
                 <b-form-select v-model="ethnicity" :options="ethnicities">Please select an
                     option
                 </b-form-select>
 
-                <p class="calvert"><span class="bold">Do you have a disability?</span></p>
+                <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
                 <b-form-group>
                     <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
                     <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
                 </b-form-group>
 
                 <div v-if="dis === 'yes'">
-                <p class="calvert"><span class="bold">If yes, what?</span></p>
+                <p class="calvert "><span class="bold">If yes, what?</span></p>
                 <b-form-select  v-model="disability" :options="disabilities">Please select an
                     option
                 </b-form-select>
 </div>
-                <p class="calvert"><span class="bold">What is the main purpose of your journey?</span></p>
+                <p class="calvert question"><span class="bold">What is the main purpose of your journey?</span></p>
                 <b-form-select v-model="purpose" :options="purposes">Please select an
                     option
                 </b-form-select>
                 <br>
-                <p class="calvert"><span class="bold">How often do you use the Metro?</span></p>
+                <p class="calvert question"><span class="bold">How often do you use the Metro?</span></p>
 
                 <b-form-select v-model="frequency" :options="frequencies">Please select an
                     option
                 </b-form-select>
                 <p>*required</p>
                 <b-row>
-                    <b-col>
+                    <b-col class="submitBtn">
                         <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
                         <p v-if="ageError === true">Please select an age range</p>
                     </b-col>
@@ -198,6 +198,9 @@ export default {
           this.showQuestions = false;
       }
 
+      },
+      changeAge() {
+      this.ageError = false;
       }
   },
  beforeMount() {
@@ -249,6 +252,9 @@ font-size: small;
   width: 100%;
 }
 
+.question {
+    padding-top: 2em;
+}
 
 .borderRight {
   border-right: 1px #DDDDDD solid;
@@ -257,12 +263,16 @@ font-size: small;
 
 .option {
   padding: 1em;
+    cursor: pointer;
 }
 #optionsAsterix {
   font-size: small;
 padding-top: 1em;
 
 }
+
+.submitBtn {margin-bottom: 1em;}
+
 
 #option1 {
   padding-right: 0;
