@@ -2,8 +2,50 @@
 
     <b-container fluid>
 
-<!--        todo get front metro image in day from API-->
-        <b-img src="imageURL"></b-img>
+                <b-img fluid v-if="!showLAQuestion" src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
+
+
+        <b-row v-if="showLAQuestion">
+
+            <b-col class="largeImgColumn col-lg-9 col-12">
+            <!--                Local authority question image-->
+            <b-img fluid src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
+            </b-col>
+
+            <!--            LA q-->
+            <b-col class="col-lg-3 col-12">
+                <b-row id="localAuthority">
+                    <p class="calvert"><span class="bold">In which local authority do you live?</span></p>
+                    <br>
+                    <b-form-select @change="changeLA" v-model="localAuthority" :options="authorities">Please select an
+                        option
+                    </b-form-select>
+                    <div v-if="otherLA" id="LATextDiv">
+                        <textarea
+                                id="textarea"
+                                v-model="LAOtherText"
+                                placeholder="Enter your local authority..."
+                                rows="2" class="form-control"
+
+                        ></textarea>
+                    </div>
+                    <p class="calvert question"><span class="bold">How old are you?</span></p>
+                    <b-form-select @change="changeAge" v-model="age" :options="ages">Please select an
+                        option
+                    </b-form-select>
+                    <b-button id="LAButton" block variant="outline-secondary" @click="submitLA">Continue</b-button>
+                </b-row>
+                <b-row v-if="displayError">
+                    <b-col>
+                        <p>Please select an option for both questions to continue</p>
+                    </b-col>
+                </b-row>
+            </b-col>
+
+            </b-row>
+
+
+
         <!--    modal-->
 
         <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
@@ -49,7 +91,24 @@
         data() {
             return {
                 tick: false,
-                imageURL:''
+                imageURL:'',
+                showLAQuestion: false,
+                localAuthority: '',
+                authorities: [
+                    {value: 'CountyDurham', text: 'Country Durham'},
+                    {value: 'Gateshead', text: 'Gateshead'},
+                    {value: 'Newcastle', text: 'Newcastle'},
+                    {value: 'NorthTyneside', text: 'North Tyneside'},
+                    {value: 'Northumberland', text: 'Northumberland'},
+                    {value: 'SouthTyneside', text: 'South Tyneside'},
+                    {value: 'OtherNorthEast', text: 'Other North East'},
+                    {value: 'Other', text: 'Other'}
+                ],
+                age: '',
+                ageError: false,
+                ages: ['16 or under', '17-24', '25-34', '35-44', '45-54', '55-65', '66-75', '76+'],
+                otherLA: false,
+                displayError: false
             }
         },
         mounted() {
@@ -64,10 +123,58 @@
         methods: {
             confirmPrivacy () {
                 this.acknowledgePrivacy();
-                this.$emit('finishedWelcome');
+                this.$bvModal.hide('privacyNoticeModal');
+                this.showLAQuestion = true;
             },
+            submitLA() {
+                if (!this.localAuthority || !this.age) {
+                    // no answer for one or both fields
+                    this.displayError = true;
+                } else {
+
+                    //if answered 'other' and user has entered free text send that instead
+                    if (this.localAuthority === 'Other' && this.LAOtherText) {
+                        if (this.LAOtherText.length > 0) {
+                            this.localAuthority = this.LAOtherText;
+                        }
+                    }
+
+                    let payload = {
+                        0: this.localAuthority,
+                        1: this.age,
+                    }
+
+                    this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
+                        headers: {
+                            Cookie: this.$cookies.get('mfsid')
+                        },
+                        params: payload
+                    })
+                        .then(response => {
+                            console.log(response);
+                        })
+                        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+                    this.$emit('finishedWelcome');
+
+                }
+            },
+            changeLA() {
+                // if other is selected display free text box
+                if (this.localAuthority === 'Other') {
+                    this.otherLA = true;
+                }
+                if (this.localAuthority && this.age) {
+                    this.displayError = false
+                }
+            },
+            changeAge() {
+                if (this.localAuthority && this.age) {
+                    this.displayError = false
+                }
+            },
+
             fetchFrontImage() {
-                // todo or hard code the digital ocean address for this
                 const payload = {
                     cam: 13,
                     o1: 1,
@@ -85,10 +192,12 @@
                     params: payload
                 })
                     .then(response => {
-                        console.log(response);
-                        this.imageURL = response.data;
+                        this.frontImg = response.data;
                     })
                     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+
+
             },
             ...mapMutations([
                 'acknowledgePrivacy'

@@ -8,12 +8,10 @@
                 <!--                todo stadler logo over image-->
                 <!--                todo day and night option-->
 
-                <!--                 todo display front of train image here-->
-                <!--                Local authority question image-->
-                <b-img v-if="!survey" fluid v-bind:src="frontImg"></b-img>
+
 
                 <!--                Survey questions changing images -->
-                <b-img v-if="survey" fluid  v-bind:src="image"></b-img>
+                <b-img fluid  v-bind:src="image"></b-img>
 
                 <!--               day/night switch-->
                 <b-form-group id="dayNightToggle">
@@ -35,36 +33,11 @@
 
             <!--            interaction column-->
 
-            <!--            LA q-->
-            <b-col v-if="!survey" class="col-lg-3 col-12">
-                <b-row id="localAuthority">
-                    <p class="calvert"><span class="bold">In which local authority do you live?</span></p>
-                    <br>
-                    <b-form-select @change="changeLA" v-model="localAuthority" :options="authorities">Please select an
-                        option
-                    </b-form-select>
-                    <div v-if="otherLA" id="LATextDiv">
-                        <textarea
-                                id="textarea"
-                                v-model="LAOtherText"
-                                placeholder="Enter your local authority..."
-                                rows="2" class="form-control"
-
-                        ></textarea>
-                    </div>
-                    <b-button id="LAButton" block variant="outline-secondary" @click="submitLA">Continue</b-button>
-                </b-row>
-                <b-row v-if="displayError">
-                    <b-col>
-                        <p>Please select an option to continue</p>
-                    </b-col>
-                </b-row>
-            </b-col>
 
             <!--            survey-->
-            <b-col v-if="survey" class="col-lg-3 col-12">
-                <b-row>
-                    <!--                    todo either hide back on 1st question or go back to local authority-->
+            <b-col class="col-lg-3 col-12">
+                <b-row v-if="this.index !== 0">
+
                     <b-col>
                         <p id="backOption" @click="previousQuestion">
                             <b-icon-chevron-left></b-icon-chevron-left>
@@ -143,19 +116,9 @@
                 selected: -1,
                 surveyText: "",
                 displayError: false,
-                image: '', //placeholder to fill with image from API
+                image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', //image from CDN
                 survey: false, //flag to show LA question is complete so survey can begin,
-                localAuthority: '',
-                authorities: [
-                    {value: 'CountyDurham', text: 'Country Durham'},
-                    {value: 'Gateshead', text: 'Gateshead'},
-                    {value: 'Newcastle', text: 'Newcastle'},
-                    {value: 'NorthTyneside', text: 'North Tyneside'},
-                    {value: 'Northumberland', text: 'Northumberland'},
-                    {value: 'SouthTyneside', text: 'South Tyneside'},
-                    {value: 'OtherNorthEast', text: 'Other North East'},
-                    {value: 'Other', text: 'Other'}
-                ],
+
                 otherLA: false, // flag to show user has selected free text option
                 LAOtherText: '',
                 lighting: '',
@@ -165,12 +128,25 @@
         },
         watch: {
             lighting: function() {
+                // // change what URL is used for image accordingly
+                // if (this.lighting === 1) {
+                //     this.image = this.imageDay;
+                // } else if (this.lighting === 2) {
+                //     this.image = this.imageNight;
+                // }
                 this.fetchImage();
             },
-            // todo this is currently not loading the first image of the survey
-            index: function() {
-                this.fetchImage();
-            }
+             index: function() {
+                 // this.imageDay = this.nextImageURLDay;
+                 // this.imageNight = this.nextImageURLNight;
+                 // if (this.lighting === 1) {
+                 //     this.image = this.imageDay;
+                 // } else if (this.lighting === 2) {
+                 //     this.image = this.imageNight;
+                 // }
+
+                 this.fetchImage();
+             }
         },
         computed: {
             ...mapGetters([
@@ -221,50 +197,16 @@
                     this.displayError = false;
 
 
+
+
                 } else {
                     //you haven't answered
                     console.log('error');
                     this.displayError = true;
                 }
             },
-            submitLA() {
-                // todo at present user can select other and not give any extra text - check what the desired behaviour is here
-                if (!this.localAuthority) {
-                    // no answer
 
-                    this.displayError = true;
-                } else {
 
-                    //if answered 'other' and user has entered free text send that instead
-                    if (this.localAuthority === 'Other' && this.LAOtherText.length > 0) {
-                        this.localAuthority = this.LAOtherText;
-                    }
-
-                    let payload = {
-                        0: this.localAuthority
-                    }
-
-                    this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
-                        headers: {
-                            Cookie: this.$cookies.get('mfsid')
-                        },
-                        params: payload
-                    })
-                        .then(response => {
-                            console.log(response);
-                        })
-                        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-                    this.survey = true;
-                    this.incrementIndex;
-                }
-            },
-            changeLA() {
-                // if other is selected display free text box
-                if (this.localAuthority === 'Other') {
-                    this.otherLA = true;
-                }
-            },
             previousQuestion() {
 
                 this.reduceIndex();
@@ -275,6 +217,7 @@
             selectOption(x) {
                 this.selected = x
                 this.displayError = false;
+                // this.generateURLForNextImage();
             },
 
             resetSelected() {
@@ -291,10 +234,86 @@
                 // console.log('returning class for', x, selectClass)
                 return selectClass
             },
-            async fetchImage() {
-                console.log('fetch image for index: ' + this.index);
-
+            generateURLForNextImage() {
                 const answers = this.getConfigAnswers;
+
+                // get any answers stored and replace any undefined with 1
+                let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
+                let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
+                let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
+                let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
+                let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
+                let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
+
+
+
+                //camera angle
+                let cam = 1;
+                if (this.index+1 === 1) {
+                    cam = 2;
+                } else if (this.index+1 === 2) {
+                    // pole design
+                    cam = 3;
+                } else if (this.index+1 === 3) {
+                    // bike stand
+                    cam = 4;
+                } else if (this.index+1 === 4 || this.index+1 === 5) {
+                    // priority seats
+                    cam = 14;
+                }
+
+                const day = {
+                    cam,
+                    o1,
+                    o2,
+                    o3,
+                    o4,
+                    o5,
+                    o6,
+                    o7: 1,
+                }
+
+                const night = {
+                    cam,
+                    o1,
+                    o2,
+                    o3,
+                    o4,
+                    o5,
+                    o6,
+                    o7: 2,
+                }
+                // line up day time URL
+                 this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+                        headers: {
+                            Cookie: this.$cookies.get('mfsid')
+                        },
+                        params: day
+                    })
+                        .then(response => {
+
+                            this.nextImageURLDay = response.data;
+                        })
+                        .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
+
+                // line up night time URL
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+                    headers: {
+                        Cookie: this.$cookies.get('mfsid')
+                    },
+                    params: night
+                })
+                    .then(response => {
+
+                        this.nextImageURLNight = response.data;
+                    })
+                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
+                console.log(this.nextImageURLDay);
+                console.log(this.nextImageURLNight);
+            },
+
+            async fetchImage() {
+                 const answers = this.getConfigAnswers;
 
                 // get any answers stored and replace any undefined with 1
                 let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
@@ -351,30 +370,7 @@
             }
         },
         mounted() {
-            // fetch image for local authority image
-            const payload = {
-                cam: 13,
-                o1: 1,
-                o2: 1,
-                o3: 1,
-                o4: 1,
-                o5: 1,
-                o6: 1,
-                o7: 1,
-            }
-        this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-            headers: {
-                Cookie: this.$cookies.get('mfsid')
-            },
-            params: payload
-        })
-            .then(response => {
-                this.frontImg = response.data;
-            })
-            .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-
-    }
+     }
     }
 
 </script>

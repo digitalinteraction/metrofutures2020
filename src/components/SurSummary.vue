@@ -9,10 +9,7 @@
         </b-col>
 
             <b-col class="col-lg-3 col-12">
-                <p class="calvert question"><span class="bold">What is your age?*</span></p>
-                <b-form-select @change="changeAge" v-model="age" :options="ages">Please select an
-                    option
-                </b-form-select>
+
 
                 <p class="calvert question"><span class="bold">What is your gender?</span></p>
                 <b-form-select v-model="gender" :options="genders">Please select an
@@ -134,9 +131,6 @@ export default {
       images: [], // list of images to load into carousel
     showQuestions: true, // participant q's or slideshow
       viewFeatures: false,
-        age: '',
-        ageError: false,
-        ages: ['16 or under', '17-24', '25-34', '35-44', '45-54', '55-65', '66-75', '76+'],
         gender: '',
         genders: ['Male', 'Female', 'Other/ Prefer not to self-describe', 'Prefer not to say'],
         ethnicity: '',
@@ -172,12 +166,8 @@ export default {
       },
       submitInfo() {
       console.log(this.age.length);
-      if (this.age.length === 0) {
-          this.ageError = true;
-      } else {
           // submit answers
           let payload = {
-              1: this.age,
               2:this.gender,
               3: this.ethnicity,
               4: this.disability,
@@ -196,11 +186,7 @@ export default {
               })
               .catch(error => error.response ? console.log(error.response.data) : console.log(error))
           this.showQuestions = false;
-      }
 
-      },
-      changeAge() {
-      this.ageError = false;
       }
   },
  beforeMount() {
