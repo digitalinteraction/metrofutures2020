@@ -69,7 +69,7 @@ Vue.use(VueRouter)
     component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue')
   },
   {
-    path: '/experience',
+    path: '/journeys',
     name: 'Interactive Documentary',
     component: () => import(/* webpackChunkName: "idoc" */ '../views/InteractiveDocumentary.vue')
   },

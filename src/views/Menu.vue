@@ -66,7 +66,7 @@
                 </b-col>
 
                 <!--                --------------- Your Journeys option-->
-                <b-col @click="goTo('/experience')"
+                <b-col @click="goTo('/journeys')"
                        @mouseover="hoverYourJourney = true"
                        @mouseleave="hoverYourJourney = false"
                        class="menuCol">
