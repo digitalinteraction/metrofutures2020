@@ -20,13 +20,13 @@
       </b-row>
 
       <b-row class="surveyBreadcrumb" align-v="center">
-          <b-col id="breadcrumb0" v-bind:class="checkSelected(0)" class="firstMenuCol breadItem" v-on:click="clickBreadcrumb(0)" >Floor, seats and glass partitions</b-col>
-          <b-col id="breadcrumb1" v-bind:class="checkSelected(1)" class="breadItem" v-on:click="clickBreadcrumb(1)">Doors, grab poles and floor markings</b-col>
-          <b-col id="breadcrumb3" v-bind:class="checkSelected(2)" class="breadItem" v-on:click="clickBreadcrumb(2)">Centre grab poles</b-col>
-          <b-col id="breadcrumb4" v-bind:class="checkSelected(3)" class="breadItem" v-on:click="clickBreadcrumb(3)">Bike racks</b-col>
-          <b-col id="breadcrumb5" v-bind:class="checkSelected(4)" class="breadItem" v-on:click="clickBreadcrumb(4)">Seats</b-col>
-          <b-col id="breadcrumb6" v-bind:class="checkSelected(5)" class="breadItem" v-on:click="clickBreadcrumb(5)">Lower side wall</b-col>
-          <b-col id="breadcrumb7" v-bind:class="checkSelected(6)" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb(6)">Summary</b-col>
+          <b-col id="breadcrumb0" v-bind:class="[checkSelected(0), checkCompleted(0)]" class="firstMenuCol breadItem" v-on:click="clickBreadcrumb(0)" >Floor, seats and glass partitions</b-col>
+          <b-col id="breadcrumb1" v-bind:class="[checkSelected(1), checkCompleted(1)]" class="breadItem" v-on:click="clickBreadcrumb(1)">Doors, grab poles and floor markings</b-col>
+          <b-col id="breadcrumb3" v-bind:class="[checkSelected(2), checkCompleted(2)]" class="breadItem" v-on:click="clickBreadcrumb(2)">Centre grab poles</b-col>
+          <b-col id="breadcrumb4" v-bind:class="[checkSelected(3), checkCompleted(3)]" class="breadItem" v-on:click="clickBreadcrumb(3)">Bike racks</b-col>
+          <b-col id="breadcrumb5" v-bind:class="[checkSelected(4), checkCompleted(4)]" class="breadItem" v-on:click="clickBreadcrumb(4)">Seats</b-col>
+          <b-col id="breadcrumb6" v-bind:class="[checkSelected(5), checkCompleted(5)]" class="breadItem" v-on:click="clickBreadcrumb(5)">Lower side wall</b-col>
+          <b-col id="breadcrumb7" v-bind:class="[checkSelected(6), checkCompleted(6)]" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb(6)">Summary</b-col>
       </b-row>
 
         <b-row v-if="welcomeScreen">
@@ -68,7 +68,6 @@ export default {
   data() {
     return {
       selections: [],
-        // todo once welcome screen works make this true on page load
         welcomeScreen: true
     }
   },
@@ -96,8 +95,18 @@ export default {
             //highlight summary
             return 'breadSelected';
         }
-          if (this.index === breadcrumbIndex) {
+        // don't highlight first breadcrumb until welcome screen is completed
+          else if (breadcrumbIndex === 0 && this.welcomeScreen === false && this.index === breadcrumbIndex) {
+            return 'breadSelected';
+        } else if (breadcrumbIndex !== 0 && this.index === breadcrumbIndex) {
               return 'breadSelected';
+          }
+      },
+      checkCompleted: function(breadcrumbIndex) {
+        const answers = this.getConfigAnswers;
+        // if answer is stored, apply different class to breadcrumb item
+          if (answers[breadcrumbIndex] !== undefined) {
+              return 'qAnswered';
           }
       },
     // next: function() {
@@ -182,7 +191,7 @@ export default {
 .breadItem {
   font-family: "Open Sans", sans-serif;
     padding: 1em;
-    cursor: pointer;
+    color: grey;
 }
 
 .personasLink {
@@ -193,7 +202,14 @@ export default {
 .breadItem.breadSelected {
   /*  todo remove space between yellow line and bottom edge of grey bar*/
   border-bottom: 2px solid #FEC600;
-  color: #FEC600;
+  color: black;
+    font-weight: bold;
+}
+
+/*class to add to breadcrumb items to show question has been completed so is now clickable*/
+.qAnswered {
+    color: black;
+    cursor: pointer;
 }
 
 

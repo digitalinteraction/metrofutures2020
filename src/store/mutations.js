@@ -19,6 +19,7 @@ export default {
     state.index = newValue;
   },
   addConfigAnswer(state, answer) {
-    state.configAnswers[answer.q_id] = answer.option;
+    // console.log('save answer ' + answer.qid + answer.option )
+    state.configAnswers[answer.qid] = answer.resp;
   }
 }
