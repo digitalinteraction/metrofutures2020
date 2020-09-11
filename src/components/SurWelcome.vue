@@ -6,9 +6,10 @@
         <b-img src="imageURL"></b-img>
         <!--    modal-->
 
-        <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Privacy Notice">
-
-            <div class="privacy-text">
+        <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
+<p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media. </p>
+            <br>
+            <div >
                 <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project. </p>
 
                 <p>We collect the following data about you:</p>
@@ -32,9 +33,6 @@
 
         </b-modal>
 
-        <b-modal class="text-center calvert" centered hide-footer=true id="welcomeModal" title="Add the Finishing Touches!" @hide="closeWelcomeModal()">
-            <p class="text-center">Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media. </p>
-        </b-modal>
     </b-container>
 
 
@@ -54,16 +52,29 @@
                 imageURL:''
             }
         },
-        watch: {
-            imageURL: function() {
-                // fetch image for local authority image
+        mounted() {
+            this.$bvModal.show('privacyNoticeModal');
+            this.fetchFrontImage();
+        },
+        computed: {
+            ...mapGetters([
+                'privacyNotice'
+            ])
+        },
+        methods: {
+            confirmPrivacy () {
+                this.acknowledgePrivacy();
+                this.$emit('finishedWelcome');
+            },
+            fetchFrontImage() {
+                // todo or hard code the digital ocean address for this
                 const payload = {
                     cam: 13,
                     o1: 1,
                     o2: 1,
                     o3: 1,
                     o4: 1,
-                    o5: "ON",
+                    o5: 1,
                     o6: 1,
                     o7: 1,
                 }
@@ -75,37 +86,13 @@
                 })
                     .then(response => {
                         console.log(response);
-                        this.frontImg = response.data;
+                        this.imageURL = response.data;
                     })
                     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-            }
-
-        },
-        mounted() {
-            this.$bvModal.show('privacyNoticeModal');
-
-
-        },
-        computed: {
-            ...mapGetters([
-                'privacyNotice'
-            ])
-        },
-        methods: {
-            confirmPrivacy () {
-                this.acknowledgePrivacy();
-                this.$bvModal.hide('privacyNoticeModal');
-                // open welcome modal
-                this.$bvModal.show('welcomeModal');
             },
             ...mapMutations([
                 'acknowledgePrivacy'
-            ]),
-            closeWelcomeModal() {
-                // survey page listens for this event to show that the survey questions can begin
-                this.$emit('finishedWelcome');
-            }
+            ])
         }
     }
 </script>
