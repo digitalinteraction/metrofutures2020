@@ -5,6 +5,11 @@
       <span v-show="visible">
         <span class="hotspot_title">{{ data.title }}</span>
         <span class="hotspot_text">{{ data.text }}</span>
+        
+        <span v-if="data.likert">Likert</span>
+        <span v-if="data.link">Link</span>
+        <span v-if="data.visual">Visual</span>
+
         <b-form inline>
           <label for="hotspot_input"></label>
           <b-form-input
@@ -12,7 +17,7 @@
             v-model="hotspotText"
             placeholder="Enter something..."
           ></b-form-input>
-          <b-button variant="primary">Send</b-button>
+          <b-button variant="primary" :disabled="!valid()" v-on:click="submit()">Send</b-button>
         </b-form>
       </span>
     </div>
@@ -34,8 +39,15 @@ export default {
   methods: {
     toggle() {
       this.visible = !this.visible
+    },
+    valid() {
+      if (this.hotspotText.length === 0) { return false} 
+      else { return true }
+    },
+    submit() {
+      console.log(`Looking at scene ${this.$parent.selectedId}, hotspot ${this.data.title}. Submitting content: ${this.hotspotText}`)
     }
-  }
+  },
 
 
 }

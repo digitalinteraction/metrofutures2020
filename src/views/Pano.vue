@@ -427,14 +427,8 @@
       getSelectedName() {
         return this.pano_data.scenes[this.selectedId].name
       },
-      getAllHotspotData() {
-        return this.pano_data.scenes
-      },
       getHotspotData(sceneId, index) {
         return this.pano_data.scenes[sceneId].infoHotspots[index]
-      },
-      getHotspotName(sceneId, index){
-        return "hotspot"+sceneId+"_"+index
       },
       fetchHotspot(sceneId, index) {
         // From the lookup table, get the ref name (in the DOM) of the specific hotspot
