@@ -1,19 +1,78 @@
 <template>
     <b-container fluid>
-    <b-carousel
-            id="carousel-1"
-            :interval="0"
-            controls
-            indicators
-            background="#ababab"
-            img-width="1024"
-            img-height="480"
-            style="text-shadow: 1px 1px 2px #333;"
-    >
-<!--        todo load images into slides here-->
-        <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
-      <b-carousel-slide src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_2_1.jpg"></b-carousel-slide>
-    </b-carousel>
+
+        <div v-if="showQuestions">
+<div class="row">
+        <b-col  class="largeImgColumn col-lg-8 col-12">
+<!--            todo this should be first image from carousel-->
+            <b-img fluid src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
+        </b-col>
+
+            <b-col class="col-lg-3 col-12">
+                <p class="calvert"><span class="bold">What is your age?*</span></p>
+                <b-form-select v-model="age" :options="ages">Please select an
+                    option
+                </b-form-select>
+
+                <p class="calvert"><span class="bold">What is your gender?</span></p>
+                <b-form-select v-model="gender" :options="genders">Please select an
+                    option
+                </b-form-select>
+
+                <p class="calvert"><span class="bold">What is your ethnicity?</span></p>
+                <b-form-select v-model="ethnicity" :options="ethnicities">Please select an
+                    option
+                </b-form-select>
+
+                <p class="calvert"><span class="bold">Do you have a disability?</span></p>
+                <b-form-group>
+                    <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
+                    <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
+                </b-form-group>
+
+                <div v-if="dis === 'yes'">
+                <p class="calvert"><span class="bold">If yes, what?</span></p>
+                <b-form-select  v-model="disability" :options="disabilities">Please select an
+                    option
+                </b-form-select>
+</div>
+                <p class="calvert"><span class="bold">What is the main purpose of your journey?</span></p>
+                <b-form-select v-model="purpose" :options="purposes">Please select an
+                    option
+                </b-form-select>
+                <br>
+                <p class="calvert"><span class="bold">How often do you use the Metro?</span></p>
+
+                <b-form-select v-model="frequency" :options="frequencies">Please select an
+                    option
+                </b-form-select>
+                <p>*required</p>
+                <b-row>
+                    <b-col>
+                        <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
+                        <p v-if="ageError === true">Please select an age range</p>
+                    </b-col>
+                </b-row>
+            </b-col>
+</div>
+        </div>
+
+        <div v-if="!showQuestions">
+            <b-carousel
+                    id="carousel-1"
+                    :interval="0"
+                    controls
+                    indicators
+                    background="#ababab"
+                    img-width="1024"
+                    img-height="480"
+                    style="text-shadow: 1px 1px 2px #333;"
+            >
+                <!--        todo load images into slides here-->
+                <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
+                <b-carousel-slide src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_2_1.jpg"></b-carousel-slide>
+            </b-carousel>
+        </div>
 
     <b-row id="optionsRow">
         {{images[3]}}
@@ -73,8 +132,22 @@ export default {
   data() {
     return {
       images: [], // list of images to load into carousel
-
+    showQuestions: true, // participant q's or slideshow
       viewFeatures: false,
+        age: '',
+        ageError: false,
+        ages: ['16 or under', '17-24', '25-34', '35-44', '45-54', '55-65', '66-75', '76+'],
+        gender: '',
+        genders: ['Male', 'Female', 'Other/ Prefer not to self-describe', 'Prefer not to say'],
+        ethnicity: '',
+        ethnicities: ['White', 'Black/Black British', 'Asian/Asian British', 'Chinese/Thai/Japanese', 'Mixed', 'Other'],
+        dis: 'no', // yes/no asnwer to trigger options
+        disability: '',
+        disabilities: ['Visual impairment', 'Mobility impairment', 'Hearing impairment', 'Cognitive impairment', 'Other'],
+        purpose: '',
+        purposes: ['Work', 'Leisure', 'Shopping', 'Visiting friends/relative', 'Other'],
+        frequency: '',
+        frequencies: ['5+ days a week', '3-4 days a week', '1-2 days a week', '1-2 times a month', 'Now and then', 'Rarely/never']
 
     }
   },
@@ -96,6 +169,35 @@ export default {
       },
       onSlideEnd() {
           this.sliding = false
+      },
+      submitInfo() {
+      console.log(this.age.length);
+      if (this.age.length === 0) {
+          this.ageError = true;
+      } else {
+          // submit answers
+          let payload = {
+              1: this.age,
+              2:this.gender,
+              3: this.ethnicity,
+              4: this.disability,
+              5: this.purpose,
+              6: this.frequency
+          }
+          this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
+              headers: {
+                  Cookie: this.$cookies.get('mfsid')
+              },
+              params: payload
+          })
+              .then(response => {
+                  console.log(response);
+
+              })
+              .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+          this.showQuestions = false;
+      }
+
       }
   },
  beforeMount() {

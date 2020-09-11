@@ -10,7 +10,7 @@
 
                 <!--                 todo display front of train image here-->
                 <!--                Local authority question image-->
-                <b-img v-if="!survey" fluid v-bind:src="image"></b-img>
+                <b-img v-if="!survey" fluid v-bind:src="frontImg"></b-img>
 
                 <!--                Survey questions changing images -->
                 <b-img v-if="survey" fluid  v-bind:src="image"></b-img>
@@ -244,7 +244,7 @@
                         0: this.localAuthority
                     }
 
-                    this.axios.post(`${process.env.VUE_APP_API_URL}/api/participant`, {
+                    this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
                         headers: {
                             Cookie: this.$cookies.get('mfsid')
                         },
