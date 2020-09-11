@@ -6,15 +6,27 @@
   <b-row class="pano_frame">
     <b-col >
       <div ref="pano" id="pano"></div>
-      <div class="hotspot" v-show="false">
-          <span id="title">Livery</span>
-          <span id="text">Tyne and Wear Metro has a completely new livery!<br>[Free text comment]</span>
-      </div>
+      
     </b-col>
   </b-row>
 
   <b-row>
     <b-col>
+      <div ref="hotspot1" class="hotspot" v-on:click="toggleHotspot()">
+          <img src="/favicon.ico" alt="">
+          <span v-show="showHotspot">
+            <span class="hotspot_title">Livery</span>
+            <span class="hotspot_text">Tyne and Wear Metro has a completely new livery!<br>[Free text comment]</span>
+          </span>
+      </div>
+      <div ref="hotspot2" class="hotspot">
+          <img src="/favicon.ico" alt="">
+          <span hidden>
+            <span class="hotspot_title">Lights</span>
+            <span class="hotspot_text">Your new Metro features a state-of-the-art LED head and tail light system, and a glowing "M".<br>[Free text comment]</span>
+          </span>
+      </div>
+      <img src="/favicon.ico" alt="" ref="imghotspot">
       <!-- <div>[Map of train]</div> -->
       <!-- <div>Current view: {{ getSelectedName() }}</div> -->
       <b-dropdown text="Select View">
@@ -55,7 +67,8 @@
         people: false,
         selectedId: 0,
         tileUrl: process.env.VUE_APP_TILE_URL_TEST+"{z}/{f}/{y}/{x}.jpg",
-        previewUrl: process.env.VUE_APP_TILE_URL_TEST+"preview.jpg"
+        previewUrl: process.env.VUE_APP_TILE_URL_TEST+"preview.jpg",
+        showHotspot: false
       }
     },
     computed: {
@@ -127,6 +140,37 @@
           geometry: geometry,
           view: view
         });
+
+        // Apply hotspots manually for now to scene 0
+        if(sceneId === 0) {
+          console.log("generating hotspots for scence", sceneId)
+          let hotspotEl = this.$refs.hotspot1
+          let position = {
+            "yaw": -0.14023522364884577,
+            "pitch": 0.11475964612484191
+          }
+          sceneView.hotspotContainer().createHotspot(hotspotEl, position)
+
+          let hotspot2El = this.$refs.hotspot2
+          let position2 = {
+            "yaw": -0.8358385796154355,
+            "pitch": 0.30236171550205526
+          }
+          sceneView.hotspotContainer().createHotspot(hotspot2El, position2)
+
+          let hotspot3El = this.$refs.imghotspot
+          hotspot3El.classList.add('hotspot');
+          // hotspot3El.addEventListener('click', function() {
+            //   switchScene(findSceneById(hotspot.target));
+          // });
+          let position3 = {
+            "yaw": -1.0892431152132307,
+            "pitch": 0.43463794138405376
+          }
+          sceneView.hotspotContainer().createHotspot(hotspot3El, position3)
+        }
+        
+
         this.panoScenes[sceneId].scene = sceneView;
 
       },
@@ -164,7 +208,11 @@
         return this.pano_data.scenes[this.selectedId].name
       },
       togglePeople() {
-        this.people != this.people;
+        this.people = !this.people;
+      },
+      toggleHotspot() {
+        console.log("toggling hotspot")
+        this.showHotspot = !this.showHotspot;
       },
       // Returns even, not sure if I'll use it
       even: function(array) {
@@ -199,6 +247,18 @@
     height: 75vh;
     left: 0;
     overflow: hidden;
+  }
+
+  .hotspot {
+    background-color: gray;
+  }
+
+  .hotspot_title {
+    font-weight:bold;
+    display: inline-block
+  }
+
+  .hotspot_text {
   }
 
 </style>
