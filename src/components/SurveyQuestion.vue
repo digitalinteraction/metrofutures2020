@@ -36,8 +36,8 @@
 
             <!--            survey-->
             <b-col class="col-lg-3 col-12">
-                <b-row>
-                    <!--                    todo either hide back on 1st question or go back to local authority-->
+                <b-row v-if="this.index !== 0">
+
                     <b-col>
                         <p id="backOption" @click="previousQuestion">
                             <b-icon-chevron-left></b-icon-chevron-left>

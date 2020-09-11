@@ -29,11 +29,15 @@
 
                         ></textarea>
                     </div>
+                    <p class="calvert question"><span class="bold">How old are you?</span></p>
+                    <b-form-select @change="changeAge" v-model="age" :options="ages">Please select an
+                        option
+                    </b-form-select>
                     <b-button id="LAButton" block variant="outline-secondary" @click="submitLA">Continue</b-button>
                 </b-row>
                 <b-row v-if="displayError">
                     <b-col>
-                        <p>Please select an option to continue</p>
+                        <p>Please select an option for both questions to continue</p>
                     </b-col>
                 </b-row>
             </b-col>
@@ -100,6 +104,11 @@
                     {value: 'OtherNorthEast', text: 'Other North East'},
                     {value: 'Other', text: 'Other'}
                 ],
+                age: '',
+                ageError: false,
+                ages: ['16 or under', '17-24', '25-34', '35-44', '45-54', '55-65', '66-75', '76+'],
+                otherLA: false,
+                displayError: false
             }
         },
         mounted() {
@@ -118,20 +127,21 @@
                 this.showLAQuestion = true;
             },
             submitLA() {
-                // todo at present user can select other and not give any extra text - check what the desired behaviour is here
-                if (!this.localAuthority) {
-                    // no answer
-
+                if (!this.localAuthority || !this.age) {
+                    // no answer for one or both fields
                     this.displayError = true;
                 } else {
 
                     //if answered 'other' and user has entered free text send that instead
-                    if (this.localAuthority === 'Other' && this.LAOtherText.length > 0) {
-                        this.localAuthority = this.LAOtherText;
+                    if (this.localAuthority === 'Other' && this.LAOtherText) {
+                        if (this.LAOtherText.length > 0) {
+                            this.localAuthority = this.LAOtherText;
+                        }
                     }
 
                     let payload = {
-                        0: this.localAuthority
+                        0: this.localAuthority,
+                        1: this.age,
                     }
 
                     this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
@@ -153,6 +163,14 @@
                 // if other is selected display free text box
                 if (this.localAuthority === 'Other') {
                     this.otherLA = true;
+                }
+                if (this.localAuthority && this.age) {
+                    this.displayError = false
+                }
+            },
+            changeAge() {
+                if (this.localAuthority && this.age) {
+                    this.displayError = false
                 }
             },
 
