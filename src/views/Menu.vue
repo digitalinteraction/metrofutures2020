@@ -17,7 +17,7 @@
 <!--todo what happens instead of hover on touch screens?-->
             <b-row>
 <!--                --------------- Your Metro option-->
-                <b-col v-on:click="goTo('/pano')"
+                <b-col v-on:click="goTo('/explore')"
                        @mouseover="hoverYourMetro = true"
                        @mouseleave="hoverYourMetro = false"
                        class="menuCol">
@@ -42,7 +42,7 @@
                 </b-col>
 
                 <!--                --------------- Your Choice option-->
-                <b-col @click="goTo('/survey')"
+                <b-col @click="goTo('/configure')"
                        @mouseover="hoverYourChoice = true"
                        @mouseleave="hoverYourChoice = false"
                        class="menuCol">
@@ -66,7 +66,7 @@
                 </b-col>
 
                 <!--                --------------- Your Journeys option-->
-                <b-col @click="goTo('/idoc')"
+                <b-col @click="goTo('/experience')"
                        @mouseover="hoverYourJourney = true"
                        @mouseleave="hoverYourJourney = false"
                        class="menuCol">

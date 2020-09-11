@@ -1,11 +1,7 @@
 <template>
 <b-container class="pano">
-  <b-row>
-    <b-col class="header">
-      <h3>Your New Metro</h3>
-      <div>Logo goes here</div>
-    </b-col>
-  </b-row>
+  
+  <MainHeader title="Explore Your Metro"/>
 
   <b-row class="pano_frame">
     <b-col >
@@ -19,8 +15,8 @@
 
   <b-row>
     <b-col>
-      <div>[Map of train]</div>
-      <div>Current view: {{ getSelectedName() }}</div>
+      <!-- <div>[Map of train]</div> -->
+      <!-- <div>Current view: {{ getSelectedName() }}</div> -->
       <b-dropdown text="Select View">
         <b-dropdown-item 
           v-for=" (scene, index) in this.pano_data.scenes" 
@@ -31,6 +27,8 @@
           {{ scene.name }}
         </b-dropdown-item>
       </b-dropdown>
+    </b-col>
+    <b-col>
       <b-button v-on:click="togglePeople()">Toggle People</b-button>
     </b-col>
   </b-row>
@@ -42,9 +40,13 @@
   const marzipano = require("marzipano");
   // import {mapState, mapGetters, mapMutations} from 'vuex'
   import {mapState} from 'vuex'
+  import MainHeader from '@/components/MainHeader.vue'
 
   export default {
     name: "Pano",
+    components: {
+      MainHeader
+    },
     data() {
       return { 
         viewer: {},
@@ -189,12 +191,12 @@
   }
 
   .pano_frame {
-    height: 80vh;
+    height: 75vh;
     text-align: left;
   }
 
   #pano {
-    height: 80vh;
+    height: 75vh;
     left: 0;
     overflow: hidden;
   }
