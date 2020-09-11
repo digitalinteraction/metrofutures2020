@@ -2,8 +2,7 @@
 
     <b-container fluid>
 
-<!--        todo get front metro image in day from API-->
-        <b-img src="imageURL"></b-img>
+        <b-img src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
         <!--    modal-->
 
         <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
@@ -67,7 +66,6 @@
                 this.$emit('finishedWelcome');
             },
             fetchFrontImage() {
-                // todo or hard code the digital ocean address for this
                 const payload = {
                     cam: 13,
                     o1: 1,
@@ -85,10 +83,12 @@
                     params: payload
                 })
                     .then(response => {
-                        console.log(response);
-                        this.imageURL = response.data;
+                        this.frontImg = response.data;
                     })
                     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+
+
             },
             ...mapMutations([
                 'acknowledgePrivacy'

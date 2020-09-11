@@ -10,7 +10,7 @@
 
                 <!--                 todo display front of train image here-->
                 <!--                Local authority question image-->
-                <b-img v-if="!survey" fluid v-bind:src="frontImg"></b-img>
+                <b-img v-if="!survey" fluid src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
 
                 <!--                Survey questions changing images -->
                 <b-img v-if="survey" fluid  v-bind:src="image"></b-img>
@@ -143,7 +143,7 @@
                 selected: -1,
                 surveyText: "",
                 displayError: false,
-                image: '', //placeholder to fill with image from API
+                image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', //image from API
                 survey: false, //flag to show LA question is complete so survey can begin,
                 localAuthority: '',
                 authorities: [
@@ -351,30 +351,31 @@
             }
         },
         mounted() {
-            // fetch image for local authority image
-            const payload = {
-                cam: 13,
-                o1: 1,
-                o2: 1,
-                o3: 1,
-                o4: 1,
-                o5: 1,
-                o6: 1,
-                o7: 1,
-            }
-        this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-            headers: {
-                Cookie: this.$cookies.get('mfsid')
-            },
-            params: payload
-        })
-            .then(response => {
-                this.frontImg = response.data;
-            })
-            .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-
-    }
+    //         // fetch image for local authority image
+    //         const payload = {
+    //             cam: 1,
+    //             o1: 1,
+    //             o2: 1,
+    //             o3: 1,
+    //             o4: 1,
+    //             o5: 1,
+    //             o6: 1,
+    //             o7: 1,
+    //         }
+    //     this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+    //         headers: {
+    //             Cookie: this.$cookies.get('mfsid')
+    //         },
+    //         params: payload
+    //     })
+    //         .then(response => {
+    //             console.log(response.data);
+    //             this.frontImg = response.data;
+    //         })
+    //         .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+    //
+    //
+     }
     }
 
 </script>
