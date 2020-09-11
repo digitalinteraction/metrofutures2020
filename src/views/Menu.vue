@@ -49,7 +49,7 @@
 
                     <div v-if="!hoverYourChoice">
                     <b-img class="menuImg" src="../assets/yourChoiceTemp.png" fluid alt="Responsive image"></b-img>
-                    <h3 class="imgTitles">Your Choice</h3>
+                    <h3 class="imgTitles">Your Choices</h3>
                     </div>
 
                     <div v-if="hoverYourChoice" class="hoveredImg">
