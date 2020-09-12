@@ -117,6 +117,7 @@
                 surveyText: "",
                 displayError: false,
                 image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', //image from CDN
+                optionImages: [], // Store all our URLs here
                 survey: false, //flag to show LA question is complete so survey can begin,
 
                 otherLA: false, // flag to show user has selected free text option
@@ -217,7 +218,7 @@
             selectOption(x) {
                 this.selected = x
                 this.displayError = false;
-                // this.generateURLForNextImage();
+                this.image = this.optionImages[x]
             },
 
             resetSelected() {
@@ -233,6 +234,116 @@
                 }
                 // console.log('returning class for', x, selectClass)
                 return selectClass
+            },
+            generateOptionURLs() {
+                // For this given index, get all of the possible option URLS
+                // Use index to track which option we need to generate for
+                console.log("we are index", this.index, "thus question", this.index+1)
+                for(let i = 0; i < this.question.options.length; i++) {
+                    console.log(`Generating URL for option ${i}, index ${this.index}`)
+
+                    // Get a clean "basic" set of answers to generate
+                    let payload = this.sanitiseConfigAnswers()
+                    // Place the current option index we want to generate into payload
+                    switch(this.index) {
+                        case 0:
+                            payload.o1 = i+1
+                            break;
+                        case 1:
+                            payload.o2 = i+1
+                            break;
+                        case 2:
+                            payload.o3 = i+1
+                            break;
+                        case 3:
+                            payload.o4 = i+1
+                            break;
+                        case 4:
+                            payload.o5 = i+1
+                            break;
+                        case 5:
+                            payload.o6 = i+1
+                            break;
+                    }
+
+                    // TO DO: Why are we getting the wrong camera ID??
+                    // Get the option image and store it in optionImages array
+                    this.optionImageAPICall(payload, i)
+
+                }
+                // // Get our current stored answers
+                // let answers = this.getConfigAnswers;
+                // let choice = 0;
+                // if (answers[this.index] !== undefined) {
+                //     console.log("We made a choice on this one already", answers[this.index])
+                //     choice = answers[this.index]
+                // } else {
+                //     console.log("We didn't select anything", this.selected)
+                //     choice = this.selected;
+                // }
+                // let cleanAnswers = this.sanitiseConfigAnswers();
+                // console.log(cleanAnswers)
+                // switch(this.index)
+                // {
+                //     case 0:
+                //         break;
+                //     case 1:
+                //         break;
+                //     case 2:
+                //         break;
+                //     case 3:
+                //         break;
+                //     case 4:
+                //         break;
+                //     case 5:
+                //         break;
+                // }
+                // console.log("choice", choice)
+            },
+            sanitiseConfigAnswers() {
+                // Get and sanitise the answers
+                let answers = this.getConfigAnswers;
+
+                // get any answers stored and replace any undefined with 1
+                let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
+                let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
+                let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
+                let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
+                let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
+                let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
+
+                let cleanAnswers = {
+                    cam: this.mapCameraByIndex(),
+                    o1,
+                    o2,
+                    o3,
+                    o4,
+                    o5,
+                    o6,
+                    o7: this.lighting !== "" ? this.lighting : 1 // defaults to daylight otherwise
+                }
+
+                return cleanAnswers
+            },
+            mapCameraByIndex() {
+                // Return the current camera ID based on question this.index
+                //camera angle
+                // WE NEED TO BE SUPER CAREFUL WITH CAMERA ID HERE
+                let cam = 1;  
+                if (this.index+1 === 2) {  // This was set to === 1, that would mean index 1 becomes camera 2
+                    cam = 2;
+                } else if (this.index+1 === 3) {
+                    // pole design
+                    cam = 3;
+                } else if (this.index+1 === 4) {
+                    // bike stand
+                    cam = 4;
+                } else if (this.index+1 === 5 || this.index+1 === 6) {
+                    // priority seats
+                    // There are 2 more camera angles here
+                    cam = 14;
+                }
+                return cam
             },
             generateURLForNextImage() {
                 const answers = this.getConfigAnswers;
@@ -367,9 +478,27 @@
                        this.image = response.data;
                        })
                     .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
+            },
+            async optionImageAPICall(payload, option) {
+                console.log('requesting image with this payload: ');
+                console.log(payload);
+
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+                    headers: {
+                        Cookie: this.$cookies.get('mfsid')
+                    },
+                    params: payload
+                })
+                    .then(response => {
+                        // Store the response in array for later use
+                        this.optionImages[option] = response.data 
+                       })
+                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
             }
         },
         mounted() {
+            console.log("Mounted")
+            this.generateOptionURLs()
      }
     }
 
