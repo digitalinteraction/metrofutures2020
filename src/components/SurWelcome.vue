@@ -6,7 +6,7 @@
         <b-img src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
         <!--    modal-->
 
-        <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Privacy Notice">
+        <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Participation Consent Form">
 
             <div class="privacy-text">
                 <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project. </p>
@@ -22,7 +22,7 @@
 
             <div class="privacy-check">
                 <b-form-checkbox id="privacy-checkbox" name="privacy-checkbox" v-model="tick">
-                    I accept the terms of use and agree to participate in this consultation
+                    I agree to participate in this consultation, and accept the terms of use and privacy notice of this website.
                 </b-form-checkbox>
             </div>
 
