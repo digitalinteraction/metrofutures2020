@@ -141,13 +141,14 @@ export default[
             "yaw": -0.4027377241770509,
             "pitch": 0.12195200726714539,
             "title": "Wheelchair Space Door",
-            "text": "How clearly is the door to the wheelchair space indicated?<br>[Likert 1 very unclearly to 5 very clearly + free text comment]"
+            "text": "How clearly is the door to the wheelchair space indicated?",
+            "likert": "clear"
           },
           {
             "yaw": -2.3397083094491204,
             "pitch": 0.06487713590313682,
             "title": "Multipurpose Space Doors",
-            "text": "How clearly are the doors to the multipurpose spaces indicated?<br>[Likert 1 very unclearly to 5 very clearly + free text comment]"
+            "text": "How clearly are the doors to the multipurpose spaces indicated?"
           },
           {
             "yaw": -1.4120780940420286,
@@ -159,14 +160,14 @@ export default[
             "yaw": -2.4254996714844204,
             "pitch": 0.4111241783467712,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div><div>[Overlay of Door Exterior 1 and 2 .mp4]</div>",
+            "text": "How clear are the door light and sound indicators?[Overlay of Door Exterior 1 and 2 .mp4]",
             "visual": "interiordoor.mp4"
           },
           {
             "yaw": -2.649150928470453,
             "pitch": -0.10276089704911762,
             "title": "Destination Display",
-            "text": "Destination displays on the side of each carriage show the passengers that they are boarding the correct train.<br>[free text comment]"
+            "text": "Destination displays on the side of each carriage show the passengers that they are boarding the correct train."
           }
         ]
       },
@@ -210,14 +211,14 @@ export default[
             "yaw": -0.4027377241770509,
             "pitch": 0.12195200726714539,
             "title": "Wheelchair Space Door",
-            "text": "How clearly is the door to the wheelchair space indicated?<br>[Likert 1 very unclearly to 5 very clearly + free text comment]",
+            "text": "How clearly is the door to the wheelchair space indicated?",
             "likert": "clear"
           },
           {
             "yaw": -2.3397083094491204,
             "pitch": 0.06487713590313682,
             "title": "Multipurpose Space Doors",
-            "text": "How clearly are the doors to the multipurpose spaces indicated?<br>[Likert 1 very unclearly to 5 very clearly + free text comment]",
+            "text": "How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear"
           },
           {
@@ -230,7 +231,7 @@ export default[
             "yaw": -2.4254996714844204,
             "pitch": 0.4111241783467712,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div><div>[Overlay of Door Exterior 1 and 2 .mp4]</div>",
+            "text": "How clear are the door light and sound indicators?[Overlay of Door Exterior 1 and 2 .mp4]",
             "likert": "clear",
             "visual": "interiordoor.mp4"
           },
@@ -276,42 +277,42 @@ export default[
             "yaw": 0.7002035076946687,
             "pitch": 0.4232916623545169,
             "title": "Multipurpose Space Doors",
-            "text": "How clearly are the doors to the multipurpose spaces indicated?<br>[Likert 1 very clearly to 5 very clearly + free text comment]",
+            "text": "How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear"
           },
           {
             "yaw": -0.19924987526594506,
             "pitch": 0.5169235598568562,
             "title": "Multipurpose Space Floor",
-            "text": "How clearly is the multipurpose space indicated with floor markings?<br><br>[Likert 1 very clearly to 5 very unclearly + free text comment]",
+            "text": "How clearly is the multipurpose space indicated with floor markings?",
             "likert": "clear"
           },
           {
             "yaw": 2.2282781536492635,
             "pitch": 0.4776184758101447,
             "title": "Priority Seats Decals",
-            "text": "How clearly are the priority seats indicated by window decals?<div><br></div><div>[Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly are the priority seats indicated by window decals?",
             "likert": "clear"
           },
           {
             "yaw": 2.2092864538209307,
             "pitch": -0.4098654342294754,
             "title": "Passenger Information Screens",
-            "text": "How clear are the passenger information screens in this position?<br>[Likert 1 very unclear to 5 very clear + free text comment]",
+            "text": "How clear are the passenger information screens in this position?",
             "likert": "clear"
           },
           {
             "yaw": -3.0946846043059697,
             "pitch": 0.10175772399065863,
             "title": "Front Wall Design",
-            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.<br>[link?]",
+            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.",
             "link": "/configure"
           },
           {
             "yaw": -1.4876248470598696,
             "pitch": -0.4046128448142028,
             "title": "CCTV",
-            "text": "How safe does CCTV and a single corridor train make you feel?<br><br>[Likert 1 no safer to 5 very safe + free text comment]",
+            "text": "How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe"
           }
         ]
@@ -350,42 +351,42 @@ export default[
             "yaw": 0.7002035076946687,
             "pitch": 0.4232916623545169,
             "title": "Multipurpose Space Doors",
-            "text": "How clearly are the doors to the multipurpose spaces indicated?<br>[Likert 1 very clearly to 5 very clearly + free text comment]",
+            "text": "How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear"
           },
           {
             "yaw": -0.19924987526594506,
             "pitch": 0.5169235598568562,
             "title": "Multipurpose Space Floor",
-            "text": "How clearly is the multipurpose space indicated with floor markings?<br><br>[Likert 1 very clearly to 5 very unclearly + free text comment]",
+            "text": "How clearly is the multipurpose space indicated with floor markings?",
             "likert": "clear"
           },
           {
             "yaw": 2.2282781536492635,
             "pitch": 0.4776184758101447,
             "title": "Priority Seats Decals",
-            "text": "How clearly are the priority seats indicated by window decals?<div><br></div><div>[Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly are the priority seats indicated by window decals?",
             "likert": "clear"
           },
           {
             "yaw": 2.2092864538209307,
             "pitch": -0.4098654342294754,
             "title": "Passenger Information Screens",
-            "text": "How clear are the passenger information screens in this position?<br>[Likert 1 very unclear to 5 very clear + free text comment]",
+            "text": "How clear are the passenger information screens in this position?",
             "likert": "clear"
           },
           {
             "yaw": -3.0946846043059697,
             "pitch": 0.10175772399065863,
             "title": "Front Wall Design",
-            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.<br>[link?]",
+            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.",
             "link": "/configure"
           },
           {
             "yaw": -1.4876248470598696,
             "pitch": -0.4046128448142028,
             "title": "CCTV",
-            "text": "How safe does CCTV and a single corridor train make you feel?<br><br>[Likert 1 no safer to 5 very safe + free text comment]",
+            "text": "How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe"
           }
         ]
@@ -424,42 +425,42 @@ export default[
             "yaw": -2.4637047713150757,
             "pitch": 0.12323266998806126,
             "title": "Wheelchair Space Door",
-            "text": "How clearly is the door to the wheelchair space indicated?<div><br></div><div>[Likert 1 not clear to 5 very clear + free text comment]</div>",
+            "text": "How clearly is the door to the wheelchair space indicated?",
             "likert": "clear"
           },
           {
             "yaw": 0.4977260744764571,
             "pitch": -0.6755239218801243,
             "title": "Passenger Information Screen",
-            "text": "How clear is the passenger information screen from the wheelchair space?<div><br></div><div>[Likert 1 very unclear to 5 very clear]</div>",
+            "text": "How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear"
           },
           {
             "yaw": -2.6696343035602723,
             "pitch": -0.2643477078072074,
             "title": "Passenger Information Screen",
-            "text": "How clear is the passenger information screen from the wheelchair space?<div><br></div><div>[Likert 1 very unclear to 5 very clear]</div>",
+            "text": "How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear"
           },
           {
             "yaw": 2.298466467777665,
             "pitch": 0.14868571577706113,
             "title": "Wheelchair Space Decals",
-            "text": "How clearly is the wheelchair space indicated by the window decal?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div>",
+            "text": "How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear"
           },
           {
             "yaw": -0.6966485834794334,
             "pitch": 0.6352049336199777,
             "title": "Glass Partitions",
-            "text": "What patterns should be displayed on the glass partitions. Visit the Your Choices section of the website to choose your preferred option.<br>[Link]",
+            "text": "What patterns should be displayed on the glass partitions. Visit the Your Choices section of the website to choose your preferred option.",
             "link": "/configure"
           },
           {
             "yaw": -2.465900155956419,
             "pitch": 1.1266788657130178,
             "title": "Wheelchair Space",
-            "text": "How clearly is the wheelchair space indicated by floor markings? [Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear"
           }
         ]
@@ -498,42 +499,42 @@ export default[
             "yaw": -2.4637047713150757,
             "pitch": 0.12323266998806126,
             "title": "Wheelchair Space Door",
-            "text": "How clearly is the door to the wheelchair space indicated?<div><br></div><div>[Likert 1 not clear to 5 very clear + free text comment]</div>",
+            "text": "How clearly is the door to the wheelchair space indicated?",
             "likert": "clear"
           },
           {
             "yaw": 0.4977260744764571,
             "pitch": -0.6755239218801243,
             "title": "Passenger Information Screen",
-            "text": "How clear is the passenger information screen from the wheelchair space?<div><br></div><div>[Likert 1 very unclear to 5 very clear]</div>",
+            "text": "How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear"
           },
           {
             "yaw": -2.6696343035602723,
             "pitch": -0.2643477078072074,
             "title": "Passenger Information Screen",
-            "text": "How clear is the passenger information screen from the wheelchair space?<div><br></div><div>[Likert 1 very unclear to 5 very clear]</div>",
+            "text": "How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear"
           },
           {
             "yaw": 2.298466467777665,
             "pitch": 0.14868571577706113,
             "title": "Wheelchair Space Decals",
-            "text": "How clearly is the wheelchair space indicated by the window decal?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div>",
+            "text": "How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear"
           },
           {
             "yaw": -0.6966485834794334,
             "pitch": 0.6352049336199777,
             "title": "Glass Partitions",
-            "text": "What patterns should be displayed on the glass partitions. Visit the Your Choices section of the website to choose your preferred option.<br>[Link]",
+            "text": "What patterns should be displayed on the glass partitions. Visit the Your Choices section of the website to choose your preferred option.",
             "link": "/configure"
           },
           {
             "yaw": -2.465900155956419,
             "pitch": 1.1266788657130178,
             "title": "Wheelchair Space",
-            "text": "How clearly is the wheelchair space indicated by floor markings? [Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear"
           }
         ]
@@ -586,14 +587,14 @@ export default[
             "yaw": 2.3010557823641182,
             "pitch": -0.1530467912020086,
             "title": "Passenger Information Screen",
-            "text": "How clear are the passenger information screens in this position?<br>[Likert 1 very unclear to 5 very clear + free text comment]",
+            "text": "How clear are the passenger information screens in this position?",
             "likert": "clear"
           },
           {
             "yaw": -2.9502758366148907,
             "pitch": -0.04844194116519418,
             "title": "Single Corridor Train",
-            "text": "How safe does CCTV and a single corridor train make you feel?<br><br>[Likert 1 no safer to 5 very safe + free text comment]",
+            "text": "How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe"
           },
           {
@@ -644,7 +645,7 @@ export default[
             "yaw": -0.8755035922794221,
             "pitch": 0.4652902620496615,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div><div>[Overlay of Door Interior.mp4]</div>",
+            "text": "How clear are the door light and sound indicators?[Overlay of Door Interior.mp4]",
             "likert": "clear",
             "visual": "interiordoor.mp4"
           },
@@ -658,14 +659,14 @@ export default[
             "yaw": 2.3010557823641182,
             "pitch": -0.1530467912020086,
             "title": "Passenger Information Screen",
-            "text": "How clear are the passenger information screens in this position?<br>[Likert 1 very unclear to 5 very clear + free text comment]",
+            "text": "How clear are the passenger information screens in this position?",
             "likert": "clear"
           },
           {
             "yaw": -2.9502758366148907,
             "pitch": -0.04844194116519418,
             "title": "Single Corridor Train",
-            "text": "How safe does CCTV and a single corridor train make you feel?<br><br>[Likert 1 no safer to 5 very safe + free text comment]",
+            "text": "How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe"
           },
           {
@@ -716,7 +717,7 @@ export default[
             "yaw": -1.9950310504803426,
             "pitch": 0.19524388331702447,
             "title": "Priority Seat Decals",
-            "text": "How clearly are the priority seats indicated by the window decals?<div><br></div><div>[Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly are the priority seats indicated by the window decals?",
             "likert": "clear"
           },
           {
@@ -729,21 +730,21 @@ export default[
             "yaw": 1.6831437713774324,
             "pitch": 0.07223669612430506,
             "title": "Wheelchair Space Decals",
-            "text": "How clearly is the wheelchair space indicated by the window decal?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div>",
+            "text": "How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear"
           },
           {
             "yaw": 1.5474214283263583,
             "pitch": -0.5003120202527533,
             "title": "Passenger Information Screen",
-            "text": "How clear are the passenger information screens in this position?<br>[Likert 1 very unclear to 5 very clear + free text comment]",
+            "text": "How clear are the passenger information screens in this position?",
             "likert": "clear"
           },
           {
             "yaw": 1.5146695287274374,
             "pitch": 0.7904299278228528,
             "title": "Wheelchair Space",
-            "text": "How clearly is the wheelchair space indicated by floor markings? [Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear"
           },
           {
@@ -788,7 +789,7 @@ export default[
             "yaw": -1.9950310504803426,
             "pitch": 0.19524388331702447,
             "title": "Priority Seat Decals",
-            "text": "How clearly are the priority seats indicated by the window decals?<div><br></div><div>[Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly are the priority seats indicated by the window decals?",
             "likert": "clear"
           },
           {
@@ -801,21 +802,21 @@ export default[
             "yaw": 1.6831437713774324,
             "pitch": 0.07223669612430506,
             "title": "Wheelchair Space Decals",
-            "text": "How clearly is the wheelchair space indicated by the window decal?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div>",
+            "text": "How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear"
           },
           {
             "yaw": 1.5474214283263583,
             "pitch": -0.5003120202527533,
             "title": "Passenger Information Screen",
-            "text": "How clear are the passenger information screens in this position?<br>[Likert 1 very unclear to 5 very clear + free text comment]",
+            "text": "How clear are the passenger information screens in this position?",
             "likert": "clear"
           },
           {
             "yaw": 1.5146695287274374,
             "pitch": 0.7904299278228528,
             "title": "Wheelchair Space",
-            "text": "How clearly is the wheelchair space indicated by floor markings? [Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear"
           },
           {
@@ -860,35 +861,35 @@ export default[
             "yaw": 2.192725996072345,
             "pitch": 0.6371755549919254,
             "title": "Multipurpose Space Window",
-            "text": "How clearly is the multipurpose space indicated by the window decals?<div><br></div><div>[Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly is the multipurpose space indicated by the window decals?",
             "likert": "clear"
           },
           {
             "yaw": -2.2149852870861473,
             "pitch": 0.7760468469483506,
             "title": "Multipurpose Space",
-            "text": "How clearly is the multipurpose indicated by floor markings?<div><br></div><div>[Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly is the multipurpose indicated by floor markings?",
             "likert": "clear"
           },
           {
             "yaw": 0.37670298463485885,
             "pitch": 0.947540394161539,
             "title": "Bicycle Stands",
-            "text": "What form of bicycle stand should be used? Visit the Your Choices section of the website to choose your preferred option. [Link]</div>",
+            "text": "What form of bicycle stand should be used? Visit the Your Choices section of the website to choose your preferred option.",
             "link": "/configure"
           },
           {
             "yaw": -0.13135868213260693,
             "pitch": 0.21625544930805773,
             "title": "Front Wall Design",
-            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.<br>[link?]",
+            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.",
             "link": "/configure"
           },
           {
             "yaw": -2.565578079961881,
             "pitch": 0.2376466079200945,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div><div>[Overlay of Door Interior.mp4]</div>",
+            "text": "How clear are the door light and sound indicators?[Overlay of Door Interior.mp4]",
             "likert": "clear",
             "visual": "interiordoor.mp4"
           },
@@ -902,7 +903,7 @@ export default[
             "yaw": 1.4494955010677604,
             "pitch": -0.7315439287466887,
             "title": "Passenger Information Screen",
-            "text": "How clear is the passenger information screen from this position?<div><br></div><div>[Likert 1 very unclear to 5 very clear]</div>",
+            "text": "How clear is the passenger information screen from this position?",
             "likert": "clear"
           }
         ]
@@ -941,35 +942,35 @@ export default[
             "yaw": 2.192725996072345,
             "pitch": 0.6371755549919254,
             "title": "Multipurpose Space Window",
-            "text": "How clearly is the multipurpose space indicated by the window decals?<div><br></div><div>[Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly is the multipurpose space indicated by the window decals?",
             "likert": "clear"
           },
           {
             "yaw": -2.2149852870861473,
             "pitch": 0.7760468469483506,
             "title": "Multipurpose Space",
-            "text": "How clearly is the multipurpose indicated by floor markings?<div><br></div><div>[Likert 1 very unclearly to 5 very clearly + free text comment]</div>",
+            "text": "How clearly is the multipurpose indicated by floor markings?",
             "likert": "clear"
           },
           {
             "yaw": 0.37670298463485885,
             "pitch": 0.947540394161539,
             "title": "Bicycle Stands",
-            "text": "What form of bicycle stand should be used? Visit the Your Choices section of the website to choose your preferred option. [Link]</div>",
+            "text": "What form of bicycle stand should be used? Visit the Your Choices section of the website to choose your preferred option.",
             "link": "/configure"
           },
           {
             "yaw": -0.13135868213260693,
             "pitch": 0.21625544930805773,
             "title": "Front Wall Design",
-            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.<br>[link?]",
+            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.",
             "link": "/configure"
           },
           {
             "yaw": -2.565578079961881,
             "pitch": 0.2376466079200945,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?<div><br></div><div>[Likert 1 very unclear to 5 very clear + free text comment]</div><div>[Overlay of Door Interior.mp4]</div>",
+            "text": "How clear are the door light and sound indicators?[Overlay of Door Interior.mp4]",
             "likert": "clear",
             "visual": "interiordoor.mp4"
           },
@@ -983,7 +984,7 @@ export default[
             "yaw": 1.4494955010677604,
             "pitch": -0.7315439287466887,
             "title": "Passenger Information Screen",
-            "text": "How clear is the passenger information screen from this position?<div><br></div><div>[Likert 1 very unclear to 5 very clear]</div>",
+            "text": "How clear is the passenger information screen from this position",
             "likert": "clear"
           }
         ]
