@@ -64,19 +64,19 @@ Vue.use(VueRouter)
   //   component: () => import(/* webpackChunkName: "Signup" */ '../views/Signup.vue')
   // },
   {
-    path: '/survey',
+    path: '/configure',
     name: 'Survey',
     component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue')
   },
   {
-    path: '/idoc',
+    path: '/journeys',
     name: 'Interactive Documentary',
     component: () => import(/* webpackChunkName: "idoc" */ '../views/InteractiveDocumentary.vue')
   },
   {
-    path: '/walkthrough',
-    name: 'Metro Walkthroughs',
-    component: () => import(/* webpackChunkName: "walthrough" */ '../views/Walkthrough.vue')
+    path: '/explore',
+    name: 'Metro Futures - Your Metro',
+    component: () => import(/* webpackChunkName: "walthrough" */ '../views/Pano.vue')
   }
 ];
 
