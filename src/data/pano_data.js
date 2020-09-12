@@ -305,7 +305,7 @@ export default[
             "yaw": -3.0946846043059697,
             "pitch": 0.10175772399065863,
             "title": "Front Wall Design",
-            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.",
+            "text": "What should be on this wall?",
             "link": "/configure"
           },
           {
@@ -379,7 +379,7 @@ export default[
             "yaw": -3.0946846043059697,
             "pitch": 0.10175772399065863,
             "title": "Front Wall Design",
-            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.",
+            "text": "What should be on this wall?",
             "link": "/configure"
           },
           {
@@ -453,7 +453,7 @@ export default[
             "yaw": -0.6966485834794334,
             "pitch": 0.6352049336199777,
             "title": "Glass Partitions",
-            "text": "What patterns should be displayed on the glass partitions. Visit the Your Choices section of the website to choose your preferred option.",
+            "text": "What patterns should be displayed on the glass partitions.",
             "link": "/configure"
           },
           {
@@ -527,7 +527,7 @@ export default[
             "yaw": -0.6966485834794334,
             "pitch": 0.6352049336199777,
             "title": "Glass Partitions",
-            "text": "What patterns should be displayed on the glass partitions. Visit the Your Choices section of the website to choose your preferred option.",
+            "text": "What patterns should be displayed on the glass partitions.",
             "link": "/configure"
           },
           {
@@ -875,14 +875,14 @@ export default[
             "yaw": 0.37670298463485885,
             "pitch": 0.947540394161539,
             "title": "Bicycle Stands",
-            "text": "What form of bicycle stand should be used? Visit the Your Choices section of the website to choose your preferred option.",
+            "text": "What form of bicycle stand should be used? ",
             "link": "/configure"
           },
           {
             "yaw": -0.13135868213260693,
             "pitch": 0.21625544930805773,
             "title": "Front Wall Design",
-            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.",
+            "text": "What should be on this wall?",
             "link": "/configure"
           },
           {
@@ -956,14 +956,14 @@ export default[
             "yaw": 0.37670298463485885,
             "pitch": 0.947540394161539,
             "title": "Bicycle Stands",
-            "text": "What form of bicycle stand should be used? Visit the Your Choices section of the website to choose your preferred option.",
+            "text": "What form of bicycle stand should be used? ",
             "link": "/configure"
           },
           {
             "yaw": -0.13135868213260693,
             "pitch": 0.21625544930805773,
             "title": "Front Wall Design",
-            "text": "What should be on this wall? Visit the Your Choices section of the site to choose your preferred option.",
+            "text": "What should be on this wall?",
             "link": "/configure"
           },
           {

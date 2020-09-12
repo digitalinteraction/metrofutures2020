@@ -23,7 +23,11 @@
               variant="warning"
             ></b-form-rating>
           </span>
-          <span v-if="data.link">Link</span>
+
+          <span v-if="data.link">
+            Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
+          </span>
+
           <span v-if="data.visual">Visual</span>
 
           <b-form inline>
@@ -121,5 +125,9 @@ export default {
   /* .likert_item {
     background: gray;
   } */
+
+  .choices-link {
+    background-color: darkgray;
+  }
 
 </style>
