@@ -1,11 +1,14 @@
 <template>
   <div class="idoc">
     <b-container class="bv-example-row">
-      <b-row><b-col><h3>Interactive Documentary</h3></b-col></b-row>
-      <b-row><b-col>
+      <b-row><b-col><MainHeader title="Your Journeys"></MainHeader></b-col></b-row>
+      <b-row>
+        <b-col><h3 class="centered">Coming Soon</h3></b-col>
+      </b-row>
+      <b-row v-show="enabled"><b-col>
           <p>Below you will find our interactive documentary where you can explore how design choices in the new Metro carriages will impact on different users.</p>  
       </b-col></b-row>
-      <b-row>
+      <b-row v-show="enabled">
         <b-col cols="1"></b-col>
         <b-col>
           <div id="idoc">
@@ -23,10 +26,23 @@
 
 <script>
 // @ is an alias to /src
-
+import MainHeader from '@/components/MainHeader.vue'
 export default {
-  name: 'InteractiveDocumentary',
+  name: 'Personas',
+  data() {
+    return {
+      enabled: false
+    }
+  },
   components: {
+    MainHeader
   }
 }
 </script>
+
+<style lang="css">
+  .centered {
+    text-align: center;
+    font-style: italic;
+  }
+</style>

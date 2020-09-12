@@ -49,8 +49,8 @@ Vue.use(VueRouter)
   },
   {
     path: '/journeys',
-    name: 'Interactive Documentary',
-    component: () => import(/* webpackChunkName: "idoc" */ '../views/InteractiveDocumentary.vue')
+    name: 'Personas',
+    component: () => import(/* webpackChunkName: "idoc" */ '../views/Personas.vue')
   },
   {
     path: '/explore',

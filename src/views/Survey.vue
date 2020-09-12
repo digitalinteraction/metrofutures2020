@@ -5,7 +5,9 @@
 
       <b-row id="headerRow" align-v="center">
         <b-col >
-          <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
+          <router-link to="/">
+            <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
+          </router-link>
         </b-col>
         <b-col v-if="!summary">
           <h3 class="calvert">Configure your Metro</h3>
@@ -15,7 +17,7 @@
         </b-col>
         <b-col>
 <!--           todo add link here-->
-          <p v-on:click="goTo('/idoc')" class="float-right personasLink" >Explore some of our Metro users?</p>
+          <p v-on:click="goTo('/journeys')" class="float-right personasLink" >Explore some of our Metro users?</p>
         </b-col>
       </b-row>
 
