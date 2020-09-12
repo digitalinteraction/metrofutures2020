@@ -68,7 +68,6 @@ export default {
   data() {
     return {
       selections: [],
-        // todo once welcome screen works make this true on page load
         welcomeScreen: true
     }
   },
@@ -96,7 +95,10 @@ export default {
             //highlight summary
             return 'breadSelected';
         }
-          if (this.index === breadcrumbIndex) {
+        // don't highlight first breadcrumb until welcome screen is completed
+          else if (breadcrumbIndex === 0 && this.welcomeScreen === false && this.index === breadcrumbIndex) {
+            return 'breadSelected';
+        } else if (breadcrumbIndex !== 0 && this.index === breadcrumbIndex) {
               return 'breadSelected';
           }
       },
@@ -200,7 +202,8 @@ export default {
 .breadItem.breadSelected {
   /*  todo remove space between yellow line and bottom edge of grey bar*/
   border-bottom: 2px solid #FEC600;
-  color: #FEC600;
+  color: black;
+    font-weight: bold;
 }
 
 /*class to add to breadcrumb items to show question has been completed so is now clickable*/

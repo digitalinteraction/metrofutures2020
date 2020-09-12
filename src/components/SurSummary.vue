@@ -1,23 +1,86 @@
 <template>
     <b-container fluid>
-    <b-carousel
-            id="carousel-1"
-            v-model="slide"
-            :interval="4000"
-            controls
-            indicators
-            background="#ababab"
-            img-width="1024"
-            img-height="480"
-            style="text-shadow: 1px 1px 2px #333;"
-            @sliding-start="onSlideStart"
-            @sliding-end="onSlideEnd"
-    >
-<!--        todo load images into slides here-->
-      <b-carousel-slide img-src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-carousel-slide>
-    </b-carousel>
+
+        <div v-if="showQuestions">
+<div class="row">
+        <b-col  class="largeImgColumn col-lg-8 col-12">
+<!--            todo this should be first image from carousel-->
+            <b-img fluid src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg"></b-img>
+        </b-col>
+
+            <b-col class="col-lg-3 col-12">
+
+                <p class="calvert">Please tell us a little more about yourself and your Metro journeys.</p>
+
+                <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
+                <b-form-select v-model="purpose" :options="purposes">Please select an
+                    option
+                </b-form-select>
+
+                <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
+
+                <b-form-select v-model="frequency" :options="frequencies">Please select an
+                    option
+                </b-form-select>
+
+                <p class="calvert question"><span class="bold">Gender?</span></p>
+                <b-form-select @change="changeGender" v-model="gender" :options="genders">Please select an
+                    option
+                </b-form-select>
+
+                <div v-if="otherGender" id="genderTextDiv">
+                        <textarea
+                                id="textarea"
+                                v-model="genderOtherText"
+                                placeholder="Enter your gender..."
+                                rows="2" class="form-control"
+                        ></textarea>
+                </div>
+
+                <p class="calvert question"><span class="bold">Ethnicity?</span></p>
+                <b-form-select v-model="ethnicity" :options="ethnicities">Please select an
+                    option
+                </b-form-select>
+
+                <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
+                <b-form-group>
+                    <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
+                    <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
+                </b-form-group>
+
+                <div v-if="dis === 'yes'">
+                <p class="calvert "><span class="bold">If yes, what?</span></p>
+                <b-form-select  v-model="disability" :options="disabilities">Please select an
+                    option
+                </b-form-select>
+
+
+</div>
+                <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
+
+            </b-col>
+</div>
+        </div>
+
+        <div v-if="!showQuestions">
+            <b-carousel
+                    id="carousel-1"
+                    :interval="0"
+                    controls
+                    indicators
+                    background="#ababab"
+                    img-width="1024"
+                    img-height="480"
+                    style="text-shadow: 1px 1px 2px #333;"
+            >
+                <!--        todo load images into slides here-->
+                <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
+                <b-carousel-slide src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_2_1.jpg"></b-carousel-slide>
+            </b-carousel>
+        </div>
 
     <b-row id="optionsRow">
+        {{images[3]}}
       <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
       <b-col id="option2" class="option "><p class="borderRight text-center"><b-icon-printer></b-icon-printer> PRINT </p></b-col>
       <b-col id="option3" class="option "><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
@@ -74,8 +137,22 @@ export default {
   data() {
     return {
       images: [], // list of images to load into carousel
-      sliding: null,
-      viewFeatures: false
+    showQuestions: true, // participant q's or slideshow
+      viewFeatures: false,
+        gender: '',
+        otherGender: false,
+        genderOtherText: '',
+        genders: ['Male', 'Female', 'Other/Prefer to self-describe', 'Prefer not to say'],
+        ethnicity: '',
+        ethnicities: ['White', 'Black/Black British', 'Asian/Asian British', 'Chinese/Thai/Japanese', 'Mixed', 'Other'],
+        dis: 'no', // yes/no asnwer to trigger options
+        disability: '',
+        disabilities: ['Visual impairment', 'Mobility impairment', 'Hearing impairment', 'Cognitive impairment', 'Other'],
+        purpose: '',
+        purposes: ['Work', 'Leisure', 'Shopping', 'Visiting friends/relative', 'Other'],
+        frequency: '',
+        frequencies: ['5+ days a week', '3-4 days a week', '1-2 days a week', '1-2 times a month', 'Now and then', 'Rarely/never']
+
     }
   },
   computed: {
@@ -90,33 +167,88 @@ export default {
     } else {
       this.viewFeatures = true;
     }
-  }
   },
-  mounted() {
+      onSlideStart() {
+          this.sliding = true
+      },
+      onSlideEnd() {
+          this.sliding = false
+      },
+      submitInfo() {
+
+      // if gender other text is filled in then send this instead
+          if (this.genderOtherText) {
+          if (this.genderOtherText.length > 0) {
+              this.gender = this.genderOtherText;
+          }
+      }
+          // submit answers
+          let payload = {
+              2:this.gender,
+              3: this.ethnicity,
+              4: this.disability,
+              5: this.purpose,
+              6: this.frequency
+          }
+          this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
+              headers: {
+                  Cookie: this.$cookies.get('mfsid')
+              },
+              params: payload
+          })
+              .then(response => {
+                  console.log(response);
+
+              })
+              .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+          this.showQuestions = false;
+
+      },
+      changeGender() {
+          if (this.gender === 'Other/Prefer to self-describe') {
+              this.otherGender = true;
+          } else {
+              this.otherGender = false;
+          }
+      }
+  },
+
+ beforeMount() {
   // look at answers stored in state and use them to construct API call to retrieve
     // images for carousel
       const answers = this.getConfigAnswers;
       let payload = {
           cam: '',
-          o1: answers[0],
-          o2: answers[1],
-          o3: answers[2],
-          o4: answers[3],
-          o5: answers[4],
-          o6: answers[5],
-          o7: 1
+          // get any answers stored and replace any undefined with 1
+          o1 :answers[0] !== undefined ? answers[0]+1 : 1,
+          o2 : answers[1] !== undefined ? answers[1]+1 : 1,
+          o3 : answers[2] !== undefined ? answers[2]+1 : 1,
+          o4 : answers[3] !== undefined ? answers[3]+1 : 1,
+          o5 : answers[4] !== undefined ? answers[4]+1 : 1,
+          o6 : answers[5] !== undefined ? answers[5]+1 : 1,
+          o7 : this.lighting ? parseInt(this.lighting) : 1
       }
 
     // for each camera angle, add on question answers and get image from API
     const cameraAngles = [1, 2, 4, 14];
     for (const cam of cameraAngles) {
-
       payload.cam = cam;
-      // todo call to API with each payload
+        this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+            headers: {
+                Cookie: this.$cookies.get('mfsid')
+            },
+            params: payload
+        })
+            .then(response => {
+                this.images.push(response.data);console.log('slides=' + this.images.length);
+            })
+            .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
+    }
+
+
 
     }
 
-  }
 }
 
 
@@ -130,6 +262,9 @@ font-size: small;
   width: 100%;
 }
 
+.question {
+    padding-top: 2em;
+}
 
 .borderRight {
   border-right: 1px #DDDDDD solid;
@@ -138,12 +273,16 @@ font-size: small;
 
 .option {
   padding: 1em;
+    cursor: pointer;
 }
 #optionsAsterix {
   font-size: small;
 padding-top: 1em;
 
 }
+
+.submitBtn {margin-bottom: 1em;}
+
 
 #option1 {
   padding-right: 0;

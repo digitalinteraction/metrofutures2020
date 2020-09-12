@@ -49,14 +49,14 @@
 
                     <div v-if="!hoverYourChoice">
                     <b-img class="menuImg" src="../assets/yourChoiceTemp.png" fluid alt="Responsive image"></b-img>
-                    <h3 class="imgTitles">Your Choice</h3>
+                    <h3 class="imgTitles">Your Choices</h3>
                     </div>
 
                     <div v-if="hoverYourChoice" class="hoveredImg">
                         <b-img class="enlargeImg" src="../assets/yourChoiceTemp.png" fluid
                                alt="Responsive image"></b-img>
                         <div class="moreInfo w-100">
-                            <h3>Your Choice</h3>
+                            <h3>Your Choices</h3>
                             <p>
                                 Some internal options are still to be decided. Customise your Metro to help us decide.
                             </p>
