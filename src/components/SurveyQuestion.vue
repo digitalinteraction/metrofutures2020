@@ -145,13 +145,15 @@
                  // } else if (this.lighting === 2) {
                  //     this.image = this.imageNight;
                  // }
-
+                console.log("Detected change of index")
+                this.generateOptionURLs()
                  this.fetchImage();
              }
         },
         computed: {
             ...mapGetters([
-                'getConfigAnswers'
+                'getConfigAnswers',
+                'getIndex'
             ])
         },
         methods: {
@@ -196,10 +198,6 @@
                     this.incrementIndex()
                     this.resetSelected()
                     this.displayError = false;
-
-
-
-
                 } else {
                     //you haven't answered
                     console.log('error');
@@ -238,14 +236,15 @@
             generateOptionURLs() {
                 // For this given index, get all of the possible option URLS
                 // Use index to track which option we need to generate for
-                console.log("we are index", this.index, "thus question", this.index+1)
+                this.optionImages = []
+                // console.log("we are index", this.index, "thus question", this.index+1)
                 for(let i = 0; i < this.question.options.length; i++) {
-                    console.log(`Generating URL for option ${i}, index ${this.index}`)
+                    console.log(`Generating URL for option ${i}, index ${this.getIndex}`)
 
                     // Get a clean "basic" set of answers to generate
                     let payload = this.sanitiseConfigAnswers()
                     // Place the current option index we want to generate into payload
-                    switch(this.index) {
+                    switch(this.getIndex) {
                         case 0:
                             payload.o1 = i+1
                             break;
@@ -330,15 +329,15 @@
                 //camera angle
                 // WE NEED TO BE SUPER CAREFUL WITH CAMERA ID HERE
                 let cam = 1;  
-                if (this.index+1 === 2) {  // This was set to === 1, that would mean index 1 becomes camera 2
+                if (this.getIndex+1 === 2) {  // This was set to === 1, that would mean index 1 becomes camera 2
                     cam = 2;
-                } else if (this.index+1 === 3) {
+                } else if (this.getIndex+1 === 3) {
                     // pole design
                     cam = 3;
-                } else if (this.index+1 === 4) {
+                } else if (this.getIndex+1 === 4) {
                     // bike stand
                     cam = 4;
-                } else if (this.index+1 === 5 || this.index+1 === 6) {
+                } else if (this.getIndex+1 === 5 || this.getIndex+1 === 6) {
                     // priority seats
                     // There are 2 more camera angles here
                     cam = 14;
@@ -464,8 +463,8 @@
                 this.imageAPICall(payload);
             },
             async imageAPICall(payload) {
-                console.log('requesting image with this payload: ');
-                console.log(payload);
+                // console.log('requesting image with this payload: ');
+                // console.log(payload);
 
                 this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
                     headers: {
@@ -480,8 +479,8 @@
                     .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
             },
             async optionImageAPICall(payload, option) {
-                console.log('requesting image with this payload: ');
-                console.log(payload);
+                // console.log('requesting image with this payload: ');
+                // console.log(payload);
 
                 this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
                     headers: {
