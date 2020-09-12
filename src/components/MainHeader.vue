@@ -1,7 +1,9 @@
 <template>
   <b-row id="headerRow" align-v="center">
     <b-col >
-      <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
+      <router-link to="/">
+        <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
+      </router-link>
     </b-col>
     <b-col>
       <h3 class="calvert"> {{ title }}</h3>
