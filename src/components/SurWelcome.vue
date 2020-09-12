@@ -45,10 +45,6 @@
             </b-row>
 
 
-<<<<<<< HEAD
-        <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Participation Consent Form">
-=======
->>>>>>> e5a3ed12d493aadd4d87b852f3314df6fb929a31
 
         <!--    modal-->
 
