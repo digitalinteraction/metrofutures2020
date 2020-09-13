@@ -152,7 +152,7 @@
                         .then(response => {
                             console.log(response);
                         })
-                        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+                        .catch(error => error.response ? console.log("Error submitting demographic info:",error.response.data) : console.log("Error submitting demographic info:", error))
 
                     this.$emit('finishedWelcome');
 

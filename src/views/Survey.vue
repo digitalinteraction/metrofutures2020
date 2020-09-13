@@ -35,9 +35,21 @@
             <SurWelcome @finishedWelcome="welcomeScreen=false"></SurWelcome>
         </b-row>
 
-      <b-row v-if="!summary && !welcomeScreen">
-          <SurveyQuestion :question="this.questions[index]" :index="index" />
-      </b-row>
+      <span v-if="!summary && !welcomeScreen">
+        <b-row>WE ARE RENDERING</b-row>
+        <b-row 
+          v-for="(question, qindex) in this.questions"
+          :key="qindex"
+          v-show="check(qindex, index)"
+        >
+        <!-- v-show="check(qindex, index)" -->
+          <SurveyQuestion
+          :question="question"
+          :index="qindex"
+          ></SurveyQuestion>
+
+        </b-row>
+      </span>
 
         <b-row v-if="summary && !welcomeScreen">
             <SurSummary></SurSummary>
@@ -92,6 +104,10 @@ export default {
     ...mapMutations([
       'setIndex'
     ]),
+      checkIndices(qindex, index) {
+        console.log("Checking indices")
+        return qindex === index ? true : false
+      },
       checkSelected: function(breadcrumbIndex) {
         if (breadcrumbIndex === 6 && this.summary === true) {
             //highlight summary
