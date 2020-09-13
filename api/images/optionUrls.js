@@ -157,7 +157,7 @@ function outsideRange(optNum, value) {
 
 function convertPrioritySeats(seatValue) {
   if (seatValue == 0) { return "0"}
-  if (seatValue == "2") {
+  if (seatValue == "1") {
     return "ON"
   } else {
     return "OFF"
