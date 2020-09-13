@@ -16,21 +16,21 @@ const sequelize = new Sequelize(process.env.pg_db, process.env.pg_user, process.
 module.exports = async(req, res) => {
   if(!req.cookies.mfsid){
     console.log('Unauthorized');
-    res.status(403);
+    sendResponse(req, res, 403, "Unauthorized");
   } else {
     console.log('valid cookie');
     try {
       await sequelize.authenticate();
       console.log('connected successfully');
-      res.json({
-        body: "response"
-      });
+      sendResponse(req, res, 200, "Received")
     } catch (error) {
       console.log('unable to connect', error)
-      res.status(400);
-      res.json({
-        body: 'fail'
-      });
+      sendResponse(req, res, 400, "Unable to connect")
     }
   }
+}
+
+function sendResponse(req, res, status, message) {
+  res.status(status);
+  res.send(message);
 }
