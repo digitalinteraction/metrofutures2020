@@ -226,41 +226,15 @@
                 }
                 return selectClass
             },
+
             async generateOptionURLs() {
-                // Generate all day and night URLs for our current index
-                for (let dayNight = 1; dayNight < 3; dayNight++) {
-                    for(let i = 0; i < this.question.options.length; i++) {
-                        // Get a clean "basic" set of answers to generate
-                        let payload = this.sanitiseConfigAnswers()
-                        // Place the current option index we want to generate into payload
-                        switch(this.index) {
-                            case 0:
-                                payload.o1 = i+1
-                                break;
-                            case 1:
-                                payload.o2 = i+1
-                                break;
-                            case 2:
-                                payload.o3 = i+1
-                                break;
-                            case 3:
-                                payload.o4 = i+1
-                                break;
-                            case 4:
-                                payload.o5 = i+1
-                                break;
-                            case 5:
-                                payload.o6 = i+1
-                                break;
-                        }
-
-                        // Set request for day/night based on the loop counter
-                        payload.o7 = dayNight
-                        // Get the option image and store it in optionImages array
-                        this.optionImageAPICall(payload, i)
-                    }
-
-                }
+                // Fetch all day and night URLs for our current index
+                // Get a clean "basic" set of answers to generate
+                let payload = this.sanitiseConfigAnswers()
+                payload.qindex = this.index+1
+                // Get day and night option image Urls and store in respective arrays
+                this.allUrlsAPICall(payload)
+                   
             },
             sanitiseConfigAnswers() {
                 // Get and sanitise (remove undefined) the answers
@@ -282,7 +256,7 @@
                     o4,
                     o5,
                     o6,
-                    o7: this.lighting !== "" ? this.lighting : 1 // defaults to daylight otherwise
+                    o7: this.lighting !== "" ? parseInt(this.lighting) : 1 // defaults to daylight otherwise
                 }
 
                 return cleanAnswers
@@ -307,10 +281,10 @@
                 }
                 return cam
             },
-            async optionImageAPICall(payload, option) {
+            async allUrlsAPICall(payload) {
                 // console.log('requesting image with this payload:', payload);
 
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
                     headers: {
                         Cookie: this.$cookies.get('mfsid')
                     },
@@ -319,22 +293,19 @@
                     .then(response => {
                         // Store the response in array for later use
                         // Maybe wrap this in a try as o7 might not be there (although it is always specified in the API)
-                        if(response.data.options) {
-                            if (response.data.options.o7 === "1" || response.data.options.o7 === 1) {
-                                // Image day
-                                this.optionImages.day[option] = response.data.url
-                                if (option === 0) {
-                                    // console.log(`We are processing the first image here: option = ${option}. Received image: ${response.data.url}`)
-                                    this.setFirstImage(response.data.url)
-                                }
-                            } else if (response.data.options.o7 === "2" || response.data.options.o7 === 2) {
-                                // Image night
-                                this.optionImages.night[option] = response.data.url
+                        if(response.data) {
+                            this.optionImages.day = response.data.day
+                            this.optionImages.night = response.data.night
+                            // Unless we have already selected one
+                            if (this.selected !== 0 && this.selected < response.data.day.length) {
+                                this.setFirstImage(response.data.day[this.selected])
+                            } else {
+                                this.setFirstImage(response.data.day[0])
                             }
                         } else {
                             console.log("no options returned:", response.data)
                         }
-                       })
+                    })
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
             },
             setFirstImage(imageUrl) {
