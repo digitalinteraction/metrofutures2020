@@ -113,25 +113,36 @@
         },
         data() {
             return {
-                selected: -1,
+                selected: 0,  // It looks weird if 1st option isn't selected - but maybe this will screw with our data?
                 surveyText: "",
                 displayError: false,
-                image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', //image from CDN
-                optionImages: [], // Store all our URLs here
+                image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', // default placeholder image from CDN
+                // optionImages: [], // Store all our URLs here
+                optionImages: {
+                    day: [],
+                    night: []
+                },
                 survey: false, //flag to show LA question is complete so survey can begin,
-                lighting: '',
+                lighting: "1",
             }
 
         },
         watch: {
             lighting: function() {
+                if (this.lighting === "1") {
+                    console.log("Setting to daylight")
+                    this.image = this.optionImages.day[this.selected]
+
+                } else if (this.lighting === "2") {
+                    this.image = this.optionImages.night[this.selected]
+                }
                 // // change what URL is used for image accordingly
                 // if (this.lighting === 1) {
                 //     this.image = this.imageDay;
                 // } else if (this.lighting === 2) {
                 //     this.image = this.imageNight;
                 // }
-                this.fetchImage();
+                // this.fetchImage();
             },
              index: function() {
                  // this.imageDay = this.nextImageURLDay;
@@ -142,8 +153,8 @@
                  //     this.image = this.imageNight;
                  // }
                 console.log("Detected change of index")
-                this.generateOptionURLs()
-                 this.fetchImage();
+                // this.generateOptionURLs()
+                //  this.fetchImage();
              }
         },
         computed: {
@@ -192,12 +203,12 @@
 
                     // move to next question and be ready to accept next answers unless all questions have been completed
                     this.incrementIndex()
-                    this.resetSelected()
-                    this.displayError = false;
                     this.$parent.nextScreen(this.index)
+                    // this.resetSelected()
+                    // this.displayError = false;
                 } else {
                     //you haven't answered
-                    console.log('error');
+                    // console.log('error');
                     this.displayError = true;
                 }
             },
@@ -213,7 +224,11 @@
             selectOption(x) {
                 this.selected = x
                 this.displayError = false;
-                this.image = this.optionImages[x]
+                if(this.lighting === "1") {
+                    this.image = this.optionImages.day[x]
+                } else {
+                    this.image = this.optionImages.night[x]
+                }
             },
 
             resetSelected() {
@@ -233,15 +248,14 @@
             generateOptionURLs() {
                 // For this given index, get all of the possible option URLS
                 // Use index to track which option we need to generate for
-                this.optionImages = []
                 // console.log("we are index", this.index, "thus question", this.index+1)
                 for(let i = 0; i < this.question.options.length; i++) {
-                    console.log(`Generating URL for option ${i}, index ${this.getIndex}`)
+                    console.log(`Generating URL for option ${i}, index ${this.index}`)
 
                     // Get a clean "basic" set of answers to generate
                     let payload = this.sanitiseConfigAnswers()
                     // Place the current option index we want to generate into payload
-                    switch(this.getIndex) {
+                    switch(this.index) {
                         case 0:
                             payload.o1 = i+1
                             break;
@@ -262,9 +276,12 @@
                             break;
                     }
 
-                    // TO DO: Why are we getting the wrong camera ID??
                     // Get the option image and store it in optionImages array
-                    this.optionImageAPICall(payload, i)
+                    payload.o7 = 1  // Force daytime
+                    this.optionImageAPICall(payload, i, payload.o7)
+                    let payloadNight = payload
+                    payloadNight.o7 = 2 // Force nighttime
+                    this.optionImageAPICall(payloadNight, i, payloadNight.o7)
 
                 }
                 // // Get our current stored answers
@@ -326,156 +343,154 @@
                 //camera angle
                 // WE NEED TO BE SUPER CAREFUL WITH CAMERA ID HERE
                 let cam = 1;  
-                if (this.getIndex+1 === 2) {  // This was set to === 1, that would mean index 1 becomes camera 2
+                if (this.index+1 === 2) {  // This was set to === 1, that would mean index 1 becomes camera 2
                     cam = 2;
-                } else if (this.getIndex+1 === 3) {
+                } else if (this.index+1 === 3) {
                     // pole design
                     cam = 3;
-                } else if (this.getIndex+1 === 4) {
+                } else if (this.index+1 === 4) {
                     // bike stand
                     cam = 4;
-                } else if (this.getIndex+1 === 5 || this.getIndex+1 === 6) {
+                } else if (this.index+1 === 5 || this.index+1 === 6) {
                     // priority seats
                     // There are 2 more camera angles here
                     cam = 14;
                 }
                 return cam
             },
-            generateURLForNextImage() {
-                const answers = this.getConfigAnswers;
+            // generateURLForNextImage() {
+            //     const answers = this.getConfigAnswers;
 
-                // get any answers stored and replace any undefined with 1
-                let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
-                let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
-                let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
-                let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
-                let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
-                let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
+            //     // get any answers stored and replace any undefined with 1
+            //     let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
+            //     let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
+            //     let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
+            //     let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
+            //     let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
+            //     let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
 
+            //     //camera angle
+            //     let cam = 1;
+            //     if (this.index+1 === 1) {
+            //         cam = 2;
+            //     } else if (this.index+1 === 2) {
+            //         // pole design
+            //         cam = 3;
+            //     } else if (this.index+1 === 3) {
+            //         // bike stand
+            //         cam = 4;
+            //     } else if (this.index+1 === 4 || this.index+1 === 5) {
+            //         // priority seats
+            //         cam = 14;
+            //     }
 
+            //     const day = {
+            //         cam,
+            //         o1,
+            //         o2,
+            //         o3,
+            //         o4,
+            //         o5,
+            //         o6,
+            //         o7: 1,
+            //     }
 
-                //camera angle
-                let cam = 1;
-                if (this.index+1 === 1) {
-                    cam = 2;
-                } else if (this.index+1 === 2) {
-                    // pole design
-                    cam = 3;
-                } else if (this.index+1 === 3) {
-                    // bike stand
-                    cam = 4;
-                } else if (this.index+1 === 4 || this.index+1 === 5) {
-                    // priority seats
-                    cam = 14;
-                }
+            //     const night = {
+            //         cam,
+            //         o1,
+            //         o2,
+            //         o3,
+            //         o4,
+            //         o5,
+            //         o6,
+            //         o7: 2,
+            //     }
+            //     // line up day time URL
+            //      this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+            //             headers: {
+            //                 Cookie: this.$cookies.get('mfsid')
+            //             },
+            //             params: day
+            //         })
+            //             .then(response => {
 
-                const day = {
-                    cam,
-                    o1,
-                    o2,
-                    o3,
-                    o4,
-                    o5,
-                    o6,
-                    o7: 1,
-                }
+            //                 this.nextImageURLDay = response.data;
+            //             })
+            //             .catch(error => error.response ? console.log('old fetch image error' + error.response.data) : console.log(error))
 
-                const night = {
-                    cam,
-                    o1,
-                    o2,
-                    o3,
-                    o4,
-                    o5,
-                    o6,
-                    o7: 2,
-                }
-                // line up day time URL
-                 this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-                        headers: {
-                            Cookie: this.$cookies.get('mfsid')
-                        },
-                        params: day
-                    })
-                        .then(response => {
+            //     // line up night time URL
+            //     this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+            //         headers: {
+            //             Cookie: this.$cookies.get('mfsid')
+            //         },
+            //         params: night
+            //     })
+            //         .then(response => {
 
-                            this.nextImageURLDay = response.data;
-                        })
-                        .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
+            //             this.nextImageURLNight = response.data;
+            //         })
+            //         .catch(error => error.response ? console.log('old fetch image error' + error.response.data) : console.log(error))
+            //     console.log(this.nextImageURLDay);
+            //     console.log(this.nextImageURLNight);
+            // },
 
-                // line up night time URL
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
-                    params: night
-                })
-                    .then(response => {
+            // async fetchImage() {
+            //      const answers = this.getConfigAnswers;
 
-                        this.nextImageURLNight = response.data;
-                    })
-                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
-                console.log(this.nextImageURLDay);
-                console.log(this.nextImageURLNight);
-            },
-
-            async fetchImage() {
-                 const answers = this.getConfigAnswers;
-
-                // get any answers stored and replace any undefined with 1
-                let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
-                let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
-                let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
-                let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
-                let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
-                let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
-                let o7 = this.lighting ? parseInt(this.lighting) : 1;
+            //     // get any answers stored and replace any undefined with 1
+            //     let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
+            //     let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
+            //     let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
+            //     let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
+            //     let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
+            //     let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
+            //     let o7 = this.lighting ? parseInt(this.lighting) : 1;
 
 
-                //camera angle
-                let cam = 1;
-                if (this.index === 1) {
-                    cam = 2;
-                } else if (this.index === 2) {
-                    // pole design
-                    cam = 3;
-                } else if (this.index === 3) {
-                    // bike stand
-                    cam = 4;
-                } else if (this.index === 4 || this.index === 5) {
-                    // priority seats
-                    cam = 14;
-                }
+            //     //camera angle
+            //     let cam = 1;
+            //     if (this.index === 1) {
+            //         cam = 2;
+            //     } else if (this.index === 2) {
+            //         // pole design
+            //         cam = 3;
+            //     } else if (this.index === 3) {
+            //         // bike stand
+            //         cam = 4;
+            //     } else if (this.index === 4 || this.index === 5) {
+            //         // priority seats
+            //         cam = 14;
+            //     }
 
-                const payload = {
-                    cam,
-                    o1,
-                    o2,
-                    o3,
-                    o4,
-                    o5,
-                    o6,
-                    o7,
-                }
-                this.imageAPICall(payload);
-            },
-            async imageAPICall(payload) {
-                // console.log('requesting image with this payload: ');
-                // console.log(payload);
+            //     const payload = {
+            //         cam,
+            //         o1,
+            //         o2,
+            //         o3,
+            //         o4,
+            //         o5,
+            //         o6,
+            //         o7,
+            //     }
+            //     this.imageAPICall(payload);
+            // },
+            // async imageAPICall(payload) {
+            //     // console.log('requesting image with this payload: ');
+            //     // console.log(payload);
 
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
-                    params: payload
-                })
-                    .then(response => {
+            //     this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+            //         headers: {
+            //             Cookie: this.$cookies.get('mfsid')
+            //         },
+            //         params: payload
+            //     })
+            //         .then(response => {
 
-                       this.image = response.data;
-                       })
-                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
-            },
-            async optionImageAPICall(payload, option) {
+            //            this.image = response.data;
+            //            })
+            //         .catch(error => error.response ? console.log('old fetch image error' + error.response.data) : console.log(error))
+            // },
+            async optionImageAPICall(payload, option, lighting) {
                 // console.log('requesting image with this payload: ');
                 // console.log(payload);
 
@@ -487,10 +502,24 @@
                 })
                     .then(response => {
                         // Store the response in array for later use
-                        this.optionImages[option] = response.data 
+                        if(lighting === "1" || lighting === 1) {
+                            this.optionImages.day[option] = response.data 
+                            if (option === 0) {
+                                this.setFirstImage()
+                            }
+                        } else {
+                            this.optionImages.night[option] = response.data 
+                        }
                        })
-                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
-            }
+                    .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
+            },
+            setFirstImage() {
+                if(this.optionImages.length > 0) {
+                    this.image = this.optionImages.day[0]
+                } else {
+                    console.log("error: calling setFirstImage before 1st image loaded");
+                }
+            },
         },
         mounted() {
             console.log("Mounted")
