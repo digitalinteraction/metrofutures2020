@@ -138,6 +138,8 @@
                 }
             },
             answers: {
+                // This causes quite a lot of loading simultaneously. Could rejig somewhere so that only daytime next images are loaded immediately, with a small delay on the others. Breadcrumbs tend to be navigated to before you submit (or not long after) - you rarely submit and then go backwards with a breadcrumb a long way
+
                 // handler: function (newAnswers, oldAnswers) {  // You can see the old and new objects, but don't really need this
                 handler: function () {
                     console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
@@ -208,6 +210,7 @@
             },
 
             selectOption(x) {
+                // Maybe find a way to trigger the next item to load based on this?
                 this.selected = x
                 this.displayError = false;
                 if(this.lighting === "1") {
