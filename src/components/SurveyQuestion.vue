@@ -119,11 +119,7 @@
                 image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', //image from CDN
                 optionImages: [], // Store all our URLs here
                 survey: false, //flag to show LA question is complete so survey can begin,
-
-                otherLA: false, // flag to show user has selected free text option
-                LAOtherText: '',
                 lighting: '',
-                frontImg:'' //image of front of train for local authority question
             }
 
         },

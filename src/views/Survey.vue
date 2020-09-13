@@ -36,12 +36,12 @@
         </b-row>
 
       <span v-if="!summary && !welcomeScreen">
-        <b-row>WE ARE RENDERING</b-row>
         <b-row 
           v-for="(question, qindex) in this.questions"
           :key="qindex"
           v-show="screens[qindex]"
         >
+        We are rendering screen {{ qindex }}
         <!-- v-show="check(qindex, index)" -->
           <SurveyQuestion
           :question="question"
@@ -116,14 +116,20 @@ export default {
         this.screens[qindex] = !this.screens[qindex]
       },
       nextScreen(qindex) {
-        this.toggleScreen(qindex)
-        // TO DO Check for max value
-        this.toggleScreen(qindex+1)
+        if(qindex >= this.screens.length-1) {
+          console.log("Can't increment as:", qindex, this.screens.length-1)
+        } else {
+          this.toggleScreen(qindex)
+          this.toggleScreen(qindex+1)
+        }
       },
       prevScreen(qindex) {
-        this.toggleScreen(qindex)
-        // TO DO Check for min value
-        this.toggleScreen(qindex-1)
+        if (qindex > 0) {
+          this.toggleScreen(qindex)
+          this.toggleScreen(qindex-1)
+        } else {
+          console.log("Can't decrement as:", qindex)
+        }
       },
       checkSelected: function(breadcrumbIndex) {
         if (breadcrumbIndex === 6 && this.summary === true) {
