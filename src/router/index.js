@@ -47,11 +47,11 @@ Vue.use(VueRouter)
     name: 'Survey',
     component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue')
   },
-  {
-    path: '/journeys',
-    name: 'Personas',
-    component: () => import(/* webpackChunkName: "idoc" */ '../views/Personas.vue')
-  },
+  // {
+  //   path: '/journeys',
+  //   name: 'Personas',
+  //   component: () => import(/* webpackChunkName: "idoc" */ '../views/Personas.vue')
+  // },
   {
     path: '/explore',
     name: 'Metro Futures - Your Metro',

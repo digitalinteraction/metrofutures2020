@@ -66,22 +66,21 @@
                 </b-col>
 
                 <!--                --------------- Your Journeys option-->
-                <b-col @click="goTo('/journeys')"
-                       @mouseover="hoverYourJourney = true"
+                <b-col @mouseover="hoverYourJourney = true"
                        @mouseleave="hoverYourJourney = false"
                        class="menuCol">
 
                     <div v-if="!hoverYourJourney">
                     <b-img class="menuImg" src="../assets/yourJourneys.png" fluid alt="Responsive image"></b-img>
-                    <h3 class="imgTitles">Your Journeys</h3>
+                    <h3 class="imgTitles">Your Journeys - Launching soon!</h3>
                     </div>
 
                     <div v-if="hoverYourJourney" class="hoveredImg">
                         <b-img class="enlargeImg" src="../assets/yourJourneys.png" fluid
                                alt="Responsive image"></b-img>
                         <div class="moreInfo w-100">
-                            <h3>Your Journeys</h3>
-                            <p>
+                            <h3>Your Journeys - Launching soon!</h3>
+                            <p v-show="false">
                                 New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.
                             </p>
                         </div>
