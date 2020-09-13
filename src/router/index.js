@@ -56,6 +56,11 @@ Vue.use(VueRouter)
     path: '/explore',
     name: 'Metro Futures - Your Metro',
     component: () => import(/* webpackChunkName: "walthrough" */ '../views/Pano.vue')
+  },
+  // Catch all route at the end just dumps you back at the start
+  {
+    path: '*',
+    component: Menu
   }
 ];
 
