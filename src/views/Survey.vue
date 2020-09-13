@@ -41,8 +41,6 @@
           :key="qindex"
           v-show="screens[qindex]"
         >
-        We are rendering screen {{ qindex }}
-        <!-- v-show="check(qindex, index)" -->
           <SurveyQuestion
           :question="question"
           :index="qindex"
@@ -195,8 +193,6 @@ export default {
             .then(response => {
               console.log(response);
             })
-    console.log(this.selected);
-
 
     // google analytics post
 
