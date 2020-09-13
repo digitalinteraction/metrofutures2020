@@ -40,7 +40,7 @@
         <b-row 
           v-for="(question, qindex) in this.questions"
           :key="qindex"
-          v-show="check(qindex, index)"
+          v-show="screens[qindex]"
         >
         <!-- v-show="check(qindex, index)" -->
           <SurveyQuestion
@@ -82,7 +82,15 @@ export default {
   data() {
     return {
       selections: [],
-        welcomeScreen: true
+      welcomeScreen: true,
+      screens: [
+        true, 
+        false, 
+        false, 
+        false, 
+        false, 
+        false,
+      ]
     }
   },
   computed: {
@@ -104,9 +112,18 @@ export default {
     ...mapMutations([
       'setIndex'
     ]),
-      checkIndices(qindex, index) {
-        console.log("Checking indices")
-        return qindex === index ? true : false
+      toggleScreen(qindex) {
+        this.screens[qindex] = !this.screens[qindex]
+      },
+      nextScreen(qindex) {
+        this.toggleScreen(qindex)
+        // TO DO Check for max value
+        this.toggleScreen(qindex+1)
+      },
+      prevScreen(qindex) {
+        this.toggleScreen(qindex)
+        // TO DO Check for min value
+        this.toggleScreen(qindex-1)
       },
       checkSelected: function(breadcrumbIndex) {
         if (breadcrumbIndex === 6 && this.summary === true) {

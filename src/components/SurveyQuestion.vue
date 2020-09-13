@@ -198,6 +198,7 @@
                     this.incrementIndex()
                     this.resetSelected()
                     this.displayError = false;
+                    this.$parent.nextScreen(this.index)
                 } else {
                     //you haven't answered
                     console.log('error');
