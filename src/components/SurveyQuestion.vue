@@ -246,11 +246,10 @@
                 return selectClass
             },
             async generateOptionURLs() {
-                // For this given index, get all of the possible option URLS
-                // Use index to track which option we need to generate for
-                // console.log("we are index", this.index, "thus question", this.index+1)
-                for(let i = 0; i < this.question.options.length; i++) {
-                    console.log(`Generating URL for option ${i}, index ${this.index}`)
+                // Generate all day and night URLs for our current index
+                for (let dayNight = 1; dayNight < 3; dayNight++) {
+                    for(let i = 0; i < this.question.options.length; i++) {
+                    // console.log(`Generating URL for option ${i}, index ${this.index}`)
 
                     // Get a clean "basic" set of answers to generate
                     let payload = this.sanitiseConfigAnswers()
@@ -276,10 +275,12 @@
                             break;
                     }
 
+                    // Set request for day/night based on the loop counter
+                    payload.o7 = dayNight
                     // Get the option image and store it in optionImages array
-                    payload.o7 = 1  // Force daytime
-                    const dayPayload = payload
-                    this.optionImageAPICall(dayPayload, i)
+                    this.optionImageAPICall(payload, i)
+                }
+                
                     // payload.o7 = 2 // Force nighttime
                     // const nightPayload = payload
                     // this.optionImageAPICall(nightPayload, i)
@@ -512,31 +513,20 @@
                         // Maybe wrap this in a try as o7 might not be there (although it is always specified in the API)
                         if(response.data.options) {
                             console.log(response.data.options)
-                            if (response.data.options.o7 === "1") {
+                            if (response.data.options.o7 === "1" || response.data.options.o7 === 1) {
                                 // Image day
                                 this.optionImages.day[option] = response.data.url
-                                // if (option === 0) {
-                                //     this.setFirstImage(response.data.url)
-                                // }
-                            } else if (response.data.options.o7 === "2") {
+                                if (option === 0) {
+                                    console.log(`We are processing the first image here: option = ${option}. Received image: ${response.data.url}`)
+                                    // this.setFirstImage(response.data.url)
+                                }
+                            } else if (response.data.options.o7 === "2" || response.data.options.o7 === 2) {
                                 // Image night
-                                this.optionImages.night[option] = response.data 
+                                this.optionImages.night[option] = response.data.url
                             }
                         } else {
                             console.log("no options returned:", response.data)
                         }
-
-
-
-                        
-                        // if(o7 === "1" || o7 === 1) {
-                        //     this.optionImages.day[option] = response.data 
-                        //     if (option === 0) {
-                        //         this.setFirstImage()
-                        //     }
-                        // } else {
-                        //     this.optionImages.night[option] = response.data 
-                        // }
                        })
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
             },
