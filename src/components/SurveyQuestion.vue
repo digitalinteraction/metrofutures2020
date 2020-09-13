@@ -141,6 +141,7 @@
                 // handler: function (newAnswers, oldAnswers) {  // You can see the old and new objects, but don't really need this
                 handler: function () {
                     console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
+                    this.generateOptionURLs()
                 },
                 deep: true,  // Without this the watcher doesn't look at answers.[anything], so doesn't run
             },
