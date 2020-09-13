@@ -25,7 +25,6 @@ module.exports = async(req, res) => {
       sendResponse(req, res, 200, "Received")
     } catch (error) {
       console.log('unable to connect', error)
-      res.status(400);
       sendResponse(req, res, 400, "Unable to connect")
     }
   }
