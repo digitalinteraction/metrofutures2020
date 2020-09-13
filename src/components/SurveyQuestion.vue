@@ -347,7 +347,6 @@
             },
         },
         mounted() {
-            console.log("Mounted")
             this.generateOptionURLs()
      }
     }
