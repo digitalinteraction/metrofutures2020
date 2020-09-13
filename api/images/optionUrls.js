@@ -200,7 +200,11 @@ function generateUrls(qindex, options) {
   for (let i = 1; i <= numOptions; i++){
     // Modify options with the i+1 of for loop
     let optionsString = "o"+questionIndex
-    optionsPayload[optionsString] = i
+    if (qindex == 5) {
+      optionsPayload[optionsString] = convertPrioritySeats(i)
+    } else {
+      optionsPayload[optionsString] = i
+    }
     
     optionsPayload.o7 = 1  // Modify with day
     // Generate Url and store in array
