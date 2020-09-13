@@ -13,6 +13,7 @@ const sequelize = new Sequelize(process.env.pg_db, process.env.pg_user, process.
   port: 25060,
 });
 
+// Remember to initialise response-ppt-prod before live
 
 // Sequelize db model here
 const Response = sequelize.define('Response', {
