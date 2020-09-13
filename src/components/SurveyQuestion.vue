@@ -109,7 +109,8 @@
         name: 'SurveyQuestion',
         props: {
             question: Object,
-            index: Number
+            index: Number,
+            answers: Object  // Used for the watch, passes in current answers
         },
         data() {
             return {
@@ -136,24 +137,19 @@
                     this.image = this.optionImages.night[this.selected]
                 }
             },
-            //  index: function() {
-            //      // this.imageDay = this.nextImageURLDay;
-            //      // this.imageNight = this.nextImageURLNight;
-            //      // if (this.lighting === 1) {
-            //      //     this.image = this.imageDay;
-            //      // } else if (this.lighting === 2) {
-            //      //     this.image = this.imageNight;
-            //      // }
-            //     console.log("Detected change of index")
-            //     // this.generateOptionURLs()
-            //     //  this.fetchImage();
-            //  }
+            answers: {
+                // handler: function (newAnswers, oldAnswers) {  // You can see the old and new objects, but don't really need this
+                handler: function () {
+                    console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
+                },
+                deep: true,  // Without this the watcher doesn't look at answers.[anything], so doesn't run
+            },
         },
         computed: {
             ...mapGetters([
                 'getConfigAnswers',
                 'getIndex'
-            ])
+            ]),
         },
         methods: {
             ...mapMutations([
@@ -185,7 +181,7 @@
                             params: payload
                         })
                             .then(response => {
-                                console.log('Survey response: ' + response);
+                                console.info('Survey response: ' + response);
                             })
                             .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
@@ -230,36 +226,35 @@
                 // Generate all day and night URLs for our current index
                 for (let dayNight = 1; dayNight < 3; dayNight++) {
                     for(let i = 0; i < this.question.options.length; i++) {
+                        // Get a clean "basic" set of answers to generate
+                        let payload = this.sanitiseConfigAnswers()
+                        // Place the current option index we want to generate into payload
+                        switch(this.index) {
+                            case 0:
+                                payload.o1 = i+1
+                                break;
+                            case 1:
+                                payload.o2 = i+1
+                                break;
+                            case 2:
+                                payload.o3 = i+1
+                                break;
+                            case 3:
+                                payload.o4 = i+1
+                                break;
+                            case 4:
+                                payload.o5 = i+1
+                                break;
+                            case 5:
+                                payload.o6 = i+1
+                                break;
+                        }
 
-                    // Get a clean "basic" set of answers to generate
-                    let payload = this.sanitiseConfigAnswers()
-                    // Place the current option index we want to generate into payload
-                    switch(this.index) {
-                        case 0:
-                            payload.o1 = i+1
-                            break;
-                        case 1:
-                            payload.o2 = i+1
-                            break;
-                        case 2:
-                            payload.o3 = i+1
-                            break;
-                        case 3:
-                            payload.o4 = i+1
-                            break;
-                        case 4:
-                            payload.o5 = i+1
-                            break;
-                        case 5:
-                            payload.o6 = i+1
-                            break;
+                        // Set request for day/night based on the loop counter
+                        payload.o7 = dayNight
+                        // Get the option image and store it in optionImages array
+                        this.optionImageAPICall(payload, i)
                     }
-
-                    // Set request for day/night based on the loop counter
-                    payload.o7 = dayNight
-                    // Get the option image and store it in optionImages array
-                    this.optionImageAPICall(payload, i)
-                }
 
                 }
             },

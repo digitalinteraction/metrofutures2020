@@ -46,6 +46,7 @@
           <SurveyQuestion
           :question="question"
           :index="qindex"
+          :answers="configAnswers"
           ></SurveyQuestion>
 
         </b-row>
