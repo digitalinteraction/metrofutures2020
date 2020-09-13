@@ -512,13 +512,12 @@
 
                         // Maybe wrap this in a try as o7 might not be there (although it is always specified in the API)
                         if(response.data.options) {
-                            console.log(response.data.options)
                             if (response.data.options.o7 === "1" || response.data.options.o7 === 1) {
                                 // Image day
                                 this.optionImages.day[option] = response.data.url
                                 if (option === 0) {
-                                    console.log(`We are processing the first image here: option = ${option}. Received image: ${response.data.url}`)
-                                    // this.setFirstImage(response.data.url)
+                                    // console.log(`We are processing the first image here: option = ${option}. Received image: ${response.data.url}`)
+                                    this.setFirstImage(response.data.url)
                                 }
                             } else if (response.data.options.o7 === "2" || response.data.options.o7 === 2) {
                                 // Image night
@@ -531,11 +530,11 @@
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
             },
             setFirstImage(imageUrl) {
-                if(this.optionImages.length > 0) {
-                    this.image = imageUrl
-                } else {
-                    console.log("error: calling setFirstImage before 1st image loaded");
-                }
+                this.image = imageUrl
+                // if(this.optionImages.length > 0) {
+                // } else {
+                //     console.log("error: calling setFirstImage before 1st image loaded");
+                // }
             },
         },
         mounted() {

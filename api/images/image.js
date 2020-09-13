@@ -148,7 +148,7 @@ function outsideRange(optNum, value) {
     case 3:
       return (value <= 3) ? true : false;
     case 4:
-      return (value <= 2) ? true : false;
+      return (value <= 3) ? true : false;
     case 5:
       return (value <= 2) ? true : false;
     case 6:
