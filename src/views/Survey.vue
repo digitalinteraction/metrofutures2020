@@ -112,53 +112,57 @@ export default {
     ...mapMutations([
       'setIndex'
     ]),
-      toggleScreen(qindex) {
-        this.screens[qindex] = !this.screens[qindex]
-      },
-      nextScreen(qindex) {
-        if(qindex >= this.screens.length-1) {
-          console.log("Can't increment as:", qindex, this.screens.length-1)
-        } else {
-          this.toggleScreen(qindex)
-          this.toggleScreen(qindex+1)
-        }
-      },
-      prevScreen(qindex) {
-        if (qindex > 0) {
-          this.toggleScreen(qindex)
-          this.toggleScreen(qindex-1)
-        } else {
-          console.log("Can't decrement as:", qindex)
-        }
-      },
-      checkSelected: function(breadcrumbIndex) {
-        if (breadcrumbIndex === 6 && this.summary === true) {
-            //highlight summary
+    toggleScreen(qindex) {
+      this.screens[qindex] = !this.screens[qindex]
+    },
+    nextScreen(qindex) {
+      if(qindex >= this.screens.length-1) {
+        console.log("Can't increment as:", qindex, this.screens.length-1)
+      } else {
+        this.toggleScreen(qindex)
+        this.toggleScreen(qindex+1)
+      }
+    },
+    prevScreen(qindex) {
+      if (qindex > 0) {
+        this.toggleScreen(qindex)
+        this.toggleScreen(qindex-1)
+      } else {
+        console.log("Can't decrement as:", qindex)
+      }
+    },
+    goToScreen(qindex) {
+      // Disable all other screens and enable specified screen
+      let i, n = this.screens.length
+      for (i = 0; i < n; ++i) {
+        this.screens[i] = false
+      }
+      this.screens[qindex] = true
+    },
+    checkSelected: function(breadcrumbIndex) {
+      if (breadcrumbIndex === 6 && this.summary === true) {
+          //highlight summary
+          return 'breadSelected';  // Delicious :-D
+      }
+      // don't highlight first breadcrumb until welcome screen is completed
+        else if (breadcrumbIndex === 0 && this.welcomeScreen === false && this.index === breadcrumbIndex) {
+          return 'breadSelected';
+      } else if (breadcrumbIndex !== 0 && this.index === breadcrumbIndex) {
             return 'breadSelected';
         }
-        // don't highlight first breadcrumb until welcome screen is completed
-          else if (breadcrumbIndex === 0 && this.welcomeScreen === false && this.index === breadcrumbIndex) {
-            return 'breadSelected';
-        } else if (breadcrumbIndex !== 0 && this.index === breadcrumbIndex) {
-              return 'breadSelected';
-          }
-      },
-      checkCompleted: function(breadcrumbIndex) {
-        const answers = this.getConfigAnswers;
-        // if answer is stored, apply different class to breadcrumb item
-          if (answers[breadcrumbIndex] !== undefined) {
-              return 'qAnswered';
-          }
-      },
-    // next: function() {
-    //   if (this.index < this.questions.length - 1) {
-    //     this.index++
-    //   }
-    // },
+    },
+    checkCompleted: function(breadcrumbIndex) {
+      const answers = this.getConfigAnswers;
+      // if answer is stored, apply different class to breadcrumb item
+        if (answers[breadcrumbIndex] !== undefined) {
+            return 'qAnswered';
+        }
+    },
     clickBreadcrumb(breadcrumbIndex) {
       // navigate to previously completed questions but not current index or uncompleted questions
         if (breadcrumbIndex !== this.index && this.configAnswers[breadcrumbIndex] !== undefined) {
             this.setIndex(breadcrumbIndex);
+            this.goToScreen(breadcrumbIndex)
         }
     },
     clickSummaryBreadcrumb() {

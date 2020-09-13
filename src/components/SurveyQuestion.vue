@@ -205,8 +205,8 @@
 
 
             previousQuestion() {
-
                 this.reduceIndex();
+                this.$parent.prevScreen(this.index)  // Trigger parent to render previous question screen
                 this.displayError = false;
             },
 
