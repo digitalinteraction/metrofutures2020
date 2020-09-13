@@ -245,7 +245,7 @@
                 // console.log('returning class for', x, selectClass)
                 return selectClass
             },
-            generateOptionURLs() {
+            async generateOptionURLs() {
                 // For this given index, get all of the possible option URLS
                 // Use index to track which option we need to generate for
                 // console.log("we are index", this.index, "thus question", this.index+1)
@@ -278,10 +278,11 @@
 
                     // Get the option image and store it in optionImages array
                     payload.o7 = 1  // Force daytime
-                    this.optionImageAPICall(payload, i, payload.o7)
-                    let payloadNight = payload
-                    payloadNight.o7 = 2 // Force nighttime
-                    this.optionImageAPICall(payloadNight, i, payloadNight.o7)
+                    const dayPayload = payload
+                    this.optionImageAPICall(dayPayload, i)
+                    // payload.o7 = 2 // Force nighttime
+                    // const nightPayload = payload
+                    // this.optionImageAPICall(nightPayload, i)
 
                 }
                 // // Get our current stored answers
@@ -490,9 +491,8 @@
             //            })
             //         .catch(error => error.response ? console.log('old fetch image error' + error.response.data) : console.log(error))
             // },
-            async optionImageAPICall(payload, option, lighting) {
-                // console.log('requesting image with this payload: ');
-                // console.log(payload);
+            async optionImageAPICall(payload, option) {
+                // console.log('requesting image with this payload:', payload);
 
                 this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
                     headers: {
@@ -502,20 +502,47 @@
                 })
                     .then(response => {
                         // Store the response in array for later use
-                        if(lighting === "1" || lighting === 1) {
-                            this.optionImages.day[option] = response.data 
-                            if (option === 0) {
-                                this.setFirstImage()
+                        // Can't reference anything passed into the async, need to figure out how to do this
+                        // This always works
+                        // this.optionImages.day[option] = response.data 
+                        // if (option === 0) {
+                        //     this.setFirstImage()
+                        // }
+
+                        // Maybe wrap this in a try as o7 might not be there (although it is always specified in the API)
+                        if(response.data.options) {
+                            console.log(response.data.options)
+                            if (response.data.options.o7 === "1") {
+                                // Image day
+                                this.optionImages.day[option] = response.data.url
+                                // if (option === 0) {
+                                //     this.setFirstImage(response.data.url)
+                                // }
+                            } else if (response.data.options.o7 === "2") {
+                                // Image night
+                                this.optionImages.night[option] = response.data 
                             }
                         } else {
-                            this.optionImages.night[option] = response.data 
+                            console.log("no options returned:", response.data)
                         }
+
+
+
+                        
+                        // if(o7 === "1" || o7 === 1) {
+                        //     this.optionImages.day[option] = response.data 
+                        //     if (option === 0) {
+                        //         this.setFirstImage()
+                        //     }
+                        // } else {
+                        //     this.optionImages.night[option] = response.data 
+                        // }
                        })
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
             },
-            setFirstImage() {
+            setFirstImage(imageUrl) {
                 if(this.optionImages.length > 0) {
-                    this.image = this.optionImages.day[0]
+                    this.image = imageUrl
                 } else {
                     console.log("error: calling setFirstImage before 1st image loaded");
                 }

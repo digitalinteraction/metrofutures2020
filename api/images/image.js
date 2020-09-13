@@ -10,7 +10,7 @@ module.exports = async(req, res) => {
       let options = validateQuery(req.query)
       if (options) {
         let url = urlFormatter(options)
-        sendResponse(req, res, 200, url);
+        sendResponse(req, res, 200, url, options);
       } else {
         sendResponse(req, res, 400, "Incorrectly formatted");
       }
@@ -25,9 +25,18 @@ module.exports = async(req, res) => {
   }
 }
 
-function sendResponse(req, res, status, message) {
+function sendResponse(req, res, status, message, options) {
+  let responseObj = {}
+  if (options) {
+    responseObj = {
+      url: message,
+      options: options
+    }
+  } else {
+    responseObj = message
+  }
   res.status(status);
-  res.send(message);
+  res.send(responseObj);
 }
 
 function validateQuery(query) {
