@@ -27,27 +27,32 @@
         
       <p id="menu" v-if="page === 'menu'">Help shape your new Metro in three ways. Choose a section to begin.</p>
       <br />
-      <div>
-        <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project.</p>
+      <div id="privacy-container" v-if="privacyNotice===false">
+        <div>
+          <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project.</p>
 
-        <p>We collect the following data about you:</p>
-        <ul>
-          <li>Your choices for the design of the metro</li>
-          <li>Any free text answers you provide</li>
-          <li>If you chose to be contacted for further consultation about the Metro Futures, your email address</li>
-        </ul>
+          <p>We collect the following data about you:</p>
+          <ul>
+            <li>Your choices for the design of the metro</li>
+            <li>Any free text answers you provide</li>
+            <li>If you chose to be contacted for further consultation about the Metro Futures, your email address</li>
+          </ul>
+        </div>
+
+        <div class="privacy-check">
+          <b-form-checkbox
+            id="privacy-checkbox"
+            name="privacy-checkbox"
+            v-model="tick"
+          >I agree to participate in this consultation, and accept the terms of use and privacy notice of this website.</b-form-checkbox>
+        </div>
+
+        <div class="modal-footer privacy-buttons">
+          <b-button @click="confirmPrivacy" :disabled="tick === false">Continue</b-button>
+        </div>
       </div>
-
-      <div class="privacy-check">
-        <b-form-checkbox
-          id="privacy-checkbox"
-          name="privacy-checkbox"
-          v-model="tick"
-        >I agree to participate in this consultation, and accept the terms of use and privacy notice of this website.</b-form-checkbox>
-      </div>
-
-      <div class="modal-footer privacy-buttons">
-        <b-button @click="confirmPrivacy" :disabled="tick === false">Continue</b-button>
+      <div v-if="privacyNotice===true">
+        <b-button @click="close">Continue</b-button>
       </div>
     </b-modal>
   </b-container>
@@ -79,6 +84,9 @@ export default {
   methods: {
     confirmPrivacy() {
       this.acknowledgePrivacy();
+      this.$bvModal.hide("privacyNoticeModal");
+    },
+    close(){
       this.$bvModal.hide("privacyNoticeModal");
     },
     ...mapMutations(["acknowledgePrivacy"])
