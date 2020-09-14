@@ -1,6 +1,9 @@
 <template>
   <div class="menu">
     <b-container>
+      <b-row v-if="welcomeScreen">
+        <welcomeConsent title="Menu" page="menu" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+      </b-row>
       <b-row>
         <b-col></b-col>
         <b-col align="center">
@@ -66,6 +69,7 @@
 
         <!--                --------------- Your Journeys option-->
         <b-col
+          @click="goTo('/journeys')"
           @mouseover="hoverYourJourney = true"
           @mouseleave="hoverYourJourney = false"
           class="menuCol"
@@ -137,9 +141,11 @@
 // @ is an alias to /src
 import Footer from "@/components/Footer";
 import router from "../router";
+import welcomeConsent from "../components/WelcomeConsent";
 export default {
   name: "Menu",
   components: {
+    welcomeConsent,
     Footer
   },
   methods: {
@@ -149,6 +155,7 @@ export default {
   },
   data() {
     return {
+      welcomeScreen: true,
       hoverYourMetro: false,
       hoverYourChoice: false,
       hoverYourJourney: false
