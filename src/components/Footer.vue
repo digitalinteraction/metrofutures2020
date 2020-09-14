@@ -21,7 +21,7 @@
                     <p><a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
                 </div>
                 <div class="footer-logo footer-openlab" id="lab">
-                    <p>Powered by <b-img fluid alt="Open Lab Logo" src="../assets/openLabTemp.png"></b-img></p>
+                    <b-img fluid id="openlab" alt="Open Lab Logo" src="../assets/openlabLogoBlack.svg"></b-img>
                 </div>
             </div>
         </div>
@@ -53,23 +53,18 @@
         padding-left: 0.5em;
     }
     #nexus{
-        max-width: 50%;
+        max-width: 40%;
     }
     #stadler {
-        max-width: 70%;
+        max-width: 75%;
     }
-    #lab {
+    #openlab {
+        max-width: 30%;
+    }
+    .footer-openlab {
         margin-top: auto;
         margin-bottom: auto;
-        & img {
-            padding-bottom: 0.3em;
-            padding-left: 0.4em;
-        }
-
-        & p {
-            color: black;
-        }
-
+        text-align :right;
     }
 
 
@@ -152,10 +147,13 @@ p {
     }
 
     #nexus{
-        max-width: 10%;
+        max-width: 8%;
     }
     #stadler {
         max-width: 50%;
+    }
+    #openlab {
+        max-width: 15%;
     }
 }
 
