@@ -1,6 +1,9 @@
 <template>
   <div class="idoc">
     <b-container class="bv-example-row">
+      <b-row v-if="welcomeScreen">
+        <welcomeConsent title="Your Journeys" page="journeys" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+      </b-row>
       <b-row><b-col><MainHeader title="Your Journeys"></MainHeader></b-col></b-row>
       <b-row>
         <b-col><h3 class="centered">Coming Soon</h3></b-col>
@@ -27,14 +30,17 @@
 <script>
 // @ is an alias to /src
 import MainHeader from '@/components/MainHeader.vue'
+import welcomeConsent from "../components/WelcomeConsent";
 export default {
   name: 'Personas',
   data() {
     return {
+      welcomeScreen: true,
       enabled: false
     }
   },
   components: {
+    welcomeConsent,
     MainHeader
   }
 }

@@ -46,9 +46,9 @@
 
 
 
-        <!--    modal-->
+        <!--    modal TODO call welcomeConsent instead
 
-        <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
+        <b-modal v-bind:hide-footer="true" centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
             <p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media. </p>
             <br>
             <div >
@@ -73,7 +73,11 @@
                 <b-button @click="confirmPrivacy" :disabled="tick === false">Continue</b-button>
             </div>
 
-        </b-modal>
+        </b-modal>-->
+
+        <b-row v-if="welcomeScreen">
+        <welcomeConsent title="Your Choices" page="choices" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+      </b-row>
 
     </b-container>
 
@@ -82,14 +86,16 @@
 
 <script>
     import {mapGetters, mapMutations} from 'vuex'
+    import welcomeConsent from "../components/WelcomeConsent";
 
     export default {
         name: "SurWelcome",
         components: {
-
+            welcomeConsent
         },
         data() {
             return {
+                welcomeScreen: true,
                 tick: false,
                 imageURL:'',
                 showLAQuestion: false,

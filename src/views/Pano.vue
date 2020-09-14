@@ -1,6 +1,8 @@
 <template>
 <b-container class="pano">
-  
+  <b-row v-if="welcomeScreen">
+        <welcomeConsent title="Your Metro" page="explore" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+      </b-row>
   <MainHeader title="Explore Your Metro"/>
 
   <b-row class="pano_frame">
@@ -309,15 +311,18 @@
   import {mapState} from 'vuex'
   import MainHeader from '@/components/MainHeader.vue'
   import Hotspot from '@/components/Hotspot.vue'
+  import welcomeConsent from "../components/WelcomeConsent";
 
   export default {
     name: "Pano",
     components: {
+      welcomeConsent,
       MainHeader,
       Hotspot
     },
     data() {
       return { 
+        welcomeScreen: true,
         viewer: {},
         scene: {},
         panoScenes: [],
