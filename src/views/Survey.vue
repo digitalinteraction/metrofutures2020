@@ -9,12 +9,10 @@
             <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
           </router-link>
         </b-col>
-        <b-col v-if="!summary">
-          <h3 class="calvert">Configure your Metro</h3>
-        </b-col>
         <b-col v-if="summary">
-          <h3 class="calvert">Your Metro Summary</h3>
+          <h3 class="calvert">Your Choices</h3>
         </b-col>
+
         <b-col>
 <!--           todo add link here-->
           <p v-on:click="goTo('/journeys')" class="float-right personasLink" >Explore some of our Metro users?</p>
