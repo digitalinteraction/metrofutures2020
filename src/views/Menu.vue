@@ -18,7 +18,8 @@
       </b-row>
 
       <!--todo what happens instead of hover on touch screens?-->
-      <b-row>
+      <!--Desktop-->
+      <b-row class="menu-row">
         <!--                --------------- Your Metro option-->
         <b-col
           v-on:click="goTo('/explore')"
@@ -27,12 +28,12 @@
           class="menuCol"
         >
           <div v-if="!hoverYourMetro">
-            <b-img class="menuImg" src="../assets/yourMetro.png" fluid alt="Responsive image"></b-img>
+            <b-img class="menuImg" src="../assets/yourMetro.png" fluid alt="image of inside of carriage"></b-img>
             <h3 class="imgTitles">Your Metro</h3>
           </div>
 
           <div v-if="hoverYourMetro" class="hoveredImg">
-            <b-img class="enlargeImg" src="../assets/yourMetro.png" fluid alt="Responsive image"></b-img>
+            <b-img class="enlargeImg" src="../assets/yourMetro.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo w-100">
               <h3>Your Metro</h3>
               <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
@@ -48,7 +49,7 @@
           class="menuCol"
         >
           <div v-if="!hoverYourChoice">
-            <b-img class="menuImg" src="../assets/yourChoiceTemp.png" fluid alt="Responsive image"></b-img>
+            <b-img class="menuImg" src="../assets/yourChoiceTemp.png" fluid alt="image of train front"></b-img>
             <h3 class="imgTitles">Your Choices</h3>
           </div>
 
@@ -57,7 +58,7 @@
               class="enlargeImg"
               src="../assets/yourChoiceTemp.png"
               fluid
-              alt="Responsive image"
+              alt="image of train front"
             ></b-img>
             <div class="moreInfo w-100">
               <h3>Your Choices</h3>
@@ -74,19 +75,58 @@
           class="menuCol"
         >
           <div v-if="!hoverYourJourney">
-            <b-img class="menuImg" src="../assets/yourJourneys.png" fluid alt="Responsive image"></b-img>
-            <h3 class="imgTitles">Your Journeys</h3>
+            <b-img class="menuImg" src="../assets/yourJourneys.png" fluid alt="image of example metro passenger"></b-img>
+            <h3 class="imgTitles">Your Journeys - Launching soon!</h3>
           </div>
 
           <div v-if="hoverYourJourney" class="hoveredImg">
-            <b-img class="enlargeImg" src="../assets/yourJourneys.png" fluid alt="Responsive image"></b-img>
+            <b-img class="enlargeImg" src="../assets/yourJourneys.png" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo w-100">
-              <h3>Your Journeys</h3>
-              <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
+              <h3>Your Journeys - Launching soon!</h3>
+              <p
+                v-show="false"
+              >New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
             </div>
           </div>
         </b-col>
       </b-row>
+      <!--/Desktop-->
+      <!--Mobile-->
+      <div class="menu-col-wrapper">
+        <div class="mobile-option">
+          <div class="mobile-header">
+            <b-img src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
+            <div class="moreInfo">
+              <h3>Your Metro</h3>
+            </div>
+          </div>
+          <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
+        </div>
+
+        <div class="mobile-option">
+          <div class="mobile-header">
+            <b-img src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
+            <div class="moreInfo">
+              <h3>Your Choices</h3>
+            </div>
+          </div>
+          <p>Some internal options are still to be decided. Customise your Metro to help us decide.</p>
+        </div>
+        
+       <div class="mobile-option">
+          <div class="mobile-header">
+            <b-img src="../assets/yourJourneysMob.png" fluid alt="image of example metro passenger"></b-img>
+            <div class="moreInfo">
+              <h3>Your Journeys - Launching soon!</h3>
+            </div>
+          </div>
+          <p v-show="false"
+            >New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
+        </div>
+
+      </div>
+
+      <!--/Mobile-->
 
       <br />
       <br />
@@ -156,6 +196,10 @@ export default {
 <style lang="scss">
 /*todo -  on horizontal smaller screens the footer overlaps menu items */
 
+.menu-col-wrapper {
+  display: none;
+}
+
 #aboutText {
   color: black;
   float: right;
@@ -211,5 +255,42 @@ export default {
   transform: scale(1.1);
   transform-origin: right;
   z-index: 5;
+}
+
+.mobile-header {
+  position: relative;
+
+  .moreInfo {
+    h3 {
+      font-family: Calvert, serif;
+      margin-right: 1.1em;
+      margin-top: 1em;
+    }
+  }
+
+
+}
+
+.mobile-option{
+  position: relative;
+  p{
+    margin: 1em 2em 2em 2em;
+    font-size: smaller}
+}
+
+
+
+
+@media all and (max-width: 765px) {
+  .menu-col-wrapper {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .menu-row {
+    display: none;
+  }
 }
 </style>

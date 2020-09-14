@@ -24,7 +24,7 @@
                         <textarea
                                 id="textarea"
                                 v-model="LAOtherText"
-                                placeholder="Enter your local authority..."
+                                placeholder="Enter where you live..."
                                 rows="2" class="form-control"
 
                         ></textarea>
@@ -48,7 +48,7 @@
 
         <!--    modal TODO call welcomeConsent instead
 
-        <b-modal v-bind:hide-footer="true" centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
+        <b-modal hide-footer centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
             <p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media. </p>
             <br>
             <div >
@@ -158,7 +158,7 @@
                         .then(response => {
                             console.log(response);
                         })
-                        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+                        .catch(error => error.response ? console.log("Error submitting demographic info:",error.response.data) : console.log("Error submitting demographic info:", error))
 
                     this.$emit('finishedWelcome');
 

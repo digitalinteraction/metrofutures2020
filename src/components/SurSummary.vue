@@ -13,13 +13,13 @@
                 <p class="calvert">Please tell us a little more about yourself and your Metro journeys.</p>
 
                 <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
-                <b-form-select v-model="purpose" :options="purposes">Please select an
+                <b-form-select @change="removeErrorText()" v-model="purpose" :options="purposes">Please select an
                     option
                 </b-form-select>
 
                 <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
 
-                <b-form-select v-model="frequency" :options="frequencies">Please select an
+                <b-form-select @change="removeErrorText()" v-model="frequency" :options="frequencies">Please select an
                     option
                 </b-form-select>
 
@@ -38,25 +38,28 @@
                 </div>
 
                 <p class="calvert question"><span class="bold">Ethnicity?</span></p>
-                <b-form-select v-model="ethnicity" :options="ethnicities">Please select an
+                <b-form-select @change="removeErrorText()" v-model="ethnicity" :options="ethnicities">Please select an
                     option
                 </b-form-select>
 
                 <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
                 <b-form-group>
-                    <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
-                    <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
+                    <b-form-radio @change="removeErrorText()" v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
+                    <b-form-radio @change="removeErrorText()" v-model="dis" name="some-radios" value="no">No</b-form-radio>
                 </b-form-group>
 
                 <div v-if="dis === 'yes'">
                 <p class="calvert "><span class="bold">If yes, what?</span></p>
-                <b-form-select  v-model="disability" :options="disabilities">Please select an
+                <b-form-select v-model="disability" :options="disabilities">Please select an
                     option
                 </b-form-select>
 
 
 </div>
                 <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
+                <div v-if="fillQuestionsError">
+                    Please answer all of the questions
+                </div>
 
             </b-col>
 </div>
@@ -73,14 +76,66 @@
                     img-height="480"
                     style="text-shadow: 1px 1px 2px #333;"
             >
-                <!--        todo load images into slides here-->
-                <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
-                <b-carousel-slide src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_2_1.jpg"></b-carousel-slide>
+
+                <b-carousel-slide>
+                    <template v-slot:img>
+                        <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[0]"
+                                alt="image slot"
+                        >
+                    </template>
+                </b-carousel-slide>
+
+                <b-carousel-slide>
+                    <template v-slot:img>
+                        <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[1]"
+                                alt="image slot"
+                        >
+                    </template>
+                </b-carousel-slide>
+
+                <b-carousel-slide>
+                    <template v-slot:img>
+                        <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[2]"
+                                alt="image slot"
+                        >
+                    </template>
+                </b-carousel-slide>
+                <b-carousel-slide>
+                    <template v-slot:img>
+                        <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[3]"
+                                alt="image slot"
+                        >
+                    </template>
+                </b-carousel-slide>
+
+
             </b-carousel>
+
+<!--            <b-row v-if="images.length === 4" >-->
+<!--                <b-col v-for="image in images" v-bind:key="image" >-->
+<!--                    <b-img fluid  v-bind:src="image"></b-img>-->
+<!--                </b-col>-->
+<!--            </b-row>-->
+
         </div>
 
     <b-row id="optionsRow">
-        {{images[3]}}
       <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
       <b-col id="option2" class="option "><p class="borderRight text-center"><b-icon-printer></b-icon-printer> PRINT </p></b-col>
       <b-col id="option3" class="option "><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
@@ -138,6 +193,7 @@ export default {
     return {
       images: [], // list of images to load into carousel
     showQuestions: true, // participant q's or slideshow
+        fillQuestionsError: false,
       viewFeatures: false,
         gender: '',
         otherGender: false,
@@ -145,7 +201,7 @@ export default {
         genders: ['Male', 'Female', 'Other/Prefer to self-describe', 'Prefer not to say'],
         ethnicity: '',
         ethnicities: ['White', 'Black/Black British', 'Asian/Asian British', 'Chinese/Thai/Japanese', 'Mixed', 'Other'],
-        dis: 'no', // yes/no asnwer to trigger options
+        dis: 'no', // yes/no answer to trigger options
         disability: '',
         disabilities: ['Visual impairment', 'Mobility impairment', 'Hearing impairment', 'Cognitive impairment', 'Other'],
         purpose: '',
@@ -175,8 +231,12 @@ export default {
           this.sliding = false
       },
       submitInfo() {
+      //check fields have been completed
+      if (!this.gender || !this.ethnicity || !this.purpose || !this.frequency) {
+          this.fillQuestionsError = true;
+      } else {
 
-      // if gender other text is filled in then send this instead
+          // if gender other text is filled in then send this instead
           if (this.genderOtherText) {
           if (this.genderOtherText.length > 0) {
               this.gender = this.genderOtherText;
@@ -202,37 +262,52 @@ export default {
               })
               .catch(error => error.response ? console.log(error.response.data) : console.log(error))
           this.showQuestions = false;
-
+      }
       },
       changeGender() {
+      this.removeErrorText();
           if (this.gender === 'Other/Prefer to self-describe') {
               this.otherGender = true;
           } else {
               this.otherGender = false;
           }
+      },
+      removeErrorText() {
+      //remove error message if all questions have been completed
+          if (this.gender && this.ethnicity && this.purpose && this.frequency) {
+              this.fillQuestionsError = true;
+          }
       }
+
   },
 
  beforeMount() {
   // look at answers stored in state and use them to construct API call to retrieve
     // images for carousel
+     // get any answers stored and replace any undefined with 1
       const answers = this.getConfigAnswers;
-      let payload = {
-          cam: '',
-          // get any answers stored and replace any undefined with 1
-          o1 :answers[0] !== undefined ? answers[0]+1 : 1,
-          o2 : answers[1] !== undefined ? answers[1]+1 : 1,
-          o3 : answers[2] !== undefined ? answers[2]+1 : 1,
-          o4 : answers[3] !== undefined ? answers[3]+1 : 1,
-          o5 : answers[4] !== undefined ? answers[4]+1 : 1,
-          o6 : answers[5] !== undefined ? answers[5]+1 : 1,
-          o7 : this.lighting ? parseInt(this.lighting) : 1
-      }
+      const o1 = answers[0] !== undefined ? answers[0]+1 : 1
+     const o2 = answers[1] !== undefined ? answers[1]+1 : 1
+     const o3 = answers[2] !== undefined ? answers[2]+1 : 1
+     const o4 = answers[3] !== undefined ? answers[3]+1 : 1
+     const o5 = answers[4] !== undefined ? answers[4]+1 : 1
+     const o6 = answers[5] !== undefined ? answers[5]+1 : 1
+     const o7 = this.lighting ? parseInt(this.lighting) : 1
 
     // for each camera angle, add on question answers and get image from API
     const cameraAngles = [1, 2, 4, 14];
     for (const cam of cameraAngles) {
-      payload.cam = cam;
+
+        let payload = {
+            cam: cam,
+            o1,
+            o2,
+            o3,
+            o4,
+            o5,
+            o6,
+            o7
+        }
         this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
             headers: {
                 Cookie: this.$cookies.get('mfsid')
@@ -240,7 +315,7 @@ export default {
             params: payload
         })
             .then(response => {
-                this.images.push(response.data);console.log('slides=' + this.images.length);
+                this.images.push(response.data.url);console.log(payload);
             })
             .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
     }

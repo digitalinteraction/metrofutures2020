@@ -1,6 +1,8 @@
 require('dotenv').config()
 const imageFolder = "conf";
 
+// Get all the image URLs for a given question index and set of options(day + night)
+
 module.exports = async(req, res) => {
   if(!req.cookies.mfsid){
     console.log('Unauthorized');
@@ -8,9 +10,11 @@ module.exports = async(req, res) => {
   } else {
     try {
       let options = validateQuery(req.query)
-      if (options) {
-        let url = urlFormatter(options)
-        sendResponse(req, res, 200, url, options);
+      let optionUrls = []
+      if (options && req.query.qindex > 0 && req.query.qindex <= 6) {
+        // console.log(req.query.qindex, options)
+        optionUrls = generateUrls(req.query.qindex, options)
+        sendResponse(req, res, 200, optionUrls)
       } else {
         sendResponse(req, res, 400, "Incorrectly formatted");
       }
@@ -25,18 +29,9 @@ module.exports = async(req, res) => {
   }
 }
 
-function sendResponse(req, res, status, message, options) {
-  let responseObj = {}
-  if (options) {
-    responseObj = {
-      url: message,
-      options: options
-    }
-  } else {
-    responseObj = message
-  }
+function sendResponse(req, res, status, message) {
   res.status(status);
-  res.send(responseObj);
+  res.send(message);
 }
 
 function validateQuery(query) {
@@ -167,4 +162,58 @@ function convertPrioritySeats(seatValue) {
   } else {
     return "OFF"
   }
+}
+
+function generateUrls(qindex, options) {
+  // Take the qindex (1 indexed) and all our o1, o2 etc options, and generate the day and night URLs for the given question (e.g. question 1 has 3 options in it, so generate 3 day + 3 night URLs)
+  let questionIndex = parseInt(qindex)
+  let optionsPayload = options
+  let urlsDay = []
+  let urlsNight = []
+  let numOptions = 0;
+
+  // Set number of options (dependent on the question index)
+  switch(questionIndex) {
+    case 1:
+      numOptions = 3
+      break;
+    case 2:
+      numOptions = 4
+      break;
+    case 3:
+      numOptions = 3
+      break;
+    case 4:
+      numOptions = 3
+      break;
+    case 5:
+      numOptions = 2
+      break;
+    case 6:
+      numOptions = 3
+      break;
+  }
+
+  console.log("Num options:", numOptions, "for index", questionIndex)
+
+  // Run for loop
+  for (let i = 1; i <= numOptions; i++){
+    // Modify options with the i+1 of for loop
+    let optionsString = "o"+questionIndex
+    if (qindex == 5) {
+      optionsPayload[optionsString] = convertPrioritySeats(i)
+    } else {
+      optionsPayload[optionsString] = i
+    }
+    
+    optionsPayload.o7 = 1  // Modify with day
+    // Generate Url and store in array
+    urlsDay.push(urlFormatter(optionsPayload))
+
+    optionsPayload.o7 = 2  // Modify with night
+    // Generate Url and store in array
+    urlsNight.push(urlFormatter(optionsPayload))
+  }
+  // Concate both together into an easily accessible object at the other end
+  return {day: urlsDay, night: urlsNight}
 }

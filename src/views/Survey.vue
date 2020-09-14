@@ -9,12 +9,10 @@
             <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
           </router-link>
         </b-col>
-        <b-col v-if="!summary">
-          <h3 class="calvert">Configure your Metro</h3>
-        </b-col>
         <b-col v-if="summary">
-          <h3 class="calvert">Your Metro Summary</h3>
+          <h3 class="calvert">Your Choices</h3>
         </b-col>
+
         <b-col>
 <!--           todo add link here-->
           <p v-on:click="goTo('/journeys')" class="float-right personasLink" >Explore some of our Metro users?</p>
@@ -35,9 +33,20 @@
             <SurWelcome @finishedWelcome="welcomeScreen=false"></SurWelcome>
         </b-row>
 
-      <b-row v-if="!summary && !welcomeScreen">
-          <SurveyQuestion :question="this.questions[index]" :index="index" />
-      </b-row>
+      <span v-if="!summary && !welcomeScreen">
+        <b-row 
+          v-for="(question, qindex) in this.questions"
+          :key="qindex"
+          v-show="screens[qindex]"
+        >
+          <SurveyQuestion
+          :question="question"
+          :index="qindex"
+          :answers="configAnswers"
+          ></SurveyQuestion>
+
+        </b-row>
+      </span>
 
         <b-row v-if="summary && !welcomeScreen">
             <SurSummary></SurSummary>
@@ -70,7 +79,15 @@ export default {
   data() {
     return {
       selections: [],
-        welcomeScreen: true
+      welcomeScreen: true,
+      screens: [
+        true, 
+        false, 
+        false, 
+        false, 
+        false, 
+        false,
+      ]
     }
   },
   computed: {
@@ -92,34 +109,57 @@ export default {
     ...mapMutations([
       'setIndex'
     ]),
-      checkSelected: function(breadcrumbIndex) {
-        if (breadcrumbIndex === 6 && this.summary === true) {
-            //highlight summary
+    toggleScreen(qindex) {
+      this.screens[qindex] = !this.screens[qindex]
+    },
+    nextScreen(qindex) {
+      if(qindex >= this.screens.length-1) {
+        console.log("Can't increment as:", qindex, this.screens.length-1)
+      } else {
+        this.toggleScreen(qindex)
+        this.toggleScreen(qindex+1)
+      }
+    },
+    prevScreen(qindex) {
+      if (qindex > 0) {
+        this.toggleScreen(qindex)
+        this.toggleScreen(qindex-1)
+      } else {
+        console.log("Can't decrement as:", qindex)
+      }
+    },
+    goToScreen(qindex) {
+      // Disable all other screens and enable specified screen
+      let i, n = this.screens.length
+      for (i = 0; i < n; ++i) {
+        this.screens[i] = false
+      }
+      this.screens[qindex] = true
+    },
+    checkSelected: function(breadcrumbIndex) {
+      if (breadcrumbIndex === 6 && this.summary === true) {
+          //highlight summary
+          return 'breadSelected';  // Delicious :-D
+      }
+      // don't highlight first breadcrumb until welcome screen is completed
+        else if (breadcrumbIndex === 0 && this.welcomeScreen === false && this.index === breadcrumbIndex) {
+          return 'breadSelected';
+      } else if (breadcrumbIndex !== 0 && this.index === breadcrumbIndex) {
             return 'breadSelected';
         }
-        // don't highlight first breadcrumb until welcome screen is completed
-          else if (breadcrumbIndex === 0 && this.welcomeScreen === false && this.index === breadcrumbIndex) {
-            return 'breadSelected';
-        } else if (breadcrumbIndex !== 0 && this.index === breadcrumbIndex) {
-              return 'breadSelected';
-          }
-      },
-      checkCompleted: function(breadcrumbIndex) {
-        const answers = this.getConfigAnswers;
-        // if answer is stored, apply different class to breadcrumb item
-          if (answers[breadcrumbIndex] !== undefined) {
-              return 'qAnswered';
-          }
-      },
-    // next: function() {
-    //   if (this.index < this.questions.length - 1) {
-    //     this.index++
-    //   }
-    // },
+    },
+    checkCompleted: function(breadcrumbIndex) {
+      const answers = this.getConfigAnswers;
+      // if answer is stored, apply different class to breadcrumb item
+        if (answers[breadcrumbIndex] !== undefined) {
+            return 'qAnswered';
+        }
+    },
     clickBreadcrumb(breadcrumbIndex) {
       // navigate to previously completed questions but not current index or uncompleted questions
         if (breadcrumbIndex !== this.index && this.configAnswers[breadcrumbIndex] !== undefined) {
             this.setIndex(breadcrumbIndex);
+            this.goToScreen(breadcrumbIndex)
         }
     },
     clickSummaryBreadcrumb() {
@@ -151,8 +191,6 @@ export default {
             .then(response => {
               console.log(response);
             })
-    console.log(this.selected);
-
 
     // google analytics post
 

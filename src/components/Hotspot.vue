@@ -1,8 +1,9 @@
 <template>
   <div class="hotspot_container" v-bind:class="{ hidden : !visible}">
     <div class="icon-container">
-      <b-icon icon="box-arrow-in-down-right" v-on:click="toggle()" v-show="!visible"></b-icon>
-      <b-icon icon="box-arrow-in-up-left" v-on:click="toggle()" v-show="visible"></b-icon>
+      <b-icon icon="info-circle" v-on:click="toggle()" v-show="!visible"></b-icon>
+      <!-- <b-icon icon="box-arrow-in-down-right" v-on:click="toggle()" v-show="!visible"></b-icon> -->
+      <b-icon icon="x-circle" v-on:click="toggle()" v-show="visible"></b-icon>
     </div>
     
     <!-- <img src="/favicon.ico" alt="" class="icon" > -->
@@ -76,18 +77,20 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import '@/assets/_variables.scss';
+
   .hotspot_container {
   }
 
   .hidden {
-    background-color: none;
+    background: none;
     border: 0;
   }
 
   .icon-container {
     float: left;
-    background-color:aquamarine;
+    background-color: #5bb064;
     padding-left: 0.2em;
     padding-right: 0.2em;
     border-radius: 25px;
@@ -106,9 +109,11 @@ export default {
   }
 
   .hotspot_title {
-    font-weight:bold;
+    font-family: $font-family-calvert;
+    // font-weight:bold;
     display: block;
     text-align: center;
+    background-color: gray
     /* float: left; */
   }
 

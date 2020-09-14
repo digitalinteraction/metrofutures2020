@@ -59,7 +59,7 @@
                                :class="selectClass(x)">
                             <!--                            todo replace with appropriate choices per question using {{ option.img }}-->
                             <b-col class="optionImg">
-                                <b-img class="float-left" fluid src="../assets/metroLogoTemp.png"></b-img>
+                                <b-img class="float-left" fluid v-bind:src="'/squares/' + option.img"></b-img>
                             </b-col>
                             <b-col class="optionText">
                                 <p>{{ option.desc }}</p>
@@ -109,52 +109,50 @@
         name: 'SurveyQuestion',
         props: {
             question: Object,
-            index: Number
+            index: Number,
+            answers: Object  // Used for the watch, passes in current answers
         },
         data() {
             return {
-                selected: -1,
+                selected: 0,  // It looks weird if 1st option isn't selected - but maybe this will screw with our data?
                 surveyText: "",
                 displayError: false,
-                image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', //image from CDN
-                optionImages: [], // Store all our URLs here
-                survey: false, //flag to show LA question is complete so survey can begin,
-
-                otherLA: false, // flag to show user has selected free text option
-                LAOtherText: '',
-                lighting: '',
-                frontImg:'' //image of front of train for local authority question
+                image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', // default placeholder image from CDN
+                // optionImages: [], // Store all our URLs here
+                optionImages: {
+                    day: [],
+                    night: []
+                },
+                lighting: "1",
             }
 
         },
         watch: {
             lighting: function() {
-                // // change what URL is used for image accordingly
-                // if (this.lighting === 1) {
-                //     this.image = this.imageDay;
-                // } else if (this.lighting === 2) {
-                //     this.image = this.imageNight;
-                // }
-                this.fetchImage();
+                if (this.lighting === "1") {
+                    // console.log("Setting to daylight")
+                    this.image = this.optionImages.day[this.selected]
+
+                } else if (this.lighting === "2") {
+                    this.image = this.optionImages.night[this.selected]
+                }
             },
-             index: function() {
-                 // this.imageDay = this.nextImageURLDay;
-                 // this.imageNight = this.nextImageURLNight;
-                 // if (this.lighting === 1) {
-                 //     this.image = this.imageDay;
-                 // } else if (this.lighting === 2) {
-                 //     this.image = this.imageNight;
-                 // }
-                console.log("Detected change of index")
-                this.generateOptionURLs()
-                 this.fetchImage();
-             }
+            answers: {
+                // This causes quite a lot of loading simultaneously. Could rejig somewhere so that only daytime next images are loaded immediately, with a small delay on the others. Breadcrumbs tend to be navigated to before you submit (or not long after) - you rarely submit and then go backwards with a breadcrumb a long way
+
+                // handler: function (newAnswers, oldAnswers) {  // You can see the old and new objects, but don't really need this
+                handler: function () {
+                    console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
+                    this.generateOptionURLs()
+                },
+                deep: true,  // Without this the watcher doesn't look at answers.[anything], so doesn't run
+            },
         },
         computed: {
             ...mapGetters([
                 'getConfigAnswers',
                 'getIndex'
-            ])
+            ]),
         },
         methods: {
             ...mapMutations([
@@ -186,7 +184,7 @@
                             params: payload
                         })
                             .then(response => {
-                                console.log('get image response: ' + response);
+                                console.info('Survey response: ' + response);
                             })
                             .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
@@ -194,113 +192,52 @@
                         this.addConfigAnswer(payload);
                     }
 
-                    // move to next question and be ready to accept next answers unless all questions have been completed
+                    // move to next question
                     this.incrementIndex()
-                    this.resetSelected()
-                    this.displayError = false;
+                    this.$parent.nextScreen(this.index)  // Trigger parent to render next question screen
                 } else {
                     //you haven't answered
-                    console.log('error');
+                    // console.log('error');
                     this.displayError = true;
                 }
             },
 
 
             previousQuestion() {
-
                 this.reduceIndex();
-                this.resetSelected();
+                this.$parent.prevScreen(this.index)  // Trigger parent to render previous question screen
                 this.displayError = false;
             },
 
             selectOption(x) {
+                // Maybe find a way to trigger the next item to load based on this?
                 this.selected = x
                 this.displayError = false;
-                this.image = this.optionImages[x]
+                if(this.lighting === "1") {
+                    this.image = this.optionImages.day[x]
+                } else {
+                    this.image = this.optionImages.night[x]
+                }
             },
-
-            resetSelected() {
-                // This is potentially redundant as the component gets destroyed
-                this.selected = -1
-                this.surveyText = ""
-            },
-
             selectClass(x) {
                 let selectClass = ''
                 if (this.selected === x) {
                     selectClass = 'selected'
                 }
-                // console.log('returning class for', x, selectClass)
                 return selectClass
             },
-            generateOptionURLs() {
-                // For this given index, get all of the possible option URLS
-                // Use index to track which option we need to generate for
-                this.optionImages = []
-                // console.log("we are index", this.index, "thus question", this.index+1)
-                for(let i = 0; i < this.question.options.length; i++) {
-                    console.log(`Generating URL for option ${i}, index ${this.getIndex}`)
 
-                    // Get a clean "basic" set of answers to generate
-                    let payload = this.sanitiseConfigAnswers()
-                    // Place the current option index we want to generate into payload
-                    switch(this.getIndex) {
-                        case 0:
-                            payload.o1 = i+1
-                            break;
-                        case 1:
-                            payload.o2 = i+1
-                            break;
-                        case 2:
-                            payload.o3 = i+1
-                            break;
-                        case 3:
-                            payload.o4 = i+1
-                            break;
-                        case 4:
-                            payload.o5 = i+1
-                            break;
-                        case 5:
-                            payload.o6 = i+1
-                            break;
-                    }
-
-                    // TO DO: Why are we getting the wrong camera ID??
-                    // Get the option image and store it in optionImages array
-                    this.optionImageAPICall(payload, i)
-
-                }
-                // // Get our current stored answers
-                // let answers = this.getConfigAnswers;
-                // let choice = 0;
-                // if (answers[this.index] !== undefined) {
-                //     console.log("We made a choice on this one already", answers[this.index])
-                //     choice = answers[this.index]
-                // } else {
-                //     console.log("We didn't select anything", this.selected)
-                //     choice = this.selected;
-                // }
-                // let cleanAnswers = this.sanitiseConfigAnswers();
-                // console.log(cleanAnswers)
-                // switch(this.index)
-                // {
-                //     case 0:
-                //         break;
-                //     case 1:
-                //         break;
-                //     case 2:
-                //         break;
-                //     case 3:
-                //         break;
-                //     case 4:
-                //         break;
-                //     case 5:
-                //         break;
-                // }
-                // console.log("choice", choice)
+            async generateOptionURLs() {
+                // Fetch all day and night URLs for our current index
+                // Get a clean "basic" set of answers to generate
+                let payload = this.sanitiseConfigAnswers()
+                payload.qindex = this.index+1
+                // Get day and night option image Urls and store in respective arrays
+                this.allUrlsAPICall(payload)
+                   
             },
             sanitiseConfigAnswers() {
-                // Get and sanitise the answers
+                // Get and sanitise (remove undefined) the answers
                 let answers = this.getConfigAnswers;
 
                 // get any answers stored and replace any undefined with 1
@@ -319,170 +256,36 @@
                     o4,
                     o5,
                     o6,
-                    o7: this.lighting !== "" ? this.lighting : 1 // defaults to daylight otherwise
+                    o7: this.lighting !== "" ? parseInt(this.lighting) : 1 // defaults to daylight otherwise
                 }
 
                 return cleanAnswers
             },
             mapCameraByIndex() {
                 // Return the current camera ID based on question this.index
-                //camera angle
+                // Camera angle 1 is the default view
                 // WE NEED TO BE SUPER CAREFUL WITH CAMERA ID HERE
                 let cam = 1;  
-                if (this.getIndex+1 === 2) {  // This was set to === 1, that would mean index 1 becomes camera 2
+                if (this.index+1 === 2) {  
                     cam = 2;
-                } else if (this.getIndex+1 === 3) {
+                } else if (this.index+1 === 3) {
                     // pole design
                     cam = 3;
-                } else if (this.getIndex+1 === 4) {
+                } else if (this.index+1 === 4) {
                     // bike stand
                     cam = 4;
-                } else if (this.getIndex+1 === 5 || this.getIndex+1 === 6) {
+                } else if (this.index+1 === 5 || this.index+1 === 6) {
                     // priority seats
                     // There are 2 more camera angles here
                     cam = 14;
                 }
                 return cam
             },
-            generateURLForNextImage() {
-                const answers = this.getConfigAnswers;
+            async allUrlsAPICall(payload) {
+                // console.log('requesting image with this payload:', payload);
 
-                // get any answers stored and replace any undefined with 1
-                let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
-                let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
-                let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
-                let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
-                let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
-                let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
-
-
-
-                //camera angle
-                let cam = 1;
-                if (this.index+1 === 1) {
-                    cam = 2;
-                } else if (this.index+1 === 2) {
-                    // pole design
-                    cam = 3;
-                } else if (this.index+1 === 3) {
-                    // bike stand
-                    cam = 4;
-                } else if (this.index+1 === 4 || this.index+1 === 5) {
-                    // priority seats
-                    cam = 14;
-                }
-
-                const day = {
-                    cam,
-                    o1,
-                    o2,
-                    o3,
-                    o4,
-                    o5,
-                    o6,
-                    o7: 1,
-                }
-
-                const night = {
-                    cam,
-                    o1,
-                    o2,
-                    o3,
-                    o4,
-                    o5,
-                    o6,
-                    o7: 2,
-                }
-                // line up day time URL
-                 this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-                        headers: {
-                            Cookie: this.$cookies.get('mfsid')
-                        },
-                        params: day
-                    })
-                        .then(response => {
-
-                            this.nextImageURLDay = response.data;
-                        })
-                        .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
-
-                // line up night time URL
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
-                    params: night
-                })
-                    .then(response => {
-
-                        this.nextImageURLNight = response.data;
-                    })
-                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
-                console.log(this.nextImageURLDay);
-                console.log(this.nextImageURLNight);
-            },
-
-            async fetchImage() {
-                 const answers = this.getConfigAnswers;
-
-                // get any answers stored and replace any undefined with 1
-                let o1 = answers[0] !== undefined ? answers[0]+1 : 1;
-                let o2 = answers[1] !== undefined ? answers[1]+1 : 1;
-                let o3 = answers[2] !== undefined ? answers[2]+1 : 1;
-                let o4 = answers[3] !== undefined ? answers[3]+1 : 1;
-                let o5 = answers[4] !== undefined ? answers[4]+1 : 1;
-                let o6 = answers[5] !== undefined ? answers[5]+1 : 1;
-                let o7 = this.lighting ? parseInt(this.lighting) : 1;
-
-
-                //camera angle
-                let cam = 1;
-                if (this.index === 1) {
-                    cam = 2;
-                } else if (this.index === 2) {
-                    // pole design
-                    cam = 3;
-                } else if (this.index === 3) {
-                    // bike stand
-                    cam = 4;
-                } else if (this.index === 4 || this.index === 5) {
-                    // priority seats
-                    cam = 14;
-                }
-
-                const payload = {
-                    cam,
-                    o1,
-                    o2,
-                    o3,
-                    o4,
-                    o5,
-                    o6,
-                    o7,
-                }
-                this.imageAPICall(payload);
-            },
-            async imageAPICall(payload) {
-                // console.log('requesting image with this payload: ');
-                // console.log(payload);
-
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
-                    params: payload
-                })
-                    .then(response => {
-
-                       this.image = response.data;
-                       })
-                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
-            },
-            async optionImageAPICall(payload, option) {
-                // console.log('requesting image with this payload: ');
-                // console.log(payload);
-
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+                // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
+                this.axios.get(`/api/images/optionUrls`, {
                     headers: {
                         Cookie: this.$cookies.get('mfsid')
                     },
@@ -490,13 +293,37 @@
                 })
                     .then(response => {
                         // Store the response in array for later use
-                        this.optionImages[option] = response.data 
-                       })
-                    .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
+                        // Maybe wrap this in a try as o7 might not be there (although it is always specified in the API)
+                        if(response.data) {
+                            this.optionImages.day = response.data.day
+                            this.optionImages.night = response.data.night
+                            // Unless we have already selected one
+                            if (this.selected !== 0 && this.selected < response.data.day.length) {
+                                this.setFirstImage(response.data.day[this.selected])
+                            } else {
+                                this.setFirstImage(response.data.day[0])
+                            }
+                        } else {
+                            console.log("no options returned:", response.data)
+                        }
+                    })
+                    .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
+            },
+            setFirstImage(imageUrl) {
+                this.image = imageUrl
+                // if(this.optionImages.length > 0) {
+                // } else {
+                //     console.log("error: calling setFirstImage before 1st image loaded");
+                // }
+            },
+            getOptionImage(imagePath) {
+                const path = process.env.VUE_APP_SQUARES_URL + imagePath;
+                console.log(path);
+                return path;
             }
+
         },
         mounted() {
-            console.log("Mounted")
             this.generateOptionURLs()
      }
     }
