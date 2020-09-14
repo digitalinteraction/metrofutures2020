@@ -1,23 +1,7 @@
 <template>
     <div class="about">
         <b-container>
-            <b-row>
-                <b-col align="center">
-                    <b-img align="center" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
-                </b-col>
-            </b-row>
-
-            <b-row>
-                <b-col>
-                    <a @click="$router.go(-1)" id="backOption">
-                        <b-icon-chevron-left></b-icon-chevron-left>
-                        Back</a>
-                </b-col>
-            </b-row>
-
-            <b-row>
-                <b-col><h3 id="calvertTitle">About Metro Futures</h3></b-col>
-            </b-row>
+            <MainHeader title="About Metro Futures"/>
 
             <b-row>
                 <b-col>
@@ -138,12 +122,14 @@
 
 <script>
     import Footer from "@/components/Footer";
+    import MainHeader from '@/components/MainHeader.vue'
     //import router from "../router";
 
     export default {
         name: 'About',
         components: {
-            Footer
+            Footer,
+            MainHeader
         },
         methods: {
             goBackAPage() {
