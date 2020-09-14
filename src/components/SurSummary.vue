@@ -2,15 +2,15 @@
     <b-container fluid>
 
         <div v-if="showQuestions">
-<div class="row">
-        <b-col  class="largeImgColumn col-lg-8 col-12">
+          <div class="row">
+            <b-col  class="largeImgColumn col-lg-8 col-12">
 
-            <b-img fluid :src="images[0]"></b-img>
-        </b-col>
+                <b-img fluid :src="images[0]"></b-img>
+            </b-col>
 
             <b-col class="col-lg-3 col-12">
 
-                <p class="calvert">Please tell us a little more about yourself and your Metro journeys.</p>
+                <p class="summaryText">To help with this public consultation, please tell us a little more about yourself and your Metro journeys. Afterwards you can explore images of the Metro that you configured, and you can share it on social media!</p>
 
                 <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
                 <b-form-select @change="removeErrorText()" v-model="purpose" :options="purposes">Please select an
@@ -358,7 +358,10 @@ font-size: small;
 #optionsAsterix {
   font-size: small;
 padding-top: 1em;
+}
 
+.summaryText {
+  text-align: justify;
 }
 
 .submitBtn {margin-bottom: 1em;}
