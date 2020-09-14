@@ -59,7 +59,7 @@
                                :class="selectClass(x)">
                             <!--                            todo replace with appropriate choices per question using {{ option.img }}-->
                             <b-col class="optionImg">
-                                <b-img class="float-left" fluid v-bind:src="option.img"></b-img>
+                                <b-img class="float-left" fluid v-bind:src="'/squares/' + option.img"></b-img>
                             </b-col>
                             <b-col class="optionText">
                                 <p>{{ option.desc }}</p>
@@ -68,7 +68,7 @@
   {{ option.desc }}
 </b-form-checkbox> -->
                         </b-row>
-                    </b-col>"
+                    </b-col>
                 </b-row>
 
                 <!--                feedback section-->
@@ -284,7 +284,8 @@
             async allUrlsAPICall(payload) {
                 // console.log('requesting image with this payload:', payload);
 
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
+                // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
+                this.axios.get(`/api/images/optionUrls`, {
                     headers: {
                         Cookie: this.$cookies.get('mfsid')
                     },
@@ -315,6 +316,12 @@
                 //     console.log("error: calling setFirstImage before 1st image loaded");
                 // }
             },
+            getOptionImage(imagePath) {
+                const path = process.env.VUE_APP_SQUARES_URL + imagePath;
+                console.log(path);
+                return path;
+            }
+
         },
         mounted() {
             this.generateOptionURLs()
