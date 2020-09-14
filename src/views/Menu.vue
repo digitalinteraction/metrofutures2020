@@ -93,7 +93,7 @@
       <!--/Desktop-->
       <!--Mobile-->
       <div class="menu-col-wrapper">
-        <div class="mobile-option">
+        <div class="mobile-option" v-on:click="goTo('/explore')">
           <div class="mobile-header">
             <b-img src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo">
@@ -103,7 +103,7 @@
           <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
         </div>
 
-        <div class="mobile-option">
+        <div class="mobile-option" @click="goTo('/configure')">
           <div class="mobile-header">
             <b-img src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
             <div class="moreInfo">
@@ -113,7 +113,7 @@
           <p>Some internal options are still to be decided. Customise your Metro to help us decide.</p>
         </div>
         
-       <div class="mobile-option">
+       <div class="mobile-option" @click="goTo('/journeys')">
           <div class="mobile-header">
             <b-img src="../assets/yourJourneysMob.png" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo">
