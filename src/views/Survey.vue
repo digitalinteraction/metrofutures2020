@@ -15,7 +15,8 @@
 
         <b-col>
 <!--           todo add link here-->
-          <p v-on:click="goTo('/journeys')" class="float-right personasLink" >Explore some of our Metro users?</p>
+          <MainMenu class="text-right"></MainMenu>
+          <!-- <p v-on:click="goTo('/journeys')" class="float-right personasLink" >Explore some of our Metro users?</p> -->
         </b-col>
       </b-row>
 
@@ -67,6 +68,7 @@ import SurveyQuestion from '@/components/SurveyQuestion.vue'
   import SurSummary from '@/components/SurSummary.vue'
   import router from "../router";
   import SurWelcome from "../components/SurWelcome";
+  import MainMenu from '@/components/MainMenu.vue';
 
 export default {
   name: 'Home',
@@ -74,7 +76,8 @@ export default {
       SurWelcome,
     SurveyQuestion,
     // PrivacyNotice,
-      SurSummary
+      SurSummary,
+      MainMenu,
   },
   data() {
     return {

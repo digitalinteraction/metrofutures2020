@@ -10,16 +10,7 @@
     </b-col>
 
     <b-col>
-      <div>
-        <b-dropdown id="dropdown-1" text="Menu" class="m-md-2">
-          <b-dropdown-item><router-link to="/about">About Metro Futures</router-link></b-dropdown-item>
-          <b-dropdown-item><router-link to="/explore">Explore Your Metro</router-link></b-dropdown-item>
-          <b-dropdown-item><router-link to="/configure">Configure Your Metro</router-link></b-dropdown-item>
-          <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
-          <b-dropdown-item>Terms and Conditions</b-dropdown-item>
-          <b-dropdown-item>Privacy Policy</b-dropdown-item>
-        </b-dropdown>
-      </div>
+      <MainMenu></MainMenu>
     </b-col>
 
 
@@ -28,10 +19,14 @@
 </template>
 
 <script>
+import MainMenu from '@/components/MainMenu.vue'
 export default {
   name: "MainHeader",
   props: {
     title: String
+  },
+  components: {
+    MainMenu
   }
 
 }
@@ -49,5 +44,9 @@ export default {
     cursor: pointer;
     color: $font-color;
 }
+
+// .dd-menu {
+//   background-color: $metro-yellow;
+// }
 
 </style>

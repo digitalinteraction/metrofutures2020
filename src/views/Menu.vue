@@ -10,10 +10,11 @@
           <b-img id="metroLogo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
         </b-col>
         <b-col>
-          <p id="aboutText" v-on:click="goTo('/about')">
+          <MainMenu class="aboutText text-right"></MainMenu>
+          <!-- <p id="aboutText" v-on:click="goTo('/about')">
             About Metro Futures
             <b-icon-chevron-down variant="primary"></b-icon-chevron-down>
-          </p>
+          </p> -->
         </b-col>
       </b-row>
 
@@ -142,11 +143,14 @@
 import Footer from "@/components/Footer";
 import router from "../router";
 import welcomeConsent from "../components/WelcomeConsent";
+import MainMenu from '@/components/MainMenu.vue';
+
 export default {
   name: "Menu",
   components: {
     welcomeConsent,
-    Footer
+    Footer,
+    MainMenu
   },
   methods: {
     goTo(route) {
