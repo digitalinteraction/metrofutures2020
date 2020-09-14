@@ -73,14 +73,66 @@
                     img-height="480"
                     style="text-shadow: 1px 1px 2px #333;"
             >
-                <!--        todo load images into slides here-->
-                <b-carousel-slide img-src="https://picsum.photos/1024/480/?image=58"></b-carousel-slide>
-                <b-carousel-slide src="https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_2_1.jpg"></b-carousel-slide>
+
+                <b-carousel-slide>
+                    <template v-slot:img>
+                        <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[0]"
+                                alt="image slot"
+                        >
+                    </template>
+                </b-carousel-slide>
+
+                <b-carousel-slide>
+                    <template v-slot:img>
+                        <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[1]"
+                                alt="image slot"
+                        >
+                    </template>
+                </b-carousel-slide>
+
+                <b-carousel-slide>
+                    <template v-slot:img>
+                        <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[2]"
+                                alt="image slot"
+                        >
+                    </template>
+                </b-carousel-slide>
+                <b-carousel-slide>
+                    <template v-slot:img>
+                        <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[3]"
+                                alt="image slot"
+                        >
+                    </template>
+                </b-carousel-slide>
+
+
             </b-carousel>
+
+<!--            <b-row v-if="images.length === 4" >-->
+<!--                <b-col v-for="image in images" v-bind:key="image" >-->
+<!--                    <b-img fluid  v-bind:src="image"></b-img>-->
+<!--                </b-col>-->
+<!--            </b-row>-->
+
         </div>
 
     <b-row id="optionsRow">
-        {{images[3]}}
       <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
       <b-col id="option2" class="option "><p class="borderRight text-center"><b-icon-printer></b-icon-printer> PRINT </p></b-col>
       <b-col id="option3" class="option "><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
@@ -216,23 +268,30 @@ export default {
  beforeMount() {
   // look at answers stored in state and use them to construct API call to retrieve
     // images for carousel
+     // get any answers stored and replace any undefined with 1
       const answers = this.getConfigAnswers;
-      let payload = {
-          cam: '',
-          // get any answers stored and replace any undefined with 1
-          o1 :answers[0] !== undefined ? answers[0]+1 : 1,
-          o2 : answers[1] !== undefined ? answers[1]+1 : 1,
-          o3 : answers[2] !== undefined ? answers[2]+1 : 1,
-          o4 : answers[3] !== undefined ? answers[3]+1 : 1,
-          o5 : answers[4] !== undefined ? answers[4]+1 : 1,
-          o6 : answers[5] !== undefined ? answers[5]+1 : 1,
-          o7 : this.lighting ? parseInt(this.lighting) : 1
-      }
+      const o1 = answers[0] !== undefined ? answers[0]+1 : 1
+     const o2 = answers[1] !== undefined ? answers[1]+1 : 1
+     const o3 = answers[2] !== undefined ? answers[2]+1 : 1
+     const o4 = answers[3] !== undefined ? answers[3]+1 : 1
+     const o5 = answers[4] !== undefined ? answers[4]+1 : 1
+     const o6 = answers[5] !== undefined ? answers[5]+1 : 1
+     const o7 = this.lighting ? parseInt(this.lighting) : 1
 
     // for each camera angle, add on question answers and get image from API
     const cameraAngles = [1, 2, 4, 14];
     for (const cam of cameraAngles) {
-      payload.cam = cam;
+
+        let payload = {
+            cam: cam,
+            o1,
+            o2,
+            o3,
+            o4,
+            o5,
+            o6,
+            o7
+        }
         this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
             headers: {
                 Cookie: this.$cookies.get('mfsid')
@@ -240,7 +299,7 @@ export default {
             params: payload
         })
             .then(response => {
-                this.images.push(response.data);console.log('slides=' + this.images.length);
+                this.images.push(response.data.url);console.log(payload);
             })
             .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
     }
