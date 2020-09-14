@@ -13,13 +13,13 @@
                 <p class="calvert">Please tell us a little more about yourself and your Metro journeys.</p>
 
                 <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
-                <b-form-select v-model="purpose" :options="purposes">Please select an
+                <b-form-select @change="removeErrorText()" v-model="purpose" :options="purposes">Please select an
                     option
                 </b-form-select>
 
                 <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
 
-                <b-form-select v-model="frequency" :options="frequencies">Please select an
+                <b-form-select @change="removeErrorText()" v-model="frequency" :options="frequencies">Please select an
                     option
                 </b-form-select>
 
@@ -38,25 +38,28 @@
                 </div>
 
                 <p class="calvert question"><span class="bold">Ethnicity?</span></p>
-                <b-form-select v-model="ethnicity" :options="ethnicities">Please select an
+                <b-form-select @change="removeErrorText()" v-model="ethnicity" :options="ethnicities">Please select an
                     option
                 </b-form-select>
 
                 <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
                 <b-form-group>
-                    <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
-                    <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
+                    <b-form-radio @change="removeErrorText()" v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
+                    <b-form-radio @change="removeErrorText()" v-model="dis" name="some-radios" value="no">No</b-form-radio>
                 </b-form-group>
 
                 <div v-if="dis === 'yes'">
                 <p class="calvert "><span class="bold">If yes, what?</span></p>
-                <b-form-select  v-model="disability" :options="disabilities">Please select an
+                <b-form-select v-model="disability" :options="disabilities">Please select an
                     option
                 </b-form-select>
 
 
 </div>
                 <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
+                <div v-if="fillQuestionsError">
+                    Please answer all of the questions
+                </div>
 
             </b-col>
 </div>
@@ -190,6 +193,7 @@ export default {
     return {
       images: [], // list of images to load into carousel
     showQuestions: true, // participant q's or slideshow
+        fillQuestionsError: false,
       viewFeatures: false,
         gender: '',
         otherGender: false,
@@ -197,7 +201,7 @@ export default {
         genders: ['Male', 'Female', 'Other/Prefer to self-describe', 'Prefer not to say'],
         ethnicity: '',
         ethnicities: ['White', 'Black/Black British', 'Asian/Asian British', 'Chinese/Thai/Japanese', 'Mixed', 'Other'],
-        dis: 'no', // yes/no asnwer to trigger options
+        dis: 'no', // yes/no answer to trigger options
         disability: '',
         disabilities: ['Visual impairment', 'Mobility impairment', 'Hearing impairment', 'Cognitive impairment', 'Other'],
         purpose: '',
@@ -227,8 +231,12 @@ export default {
           this.sliding = false
       },
       submitInfo() {
+      //check fields have been completed
+      if (!this.gender || !this.ethnicity || !this.purpose || !this.frequency) {
+          this.fillQuestionsError = true;
+      } else {
 
-      // if gender other text is filled in then send this instead
+          // if gender other text is filled in then send this instead
           if (this.genderOtherText) {
           if (this.genderOtherText.length > 0) {
               this.gender = this.genderOtherText;
@@ -254,15 +262,23 @@ export default {
               })
               .catch(error => error.response ? console.log(error.response.data) : console.log(error))
           this.showQuestions = false;
-
+      }
       },
       changeGender() {
+      this.removeErrorText();
           if (this.gender === 'Other/Prefer to self-describe') {
               this.otherGender = true;
           } else {
               this.otherGender = false;
           }
+      },
+      removeErrorText() {
+      //remove error message if all questions have been completed
+          if (this.gender && this.ethnicity && this.purpose && this.frequency) {
+              this.fillQuestionsError = true;
+          }
       }
+
   },
 
  beforeMount() {
