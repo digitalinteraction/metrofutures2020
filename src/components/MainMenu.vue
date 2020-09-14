@@ -5,16 +5,27 @@
       <b-dropdown-item><router-link to="/explore">Your Metro</router-link></b-dropdown-item>
       <b-dropdown-item><router-link to="/configure">Your Choices</router-link></b-dropdown-item>
       <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
-      <b-dropdown-item>Terms and Conditions</b-dropdown-item>
-      <b-dropdown-item>Privacy Policy</b-dropdown-item>
+      <a href="#" v-b-modal.terms-modal><b-dropdown-item>Terms and Conditions</b-dropdown-item></a>
+      <a href="#" v-b-modal.privacy-modal><b-dropdown-item>Privacy Policy</b-dropdown-item></a>
     </b-dropdown>
+    <!-- Compontents for modals -->
+        <Privacy/>
+        <Terms/>
   </div>
 </template>
 
 <script>
-export default {
-  name: "MainMenu",
-}
+
+  import Privacy from "@/components/Privacy";
+  import Terms from "@/components/Terms";
+
+  export default {
+    name: "MainMenu",
+    components: {
+            Privacy,
+            Terms
+        }
+  }
 </script>
 
 <style lang="scss">

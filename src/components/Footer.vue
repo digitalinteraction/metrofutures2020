@@ -25,22 +25,22 @@
                 </div>
             </div>
         </div>
-        <!-- Compontents for modals -->
+        <!-- Compontents for modals are in menu 
         <Privacy/>
-        <Terms/>
+        <Terms/> -->
     </div>
 
 </template>
 
 <script>
-    import Privacy from "@/components/Privacy";
-    import Terms from "@/components/Terms";
+//    import Privacy from "@/components/Privacy";
+ //   import Terms from "@/components/Terms";
 
     export default {
         name: 'Footer',
         components: {
-            Privacy,
-            Terms
+  //          Privacy,
+ //           Terms
         }
     }
 </script>
