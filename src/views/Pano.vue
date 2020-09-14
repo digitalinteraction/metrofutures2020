@@ -8,7 +8,6 @@
   <b-row class="pano_frame">
     <b-col >
       <div ref="pano" id="pano"></div>
-      
     </b-col>
   </b-row>
 
@@ -24,17 +23,29 @@
       <!-- <div>Current view: {{ getSelectedName() }}</div> -->
       <b-dropdown text="Select View">
         <b-dropdown-item 
-          v-for="(scene, index) in this.pano_data.scenes" 
-          v-bind:key="scene.id" 
-          :active="selectedId===index"
+          v-for="(name, index) in this.sceneNames" 
+          v-bind:key="index" 
+          :active="selectedId===index"  
           v-on:click="selectScene(index)"
         >
-          {{ scene.name }}
+          <!-- :active is TO DO based on new arch -->
+          {{ name }}
         </b-dropdown-item>
       </b-dropdown>
     </b-col>
     <b-col>
-      <b-button v-on:click="togglePeople()">Toggle People</b-button>
+      <div class="people-toggle" v-on:click="togglePeople()">
+        People:
+        <b-iconstack font-scale="1.5" v-show="people">
+          <b-icon stacked icon="circle" variant="primary"></b-icon>
+          <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
+        </b-iconstack>
+        <b-iconstack font-scale="1.5" v-show="!people">
+          <b-icon stacked icon="circle" variant="warning"></b-icon>
+          <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
+          <b-icon stacked icon="slash" variant="warning"></b-icon>
+        </b-iconstack>
+      </div>
     </b-col>
     
   </b-row>
@@ -332,6 +343,7 @@
         viewer: {},
         scene: {},
         panoScenes: [],
+        sceneNames: [],
         people: false,
         selectedId: 0,
         showHotspot: false,
@@ -398,21 +410,75 @@
 
       },
       loadRemainingPanos() {
-        // Assume we load pano 0 first, we are loading the rest
-        // Iterate 1 - 13 (0 indexed)
-        for (let i = 1; i < this.panoScenes.length; i++) {
+        // We load pano 1 first, we are loading the rest
+        this.loadPano(0)
+        // Iterate 2 - 13 (0 indexed)
+        for (let i = 2; i < this.panoScenes.length; i++) {
           this.loadPano(i)
         }
       },
       selectScene(dropdownIndex) {
         // User facing - scene they have selected
-        console.log("Selected", dropdownIndex)
+        console.log("Selected", dropdownIndex, "people", this.people)
         // Toggling users on/off will affect this
         // There will be 0 - 6 options, but this maps to 0 - 13 options, with the higher number being without people (e.g. 1 has people, 0 does not)
         // If not 0 (have separate case for this): double selected ID, if people===true, subtract 1
-
+        
+        let correctSceneId = this.getSceneIDByDropdown(dropdownIndex) 
+        console.log("rendering", this.pano_data.scenes[correctSceneId].id)
         this.selectedId = dropdownIndex;
-        this.switchScene(dropdownIndex);
+        this.switchScene(correctSceneId);
+      },
+      getSceneIDByDropdown(dropdownIndex) {
+        // I'm too tired - this implementation is hacky but it works
+        if(this.people) {
+          // People are visible
+          if(dropdownIndex === 0) {
+            return 0
+          } else {
+            return (dropdownIndex * 2)
+          }
+          // This can be an if statement
+          // switch(dropdownIndex) {
+          //   case 0:
+          //     return 0
+          //   case 1:
+          //     return 2
+          //   case 2:
+          //     return 4
+          //   case 3:
+          //     return 6
+          //   case 4:
+          //     return 8
+          //   case 5:
+          //     return 10
+          //   case 6:
+          //     return 12
+          // }
+        } else {
+          // No people, we need to find empty
+          if(dropdownIndex === 0) {
+            return dropdownIndex + 1
+          } else {
+            return (dropdownIndex * 2) + 1
+          }
+          // switch(dropdownIndex) {
+          //   case 0:
+          //     return 1
+          //   case 1:
+          //     return 3
+          //   case 2:
+          //     return 5
+          //   case 3:
+          //     return 7
+          //   case 4:
+          //     return 9
+          //   case 5:
+          //     return 11
+          //   case 6:
+          //     return 13
+          // }
+        }
       },
       switchScene(sceneId) {
         // Attach all the relevant hotspots to the scene
@@ -447,6 +513,7 @@
       },
       togglePeople() {
         this.people = !this.people;
+        this.selectScene(this.selectedId)
       },
       toggleHotspot() {
         // this.allHotspots[sceneId][index].visible = !this.allHotspots[sceneId][index].visible
@@ -472,15 +539,25 @@
         for (let i = 0; i < scene.infoHotspots.length; i++) {
           this.attachSingleHotspot(sceneView, scene, sceneId, i)
         }
+      },
+      populateSceneNames() {
+        // Stores only names without "(empty)" in them
+        for (let scene of this.pano_data.scenes){
+          // console.log(scene.name)
+          if(scene.name.search('empty') === -1){
+            this.sceneNames.push(scene.name)
+          }
+        }
       }
     },
     mounted() {
       this.initPanoViewer();
       this.populateScenesId();
-      this.loadPano(0);
-      this.switchScene(0);
+      this.loadPano(1);
+      this.switchScene(1);
       // Load all other scenes in the background
       this.loadRemainingPanos()
+      this.populateSceneNames();
     }
   }
 </script>
@@ -516,6 +593,11 @@
 
   .topdown {
     width: 100vw;
+  }
+
+  .people-toggle {
+    /* background: darkgray;
+    color: white; */
   }
 
 </style>
