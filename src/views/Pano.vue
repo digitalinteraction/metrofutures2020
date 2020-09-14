@@ -14,7 +14,13 @@
 
   <b-row>
     <b-col>
-            <!-- <div>[Map of train]</div> -->
+      <div><img class="topdown" src="https://cdn.metrofutures.org.uk/misc/TopDown.png" alt=""></div>
+    </b-col>
+  </b-row>
+
+  <b-row>
+    <b-col>
+      
       <!-- <div>Current view: {{ getSelectedName() }}</div> -->
       <b-dropdown text="Select View">
         <b-dropdown-item 
@@ -486,7 +492,7 @@
   }
 
   .pano_frame {
-    height: 75vh;
+    height: 70vh;
     text-align: left;
     
   }
@@ -497,7 +503,7 @@
   }
 
   #pano {
-    height: 75vh;
+    height: 70vh;
     left: 0;
     overflow: hidden;
     /* max-width: none; */
@@ -506,6 +512,10 @@
   .hotspot {
     background: none;
     display: none;
+  }
+
+  .topdown {
+    width: 100vw;
   }
 
 </style>
