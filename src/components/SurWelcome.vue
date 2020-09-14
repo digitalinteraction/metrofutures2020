@@ -48,8 +48,8 @@
 
         <!--    modal-->
 
-        <b-modal hide-footer=true centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
-<p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media. </p>
+        <b-modal hide-footer centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
+            <p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media. </p>
             <br>
             <div >
                 <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project. </p>
@@ -65,7 +65,7 @@
 
             <div class="privacy-check">
                 <b-form-checkbox id="privacy-checkbox" name="privacy-checkbox" v-model="tick">
-                    I accept the terms of use and agree to participate in this consultation
+                    I agree to participate in this consultation, and accept the terms of use and privacy notice of this website.
                 </b-form-checkbox>
             </div>
 
@@ -152,7 +152,7 @@
                         .then(response => {
                             console.log(response);
                         })
-                        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+                        .catch(error => error.response ? console.log("Error submitting demographic info:",error.response.data) : console.log("Error submitting demographic info:", error))
 
                     this.$emit('finishedWelcome');
 

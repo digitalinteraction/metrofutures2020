@@ -10,7 +10,7 @@ module.exports = async(req, res) => {
       let options = validateQuery(req.query)
       if (options) {
         let url = urlFormatter(options)
-        sendResponse(req, res, 200, url);
+        sendResponse(req, res, 200, url, options);
       } else {
         sendResponse(req, res, 400, "Incorrectly formatted");
       }
@@ -25,9 +25,18 @@ module.exports = async(req, res) => {
   }
 }
 
-function sendResponse(req, res, status, message) {
+function sendResponse(req, res, status, message, options) {
+  let responseObj = {}
+  if (options) {
+    responseObj = {
+      url: message,
+      options: options
+    }
+  } else {
+    responseObj = message
+  }
   res.status(status);
-  res.send(message);
+  res.send(responseObj);
 }
 
 function validateQuery(query) {
@@ -139,7 +148,7 @@ function outsideRange(optNum, value) {
     case 3:
       return (value <= 3) ? true : false;
     case 4:
-      return (value <= 2) ? true : false;
+      return (value <= 3) ? true : false;
     case 5:
       return (value <= 2) ? true : false;
     case 6:
@@ -153,7 +162,7 @@ function outsideRange(optNum, value) {
 
 function convertPrioritySeats(seatValue) {
   if (seatValue == 0) { return "0"}
-  if (seatValue == "2") {
+  if (seatValue == "1") {
     return "ON"
   } else {
     return "OFF"

@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
 import Menu from '../views/Menu.vue'
-import About from '../views/About.vue'
-// import PrivacyNotice from '../components/PrivacyNotice.vue'
-// import Terms from '../components/Terms.vue'
 
 Vue.use(VueRouter)
 
@@ -12,71 +8,59 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'Home',
-    component: Home,
-    meta: {
-      title: 'Metro Futures'
-    }
-  },
-    {
-    path: '/menu',
-    name: 'Menu',
     component: Menu,
     meta: {
       title: 'Metro Futures'
     }
   },
-    {
+  {
     path: '/about',
     name: 'About',
-    component: About,
+    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
     meta: {
       title: 'Metro Futures'
+    },
+  },
+  {
+    path: '/privacy',
+    name: 'Privacy',
+    component: () => import(/* webpackChunkName: "privacy" */ '../views/Privacy.vue'),
+    meta: {
+      title: 'Metro Futures Privacy Policy'
     }
   },
-
-  // {
-  //   path: '/privacy',
-  //   name: 'Privacy',
-  //   component: PrivacyNotice,
-  //   meta: {
-  //     title: 'Metro Futures Privacy Policy'
-  //   }
-  // },
-  // {
-  //   path: '/terms',
-  //   name: 'Terms',
-  //   component: Terms,
-  //   meta: {
-  //     title: 'Metro Futures Terms and Conditions'
-  //   }
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
-  // {
-  //   path: '/signup',
-  //   name: 'Signup',
-  //   component: () => import(/* webpackChunkName: "Signup" */ '../views/Signup.vue')
-  // },
   {
-    path: '/survey',
+    path: '/terms',
+    name: 'Terms',
+    component: () => import(/* webpackChunkName: "terms" */ '../views/Terms.vue'),
+    meta: {
+      title: 'Metro Futures Terms and Conditions'
+    }
+  },
+  {
+    path: '/signup',
+    name: 'Signup',
+    component: () => import(/* webpackChunkName: "Signup" */ '../views/Signup.vue')
+  },
+  {
+    path: '/configure',
     name: 'Survey',
     component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue')
   },
+  // {
+  //   path: '/journeys',
+  //   name: 'Personas',
+  //   component: () => import(/* webpackChunkName: "idoc" */ '../views/Personas.vue')
+  // },
   {
-    path: '/idoc',
-    name: 'Interactive Documentary',
-    component: () => import(/* webpackChunkName: "idoc" */ '../views/InteractiveDocumentary.vue')
+    path: '/explore',
+    name: 'Metro Futures - Your Metro',
+    component: () => import(/* webpackChunkName: "walthrough" */ '../views/Pano.vue')
   },
+  // Catch all route at the end just dumps you back at the start
   {
-    path: '/walkthrough',
-    name: 'Metro Walkthroughs',
-    component: () => import(/* webpackChunkName: "walthrough" */ '../views/Walkthrough.vue')
+    path: '*',
+    component: Menu
   }
 ];
 
