@@ -1,6 +1,7 @@
 <template>
   <div>
     <b-dropdown id="dropdown-1" text="Metro Futures" class="m-md-2 menu" variant="primary">
+      <b-dropdown-item><router-link to="/">Home</router-link></b-dropdown-item>
       <b-dropdown-item><router-link to="/about">About Metro Futures</router-link></b-dropdown-item>
       <b-dropdown-item><router-link to="/explore">Your Metro</router-link></b-dropdown-item>
       <b-dropdown-item><router-link to="/configure">Your Choices</router-link></b-dropdown-item>
