@@ -91,7 +91,7 @@
       <div class="menu-col-wrapper">
         <div class="mobile-option">
           <div class="mobile-header">
-            <b-img class="crop-image" src="../assets/yourMetro.png" alt="image of inside of carriage"></b-img>
+            <b-img src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo">
               <h3>Your Metro</h3>
             </div>
@@ -101,7 +101,7 @@
 
         <div class="mobile-option">
           <div class="mobile-header">
-            <b-img class="crop-image" src="../assets/yourChoiceTemp.png" alt="image of train front"></b-img>
+            <b-img src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
             <div class="moreInfo">
               <h3>Your Choices</h3>
             </div>
@@ -111,7 +111,7 @@
         
        <div class="mobile-option">
           <div class="mobile-header">
-            <b-img class="crop-image" src="../assets/yourJourneys.png" alt="image of example metro passenger"></b-img>
+            <b-img src="../assets/yourJourneysMob.png" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo">
               <h3>Your Journeys - Launching soon!</h3>
             </div>
