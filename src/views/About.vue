@@ -204,6 +204,10 @@
         margin-top: 1.5em;
     }
 
+    ul {
+        list-style-position: inside;
+        padding-left: 0;
+    }
 
     #logo {
         height: 100px;
