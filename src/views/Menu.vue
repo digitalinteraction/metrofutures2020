@@ -76,12 +76,12 @@
           class="menuCol"
         >
           <div v-if="!hoverYourJourney">
-            <b-img class="menuImg" src="../assets/yourJourneys.png" fluid alt="image of example metro passenger"></b-img>
+            <b-img class="menuImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <h3 class="imgTitles">Your Journeys - Launching soon!</h3>
           </div>
 
           <div v-if="hoverYourJourney" class="hoveredImg">
-            <b-img class="enlargeImg" src="../assets/yourJourneys.png" fluid alt="image of example metro passenger"></b-img>
+            <b-img class="enlargeImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo w-100">
               <h3>Your Journeys - Launching soon!</h3>
               <p
@@ -116,7 +116,7 @@
         
        <div class="mobile-option" @click="goTo('/journeys')">
           <div class="mobile-header">
-            <b-img src="../assets/yourJourneysMob.png" fluid alt="image of example metro passenger"></b-img>
+            <b-img src="../assets/yourJourneys2Mob.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo">
               <h3>Your Journeys - Launching soon!</h3>
             </div>
