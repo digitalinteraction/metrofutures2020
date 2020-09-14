@@ -131,6 +131,9 @@
                 this.$bvModal.hide('privacyNoticeModal');
                 this.showLAQuestion = true;
             },
+            triggerLAQuestion() {
+                this.showLAQuestion = true
+            },
             submitLA() {
                 if (!this.localAuthority || !this.age) {
                     // no answer for one or both fields

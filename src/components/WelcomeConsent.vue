@@ -85,9 +85,15 @@ export default {
     confirmPrivacy() {
       this.acknowledgePrivacy();
       this.$bvModal.hide("privacyNoticeModal");
+      if (this.page==='choices'){
+        this.$parent.triggerLAQuestion();
+      }
     },
     close(){
       this.$bvModal.hide("privacyNoticeModal");
+      if (this.page==='choices'){
+        this.$parent.triggerLAQuestion();
+      }
     },
     ...mapMutations(["acknowledgePrivacy"])
   }
