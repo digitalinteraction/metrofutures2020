@@ -2,7 +2,6 @@
   <div class="hotspot_container" v-bind:class="{ hidden : !visible}">
     <div class="icon-container">
       <b-icon icon="info-circle" v-on:click="toggle()" v-show="!visible"></b-icon>
-      <!-- <b-icon icon="box-arrow-in-down-right" v-on:click="toggle()" v-show="!visible"></b-icon> -->
       <b-icon icon="x-circle" v-on:click="toggle()" v-show="visible"></b-icon>
     </div>
     
@@ -29,17 +28,24 @@
             Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
           </span>
 
-          <span v-if="data.visual">Visual</span>
+          <span v-if="data.visual">Visual here: {{ data.visual }}</span>
 
-          <b-form inline>
-            <label for="hotspot_input"></label>
+          <b-form v-if="!submitted">
+            <label for="hotspot_input" class="sr-only" hidden></label>
             <b-form-input
               id="hotspot_input"
               v-model="hotspotText"
               placeholder="Comment..."
             ></b-form-input>
-            <b-button variant="primary" :disabled="!valid()" v-on:click="submit()">Send</b-button>
+            <div class="text-center">
+              <b-button class="hotspot_button" variant="primary" :disabled="!valid()" v-on:click="submit()">Send</b-button>
+            </div>
           </b-form>
+
+          <div v-if="submitted" class="text-center thanks-notif">
+            <b-icon icon="patch-check-fll" font-scale="1" class="thanks-check"></b-icon> Thanks for your comment.
+          </div>
+
         </div>
         
       </span>
@@ -58,6 +64,7 @@ export default {
       visible: false,
       hotspotText: "",
       likertRating: 0,
+      submitted: false,
     }
   },
   methods: {
@@ -70,6 +77,8 @@ export default {
     },
     submit() {
       console.log(`Looking at scene ${this.$parent.selectedId}, hotspot ${this.data.title}. Submitting content: ${this.hotspotText}`)
+      this.hotspotText = ""
+      this.submitted = true
     }
   },
 
@@ -90,7 +99,7 @@ export default {
 
   .icon-container {
     float: left;
-    background-color: #5bb064;
+    background-color: $metro-green;
     padding-left: 0.2em;
     padding-right: 0.2em;
     border-radius: 25px;
@@ -113,13 +122,21 @@ export default {
     // font-weight:bold;
     display: block;
     text-align: center;
-    background-color: gray
+    background-color: gray;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
     /* float: left; */
   }
 
   .hotspot_text {
     display: block;
     background-color: lightgray;
+    font-family: $font-family-sans-serif;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    padding-bottom: 0.25em;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
   }
 
   .likert_text {
@@ -133,6 +150,19 @@ export default {
 
   .choices-link {
     background-color: darkgray;
+  }
+
+  .hotspot_button {
+  }
+
+  .thanks-check {
+    color: $metro-green;
+    vertical-align: middle;
+  }
+
+  .thanks-notif {
+    border: 1px solid darkgray;
+    border-radius: 15px;
   }
 
 </style>
