@@ -257,6 +257,7 @@ export default {
   z-index: 3;
 }
 .hoveredImg {
+  cursor: pointer;
   transform: scale(1.1);
   transform-origin: right;
   z-index: 5;
