@@ -5,15 +5,15 @@ export default [
     options: [
       {
         desc: "Light grey, dots, dots, LEATHER",
-        img: "../assets/squares/Square_Configurator_swatches-01.svg"
+        img: "Square_Configurator_swatches-01.svg"
       },
       {
         desc: "Green, plain, stripes, LEATHER",
-        img: "../assets/squares/Square_Configurator_swatches-02.svg"
+        img: "Square_Configurator_swatches-02.svg"
       },
       {
         desc: "Dark grey, logo, logo, LEATHER",
-        img: "../assets/squares/Square_Configurator_swatches-03.svg"
+        img: "Square_Configurator_swatches-03.svg"
       }
     ]
   },
@@ -23,19 +23,19 @@ export default [
     options: [
       {
         desc: "Yellow door, metal pole, yellow floor marking",
-        img: "../assets/squares/Square_Configurator_swatches-12.svg"
+        img: "Square_Configurator_swatches-12.svg"
       },
       {
         desc: "Grey door, yellow pole, white floor marking",
-        img: "../assets/squares/Square_Configurator_swatches-13.svg"
+        img: "Square_Configurator_swatches-13.svg"
       },
       {
         desc: "Yellow door, grey pole, yellow floor marking",
-        img: "../assets/squares/Square_Configurator_swatches-14.svg"
+        img: "Square_Configurator_swatches-14.svg"
       },
       {
         desc: "Grey door, metal pole, white floor marking",
-        img: "../assets/squares/Square_Configurator_swatches-15.svg"
+        img: "Square_Configurator_swatches-15.svg"
       }
     ]
   },
@@ -45,15 +45,15 @@ export default [
     options: [
       {
         desc: "Single pole",
-        img: "../assets/squares/Square_Configurator_swatches-06.svg"
+        img: "Square_Configurator_swatches-06.svg"
       },
       {
         desc: "Double pole",
-        img: "../assets/squares/Square_Configurator_swatches-07.svg"
+        img: "Square_Configurator_swatches-07.svg"
       },
       {
         desc: "Ring",
-        img: "../assets/squares/Square_Configurator_swatches-08.svg"
+        img: "Square_Configurator_swatches-08.svg"
       }
     ]
   },
@@ -63,15 +63,15 @@ export default [
     options: [
       {
         desc: "Strap",
-        img: "../assets/squares/Square_Configurator_swatches-09.svg"
+        img: "Square_Configurator_swatches-09.svg"
       },
       {
         desc: "Hook",
-        img: "../assets/squares/Square_Configurator_swatches-10.svg"
+        img: "Square_Configurator_swatches-10.svg"
       },
       {
         desc: "Clamp",
-        img: "../assets/squares/Square_Configurator_swatches-11.svg"
+        img: "Square_Configurator_swatches-11.svg"
       }
     ]
   },
@@ -81,11 +81,11 @@ export default [
     options: [
       {
         desc: "Yes",
-        img: "../assets/squares/Square_Configurator_swatches-04.svg"
+        img: "Square_Configurator_swatches-04.svg"
       },
       {
         desc: "No",
-        img: "../assets/squares/Square_Configurator_swatches-05.svg"
+        img: "Square_Configurator_swatches-05.svg"
       }
     ]
   },
