@@ -112,8 +112,10 @@ p {
     }
 
     .footer-center-right {
+        
         p{
             padding-left: 5%;
+            text-align: left
         }
     }
 
