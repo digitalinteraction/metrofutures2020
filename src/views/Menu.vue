@@ -267,7 +267,8 @@ export default {
 .mobile-option{
   position: relative;
   p{
-    margin: 1em 2em 2em 2em;}
+    margin: 1em 2em 2em 2em;
+    font-size: smaller}
 }
 
 
