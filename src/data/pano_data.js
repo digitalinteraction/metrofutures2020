@@ -35,19 +35,19 @@ export default[
             "yaw": -0.14023522364884577,
             "pitch": 0.11475964612484191,
             "title": "Livery",
-            "text": "Tyne and Wear Metro has a completely new livery!<br>[Free text comment]"
+            "text": "Tyne and Wear Metro has a completely new livery!"
           },
           {
             "yaw": -0.8358385796154355,
             "pitch": 0.30236171550205526,
             "title": "Lights",
-            "text": "Your new Metro features a state-of-the-art LED head and tail light system, and a glowing \"M\".&nbsp;<br>[free text comment]"
+            "text": "Your new Metro features a state-of-the-art LED head and tail light system, and a glowing 'M'."
           },
           {
             "yaw": -1.0892431152132307,
             "pitch": 0.43463794138405376,
             "title": "Decoupler",
-            "text": "State-of-the-art automatic decoupler.<div>[free text comment]</div>"
+            "text": "State-of-the-art automatic decoupler."
           }
         ]
       },
@@ -85,19 +85,19 @@ export default[
             "yaw": -0.14023522364884577,
             "pitch": 0.11475964612484191,
             "title": "Livery",
-            "text": "Tyne and Wear Metro has a completely new livery!<br>[Free text comment]"
+            "text": "Tyne and Wear Metro has a completely new livery!"
           },
           {
             "yaw": -0.8358385796154355,
             "pitch": 0.30236171550205526,
             "title": "Lights",
-            "text": "Your new Metro features a state-of-the-art LED head and tail light system, and a glowing \"M\".&nbsp;<br>[free text comment]"
+            "text": "Your new Metro features a state-of-the-art LED head and tail light system, and a glowing 'M'."
           },
           {
             "yaw": -1.0892431152132307,
             "pitch": 0.43463794138405376,
             "title": "Decoupler",
-            "text": "State-of-the-art automatic decoupler.<div>[free text comment]</div>"
+            "text": "State-of-the-art automatic decoupler."
           }
         ]
       },
@@ -135,7 +135,7 @@ export default[
             "yaw": -0.5783536906530493,
             "pitch": 0.38058887054710056,
             "title": "Sliding Step",
-            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm.<br><br>[Free text comment]"
+            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm."
           },
           {
             "yaw": -0.4027377241770509,
@@ -154,14 +154,14 @@ export default[
             "yaw": -1.4120780940420286,
             "pitch": 0.45766868400424343,
             "title": "Livery",
-            "text": "Tyne and Wear Metro has a completely new livery!<br><br>[Free text comment]"
+            "text": "Tyne and Wear Metro has a completely new livery!"
           },
           {
             "yaw": -2.4254996714844204,
             "pitch": 0.4111241783467712,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?[Overlay of Door Exterior 1 and 2 .mp4]",
-            "visual": "interiordoor.mp4"
+            "text": "How clear are the door light and sound indicators?",
+            "visual": "exteriordoor.mp4"
           },
           {
             "yaw": -2.649150928470453,
@@ -205,7 +205,7 @@ export default[
             "yaw": -0.5783536906530493,
             "pitch": 0.38058887054710056,
             "title": "Sliding Step",
-            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm.<br><br>[Free text comment]"
+            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm."
           },
           {
             "yaw": -0.4027377241770509,
@@ -225,21 +225,21 @@ export default[
             "yaw": -1.4120780940420286,
             "pitch": 0.45766868400424343,
             "title": "Livery",
-            "text": "Tyne and Wear Metro has a completely new livery!<br><br>[Free text comment]"
+            "text": "Tyne and Wear Metro has a completely new livery!"
           },
           {
             "yaw": -2.4254996714844204,
             "pitch": 0.4111241783467712,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?[Overlay of Door Exterior 1 and 2 .mp4]",
+            "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
-            "visual": "interiordoor.mp4"
+            "visual": "exteriordoor.mp4"
           },
           {
             "yaw": -2.649150928470453,
             "pitch": -0.10276089704911762,
             "title": "Destination Display",
-            "text": "Destination displays on the side of each carriage show the passengers that they are boarding the correct train.<br>[free text comment]"
+            "text": "Destination displays on the side of each carriage show the passengers that they are boarding the correct train."
           }
         ]
       },
@@ -573,7 +573,7 @@ export default[
             "yaw": -0.8755035922794221,
             "pitch": 0.4652902620496615,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?<div><br></div><div>[Liker 1 very unclear to 5 very clear + free text comment]</div><div>[Overlay of Door Interior.mp4]</div>",
+            "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
             "visual": "interiordoor.mp4"
           },
@@ -601,13 +601,13 @@ export default[
             "yaw": -0.04951106935910943,
             "pitch": 0.31951545371209633,
             "title": "Open Carriage Layout",
-            "text": "Wide gangways between the carriages create an open, fully walk-through vehicle and provide additional standing space.<div>[free text comment]</div>"
+            "text": "Wide gangways between the carriages create an open, fully walk-through vehicle and provide additional standing space."
           },
           {
             "yaw": -2.315518528958055,
             "pitch": -0.1309617572310735,
             "title": "Grab Poles",
-            "text": "Grab poles at short, regular intervals throughout the train.<div><br></div><div>[free text comment]</div>"
+            "text": "Grab poles at short, regular intervals throughout the train."
           }
         ]
       },
@@ -645,7 +645,7 @@ export default[
             "yaw": -0.8755035922794221,
             "pitch": 0.4652902620496615,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?[Overlay of Door Interior.mp4]",
+            "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
             "visual": "interiordoor.mp4"
           },
@@ -673,13 +673,13 @@ export default[
             "yaw": -0.04951106935910943,
             "pitch": 0.31951545371209633,
             "title": "Open Carriage Layout",
-            "text": "Wide gangways between the carriages create an open, fully walk-through vehicle and provide additional standing space.<div>[free text comment]</div>"
+            "text": "Wide gangways between the carriages create an open, fully walk-through vehicle and provide additional standing space."
           },
           {
             "yaw": -2.315518528958055,
             "pitch": -0.1309617572310735,
             "title": "Grab Poles",
-            "text": "Grab poles at short, regular intervals throughout the train.<div><br></div><div>[free text comment]</div>"
+            "text": "Grab poles at short, regular intervals throughout the train."
           }
         ]
       },
@@ -724,7 +724,7 @@ export default[
             "yaw": 2.3122814836046786,
             "pitch": 0.40231039939005164,
             "title": "Sliding Step",
-            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm.<br><br>[Free text comment]"
+            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm."
           },
           {
             "yaw": 1.6831437713774324,
@@ -751,7 +751,7 @@ export default[
             "yaw": 0.3266127432183019,
             "pitch": 0.3658904315536269,
             "title": "Wide Aisles",
-            "text": "Wide aisles give passengers more space to get past each other. Passengers are therefore able to move further down the train more quickly.<br>[free text comment]"
+            "text": "Wide aisles give passengers more space to get past each other. Passengers are therefore able to move further down the train more quickly."
           }
         ]
       },
@@ -796,7 +796,7 @@ export default[
             "yaw": 2.3122814836046786,
             "pitch": 0.40231039939005164,
             "title": "Sliding Step",
-            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm.<br><br>[Free text comment]"
+            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm."
           },
           {
             "yaw": 1.6831437713774324,
@@ -823,7 +823,7 @@ export default[
             "yaw": 0.3266127432183019,
             "pitch": 0.3658904315536269,
             "title": "Wide Aisles",
-            "text": "Wide aisles give passengers more space to get past each other. Passengers are therefore able to move further down the train more quickly.<br>[free text comment]"
+            "text": "Wide aisles give passengers more space to get past each other. Passengers are therefore able to move further down the train more quickly."
           }
         ]
       },
@@ -889,7 +889,7 @@ export default[
             "yaw": -2.565578079961881,
             "pitch": 0.2376466079200945,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?[Overlay of Door Interior.mp4]",
+            "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
             "visual": "interiordoor.mp4"
           },
@@ -897,7 +897,7 @@ export default[
             "yaw": -1.0683552939279153,
             "pitch": 0.5405413195840172,
             "title": "Stand Back Areas",
-            "text": "Stand back areas next to entrances facilitate passenger flow in and out of the carriages as fewer people are standing by the doors.&nbsp;<br>[free text comment]"
+            "text": "Stand back areas next to entrances facilitate passenger flow in and out of the carriages as fewer people are standing by the doors."
           },
           {
             "yaw": 1.4494955010677604,
@@ -970,7 +970,7 @@ export default[
             "yaw": -2.565578079961881,
             "pitch": 0.2376466079200945,
             "title": "Door Indicators",
-            "text": "How clear are the door light and sound indicators?[Overlay of Door Interior.mp4]",
+            "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
             "visual": "interiordoor.mp4"
           },
@@ -978,7 +978,7 @@ export default[
             "yaw": -1.0683552939279153,
             "pitch": 0.5405413195840172,
             "title": "Stand Back Areas",
-            "text": "Stand back areas next to entrances facilitate passenger flow in and out of the carriages as fewer people are standing by the doors.&nbsp;<br>[free text comment]"
+            "text": "Stand back areas next to entrances facilitate passenger flow in and out of the carriages as fewer people are standing by the doors."
           },
           {
             "yaw": 1.4494955010677604,

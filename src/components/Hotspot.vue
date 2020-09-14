@@ -29,7 +29,7 @@
             Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
           </span>
 
-          <span v-if="data.visual">Visual</span>
+          <span v-if="data.visual">Visual here: {{ data.visual }}</span>
 
           <b-form inline>
             <label for="hotspot_input"></label>
@@ -120,6 +120,7 @@ export default {
   .hotspot_text {
     display: block;
     background-color: lightgray;
+    font-family: $font-family-sans-serif
   }
 
   .likert_text {
