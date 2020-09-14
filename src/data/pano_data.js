@@ -161,7 +161,10 @@ export default[
             "pitch": 0.4111241783467712,
             "title": "Door Indicators",
             "text": "How clear are the door light and sound indicators?",
-            "visual": "exteriordoor.mp4"
+            "visual": [
+              "https://cdn.metrofutures.org.uk/doors/Door_Exterior_1.mp4",
+              "https://cdn.metrofutures.org.uk/doors/Door_Exterior_2.mp4"
+            ]
           },
           {
             "yaw": -2.649150928470453,
@@ -233,7 +236,10 @@ export default[
             "title": "Door Indicators",
             "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
-            "visual": "exteriordoor.mp4"
+            "visual": [
+              "https://cdn.metrofutures.org.uk/doors/Door_Exterior_1.mp4",
+              "https://cdn.metrofutures.org.uk/doors/Door_Exterior_2.mp4"
+            ]
           },
           {
             "yaw": -2.649150928470453,
@@ -575,7 +581,7 @@ export default[
             "title": "Door Indicators",
             "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
-            "visual": "interiordoor.mp4"
+            "visual": ["https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4"]
           },
           {
             "yaw": 0.9738039530410099,
@@ -647,7 +653,7 @@ export default[
             "title": "Door Indicators",
             "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
-            "visual": "interiordoor.mp4"
+            "visual": ["https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4"]
           },
           {
             "yaw": 0.9738039530410099,
@@ -891,7 +897,7 @@ export default[
             "title": "Door Indicators",
             "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
-            "visual": "interiordoor.mp4"
+            "visual": ["https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4"]
           },
           {
             "yaw": -1.0683552939279153,
@@ -972,7 +978,7 @@ export default[
             "title": "Door Indicators",
             "text": "How clear are the door light and sound indicators?",
             "likert": "clear",
-            "visual": "interiordoor.mp4"
+            "visual": ["https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4"]
           },
           {
             "yaw": -1.0683552939279153,
