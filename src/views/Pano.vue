@@ -483,16 +483,23 @@
   .pano_frame {
     height: 75vh;
     text-align: left;
+    
+  }
+
+  .pano {
+    max-width: none;
+    padding-left: 0
   }
 
   #pano {
     height: 75vh;
     left: 0;
     overflow: hidden;
+    /* max-width: none; */
   }
 
   .hotspot {
-    background-color: gray;
+    background: none;
     display: none;
   }
 

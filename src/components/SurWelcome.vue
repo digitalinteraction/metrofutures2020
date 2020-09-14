@@ -24,7 +24,7 @@
                         <textarea
                                 id="textarea"
                                 v-model="LAOtherText"
-                                placeholder="Enter your local authority..."
+                                placeholder="Enter where you live..."
                                 rows="2" class="form-control"
 
                         ></textarea>
