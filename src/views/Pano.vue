@@ -34,7 +34,7 @@
       </b-dropdown>
     </b-col>
     <b-col>
-      <div class="people-toggle" v-on:click="togglePeople()">
+      <div class="people-toggle" v-bind:class="{ 'people-toggle-on': people }" v-on:click="togglePeople()">
         People:
         <b-iconstack font-scale="1.5" v-show="people">
           <b-icon stacked icon="circle" variant="primary"></b-icon>
@@ -419,13 +419,12 @@
       },
       selectScene(dropdownIndex) {
         // User facing - scene they have selected
-        console.log("Selected", dropdownIndex, "people", this.people)
         // Toggling users on/off will affect this
         // There will be 0 - 6 options, but this maps to 0 - 13 options, with the higher number being without people (e.g. 1 has people, 0 does not)
         // If not 0 (have separate case for this): double selected ID, if people===true, subtract 1
         
         let correctSceneId = this.getSceneIDByDropdown(dropdownIndex) 
-        console.log("rendering", this.pano_data.scenes[correctSceneId].id)
+        // console.log("rendering", this.pano_data.scenes[correctSceneId].id)
         this.selectedId = dropdownIndex;
         this.switchScene(correctSceneId);
       },
@@ -438,23 +437,6 @@
           } else {
             return (dropdownIndex * 2)
           }
-          // This can be an if statement
-          // switch(dropdownIndex) {
-          //   case 0:
-          //     return 0
-          //   case 1:
-          //     return 2
-          //   case 2:
-          //     return 4
-          //   case 3:
-          //     return 6
-          //   case 4:
-          //     return 8
-          //   case 5:
-          //     return 10
-          //   case 6:
-          //     return 12
-          // }
         } else {
           // No people, we need to find empty
           if(dropdownIndex === 0) {
@@ -462,30 +444,11 @@
           } else {
             return (dropdownIndex * 2) + 1
           }
-          // switch(dropdownIndex) {
-          //   case 0:
-          //     return 1
-          //   case 1:
-          //     return 3
-          //   case 2:
-          //     return 5
-          //   case 3:
-          //     return 7
-          //   case 4:
-          //     return 9
-          //   case 5:
-          //     return 11
-          //   case 6:
-          //     return 13
-          // }
         }
       },
       switchScene(sceneId) {
         // Attach all the relevant hotspots to the scene
         this.attachHotspots(this.panoScenes[sceneId].scene, this.pano_data.scenes[sceneId], sceneId)
-        
-        if(sceneId % 2 > 0) { console.log("odd") }
-
         // Run switchTo() on scene which loads it into the viewer
         this.panoScenes[sceneId].scene.switchTo({
           transitionDuration: 1000
@@ -517,14 +480,7 @@
       },
       toggleHotspot() {
         // this.allHotspots[sceneId][index].visible = !this.allHotspots[sceneId][index].visible
-        console.log("toggling hotspot")
         this.showHotspot = !this.showHotspot;
-      },
-      // Returns even, not sure if I'll use it
-      even: function(array) {
-        return array.filter(function (number) {
-          return number % 2 === 0
-        })
       },
       attachSingleHotspot(sceneView, scene, sceneId, index) {
         let hotspot = this.$refs[this.fetchHotspot(sceneId,index)]
@@ -562,7 +518,8 @@
   }
 </script>
 
-<style>
+<style lang="scss">
+  @import '@/assets/_variables.scss';
 
   body {
     text-align: center;
@@ -596,8 +553,18 @@
   }
 
   .people-toggle {
-    /* background: darkgray;
-    color: white; */
+    display:inline-block;
+    background: #6c757d;
+    color: white;
+    padding: 0.4em 0.8em;
+    border-radius: 0.3em;
+    vertical-align: middle;
+    /* padding-left: 0.2em;
+    padding-right: 0.2em; */
+  }
+
+  .people-toggle-on {
+    background-color: #559ad9;
   }
 
 </style>
