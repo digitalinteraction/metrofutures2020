@@ -9,18 +9,19 @@
       <h3 class="calvert"> {{ title }}</h3>
     </b-col>
 
-    <b-col v-if="linkType === 'journeys'">
-      <router-link to="/journeys" class="float-right navLink">Explore some of our Metro users?</router-link>
-      <!-- <p v-on:click="goTo('/idoc')" class="float-right personasLink" ></p> -->
-    </b-col>
-    <b-col v-if="linkType === 'configurator'">
-      <router-link to="/journeys" class="float-right navLink">Customise your Metro</router-link>
-      <!-- <p v-on:click="goTo('/idoc')" class="float-right personasLink" ></p> -->
+    <b-col>
+      <div>
+        <b-dropdown id="dropdown-1" text="Menu" class="m-md-2">
+          <b-dropdown-item><router-link to="/about">About Metro Futures</router-link></b-dropdown-item>
+          <b-dropdown-item><router-link to="/explore">Explore Your Metro</router-link></b-dropdown-item>
+          <b-dropdown-item><router-link to="/configure">Configure Your Metro</router-link></b-dropdown-item>
+          <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
+          <b-dropdown-item>Terms and Conditions</b-dropdown-item>
+          <b-dropdown-item>Privacy Policy</b-dropdown-item>
+        </b-dropdown>
+      </div>
     </b-col>
 
-    <b-col v-if="!linkType">
-      <router-link to="/about" class="float-right navLink">About Metro Futures</router-link>
-    </b-col>
 
     
   </b-row>
@@ -30,8 +31,7 @@
 export default {
   name: "MainHeader",
   props: {
-    title: String,
-    linkType: String
+    title: String
   }
 
 }
