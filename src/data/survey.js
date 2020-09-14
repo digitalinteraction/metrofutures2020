@@ -81,11 +81,11 @@ export default [
     options: [
       {
         desc: "Yes",
-        img: "Square_Configurator_swatches-04.svg"
+        img: "Square_Configurator_swatches-05.svg"
       },
       {
         desc: "No",
-        img: "Square_Configurator_swatches-05.svg"
+        img: "Square_Configurator_swatches-04.svg"
       }
     ]
   },
