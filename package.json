@@ -29,6 +29,7 @@
     "vue-axios": "^2.1.5",
     "vue-cookies": "^1.7.3",
     "vue-router": "^3.4.3",
+    "vue-social-sharing": "^3.0.0-beta.11",
     "vuex": "^3.4.0"
   },
   "devDependencies": {
