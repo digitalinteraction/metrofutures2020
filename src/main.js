@@ -10,7 +10,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import VueSocialSharing from 'vue-social-sharing'
-import { jsPDF } from "jspdf";
 
 library.add(faUserSecret)
 
@@ -30,7 +29,6 @@ Vue.use(IconsPlugin)
 Vue.use(VueAxios, axios)
 Vue.use(VueCookies)
 Vue.use(VueSocialSharing);
-Vue.use(jsPDF)
 
 new Vue({
   router,
