@@ -2,24 +2,24 @@
     <b-container fluid>
 
         <div v-if="showQuestions">
-<div class="row">
-        <b-col  class="largeImgColumn col-lg-8 col-12">
+          <div class="row">
+            <b-col  class="largeImgColumn col-lg-8 col-12">
 
-            <b-img fluid :src="images[0]"></b-img>
-        </b-col>
+                <b-img fluid :src="images[0]"></b-img>
+            </b-col>
 
             <b-col class="col-lg-3 col-12">
 
-                <p class="calvert">Please tell us a little more about yourself and your Metro journeys.</p>
+                <p class="summaryText">To help with this public consultation, please tell us a little more about yourself and your Metro journeys. Afterwards you can explore images of the Metro that you configured, and you can share it on social media!</p>
 
                 <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
-                <b-form-select @change="removeErrorText()" v-model="purpose" :options="purposes">Please select an
+                <b-form-select  v-model="purpose" :options="purposes">Please select an
                     option
                 </b-form-select>
 
                 <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
 
-                <b-form-select @change="removeErrorText()" v-model="frequency" :options="frequencies">Please select an
+                <b-form-select  v-model="frequency" :options="frequencies">Please select an
                     option
                 </b-form-select>
 
@@ -38,14 +38,14 @@
                 </div>
 
                 <p class="calvert question"><span class="bold">Ethnicity?</span></p>
-                <b-form-select @change="removeErrorText()" v-model="ethnicity" :options="ethnicities">Please select an
+                <b-form-select  v-model="ethnicity" :options="ethnicities">Please select an
                     option
                 </b-form-select>
 
                 <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
                 <b-form-group>
-                    <b-form-radio @change="removeErrorText()" v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
-                    <b-form-radio @change="removeErrorText()" v-model="dis" name="some-radios" value="no">No</b-form-radio>
+                    <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
+                    <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
                 </b-form-group>
 
                 <div v-if="dis === 'yes'">
@@ -57,9 +57,6 @@
 
 </div>
                 <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
-                <div v-if="fillQuestionsError">
-                    Please answer all of the questions
-                </div>
 
             </b-col>
 </div>
@@ -199,13 +196,11 @@
         <p>22 Priority seats for elderly and pregnant</p>
         <p>270 Max occupancy</p>
         <p>Passenger screen displays</p>
-        <p>Onboard wifi*</p>
+        <p>Onboard network connectivity</p>
       </b-col>
     </b-row>
 
-    <b-row id="optionsAsterix" class="text-center">
-      <p>* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum.</p>
-    </b-row>
+   
       </b-col>
     </b-row>
 
@@ -263,10 +258,6 @@ export default {
           this.sliding = false
       },
       submitInfo() {
-      //check fields have been completed
-      if (!this.gender || !this.ethnicity || !this.purpose || !this.frequency) {
-          this.fillQuestionsError = true;
-      } else {
 
           // if gender other text is filled in then send this instead
           if (this.genderOtherText) {
@@ -294,20 +285,12 @@ export default {
               })
               .catch(error => error.response ? console.log(error.response.data) : console.log(error))
           this.showQuestions = false;
-      }
       },
       changeGender() {
-      this.removeErrorText();
           if (this.gender === 'Other/Prefer to self-describe') {
               this.otherGender = true;
           } else {
               this.otherGender = false;
-          }
-      },
-      removeErrorText() {
-      //remove error message if all questions have been completed
-          if (this.gender && this.ethnicity && this.purpose && this.frequency) {
-              this.fillQuestionsError = true;
           }
       }
 
@@ -385,7 +368,10 @@ font-size: small;
 #optionsAsterix {
   font-size: small;
 padding-top: 1em;
+}
 
+.summaryText {
+  text-align: justify;
 }
 
 .submitBtn {margin-bottom: 1em;}

@@ -10,10 +10,11 @@
           <b-img id="metroLogo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
         </b-col>
         <b-col>
-          <p id="aboutText" v-on:click="goTo('/about')">
+          <MainMenu class="aboutText text-center"></MainMenu>
+          <!-- <p id="aboutText" v-on:click="goTo('/about')">
             About Metro Futures
             <b-icon-chevron-down variant="primary"></b-icon-chevron-down>
-          </p>
+          </p> -->
         </b-col>
       </b-row>
 
@@ -75,12 +76,12 @@
           class="menuCol"
         >
           <div v-if="!hoverYourJourney">
-            <b-img class="menuImg" src="../assets/yourJourneys.png" fluid alt="image of example metro passenger"></b-img>
+            <b-img class="menuImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <h3 class="imgTitles">Your Journeys - Launching soon!</h3>
           </div>
 
           <div v-if="hoverYourJourney" class="hoveredImg">
-            <b-img class="enlargeImg" src="../assets/yourJourneys.png" fluid alt="image of example metro passenger"></b-img>
+            <b-img class="enlargeImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo w-100">
               <h3>Your Journeys - Launching soon!</h3>
               <p
@@ -115,7 +116,7 @@
         
        <div class="mobile-option" @click="goTo('/journeys')">
           <div class="mobile-header">
-            <b-img src="../assets/yourJourneysMob.png" fluid alt="image of example metro passenger"></b-img>
+            <b-img src="../assets/yourJourneys2Mob.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo">
               <h3>Your Journeys - Launching soon!</h3>
             </div>
@@ -142,11 +143,14 @@
 import Footer from "@/components/Footer";
 import router from "../router";
 import welcomeConsent from "../components/WelcomeConsent";
+import MainMenu from '@/components/MainMenu.vue';
+
 export default {
   name: "Menu",
   components: {
     welcomeConsent,
-    Footer
+    Footer,
+    MainMenu
   },
   methods: {
     goTo(route) {
@@ -207,6 +211,7 @@ export default {
   cursor: pointer;
   border-bottom: 1px solid #fec600;
   padding-bottom: 0.8em;
+  text-align: right;
 }
 .menuCol {
   padding-left: 0 !important;
@@ -252,6 +257,7 @@ export default {
   z-index: 3;
 }
 .hoveredImg {
+  cursor: pointer;
   transform: scale(1.1);
   transform-origin: right;
   z-index: 5;

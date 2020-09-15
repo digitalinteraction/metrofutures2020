@@ -28,7 +28,27 @@
             Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
           </span>
 
-          <span v-if="data.visual">Visual here: {{ data.visual }}</span>
+          <div v-if="data.visual">
+            <!-- Visual here: {{ data.visual }} -->
+
+            <video class="embed-video" ref="embedded">
+              <source src="https://cdn.metrofutures.org.uk/doors/Door_Exterior_1.mp4" type="video/webm" >
+              <p>Your browser doesn't support HTML5 video. Here is a <a href="https://cdn.metrofutures.org.uk/doors/Door_Exterior_1.mp4">link to the video</a> instead.</p>
+            </video>
+            <div class="controls text-center"> 
+              <b-iconstack font-scale="2">
+                <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
+                <b-icon stacked icon="play-fill" v-on:click="videoPlay()" v-show="!videoPlaying"></b-icon>
+                <b-icon stacked icon="stop-fill" v-on:click="videoPlay()" v-show="videoPlaying"></b-icon>
+              </b-iconstack>
+
+              <b-iconstack font-scale="2">
+                <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
+                <b-icon stacked scale="0.5" icon="fullscreen" v-on:click="videoFull()"></b-icon>
+              </b-iconstack>
+            </div>
+
+          </div>
 
           <b-form v-if="!submitted">
             <label for="hotspot_input" class="sr-only" hidden></label>
@@ -65,6 +85,8 @@ export default {
       hotspotText: "",
       likertRating: 0,
       submitted: false,
+      videoPlaying: false,
+      videoEl: false,
     }
   },
   methods: {
@@ -79,6 +101,29 @@ export default {
       console.log(`Looking at scene ${this.$parent.selectedId}, hotspot ${this.data.title}. Submitting content: ${this.hotspotText}`)
       this.hotspotText = ""
       this.submitted = true
+    },
+    videoPlay() {
+      
+      if (this.videoPlaying) {
+        this.videoEl.pause();
+      } else {
+        this.videoEl.play();
+      }
+      this.videoPlaying = !this.videoPlaying
+    },
+    videoFull() {
+      console.log("Going fullscreen now")
+    },
+    videoStop() {
+      console.log("Detected video stopped")
+      this.videoEl.pause()
+      this.videoPlaying = false;
+    }
+  },
+  mounted() {
+    if (this.data.visual) {
+      this.videoEl = this.$refs.embedded
+      this.videoEl.addEventListener('ended', this.videoStop);
     }
   },
 
@@ -125,7 +170,9 @@ export default {
     background-color: gray;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-    /* float: left; */
+    // border-left: 1px solid black;
+    // border-right: 1px solid black;
+    // border-top: 1px solid black;
   }
 
   .hotspot_text {
@@ -137,6 +184,10 @@ export default {
     padding-bottom: 0.25em;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
+    // border-left: 1px solid darkgray;
+    // border-right: 1px solid darkgray;
+    // border-bottom: 1px solid darkgray;
+    
   }
 
   .likert_text {
@@ -149,7 +200,9 @@ export default {
   } */
 
   .choices-link {
-    background-color: darkgray;
+    display: inline-block;
+    border-bottom: 1px solid #FEC600;
+    color: $font-color;
   }
 
   .hotspot_button {
@@ -163,6 +216,10 @@ export default {
   .thanks-notif {
     border: 1px solid darkgray;
     border-radius: 15px;
+  }
+
+  .embed-video {
+    width: 198px;
   }
 
 </style>

@@ -8,27 +8,44 @@
   <b-row class="pano_frame">
     <b-col >
       <div ref="pano" id="pano"></div>
-      
     </b-col>
   </b-row>
 
   <b-row>
     <b-col>
-            <!-- <div>[Map of train]</div> -->
+      <div><img class="topdown" src="https://cdn.metrofutures.org.uk/misc/TopDown.png" alt=""></div>
+    </b-col>
+  </b-row>
+
+  <b-row>
+    <b-col>
+      
       <!-- <div>Current view: {{ getSelectedName() }}</div> -->
       <b-dropdown text="Select View">
         <b-dropdown-item 
-          v-for="(scene, index) in this.pano_data.scenes" 
-          v-bind:key="scene.id" 
-          :active="selectedId===index"
+          v-for="(name, index) in this.sceneNames" 
+          v-bind:key="index" 
+          :active="selectedId===index"  
           v-on:click="selectScene(index)"
         >
-          {{ scene.name }}
+          <!-- :active is TO DO based on new arch -->
+          {{ name }}
         </b-dropdown-item>
       </b-dropdown>
     </b-col>
     <b-col>
-      <b-button v-on:click="togglePeople()">Toggle People</b-button>
+      <div class="people-toggle" v-bind:class="{ 'people-toggle-on': people }" v-on:click="togglePeople()">
+        People:
+        <b-iconstack font-scale="1.5" v-show="people">
+          <b-icon stacked icon="circle" variant="primary"></b-icon>
+          <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
+        </b-iconstack>
+        <b-iconstack font-scale="1.5" v-show="!people">
+          <b-icon stacked icon="circle" variant="warning"></b-icon>
+          <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
+          <b-icon stacked icon="slash" variant="warning"></b-icon>
+        </b-iconstack>
+      </div>
     </b-col>
     
   </b-row>
@@ -326,6 +343,7 @@
         viewer: {},
         scene: {},
         panoScenes: [],
+        sceneNames: [],
         people: false,
         selectedId: 0,
         showHotspot: false,
@@ -392,28 +410,45 @@
 
       },
       loadRemainingPanos() {
-        // Assume we load pano 0 first, we are loading the rest
-        // Iterate 1 - 13 (0 indexed)
-        for (let i = 1; i < this.panoScenes.length; i++) {
+        // We load pano 1 first, we are loading the rest
+        this.loadPano(0)
+        // Iterate 2 - 13 (0 indexed)
+        for (let i = 2; i < this.panoScenes.length; i++) {
           this.loadPano(i)
         }
       },
       selectScene(dropdownIndex) {
         // User facing - scene they have selected
-        console.log("Selected", dropdownIndex)
         // Toggling users on/off will affect this
         // There will be 0 - 6 options, but this maps to 0 - 13 options, with the higher number being without people (e.g. 1 has people, 0 does not)
         // If not 0 (have separate case for this): double selected ID, if people===true, subtract 1
-
+        
+        let correctSceneId = this.getSceneIDByDropdown(dropdownIndex) 
+        // console.log("rendering", this.pano_data.scenes[correctSceneId].id)
         this.selectedId = dropdownIndex;
-        this.switchScene(dropdownIndex);
+        this.switchScene(correctSceneId);
+      },
+      getSceneIDByDropdown(dropdownIndex) {
+        // I'm too tired - this implementation is hacky but it works
+        if(this.people) {
+          // People are visible
+          if(dropdownIndex === 0) {
+            return 0
+          } else {
+            return (dropdownIndex * 2)
+          }
+        } else {
+          // No people, we need to find empty
+          if(dropdownIndex === 0) {
+            return dropdownIndex + 1
+          } else {
+            return (dropdownIndex * 2) + 1
+          }
+        }
       },
       switchScene(sceneId) {
         // Attach all the relevant hotspots to the scene
         this.attachHotspots(this.panoScenes[sceneId].scene, this.pano_data.scenes[sceneId], sceneId)
-        
-        if(sceneId % 2 > 0) { console.log("odd") }
-
         // Run switchTo() on scene which loads it into the viewer
         this.panoScenes[sceneId].scene.switchTo({
           transitionDuration: 1000
@@ -441,17 +476,11 @@
       },
       togglePeople() {
         this.people = !this.people;
+        this.selectScene(this.selectedId)
       },
       toggleHotspot() {
         // this.allHotspots[sceneId][index].visible = !this.allHotspots[sceneId][index].visible
-        console.log("toggling hotspot")
         this.showHotspot = !this.showHotspot;
-      },
-      // Returns even, not sure if I'll use it
-      even: function(array) {
-        return array.filter(function (number) {
-          return number % 2 === 0
-        })
       },
       attachSingleHotspot(sceneView, scene, sceneId, index) {
         let hotspot = this.$refs[this.fetchHotspot(sceneId,index)]
@@ -466,27 +495,38 @@
         for (let i = 0; i < scene.infoHotspots.length; i++) {
           this.attachSingleHotspot(sceneView, scene, sceneId, i)
         }
+      },
+      populateSceneNames() {
+        // Stores only names without "(empty)" in them
+        for (let scene of this.pano_data.scenes){
+          // console.log(scene.name)
+          if(scene.name.search('empty') === -1){
+            this.sceneNames.push(scene.name)
+          }
+        }
       }
     },
     mounted() {
       this.initPanoViewer();
       this.populateScenesId();
-      this.loadPano(0);
-      this.switchScene(0);
+      this.loadPano(1);
+      this.switchScene(1);
       // Load all other scenes in the background
       this.loadRemainingPanos()
+      this.populateSceneNames();
     }
   }
 </script>
 
-<style>
+<style lang="scss">
+  @import '@/assets/_variables.scss';
 
   body {
     text-align: center;
   }
 
   .pano_frame {
-    height: 75vh;
+    height: 70vh;
     text-align: left;
     
   }
@@ -497,7 +537,7 @@
   }
 
   #pano {
-    height: 75vh;
+    height: 70vh;
     left: 0;
     overflow: hidden;
     /* max-width: none; */
@@ -506,6 +546,25 @@
   .hotspot {
     background: none;
     display: none;
+  }
+
+  .topdown {
+    width: 100vw;
+  }
+
+  .people-toggle {
+    display:inline-block;
+    background: #6c757d;
+    color: white;
+    padding: 0.4em 0.8em;
+    border-radius: 0.3em;
+    vertical-align: middle;
+    /* padding-left: 0.2em;
+    padding-right: 0.2em; */
+  }
+
+  .people-toggle-on {
+    background-color: #559ad9;
   }
 
 </style>
