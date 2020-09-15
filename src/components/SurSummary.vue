@@ -169,13 +169,11 @@
         <p>22 Priority seats for elderly and pregnant</p>
         <p>270 Max occupancy</p>
         <p>Passenger screen displays</p>
-        <p>Onboard wifi*</p>
+        <p>Onboard network connectivity</p>
       </b-col>
     </b-row>
 
-    <b-row id="optionsAsterix" class="text-center">
-      <p>* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum.</p>
-    </b-row>
+   
       </b-col>
     </b-row>
 
