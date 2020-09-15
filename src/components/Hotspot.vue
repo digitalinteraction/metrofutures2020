@@ -1,8 +1,16 @@
 <template>
   <div class="hotspot_container" v-bind:class="{ hidden : !visible}">
     <div class="icon-container">
-      <b-icon icon="info-circle" v-on:click="toggle()" v-show="!visible"></b-icon>
-      <b-icon icon="x-circle" v-on:click="toggle()" v-show="visible"></b-icon>
+      <b-iconstack font-scale="1.5" v-on:click="toggle()" v-show="!visible">
+        <b-icon stacked icon="circle-fill" class="icon-backing"></b-icon>
+        <b-icon stacked icon="info-circle"></b-icon>
+      </b-iconstack>
+      <b-iconstack font-scale="1.5" v-on:click="toggle()" v-show="visible">
+        <b-icon stacked icon="circle-fill" class="icon-backing"></b-icon>
+        <b-icon stacked icon="x"></b-icon>
+      </b-iconstack>
+      <!-- <b-icon icon="info-circle" font-scale="1.5" v-on:click="toggle()" v-show="!visible"></b-icon>
+      <b-icon icon="x-circle" font-scale="1.5"  v-on:click="toggle()" v-show="visible"></b-icon> -->
     </div>
     
     <!-- <img src="/favicon.ico" alt="" class="icon" > -->
@@ -177,10 +185,18 @@ export default {
 
   .icon-container {
     float: left;
-    background-color: $metro-green;
-    padding-left: 0.2em;
-    padding-right: 0.2em;
-    border-radius: 25px;
+    // position: absolute;
+    // top: 3px;
+    // left: 5px;
+    // background-color: $metro-green;
+    // padding-left: 0.2em;
+    // padding-right: 0.2em;
+    // border-radius: 25px;
+    color: white;
+  }
+
+  .icon-backing {
+    color: $metro-green;
   }
 
   .icon {
@@ -192,7 +208,7 @@ export default {
   }
 
   .content_visible {
-    width: 200px;
+    width: 210px;
   }
 
   .hotspot_title {
@@ -200,9 +216,11 @@ export default {
     // font-weight:bold;
     display: block;
     text-align: center;
-    background-color: gray;
+    background-color: white;
+    border: 1px solid black;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    padding-top: 0.25em;
     // border-left: 1px solid black;
     // border-right: 1px solid black;
     // border-top: 1px solid black;
@@ -212,15 +230,20 @@ export default {
     display: block;
     background-color: lightgray;
     font-family: $font-family-sans-serif;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-    padding-bottom: 0.25em;
+    padding: 0.3rem 0.4rem;
+    // padding-left: 0.25em;
+    // padding-right: 0.25em;
+    // padding-bottom: 0.25em;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
     // border-left: 1px solid darkgray;
     // border-right: 1px solid darkgray;
     // border-bottom: 1px solid darkgray;
-    
+  }
+
+  .hotspot_text input {
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
   }
 
   .likert_text {
