@@ -1,7 +1,7 @@
 <template>
 <b-container class="pano">
   <b-row v-if="welcomeScreen">
-        <welcomeConsent title="Your Metro" page="explore" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+        <welcomeConsent title="Explore your new Metro!" page="explore" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
   <MainHeader title="Explore Your Metro"/>
 

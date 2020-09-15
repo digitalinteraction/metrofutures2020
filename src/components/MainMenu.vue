@@ -5,9 +5,9 @@
        Menu
       </template>
       <b-dropdown-item to="/">Home</b-dropdown-item>
-      <b-dropdown-item to="/about">About Metro Futures</b-dropdown-item>
-      <b-dropdown-item to="/explore">Your Metro</b-dropdown-item>
-      <b-dropdown-item to="/configure">Your Choices</b-dropdown-item>
+      <b-dropdown-item to="/explore">Explore</b-dropdown-item>
+      <b-dropdown-item to="/configure">Configure</b-dropdown-item>
+      <b-dropdown-item to="/about">About</b-dropdown-item>
       <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
       <b-dropdown-item href="#" v-b-modal.terms-modal>Terms and Conditions</b-dropdown-item>
       <b-dropdown-item href="#" v-b-modal.privacy-modal>Privacy Policy</b-dropdown-item>

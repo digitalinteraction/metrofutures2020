@@ -81,7 +81,7 @@
         </b-modal>-->
 
         <b-row v-if="welcomeScreen">
-        <welcomeConsent title="Your Choices" page="choices" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+        <welcomeConsent title="Add the Finishing Touches!" page="choices" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
 
     </b-container>
