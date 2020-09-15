@@ -82,9 +82,17 @@
                     </b-col>
                 </b-row>
 
+
+<!--               <&#45;&#45; 2 different buttons depending on if q has previously been completed or not&ndash;&gt;-->
+                <b-row>
+                <b-col>
+                    <b-button v-bind:class="displayContinue()" block variant="outline-secondary" @click="nextQuestion">Continue</b-button>
+                </b-col>
+                </b-row>
+
                 <b-row>
                     <b-col>
-                        <b-button block variant="outline-secondary" @click="nextQuestion">Continue</b-button>
+                        <b-button v-bind:class="displayUpdate()" block variant="outline-secondary" @click="nextQuestion">Update</b-button>
                     </b-col>
                 </b-row>
 
@@ -124,6 +132,7 @@
                     night: []
                 },
                 lighting: "1",
+                questionPreviouslyAnswered: false
             }
 
         },
@@ -218,6 +227,7 @@
                         this.addConfigAnswer(payload);
                     // move to next question
                     this.incrementIndex()
+
                     this.$parent.nextScreen(this.index)  // Trigger parent to render next question screen
                 } else {
                     //you haven't answered
@@ -226,8 +236,24 @@
                 }
                 }
             },
-
-
+            displayContinue() {
+                const answers = this.getConfigAnswers;
+                // if answer is not stored, show
+                if (answers[this.index] === undefined) {
+                    return 'display';
+                } else {
+                    return 'hide';
+                }
+            },
+            displayUpdate() {
+                const answers = this.getConfigAnswers;
+                // if answer is stored, show
+                if (answers[this.index] !== undefined) {
+                    return 'display';
+                } else {
+                    return 'hide';
+                }
+            },
             previousQuestion() {
                 this.reduceIndex();
                 this.$parent.prevScreen(this.index)  // Trigger parent to render previous question screen
@@ -455,6 +481,14 @@
             margin-left: 1.6em;
             border-bottom: 2px solid #FEC600;
         }
+    }
+
+    .display {
+        display: flex;
+    }
+
+    .hide {
+        display: none;
     }
 
     #surveyqContainer {

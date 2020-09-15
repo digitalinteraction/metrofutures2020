@@ -9,7 +9,7 @@
             <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
           </router-link>
         </b-col>
-          <h3 class="calvert">Your Choices</h3>
+          <h3 class="calvert">Configure Your Choices</h3>
 
         <b-col>
 <!--           todo add link here-->
