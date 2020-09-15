@@ -535,28 +535,27 @@
   }
 
   .pano_frame {
-    height: 70vh;
+    height: 88vh;
     text-align: left;
     
   }
 
-  .controls {
-    position: absolute;
-    top: 5%;
-    left: 5%;
-    z-index: 999999;
+  #pano {
+    height: 88vh;
+    left: 0;
+    overflow: hidden;
+    /* max-width: none; */
   }
 
   .pano {
     max-width: none;
     padding-left: 0
   }
-
-  #pano {
-    height: 70vh;
-    left: 0;
-    overflow: hidden;
-    /* max-width: none; */
+  .controls {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 999999;
   }
 
   .hotspot {
