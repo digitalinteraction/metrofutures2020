@@ -175,7 +175,7 @@ export default {
     console.log(this.windowHeight);
 
     // google analytics post
-    const measurementID = "UA-85374573-24";
+    const measurementID = process.env.VUE_APP_GA_ID;
     const clientID = this.$cookies.get("mfsid");
     const page = this.$route.path;
     const pageName = this.$route.name;
