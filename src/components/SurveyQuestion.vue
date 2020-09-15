@@ -439,7 +439,7 @@
         background-color: #DDDDDD;
 
         & img {
-            border-right: 2px solid black;
+            border-right: 3px solid #FEC600;
         }
     }
 
