@@ -29,20 +29,19 @@
           </span>
 
           <div v-if="data.visual">
-            <!-- Visual here: {{ data.visual }} -->
 
             <video class="embed-video" :class="{ 'embed-large' : vidFullscreen }" ref="embedded">
-              <source src="https://cdn.metrofutures.org.uk/doors/Door_Exterior_1.mp4" type="video/webm" >
+              <source :src="data.visual" type="video/webm" >
               <p>Your browser doesn't support HTML5 video. Here is a <a href="https://cdn.metrofutures.org.uk/doors/Door_Exterior_1.mp4">link to the video</a> instead.</p>
             </video>
-            <div class="controls text-center"> 
+            <div class="controls-video text-center"> 
               <b-iconstack font-scale="2" v-on:click="videoPlay()">
                 <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
                 <b-icon stacked icon="play-fill"  v-show="!videoPlaying"></b-icon>
                 <b-icon stacked icon="stop-fill"  v-show="videoPlaying"></b-icon>
               </b-iconstack>
 
-              <b-iconstack font-scale="2" v-show="!vidFullscreen" v-on:click="videoFull()">
+              <!-- <b-iconstack font-scale="2" v-show="!vidFullscreen" v-on:click="videoFull()">
                 <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
                 <b-icon stacked scale="0.5" icon="arrows-fullscreen" ></b-icon>
               </b-iconstack>
@@ -50,7 +49,7 @@
               <b-iconstack font-scale="2" v-show="vidFullscreen" v-on:click="videoShrink()">
                 <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
                 <b-icon stacked scale="0.5" icon="arrows-angle-contract"></b-icon>
-              </b-iconstack>
+              </b-iconstack> -->
             </div>
 
           </div>
@@ -100,7 +99,7 @@ export default {
       this.visible = !this.visible
     },
     valid() {
-      if (this.hotspotText.length === 0) { return false} 
+      if (this.hotspotText.length === 0 && this.likertRating === 0) { return false} 
       else { return true }
     },
     submit() {
