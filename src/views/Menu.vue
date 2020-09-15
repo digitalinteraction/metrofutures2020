@@ -96,7 +96,7 @@
       <div class="menu-col-wrapper">
         <div class="mobile-option" v-on:click="goTo('/explore')">
           <div class="mobile-header">
-            <b-img src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
+            <b-img class="menuImg w-100" src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo">
               <h3>Your Metro</h3>
             </div>
@@ -106,7 +106,7 @@
 
         <div class="mobile-option" @click="goTo('/configure')">
           <div class="mobile-header">
-            <b-img src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
+            <b-img class="menuImg w-100" src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
             <div class="moreInfo">
               <h3>Your Choices</h3>
             </div>
@@ -116,7 +116,7 @@
         
        <div class="mobile-option" @click="goTo('/journeys')">
           <div class="mobile-header">
-            <b-img src="../assets/yourJourneys2Mob.jpg" fluid alt="image of example metro passenger"></b-img>
+            <b-img class="menuImg w-100" src="../assets/yourJourneys2Mob.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo">
               <h3>Your Journeys - Launching soon!</h3>
             </div>
