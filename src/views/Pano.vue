@@ -3,12 +3,7 @@
   <b-row v-if="welcomeScreen">
         <welcomeConsent title="Your Metro" page="explore" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
-  <MainHeader title="Explore Your Metro"/>
-
-
-      
-
-
+  <MainHeader title="Explore Your Metro"/> 
   <b-row class="pano_frame">
     <b-col >
       <div class="controls">
@@ -530,9 +525,9 @@
 <style lang="scss">
   @import '@/assets/_variables.scss';
 
-  body {
-    text-align: center;
-  }
+  // body {
+  //   text-align: center;
+  // }
 
   .pano_frame {
     height: 88vh;
@@ -555,12 +550,13 @@
     position: absolute;
     top: 5%;
     left: 5%;
-    z-index: 999999;
+    z-index: 100;
   }
 
   .hotspot {
     background: none;
     display: none;
+    z-index: -1;
   }
 
   .topdown {
