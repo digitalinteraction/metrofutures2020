@@ -1,5 +1,6 @@
 require('dotenv').config()
-const imageFolder = "conf";
+const imageFolder = "endwall";
+const seatIdMap = ["A", "B", "C", "D"];
 
 module.exports = async(req, res) => {
   if(!req.cookies.mfsid){
@@ -7,25 +8,33 @@ module.exports = async(req, res) => {
     sendResponse(req, res, 403, "Unauthorized");
   } else {
     try {
+      // Design can be optional - if it's not specified return all possible URLs
+
+      // TO DO TO DO TO DO 
+      // SEND SINGLE URL FOR THIS DESIGN
       if(typeof(req.query.design) !== undefined) {
-        if(req.query.design >= 0) {
-          let options = validateQuery(req.query)
-          if (options) {
-            let url = urlFormatter(options)
-            sendResponse(req, res, 200, url, options);
-          } else {
-            sendResponse(req, res, 400, "Incorrectly formatted");
-          }
-          // Get options from the get request 
-          // if(true) {
-          // } else {
-          //   sendResponse(req, res, 400, "Unable to connect");
-          // }
+        let options = validateQuery(req.query)
+        if (options && req.query.design > 0 && req.query.design < 5) {
+          console.log("design is specified", req.query.design)
+          // Specify design
+          options.design = convertDesign(req.query.design)
+          let url = urlFormatter(options)
+          sendResponse(req, res, 200, url, options);
         } else {
-          sendResponse(req, res, 400, "Incorrectly formatted");
+          console.log("Design is not or is 0", req.query.design)
+          // SENDING ALL URLS FOR THIS OPTION SET
+          let options = validateQuery(req.query)
+          let data = generateUrls(options)
+          sendResponse(req, res, 200, data);
         }
+        // Get options from the get request 
+        // if(true) {
+        // } else {
+        //   sendResponse(req, res, 400, "Unable to connect");
+        // }
+
       } else {
-        sendResponse(req, res, 400, "Incorrectly formatted");
+        sendResponse(req, res, 200, "Error");
       }
     } catch (error) {
       sendResponse(req, res, 400, "Error");
@@ -135,10 +144,12 @@ function validateQuery(query) {
   }
 }
 
+// Configured to work only for end wall URLs
 function urlFormatter(opt) {
   // All options start from 1 (0 = option not visible, thus irrelevant)
   // In some cameras some options are not visible, so they are at 0
-  let url = `${process.env.API_CDN_URL}/${imageFolder}/Camera${opt.cam}_${opt.o1}_${opt.o2}_${opt.o3}_${opt.o4}_${opt.o5}_${opt.o6}_${opt.o7}.jpg`
+  console.log(opt.design)
+  let url = `${process.env.API_CDN_URL}/${imageFolder}/Camera${opt.cam}_${opt.o1}_${opt.o2}_${opt.o3}_${opt.o4}_${opt.o5}_${opt.o6}_${opt.o7}${opt.design}.jpg`
   return url
 }
 
@@ -178,4 +189,42 @@ function convertPrioritySeats(seatValue) {
   } else {
     return "OFF"
   }
+}
+
+function convertDesign(designId) {
+  if (designId > 0) {
+    return seatIdMap[designId-1]
+  } else {
+    return seatIdMap[0]
+  }
+}
+
+function generateUrls(options) {
+  // Take the qindex (1 indexed) and all our o1, o2 etc options, and generate the day and night URLs for the given question (e.g. question 1 has 3 options in it, so generate 3 day + 3 night URLs)
+
+  // We don't know which designs we want so generate all
+  let optionsPayload = options
+  let urlsDay = []
+  let urlsNight = []
+  let numOptions = 4;  // Number of options for endwall design
+
+  console.log("Num options:", numOptions, "for designs")
+
+  // Run for loop
+  for (let i = 1; i <= numOptions; i++){
+    // Modify options with the i+1 of for loop
+    let optionsString = "design"
+    optionsPayload[optionsString] = convertDesign(i)
+    console.log(optionsPayload)
+    
+    optionsPayload.o7 = 1  // Modify with day
+    // Generate Url and store in array
+    urlsDay.push(urlFormatter(optionsPayload))
+
+    optionsPayload.o7 = 2  // Modify with night
+    // Generate Url and store in array
+    urlsNight.push(urlFormatter(optionsPayload))
+  }
+  // Concate both together into an easily accessible object at the other end
+  return {day: urlsDay, night: urlsNight}
 }

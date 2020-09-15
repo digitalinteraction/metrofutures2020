@@ -39,7 +39,8 @@ export default {
         src: url("./fonts/CalvertMTStd.otf") format("opentype");
     }
 body {
-/*  overflow: hidden;*/
+  /*  overflow: hidden;*/
+  text-align: center;
 }
 
 #app {

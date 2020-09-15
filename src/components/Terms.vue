@@ -1,7 +1,9 @@
 <template>
   <b-modal class="termsBody" id="terms-modal" ok-only>
-    <h3>Terms and Conditions</h3>
 
+<template v-slot:modal-title>
+      <h2>Terms and Conditions</h2>
+      </template>
     <p class="termsText">
       <strong>Disclaimer:</strong> This engagement is being undertaken by Open Lab, School of Computing, Newcastle University, in partnership with Nexus Tyne and Wear and Stadler Rail. This website, and other engagement opportunities, are led by Open Lab and not other partners. The views expressed during the engagement do not represent those of Open Lab or partners.
     </p>

@@ -10,18 +10,18 @@
       hide-header-close
       id="privacyNoticeModal">
       <template v-slot:modal-title>
-      {{title}}
+      <h2>{{title}}</h2>
       </template>
       <div id="explore" v-if="page === 'explore'">
-        <h2>Explore your new Metro!</h2>
+       <!-- <h2>Explore your new Metro!</h2>-->
         <p>Move around 360-degree images at seven points in and around the train to discover new features and provide feedback on them. Use the toggle switch to explore the train with and without people on board. Some features appear in more than one image.</p>
       </div>
       <div id="choices" v-if="page === 'choices'">
-        <h2>Add the Finishing Touches!</h2>
+       <!--  <h2>Add the Finishing Touches!</h2> -->
         <p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media.</p>
       </div>
       <div id="journeys" v-if="page === 'journeys'">
-        <h2>Step into Someone Else’s Shoes</h2>
+      <!--   <h2>Step into Someone Else’s Shoes</h2> -->
         <p>Pick one of six people, go on a typical Metro journey with them and consider how well the new trains fit their needs. These are not real people but the issues they face are real and reflect what people like them have told us about travelling on trains.</p>
       </div>
         
@@ -104,4 +104,6 @@ export default {
 .calvert {
   font-family: Calvert, serif;
 }
+
+
 </style>

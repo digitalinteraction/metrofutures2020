@@ -2,7 +2,7 @@
   <div class="menu">
     <b-container>
       <b-row v-if="welcomeScreen">
-        <welcomeConsent title="Menu" page="menu" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+        <welcomeConsent title="Welcome" page="menu" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
       <b-row>
         <b-col></b-col>
@@ -30,13 +30,13 @@
         >
           <div v-if="!hoverYourMetro">
             <b-img class="menuImg" src="../assets/yourMetro.png" fluid alt="image of inside of carriage"></b-img>
-            <h3 class="imgTitles">Your Metro</h3>
+            <h3 class="imgTitles">Explore Your Metro</h3>
           </div>
 
           <div v-if="hoverYourMetro" class="hoveredImg">
             <b-img class="enlargeImg" src="../assets/yourMetro.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo w-100">
-              <h3>Your Metro</h3>
+              <h3>Explore Your Metro</h3>
               <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
             </div>
           </div>
@@ -51,7 +51,7 @@
         >
           <div v-if="!hoverYourChoice">
             <b-img class="menuImg" src="../assets/yourChoiceTemp.png" fluid alt="image of train front"></b-img>
-            <h3 class="imgTitles">Your Choices</h3>
+            <h3 class="imgTitles">Configure Your Metro</h3>
           </div>
 
           <div v-if="hoverYourChoice" class="hoveredImg">
@@ -62,8 +62,8 @@
               alt="image of train front"
             ></b-img>
             <div class="moreInfo w-100">
-              <h3>Your Choices</h3>
-              <p>Some internal options are still to be decided. Customise your Metro to help us decide.</p>
+              <h3>Configure Your Metro</h3>
+              <p>Some internal options are still to be decided. Configure your Metro to help us decide.</p>
             </div>
           </div>
         </b-col>
@@ -98,7 +98,7 @@
           <div class="mobile-header">
             <b-img class="menuImg w-100" src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo">
-              <h3>Your Metro</h3>
+              <h3>Explore Your Metro</h3>
             </div>
           </div>
           <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
@@ -108,10 +108,10 @@
           <div class="mobile-header">
             <b-img class="menuImg w-100" src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
             <div class="moreInfo">
-              <h3>Your Choices</h3>
+              <h3>Configure Your Metro</h3>
             </div>
           </div>
-          <p>Some internal options are still to be decided. Customise your Metro to help us decide.</p>
+          <p>Some internal options are still to be decided. Configure your Metro to help us decide.</p>
         </div>
         
        <div class="mobile-option" @click="goTo('/journeys')">
@@ -292,7 +292,8 @@ export default {
   position: relative;
   p{
     margin: 1em 2em 2em 2em;
-    font-size: smaller}
+    font-size: smaller;
+    font-family: "Open Sans", sans-serif;}
 }
 
 

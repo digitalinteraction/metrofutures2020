@@ -1,4 +1,5 @@
 <template>
+
     <div class="survey">
 
         <b-container align="center" fluid>
