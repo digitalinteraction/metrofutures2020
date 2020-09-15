@@ -366,6 +366,10 @@
     .optionImg {
         padding-right: 0;
         padding-left: 0;
+        & img {
+            width: 100px;
+            height: auto;
+        }
     }
 
     #localAuthority {
