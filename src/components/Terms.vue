@@ -64,7 +64,7 @@
     </p>
     <p class="termsText"><strong>Contact:</strong>For questions or concerns relating to privacy, we can be contacted at: <a v-bind:href="'mailto:'+ email">{{ email }}</a>.</p>
     <p class="termsText"><strong>Effective Date:</strong> This Privacy Policy was last updated on 20 August 2020.</p>
-
+  <!-- random comment -->
   </b-modal>
 </template>
 
