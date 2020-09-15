@@ -8,7 +8,7 @@ module.exports = async(req, res) => {
   } else {
     try {
       if(typeof(req.query.design) !== undefined) {
-        if(req.query.design > 0) {
+        if(req.query.design >= 0) {
           let options = validateQuery(req.query)
           if (options) {
             let url = urlFormatter(options)
