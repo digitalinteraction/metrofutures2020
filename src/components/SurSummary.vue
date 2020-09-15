@@ -127,11 +127,40 @@
                 <b-col class="col-lg-3 col-12">
                     <p class="calvert"></p>
                     <p id="option1" class="option" @click="toggleFeatures()"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p>
-                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>
-                    <p id="option3" class="option "><b-icon-envelope></b-icon-envelope> SEND PDF</p>
-                    <p id="option4" class="option text-center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23z" fill="#626262"/></svg>
-                        SHARE</p>
 
+<!--                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>-->
+                    <p id="option3" class="option " @click="createPDF"><b-icon-envelope></b-icon-envelope> SEND PDF</p>
+                    
+
+<!--                    social sharing-->
+                    <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
+                        <b-dropdown-item>   <ShareNetwork
+                                network="facebook"
+                                url="https://metrofutures.org.uk/configure"
+                                title="Something about Metro"
+                                description="Something more about Metro."
+                                quote="Quote"
+                                hashtags="metro"
+                        > Facebook
+                            <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
+                        </ShareNetwork>
+                        </b-dropdown-item>
+
+
+                        <b-dropdown-item>
+                            <ShareNetwork
+                                    network="twitter"
+                                    url="https://metrofutures.org.uk/configure"
+                                    title="Something about metro"
+                                    twitter-user="thebestmetro"
+                                    hashtags="metro"
+                            > Twitter
+                                <b-img src="../assets/twitter.png" height="30px;"></b-img>
+
+                            </ShareNetwork>
+                        </b-dropdown-item>
+
+                    </b-dropdown>
                 </b-col>
             </b-row>
 
@@ -186,6 +215,7 @@
 
 <script>
 import {mapGetters} from "vuex";
+import jsPDF from 'jspdf'
 
 export default {
   name: 'SurSummary',
@@ -217,13 +247,13 @@ export default {
     ])
   },
   methods: {
-  toggleFeatures() {
-    if (this.viewFeatures) {
-      this.viewFeatures = false;
-    } else {
-      this.viewFeatures = true;
-    }
-  },
+      toggleFeatures() {
+          if (this.viewFeatures) {
+              this.viewFeatures = false;
+          } else {
+              this.viewFeatures = true;
+          }
+      },
       onSlideStart() {
           this.sliding = true
       },
@@ -234,13 +264,13 @@ export default {
 
           // if gender other text is filled in then send this instead
           if (this.genderOtherText) {
-          if (this.genderOtherText.length > 0) {
-              this.gender = this.genderOtherText;
+              if (this.genderOtherText.length > 0) {
+                  this.gender = this.genderOtherText;
+              }
           }
-      }
           // submit answers
           let payload = {
-              2:this.gender,
+              2: this.gender,
               3: this.ethnicity,
               4: this.disability,
               5: this.purpose,
@@ -265,8 +295,75 @@ export default {
           } else {
               this.otherGender = false;
           }
-      }
+      },
+      async createPDF() {
+          console.log('create pdf');
+          //let pdfName = 'Metro Futures';
+          var doc = new jsPDF();
+          doc.text("Metro Futures", 10, 10);
+          //doc.save(pdfName + '.pdf');
 
+          //for each image in slideshow, get dataturi and add to pdf, adding to a new position
+          let positionx = 20;
+          let positiony = 20;
+
+
+          console.log(this.images.length);
+
+          this.getDataUri(this.images[0]).then((image1) => {
+              doc.addImage(image1, 'PNG', positionx, positiony, 178, 100);
+              console.log('add 1');
+              this.getDataUri(this.images[1]).then((image2) => {
+                  doc.addImage(image2, 'PNG', positionx, positiony + 120, 178, 100);
+                  console.log('add 2');
+                  doc.addPage(); //page break
+                  this.getDataUri(this.images[2]).then((image3) => {
+                      doc.addImage(image3, 'PNG', positionx, positiony, 178, 100);
+                      console.log('add 3');
+                      this.getDataUri(this.images[3]).then((image4) => {
+                          doc.addImage(image4, 'PNG', positionx, positiony + 120, 178, 100);
+                          console.log('ready');
+                          doc.output('dataurlnewwindow');
+                      });
+                  });
+              });
+          });
+
+
+          // for (const image in this.images) {
+          //     console.log('get imageuri');
+          //
+          //     positiony+=120;
+          //     imageCount ++;
+          //     console.log(imageCount);
+          // }
+
+
+      },
+      // https://stackoverflow.com/a/58936995/13075525
+      getDataUri(url) {
+          return new Promise(resolve => {
+              var image = new Image();
+              image.setAttribute('crossOrigin', 'anonymous'); //getting images from external domain
+
+              image.onload = function () {
+                  var canvas = document.createElement('canvas');
+                  canvas.width = this.naturalWidth;
+                  canvas.height = this.naturalHeight;
+
+                  //next three lines for white background in case png has a transparent background
+                  var ctx = canvas.getContext('2d');
+                  ctx.fillStyle = '#fff';  /// set white fill style
+                  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                  canvas.getContext('2d').drawImage(this, 0, 0);
+
+                  resolve(canvas.toDataURL('image/jpeg'));
+              };
+              image.src = url;
+          })
+
+      }
   },
 
  beforeMount() {
@@ -307,8 +404,6 @@ export default {
             })
             .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
     }
-
-
 
     }
 
