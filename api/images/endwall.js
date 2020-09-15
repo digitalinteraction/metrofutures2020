@@ -7,18 +7,26 @@ module.exports = async(req, res) => {
     sendResponse(req, res, 403, "Unauthorized");
   } else {
     try {
-      let options = validateQuery(req.query)
-      if (options) {
-        let url = urlFormatter(options)
-        sendResponse(req, res, 200, url, options);
+      if(typeof(req.query.design) !== undefined) {
+        if(req.query.design > 0) {
+          let options = validateQuery(req.query)
+          if (options) {
+            let url = urlFormatter(options)
+            sendResponse(req, res, 200, url, options);
+          } else {
+            sendResponse(req, res, 400, "Incorrectly formatted");
+          }
+          // Get options from the get request 
+          // if(true) {
+          // } else {
+          //   sendResponse(req, res, 400, "Unable to connect");
+          // }
+        } else {
+          sendResponse(req, res, 400, "Incorrectly formatted");
+        }
       } else {
         sendResponse(req, res, 400, "Incorrectly formatted");
       }
-      // Get options from the get request 
-      // if(true) {
-      // } else {
-      //   sendResponse(req, res, 400, "Unable to connect");
-      // }
     } catch (error) {
       sendResponse(req, res, 400, "Error");
     }
