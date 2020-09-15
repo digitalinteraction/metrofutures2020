@@ -292,7 +292,8 @@ export default {
   position: relative;
   p{
     margin: 1em 2em 2em 2em;
-    font-size: smaller}
+    font-size: smaller;
+    font-family: "Open Sans", sans-serif;}
 }
 
 
