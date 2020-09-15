@@ -10,7 +10,7 @@
           <b-img id="metroLogo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
         </b-col>
         <b-col>
-          <MainMenu class="aboutText text-center"></MainMenu>
+          <MainMenu class="text-right" ></MainMenu>
           <!-- <p id="aboutText" v-on:click="goTo('/about')">
             About Metro Futures
             <b-icon-chevron-down variant="primary"></b-icon-chevron-down>
@@ -213,6 +213,17 @@ export default {
   padding-bottom: 0.8em;
   text-align: right;
 }
+
+.text-right {
+  color: black;
+  float: right;
+  margin-top: 3em;
+  cursor: pointer;
+  padding-bottom: 0.8em;
+  text-align: right;
+
+}
+
 .menuCol {
   padding-left: 0 !important;
   padding-right: 0 !important;
