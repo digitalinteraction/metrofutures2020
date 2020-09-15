@@ -1,5 +1,5 @@
 <template>
-    <b-container fluid>
+    <b-container fluid id="surveyqContainer">
         <b-row class="survey-question text-left">
             <!--image column-->
 
@@ -382,6 +382,7 @@
 
     .largeImgColumn {
         padding-right: 0;
+        padding-left: 0 !important;
     }
 
     .questionTextRow {
@@ -396,9 +397,15 @@
         content: "";
         display: block;
         width: 40%;
-        padding-top: 1em;
+        padding-top: 0.1em;
         margin-bottom: 1.5em;
+        margin-left: 1.6em;
         border-bottom: 2px solid #FEC600;
+    }
+
+    #surveyqContainer {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
     .calvert {
@@ -457,10 +464,10 @@
 
     .surveyFreeText {
         text-align: left;
-        padding: 1em;
         font-weight: bold;
         font-size: small;
-
+    margin-bottom: 1em;
+        margin-top: 1em;
     }
 
 
@@ -478,6 +485,8 @@
 
         }
     }
+
+
 
 
 
