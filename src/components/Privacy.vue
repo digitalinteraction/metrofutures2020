@@ -1,6 +1,8 @@
 <template>
   <b-modal class="privacyBody" id="privacy-modal" ok-only>
-    <h3>Privacy Policy</h3>
+    <template v-slot:modal-title>
+      <h2>Privacy Policy</h2>
+      </template>
 
     <p class="privacyText">In order to facilitate the management of the Metro Futures consultation, some of your personal data (your email address) will be collected, if you provide this information. Additionally, since we are working with a number of partners in order to manage the individual parts of the consultation, some of your data (your email address) must also be shared with certain trusted third parties. For more specific information on how your personal data may be used by third parties, as applicable please review the privacy policies available below: </p>
 
