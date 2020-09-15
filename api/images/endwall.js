@@ -14,7 +14,7 @@ module.exports = async(req, res) => {
       // SEND SINGLE URL FOR THIS DESIGN
       if(typeof(req.query.design) !== undefined) {
         let options = validateQuery(req.query)
-        if (options && req.query.design > 0) {
+        if (options && req.query.design > 0 && req.query.design < 5) {
           console.log("design is specified", req.query.design)
           // Specify design
           options.design = convertDesign(req.query.design)
