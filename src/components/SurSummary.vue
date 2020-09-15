@@ -59,12 +59,55 @@
                     >
                 </template>
             </b-carousel-slide>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[4]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[5]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[6]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>    <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[7]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
         </b-carousel>
     </b-col>
 </b-row>
 
         <b-modal hide-footer="true" id="questionModal" title="">
-            <p class="summaryText">To help with this public consultation, please tell us a little more about yourself and your Metro journeys. Afterwards you can explore images of the Metro that you configured, and you can share it on social media!</p>
+            <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys.</p>
 
             <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
             <b-form-select  v-model="purpose" :options="purposes">Please select an
@@ -115,75 +158,42 @@
 
 
 
-<!--        <div v-if="showQuestions">-->
-<!--          <div class="row">-->
-<!--            <b-col  class="largeImgColumn col-lg-8 col-12">-->
-
-<!--                <b-img fluid :src="images[0]"></b-img>-->
-<!--            </b-col>-->
-
-<!--            <b-col class="col-lg-3 col-12">-->
-
-<!--             -->
-
-<!--            </b-col>-->
-<!--</div>-->
-<!--        </div>-->
-
-<!--        <div v-if="!showQuestions">-->
-<!--            <b-row>-->
-<!--                <b-col class="largeImgColumn col-lg-8 col-12">-->
-
-<!--                </b-col>-->
-<!--                <b-col class="col-lg-3 col-12">-->
-<!--                    <p class="calvert"></p>-->
-<!--                    <p id="option1" class="option" @click="toggleFeatures()"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p>-->
-
-<!--&lt;!&ndash;                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>&ndash;&gt;-->
-<!--                    <p id="option3" class="option " @click="createPDF"><b-icon-envelope></b-icon-envelope> SEND PDF</p>-->
-<!--                    -->
-
-<!--&lt;!&ndash;                    social sharing&ndash;&gt;-->
-<!--                    <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">-->
-<!--                        <b-dropdown-item>   <ShareNetwork-->
-<!--                                network="facebook"-->
-<!--                                url="https://metrofutures.org.uk/configure"-->
-<!--                                title="Something about Metro"-->
-<!--                                description="Something more about Metro."-->
-<!--                                quote="Quote"-->
-<!--                                hashtags="metro"-->
-<!--                        > Facebook-->
-<!--                            <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>-->
-<!--                        </ShareNetwork>-->
-<!--                        </b-dropdown-item>-->
+    <b-row id="optionsRow">
+      <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
+      <b-col id="option3" class="option"  @click="createPDF"><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
+        <b-col class="option"> <router-link to="/"><p class="text-center">RETURN TO HOME</p></router-link></b-col>
+      <b-col  class="option text-center">
+          <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
+              <b-dropdown-item>   <ShareNetwork
+                      network="facebook"
+                      url="https://metrofutures.org.uk/configure"
+                      title="Something about Metro"
+                      description="Something more about Metro."
+                      quote="Quote"
+                      hashtags="metro"
+              > Facebook
+                  <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
+              </ShareNetwork>
+              </b-dropdown-item>
 
 
-<!--                        <b-dropdown-item>-->
-<!--                            <ShareNetwork-->
-<!--                                    network="twitter"-->
-<!--                                    url="https://metrofutures.org.uk/configure"-->
-<!--                                    title="Something about metro"-->
-<!--                                    twitter-user="thebestmetro"-->
-<!--                                    hashtags="metro"-->
-<!--                            > Twitter-->
-<!--                                <b-img src="../assets/twitter.png" height="30px;"></b-img>-->
+              <b-dropdown-item>
+                  <ShareNetwork
+                          network="twitter"
+                          url="https://metrofutures.org.uk/configure"
+                          title="Something about metro"
+                          twitter-user="thebestmetro"
+                          hashtags="metro"
+                  > Twitter
+                      <b-img src="../assets/twitter.png" height="30px;"></b-img>
 
-<!--                            </ShareNetwork>-->
-<!--                        </b-dropdown-item>-->
+                  </ShareNetwork>
+              </b-dropdown-item>
 
-<!--                    </b-dropdown>-->
-<!--                </b-col>-->
-<!--            </b-row>-->
+          </b-dropdown>
+      </b-col>
 
-<!--        </div>-->
-
-<!--    <b-row id="optionsRow">-->
-<!--      <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>-->
-<!--      <b-col id="option2" class="option "><p class="borderRight text-center"><b-icon-printer></b-icon-printer> PRINT </p></b-col>-->
-<!--      <b-col id="option3" class="option "><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>-->
-<!--      <b-col id="option4" class="option text-center"><p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23z" fill="#626262"/></svg>-->
-<!--        SHARE</p></b-col>-->
-<!--    </b-row>-->
+    </b-row>
 
     <b-row v-if="viewFeatures">
       <b-col>
@@ -333,21 +343,30 @@ export default {
                       console.log('add 3');
                       this.getDataUri(this.images[3]).then((image4) => {
                           doc.addImage(image4, 'PNG', positionx, positiony + 120, 178, 100);
-                          console.log('ready');
+                          doc.addPage(); //page break
+                          console.log('add 3');
+                          this.getDataUri(this.images[4]).then((image5) => {
+                              doc.addImage(image5, 'PNG', positionx, positiony, 178, 100);
+                              console.log('add 3');
+                          this.getDataUri(this.images[5]).then((image6) => {
+                              doc.addImage(image6, 'PNG', positionx, positiony + 120, 178, 100);
+                              doc.addPage(); //page break
+                              console.log('add 3');
+                              this.getDataUri(this.images[6]).then((image7) => {
+                              doc.addImage(image7, 'PNG', positionx, positiony, 178, 100);
+                                  console.log('add 3');
+                              this.getDataUri(this.images[7]).then((image8) => {
+                              doc.addImage(image8, 'PNG', positionx, positiony + 120, 178, 100);
+                                  console.log('ready');
                           doc.output('dataurlnewwindow');
+                        });
+                  });
+              });
+          });
                       });
                   });
               });
           });
-
-
-          // for (const image in this.images) {
-          //     console.log('get imageuri');
-          //
-          //     positiony+=120;
-          //     imageCount ++;
-          //     console.log(imageCount);
-          // }
 
 
       },
@@ -389,9 +408,10 @@ export default {
      const o5 = answers[4] !== undefined ? answers[4]+1 : 1
      const o6 = answers[5] !== undefined ? answers[5]+1 : 1
      const o7 = this.lighting ? parseInt(this.lighting) : 1
+     const design = answers[6] !== undefined ? answers[5]+1 : 1
 
     // for each camera angle, add on question answers and get image from API
-    const cameraAngles = [1, 2, 4, 14];
+    const cameraAngles = [1, 2, 3, 4, 5, 6, 13];
     for (const cam of cameraAngles) {
 
         let payload = {
@@ -405,13 +425,30 @@ export default {
             o7
         }
         this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-            headers: {
-                Cookie: this.$cookies.get('mfsid')
-            },
             params: payload
         })
             .then(response => {
-                this.images.push(response.data.url);console.log(payload);
+                this.images.push(response.data.url);
+
+                // add new end wall design from different endpoint
+                let payload2 = {
+                    cam: cam,
+                    o1,
+                    o2,
+                    o3,
+                    o4,
+                    o5,
+                    o6,
+                    o7,
+                    design
+                }
+
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/endwall`, {
+                    params: payload2
+                })
+                .then(response2 => {
+                    this.images.push(response2.data.url);
+                })
             })
             .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
     }
@@ -446,7 +483,15 @@ font-size: small;
 .option {
   padding: 1em;
     cursor: pointer;
+    color: black !important;
+    & a {
+        color: black !important;
+        text-decoration: none !important;
+    }
 }
+
+
+
 #optionsAsterix {
   font-size: small;
 padding-top: 1em;

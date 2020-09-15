@@ -14,6 +14,7 @@
 
             <!--            LA q-->
             <b-col class="col-lg-3 col-12">
+                <p class="calvert">Before you begin, please tell us:</p>
                 <b-row id="localAuthority">
                     <p class="calvert"><span class="bold">Where do you live? (Which local authority?)</span></p>
                     <br>

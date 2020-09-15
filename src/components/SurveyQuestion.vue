@@ -297,6 +297,7 @@
                     cam = 5;
                 } else if(this.index+1 === 6 || this.index+1 === 7) {
                     // side wall
+
                     cam = 6;
                 }
                 return cam
