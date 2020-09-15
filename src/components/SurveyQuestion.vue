@@ -164,6 +164,30 @@
             nextQuestion() {
                 // prevent navigation without answering (and if no stored answer)
                 const answerStored = this.getConfigAnswers[this.index]
+
+                // if option 6 (side wall design) do different behaviour
+                if (this.index === 6) {
+                    if (this.selected !== -1 || answerStored !== undefined) {
+                        let payload = {
+                            type: 0,
+                            qid: this.index,
+                            resp: this.selected,
+                            comment: this.surveyText
+                        }
+                        // todo put new API URL here
+                        this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
+                            params: payload
+                        })
+                            .then(response => {
+                                console.info('Survey response: ' + response);
+                            })
+                            .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
+                        // update stored answers
+                        this.addConfigAnswer(payload);
+
+                    }
+                } else {
                 if (this.selected !== -1 || answerStored !== undefined) {
 
                     // you've answered now or in the past
@@ -199,6 +223,7 @@
                     //you haven't answered
                     // console.log('error');
                     this.displayError = true;
+                }
                 }
             },
 
@@ -274,10 +299,12 @@
                 } else if (this.index+1 === 4) {
                     // bike stand
                     cam = 4;
-                } else if (this.index+1 === 5 || this.index+1 === 6) {
+                } else if (this.index+1 === 5) {
                     // priority seats
-                    // There are 2 more camera angles here
-                    cam = 14;
+                    cam = 5;
+                } else if(this.index+1 === 6 || this.index+1 === 7) {
+                    // side wall
+                    cam = 6;
                 }
                 return cam
             },

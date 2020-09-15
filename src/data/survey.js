@@ -106,5 +106,24 @@ export default [
         img: "img src 2"
       }
     ]
-  }
-  ]
+  },
+      {
+        id: 6,
+        question: "Select your preferred back wall design:",
+        options: [
+          {
+            desc: "White",
+            img: "img src 1"
+          },
+          {
+            desc: "Light grey",
+            img: "img src 2"
+          },
+          {
+            desc: "Dark grey",
+            img: "img src 2"
+          }
+        ]
+      }
+      ]
+
