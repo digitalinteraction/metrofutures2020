@@ -1,6 +1,6 @@
 <template>
   <div class="dropdown-container">
-    <b-dropdown id="dropdown-1" class="m-md-2 menu" variant="outline-primary" hover: aria-expanded="false"> 
+    <b-dropdown id="dropdown-1" class="m-md-2 menu" variant="outline-primary" aria-expanded="false"> 
       <template v-slot:button-content>
        Menu
       </template>
