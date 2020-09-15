@@ -98,7 +98,11 @@ module.exports = async(req, res) => {
           await addResponse(6, req.body.params[6], sessid) 
           success++;
         }
-        sendResponse(req, res, 200, `Submitted: ${submitted}, success: ${success}`)
+        if (submitted === success) {
+          sendResponse(req, res, 200, `Submitted data successfully`)
+        } else {
+          sendResponse(req, res, 200, `Submitted: ${submitted}, failed to submit: ${submitted - success}`)
+        }
       } else {
         sendResponse(req, res, 400, "Incorrect formatting")
       }
