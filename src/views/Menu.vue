@@ -98,7 +98,7 @@
           <div class="mobile-header">
             <b-img class="menuImg w-100" src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo">
-              <h3>Your Metro</h3>
+              <h3>Explore Your Metro</h3>
             </div>
           </div>
           <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
@@ -108,10 +108,10 @@
           <div class="mobile-header">
             <b-img class="menuImg w-100" src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
             <div class="moreInfo">
-              <h3>Your Choices</h3>
+              <h3>Configure Your Metro</h3>
             </div>
           </div>
-          <p>Some internal options are still to be decided. Customise your Metro to help us decide.</p>
+          <p>Some internal options are still to be decided. Configure your Metro to help us decide.</p>
         </div>
         
        <div class="mobile-option" @click="goTo('/journeys')">
