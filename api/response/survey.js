@@ -54,20 +54,25 @@ module.exports = async(req, res) => {
     try {
       await sequelize.sync({ alter: true });  // This makes sure the DB matches the model, and will change it
       if (req.body) {
-        if (req.body["type"] && req.body["qid"] && req.body["resp"]) {
+        console.log("Survey - Body:", req.body)
+        if (typeof(req.body.params["type"]) !== undefined && typeof(req.body.params["qid"]) !== undefined && typeof(req.body.params["resp"]) !== undefined) {
           console.log("All elements suppled ok")
           let optComment = ""
-          if(req.body["comment"]) {
+          if(req.body.params["comment"]) {
             console.log("Optional comment also received")
-            optComment = req.body["comment"]
+            optComment = req.body.params["comment"]
           } 
           // Sanity check
           console.log("Submitting to DB:", process.env.API_CONF_TABLE_NAME)
           // Commit to DB here
-          await Response.create({questionid: req.body["qid"], response: req.body["resp"], comment: optComment, sessid: sessid})
+          await Response.create({questionid: req.body.params["qid"], response: req.body.params["resp"], comment: optComment, sessid: sessid})
           // Response - need to write the error route
-          sendResponse(req, res, 200, "Received")
+          sendResponse(req, res, 200, "Submitted data successfully")
+        } else {
+          sendResponse(req, res, 200, "No body params")
         }
+      } else {
+        sendResponse(req, res, 400, "Incorrectly formatted")
       }
     } catch (error) {
       console.log('unable to connect', error)
