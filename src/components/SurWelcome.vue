@@ -42,7 +42,7 @@
                 </b-row>
                 <b-row v-if="displayError">
                     <b-col>
-                        <p>Please select an option for both questions to continue</p>
+                        <p>Please answer the two questions to continue. This information is important for the consultation and your answers are given anonymously.</p>
                     </b-col>
                 </b-row>
             </b-col>
