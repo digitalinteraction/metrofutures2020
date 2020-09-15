@@ -129,7 +129,7 @@
                     <p id="option1" class="option" @click="toggleFeatures()"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p>
 <!--                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>-->
                     <p id="option3" class="option " @click="createPDF"><b-icon-envelope></b-icon-envelope> SEND PDF</p>
-
+                    
 <!--                    social sharing-->
                     <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
                         <b-dropdown-item>   <ShareNetwork
