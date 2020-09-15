@@ -4,7 +4,7 @@
       <h2>Privacy Policy</h2>
       </template>
 
-    <p class="privacyText">In order to facilitate the management of the Metro Futures consultation, some of your personal data (your email address) will be collected, if you provide this information. Additionally, since we are working with a number of partners in order to manage the individual parts of the consultation, some of your data (your email address) must also be shared with certain trusted third parties. For more specific information on how your personal data may be used by third parties, as applicable please review the privacy policies available below: </p>
+    <p class="privacyText">In order to facilitate the management of the Metro Futures consultation, some of your personal data will be collected, if you provide this information. Additionally, since we are working with a number of partners in order to manage the individual parts of the consultation, some of your data must also be shared with certain trusted third parties. For more specific information on how your personal data may be used by third parties, as applicable please review the privacy policies available below: </p>
 
     <ul class="privacyText">
       <li><a href="https://sendgrid.com/policies/privacy-2016/">SendGrid</a></li>
@@ -12,15 +12,17 @@
       <li><a href="https://vercel.com/legal/privacy-policy">Vercel</a></li>
     </ul>
 
-  <p class="privacyText">We will only share the personal data that is necessary and will take measures to ensure that it is protected and does not remain stored with us (Open Lab on behalf of Nexus), or with third parties any longer than necessary. Your personal data will not be used for purposes beyond being notified about the Metro Futures consultation in September and October 2020. </p>
+  <p class="privacyText">We will only share the personal data that is necessary and will take measures to ensure that it is protected and does not remain stored with us (Open Lab on behalf of Nexus), or with third parties any longer than necessary. Your personal data will not be used for any other purposes outside this consultation.</p>
 
-  <p class="privacyText">The following personal data will be collected and processed for the reasons outlined below:</p>
+  <p class="privacyText">All data collected is anonymous and you will not be personally identifable. All of this data will be used to inform the consultation into the Tyne and Wear Metro. We will collect the following information, should you provide it: </p>
 
   <ul class="privacyText">
-    <li><strong>Email address:</strong> used to notify you, by email, of updates about the Metro Futures 2020 consultation throughout September and October 2020. We will only store this data until 31st October 2020, after which time it will be deleted.</li>
+    <li>Which local authority / country you live in, and your age range</li>
+    <li>Main use of the Metro and how often you travel on the Tyne and Wear Metro</li>
+    <li>Gender, Ethnicity and Disability information</li>
   </ul>
 
-  <p class="privacyText">By providing your email address, you are consenting to these terms.</p>
+  <p class="privacyText">By using this website you are consenting to these terms.</p>
   
   <p class="privacyText">If you have any specific questions about the use of your personal data, please contact <a v-bind:href="'mailto:' + supportEmail">{{ supportEmail }}</a>  </p>
 
