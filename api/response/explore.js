@@ -23,11 +23,11 @@ const Response = sequelize.define('Response', {
     primaryKey: true,
     type: Sequelize.INTEGER
   },
-  hotspotid: {
-    type: DataTypes.INTEGER,
+  hotspotName: {
+    type: DataTypes.STRING,
     allowNull: false
   },
-  scenename: {
+  sceneId: {
     type: DataTypes.INTEGER,
     allowNull: false
   },
@@ -58,20 +58,26 @@ module.exports = async(req, res) => {
     try {
       await sequelize.sync({ alter: true });  // This makes sure the DB matches the model, and will change it
       if (req.body) {
-        console.log("Survey - Body:", req.body)
-        if (typeof(req.body.params["type"]) !== undefined && typeof(req.body.params["qid"]) !== undefined && typeof(req.body.params["resp"]) !== undefined) {
-          console.log("All elements suppled ok")
-          let optComment = ""
-          if(req.body.params["comment"]) {
-            console.log("Optional comment also received")
-            optComment = req.body.params["comment"]
-          } 
-          // Sanity check
-          console.log("Submitting to DB:", process.env.API_CONF_TABLE_NAME)
-          // Commit to DB here
-          await Response.create({questionid: req.body.params["qid"], response: req.body.params["resp"], comment: optComment, sessid: sessid})
-          // Response - need to write the error route
-          sendResponse(req, res, 200, "Submitted data successfully")
+        let params = req.body.params
+        console.log("Survey - Body:", params)
+        // Check we have the essentials and they're not empty
+        if (typeof(params["hotspotName"]) !== undefined && params["hotspotName"] && typeof(params["sceneId"] && params["sceneId"] >= 0) !== undefined) {
+          if(params["comment"] && params["likert"]) {
+            // We have both content
+            await Response.create({hotspotName: params["hotspotName"], sceneId: params["sceneId"], comment: params["comment"], likert: params["likert"], sessid: sessid})
+            sendResponse(req, res, 200, "Submitted successfully.")
+          } else if (params["comment"]) {
+            // We only have comment
+            await Response.create({hotspotName: params["hotspotName"], sceneId: params["sceneId"], comment: params["comment"], likert: null, sessid: sessid})
+            sendResponse(req, res, 200, "Submitted successfully.")
+          } else if (params["likert"]) {
+            // We only have likert
+            await Response.create({hotspotName: params["hotspotName"], sceneId: params["sceneId"], comment: null, likert: params["likert"], sessid: sessid})
+            sendResponse(req, res, 200, "Submitted successfully.")
+          } else {
+            // We don't have data
+            sendResponse(req, res, 400, "Incorrect formatting.")
+          }
         } else {
           sendResponse(req, res, 200, "No body params")
         }
