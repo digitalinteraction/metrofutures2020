@@ -127,8 +127,8 @@
                 <b-col class="col-lg-3 col-12">
                     <p class="calvert"></p>
                     <p id="option1" class="option" @click="toggleFeatures()"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p>
-                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>
-                    <p id="option3" class="option "><b-icon-envelope></b-icon-envelope> SEND PDF</p>
+<!--                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>-->
+                    <p id="option3" class="option " @click="createPDF"><b-icon-envelope></b-icon-envelope> SEND PDF</p>
 
 <!--                    social sharing-->
                     <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
@@ -150,7 +150,7 @@
                                     network="twitter"
                                     url="https://metrofutures.org.uk/configure"
                                     title="Something about metro"
-                                    twitter-user="@thebestmetro"
+                                    twitter-user="thebestmetro"
                                     hashtags="metro"
                             > Twitter
                                 <b-img src="../assets/twitter.png" height="30px;"></b-img>
@@ -213,6 +213,7 @@
 
 <script>
 import {mapGetters} from "vuex";
+import jsPDF from 'jspdf'
 
 export default {
   name: 'SurSummary',
@@ -292,6 +293,76 @@ export default {
           } else {
               this.otherGender = false;
           }
+      },
+      async createPDF() {
+          console.log('create pdf');
+          //let pdfName = 'Metro Futures';
+          var doc = new jsPDF();
+          doc.text("Metro Futures", 10, 10);
+          //doc.save(pdfName + '.pdf');
+
+          //for each image in slideshow, get dataturi and add to pdf, adding to a new position
+          let positionx = 20;
+          let positiony = 20;
+
+
+          console.log(this.images.length);
+
+          this.getDataUri(this.images[0]).then((image1) => {
+              doc.addImage(image1, 'PNG', positionx, positiony, 178, 100);
+              console.log('add 1');
+                  this.getDataUri(this.images[1]).then((image2) => {
+                      doc.addImage(image2, 'PNG', positionx, positiony + 120, 178, 100);
+                      console.log('add 2');
+                      doc.addPage(); //page break
+                      this.getDataUri(this.images[2]).then((image3) => {
+                          doc.addImage(image3, 'PNG', positionx, positiony , 178, 100);
+                          console.log('add 3');
+                          this.getDataUri(this.images[3]).then((image4) => {
+                              doc.addImage(image4, 'PNG', positionx, positiony + 120, 178, 100);
+                              console.log('ready');
+                              doc.output('dataurlnewwindow');
+                          });
+                      });
+                  });
+          });
+
+
+
+          // for (const image in this.images) {
+          //     console.log('get imageuri');
+          //
+          //     positiony+=120;
+          //     imageCount ++;
+          //     console.log(imageCount);
+          // }
+
+
+
+      },
+      // https://stackoverflow.com/a/58936995/13075525
+      getDataUri(url)
+      {
+          return new Promise(resolve => {
+              var image = new Image();
+              image.setAttribute('crossOrigin', 'anonymous'); //getting images from external domain
+
+              image.onload = function () {
+                  var canvas = document.createElement('canvas');
+                  canvas.width = this.naturalWidth;
+                  canvas.height = this.naturalHeight;
+
+                  //next three lines for white background in case png has a transparent background
+                  var ctx = canvas.getContext('2d');
+                  ctx.fillStyle = '#fff';  /// set white fill style
+                  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                  canvas.getContext('2d').drawImage(this, 0, 0);
+
+                  resolve(canvas.toDataURL('image/jpeg'));
+              };
+              image.src = url;
+          })
       }
 
   },
