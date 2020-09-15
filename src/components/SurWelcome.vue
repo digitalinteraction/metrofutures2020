@@ -1,6 +1,6 @@
 <template>
 
-    <b-container fluid>
+    <b-container fluid class="text-left">
 
                 <b-img fluid v-if="!showLAQuestion" src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
 
@@ -14,8 +14,10 @@
 
             <!--            LA q-->
             <b-col class="col-lg-3 col-12">
-                <p class="calvert">Before you begin, please tell us:</p>
+
+
                 <b-row id="localAuthority">
+                    <p class="calvert">Before you begin, please tell us:</p>
                     <p class="calvert"><span class="bold">Where do you live? (Which local authority?)</span></p>
                     <br>
                     <b-form-select @change="changeLA" v-model="localAuthority" :options="authorities">Please select an
@@ -30,6 +32,8 @@
 
                         ></textarea>
                     </div>
+                    <br>
+                    <br>
                     <p class="calvert question"><span class="bold">How old are you?</span></p>
                     <b-form-select @change="changeAge" v-model="age" :options="ages">Please select an
                         option
@@ -219,4 +223,13 @@
 .calvert {
     font-family: Calvert, serif;
 }
+
+    #localAuthority {
+        padding: 2em;
+    }
+
+    #LAButton {
+       margin-top: 2em;
+       margin-bottom: 2em;
+    }
 </style>

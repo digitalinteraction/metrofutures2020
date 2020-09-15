@@ -162,7 +162,7 @@
       <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
       <b-col id="option3" class="option"  @click="createPDF"><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
         <b-col class="option"> <router-link to="/"><p class="text-center">RETURN TO HOME</p></router-link></b-col>
-      <b-col  class="option text-center">
+      <b-col  class="option">
           <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
               <b-dropdown-item>   <ShareNetwork
                       network="facebook"

@@ -1,9 +1,9 @@
 <template>
     <b-container fluid>
-        <b-row class="survey-question">
+        <b-row class="survey-question text-left">
             <!--image column-->
 
-            <b-col class="largeImgColumn col-lg-9 col-12">
+            <b-col class="largeImgColumn col-lg-9 col-12 ">
 
                 <!--                todo stadler logo over image-->
                 <!--                todo day and night option-->
