@@ -112,15 +112,15 @@ export default [
         question: "Select your preferred back wall design:",
         options: [
           {
-            desc: "White",
+            desc: "Design 1",
             img: "img src 1"
           },
           {
-            desc: "Light grey",
+            desc: "Design 2",
             img: "img src 2"
           },
           {
-            desc: "Dark grey",
+            desc: "Design 3",
             img: "img src 2"
           }
         ]

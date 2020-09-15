@@ -165,29 +165,6 @@
                 // prevent navigation without answering (and if no stored answer)
                 const answerStored = this.getConfigAnswers[this.index]
 
-                // if option 6 (side wall design) do different behaviour
-                if (this.index === 6) {
-                    if (this.selected !== -1 || answerStored !== undefined) {
-                        let payload = {
-                            type: 0,
-                            qid: this.index,
-                            resp: this.selected,
-                            comment: this.surveyText
-                        }
-                        // todo put new API URL here
-                        this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
-                            params: payload
-                        })
-                            .then(response => {
-                                console.info('Survey response: ' + response);
-                            })
-                            .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-                        // update stored answers
-                        this.addConfigAnswer(payload);
-
-                    }
-                } else {
                 if (this.selected !== -1 || answerStored !== undefined) {
 
                     // you've answered now or in the past
@@ -201,6 +178,8 @@
                             comment: this.surveyText
                         }
 
+                        if (this.index !== 6) {
+
                         this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
                             headers: {
                                 Cookie: this.$cookies.get('mfsid')
@@ -212,10 +191,24 @@
                             })
                             .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
+                    } else {
+                            console.log('save new question');
+                            // question 6 endpoint
+                            // todo add in new endpoint here
+                            // this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
+                            //     headers: {
+                            //         Cookie: this.$cookies.get('mfsid')
+                            //     },
+                            //     params: payload
+                            // })
+                            //     .then(response => {
+                            //         console.info('Survey response: ' + response);
+                            //     })
+                            //     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+                        }
+
                         // update stored answers
                         this.addConfigAnswer(payload);
-                    }
-
                     // move to next question
                     this.incrementIndex()
                     this.$parent.nextScreen(this.index)  // Trigger parent to render next question screen

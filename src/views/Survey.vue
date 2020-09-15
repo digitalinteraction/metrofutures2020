@@ -39,8 +39,8 @@
              <b-col  id="mobileBreadcrumb4" v-bind:class="[ checkSelected(3),checkCompleted(3), checkCentreMobile(3)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(3)">Bike racks</b-col>
              <b-col  id="mobileBreadcrumb5" v-bind:class="[ checkSelected(4),checkCompleted(4), checkCentreMobile(4)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(4)">Seats</b-col>
              <b-col id="mobileBreadcrumb6" v-bind:class="[ checkSelected(5),checkCompleted(5), checkCentreMobile(5)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(5)">Lower side wall</b-col>
-             <b-col id="mobileBreadcrumb6" v-bind:class="[ checkSelected(6),checkCompleted(6), checkCentreMobile(6)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(6)">Side wall design</b-col>
-             <b-col id="mobileBreadcrumb7" v-bind:class="[ checkSelected(7), checkCompleted(7), checkCentreMobile(7)]" class="breadItem mobileBread" v-on:click="clickSummaryBreadcrumb(7)">Summary</b-col>
+             <b-col id="mobileBreadcrumb7" v-bind:class="[ checkSelected(6),checkCompleted(6), checkCentreMobile(6)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(6)">Side wall design</b-col>
+             <b-col id="mobileBreadcrumb8" v-bind:class="[ checkSelected(7), checkCompleted(7), checkCentreMobile(7)]" class="breadItem mobileBread" v-on:click="clickSummaryBreadcrumb(7)">Summary</b-col>
 <!--             <b-col @click="moveMobileMenuR()">Right</b-col>-->
          </b-row>
 
@@ -104,6 +104,7 @@ export default {
         false, 
         false, 
         false,
+          false
       ]
     }
   },
@@ -193,6 +194,7 @@ export default {
           }
       },
     clickBreadcrumb(breadcrumbIndex) {
+        console.log(breadcrumbIndex)
       // navigate to previously completed questions but not current index or uncompleted questions
         if (breadcrumbIndex !== this.index && this.configAnswers[breadcrumbIndex] !== undefined) {
             this.setIndex(breadcrumbIndex);
