@@ -128,7 +128,7 @@
                     <p class="calvert"></p>
                     <p id="option1" class="option" @click="toggleFeatures()"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p>
                     <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>
-                    <p id="option3" class="option "><b-icon-envelope></b-icon-envelope> SEND PDF</p>
+                    <p id="option3" class="option " @click="createPDF"><b-icon-envelope></b-icon-envelope> SEND PDF</p>
 
 <!--                    social sharing-->
                     <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
@@ -213,6 +213,7 @@
 
 <script>
 import {mapGetters} from "vuex";
+import jsPDF from 'jspdf'
 
 export default {
   name: 'SurSummary',
@@ -292,6 +293,49 @@ export default {
           } else {
               this.otherGender = false;
           }
+      },
+      async createPDF() {
+          console.log('create pdf');
+          let pdfName = 'Metro Futures';
+          var doc = new jsPDF();
+          doc.text("Metro Futures", 10, 10);
+          doc.save(pdfName + '.pdf');
+
+          //for each image in slideshow, get dataturi and add to pdf, adding to a new position
+          let positionx = 20;
+          let positiony = 20;
+          for (const image in this.images) {
+              const imageuri = await this.getDataUri(image);
+              doc.addImage(imageuri, 'PNG', positionx, positiony, 100, 100);
+              positionx+=100;
+              positiony+=100;
+          }
+
+          doc.output('dataurlnewwindow');
+      },
+      // https://stackoverflow.com/a/58936995/13075525
+      getDataUri(url)
+      {
+          return new Promise(resolve => {
+              var image = new Image();
+              image.setAttribute('crossOrigin', 'anonymous'); //getting images from external domain
+
+              image.onload = function () {
+                  var canvas = document.createElement('canvas');
+                  canvas.width = this.naturalWidth;
+                  canvas.height = this.naturalHeight;
+
+                  //next three lines for white background in case png has a transparent background
+                  var ctx = canvas.getContext('2d');
+                  ctx.fillStyle = '#fff';  /// set white fill style
+                  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                  canvas.getContext('2d').drawImage(this, 0, 0);
+
+                  resolve(canvas.toDataURL('image/jpeg'));
+              };
+              image.src = url;
+          })
       }
 
   },
