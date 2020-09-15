@@ -254,6 +254,15 @@
                 this.allUrlsAPICall(payload)
                    
             },
+            async generateOptionURLsFinalQ() {
+                // Fetch all day and night URLs for our current index
+                // Get a clean "basic" set of answers to generate
+                let payload = this.sanitiseConfigAnswers()
+                payload.qindex = this.index+1
+                // Get day and night option image Urls and store in respective arrays
+                this.allUrlsAPICallFinalQ(payload)
+
+            },
             sanitiseConfigAnswers() {
                 // Get and sanitise (remove undefined) the answers
                 let answers = this.getConfigAnswers;
@@ -330,6 +339,34 @@
                     })
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
             },
+            async allUrlsAPICallFinalQ(payload) {
+                // console.log('requesting image with this payload:', payload);
+
+                // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
+                this.axios.get(`/api/images/endwall`, {
+                    headers: {
+                        Cookie: this.$cookies.get('mfsid')
+                    },
+                    params: payload
+                })
+                    .then(response => {
+                        // Store the response in array for later use
+                        // Maybe wrap this in a try as o7 might not be there (although it is always specified in the API)
+                        if(response.data) {
+                            this.optionImages.day = response.data.day
+                            this.optionImages.night = response.data.night
+                            // Unless we have already selected one
+                            if (this.selected !== 0 && this.selected < response.data.day.length) {
+                                this.setFirstImage(response.data.day[this.selected])
+                            } else {
+                                this.setFirstImage(response.data.day[0])
+                            }
+                        } else {
+                            console.log("no options returned:", response.data)
+                        }
+                    })
+                    .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
+            },
             setFirstImage(imageUrl) {
                 this.image = imageUrl
                 // if(this.optionImages.length > 0) {
@@ -345,7 +382,14 @@
 
         },
         mounted() {
-            this.generateOptionURLs()
+            if (this.index === 6) {
+                // do alternate API call for final question
+                console.log('final q');
+                this.generateOptionURLsFinalQ();
+            } else {
+                this.generateOptionURLs()
+            }
+
      }
     }
 
