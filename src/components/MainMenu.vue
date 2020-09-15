@@ -1,33 +1,20 @@
 <template>
   <div class="dropdown-container">
-    <div class="dropdown-full">
-    <b-dropdown id="dropdown-1" text="Menu" class="m-md-2 menu" variant="primary">
-      <b-dropdown-item><router-link to="/">Home</router-link></b-dropdown-item>
-      <b-dropdown-item><router-link to="/about">About Metro Futures</router-link></b-dropdown-item>
-      <b-dropdown-item><router-link to="/explore">Your Metro</router-link></b-dropdown-item>
-      <b-dropdown-item><router-link to="/configure">Your Choices</router-link></b-dropdown-item>
+    <b-dropdown id="dropdown-1" class="m-md-2 menu" variant="outline-primary" hover: aria-expanded="false"> 
+      <template v-slot:button-content>
+       Menu
+      </template>
+      <b-dropdown-item to="/">Home</b-dropdown-item>
+      <b-dropdown-item to="/about">About Metro Futures</b-dropdown-item>
+      <b-dropdown-item to="/explore">Your Metro</b-dropdown-item>
+      <b-dropdown-item to="/configure">Your Choices</b-dropdown-item>
       <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
-      <a href="#" v-b-modal.terms-modal><b-dropdown-item>Terms and Conditions</b-dropdown-item></a>
-      <a href="#" v-b-modal.privacy-modal><b-dropdown-item>Privacy Policy</b-dropdown-item></a>
+      <b-dropdown-item href="#" v-b-modal.terms-modal>Terms and Conditions</b-dropdown-item>
+      <b-dropdown-item href="#" v-b-modal.privacy-modal>Privacy Policy</b-dropdown-item>
     </b-dropdown>
     <!-- Compontents for modals -->
         <Privacy/>
         <Terms/>
-    </div>
-    <div class="dropdown-mob">
-      <b-dropdown id="dropdown-1" text="☰" class="m-md-2 menu" variant="primary" no-caret="true">
-      <b-dropdown-item><router-link to="/">Home</router-link></b-dropdown-item>
-      <b-dropdown-item><router-link to="/about">About Metro Futures</router-link></b-dropdown-item>
-      <b-dropdown-item><router-link to="/explore">Your Metro</router-link></b-dropdown-item>
-      <b-dropdown-item><router-link to="/configure">Your Choices</router-link></b-dropdown-item>
-      <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
-      <a href="#" v-b-modal.terms-modal><b-dropdown-item>Terms and Conditions</b-dropdown-item></a>
-      <a href="#" v-b-modal.privacy-modal><b-dropdown-item>Privacy Policy</b-dropdown-item></a>
-    </b-dropdown>
-    <!-- Compontents for modals -->
-        <Privacy/>
-        <Terms/>
-    </div>
   </div>
 </template>
 
@@ -50,6 +37,11 @@
 
   .menu {
     font-family: $font-family-calvert;
+    .btn {
+      padding-top: 0.45rem;
+      color: black;
+      border-color: black;
+    }
   }
 
   .menu a {
@@ -62,25 +54,9 @@
   }
 
   .dropdown-container {
-    align-items: right;
-    align-content: right;
+    text-align: right;
   }
 
-  .dropdown-mob {
-    display: none;
-  }
-
-
-@media all and (max-width: 765px) {
-  .dropdown-mob {
-    display: block;
-    position: relative;
-  }
-
-  .dropdown-full{
-    display: none;
-  }
-}
 </style>
 
 
