@@ -504,9 +504,26 @@
             this.sceneNames.push(scene.name)
           }
         }
-      }
+      },
+      async initialRequests() {
+        this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+            .then(response => {
+              console.log(response);
+            })
+
+        // google analytics post
+        const measurementID = process.env.VUE_APP_GA_ID;
+        const clientID = this.$cookies.get('mfsid');
+        const page= this.$route.path;
+        const pageName = this.$route.name;
+        const documentHost = location.host;
+
+        const fullURL = 'https://www.google-analytics.com/collect?v=1&t=pageview&tid=' + measurementID + '&cid=' + clientID + '&t=pageview&dh=' + documentHost + '&dp=' + page + '&dt=' + pageName;
+        this.axios.post(fullURL);
+      },
     },
-    mounted() {
+    async mounted() {
+      this.initialRequests();
       this.initPanoViewer();
       this.populateScenesId();
       this.loadPano(1);

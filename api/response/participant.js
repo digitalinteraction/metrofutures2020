@@ -59,32 +59,50 @@ module.exports = async(req, res) => {
       // await sequelize.authenticate();
       await sequelize.sync({ alter: true });  // This makes sure the DB matches the model, and will change it
       if (req.body) {
+        console.log("participant data received:", req.body)
         // Implement these two so we can trigger an error response
         let submitted = 0;
         let success = 0;
-        // Can't iterate the req.body because we don't have a bodyParser and its not iterable
-        if (req.body["0"]) { 
-          await addResponse(0, req.body[0], sessid) 
+        if (req.body.params["0"]) {
+          submitted++;
+          await addResponse(0, req.body.params[0], sessid) 
+          success++;
         }
-        if (req.body["1"]) { 
-          await addResponse(1, req.body[1], sessid) 
+        if (req.body.params["1"] || req.body.params[1]) {
+          submitted++;
+          await addResponse(1, req.body.params[1], sessid) 
+          success++;
         }
-        if (req.body["2"]) { 
-          await addResponse(2, req.body[2], sessid) 
+        if (req.body.params["2"] || req.body.params[2]) {
+          submitted++;
+          await addResponse(2, req.body.params[2], sessid) 
+          success++;
         }
-        if (req.body["3"]) { 
-          await addResponse(3, req.body[3], sessid) 
+        if (req.body.params["3"] || req.body.params[3]) {
+          submitted++; 
+          await addResponse(3, req.body.params[3], sessid) 
+          success++;
         }
-        if (req.body["4"]) { 
-          await addResponse(4, req.body[4], sessid) 
+        if (req.body.params["4"] || req.body.params[4]) { 
+          submitted++;
+          await addResponse(4, req.body.params[4], sessid) 
+          success++;
         }
-        if (req.body["5"]) { 
-          await addResponse(5, req.body[5], sessid) 
+        if (req.body.params["5"] || req.body.params[5]) {
+          submitted++;
+          await addResponse(5, req.body.params[5], sessid) 
+          success++;
         }
-        if (req.body["6"]) { 
-          await addResponse(6, req.body[6], sessid) 
+        if (req.body.params["6"] || req.body.params[6]) {
+          submitted++; 
+          await addResponse(6, req.body.params[6], sessid) 
+          success++;
         }
-        sendResponse(req, res, 200, "Success")
+        if (submitted === success) {
+          sendResponse(req, res, 200, `Submitted data successfully`)
+        } else {
+          sendResponse(req, res, 200, `Submitted: ${submitted}, failed to submit: ${submitted - success}`)
+        }
       } else {
         sendResponse(req, res, 400, "Incorrect formatting")
       }
