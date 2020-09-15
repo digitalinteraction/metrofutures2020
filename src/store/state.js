@@ -6,6 +6,7 @@ export default {
     pano_data: pano_data[0],
     index: 0,
     privacyNotice: false,
+    infoFormDone: false,
     configAnswers: {
         0: undefined,
         1: undefined,
