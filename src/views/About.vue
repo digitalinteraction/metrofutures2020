@@ -1,5 +1,5 @@
 <template>
-    <div class="about">
+    <div class="about text-left">
         <b-container>
             <MainHeader title="About Metro Futures"/>
 

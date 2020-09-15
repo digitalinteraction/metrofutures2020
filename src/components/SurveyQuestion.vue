@@ -392,15 +392,18 @@
         }
     }
 
-    /*Fix to make a half border under question*/
-    .questionTextRow:after {
-        content: "";
-        display: block;
-        width: 40%;
-        padding-top: 0.1em;
-        margin-bottom: 1.5em;
-        margin-left: 1.6em;
-        border-bottom: 2px solid #FEC600;
+    /*only show yellow half border when cols are in a single row*/
+    @media only screen and (min-width: 990px) {
+        /*Fix to make a half border under question*/
+        .questionTextRow:after {
+            content: "";
+            display: block;
+            width: 40%;
+            padding-top: 0.1em;
+            margin-bottom: 1.5em;
+            margin-left: 1.6em;
+            border-bottom: 2px solid #FEC600;
+        }
     }
 
     #surveyqContainer {

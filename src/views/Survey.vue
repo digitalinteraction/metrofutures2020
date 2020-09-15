@@ -30,7 +30,7 @@
       </b-row>
 
          <b-row class="surveyBreadcrumb mobileMenu" align-v="center">
-<!--             <b-col @click="moveMobileMenuL()">Left</b-col>-->
+             <b-col @click="moveMobileMenuL()">Left</b-col>
              <b-col id="mobileBreadcrumb1" v-bind:class="[ checkSelected(0), checkCompleted(0), checkCentreMobile(0)] " class="breadItem mobileBread" v-on:click="clickBreadcrumb(0)" >Floor, seats and glass partitions</b-col>
              <b-col id="mobileBreadcrumb2"  v-bind:class="[ checkSelected(1), checkCompleted(1) , checkCentreMobile(1)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(1)">Doors, grab poles and floor markings</b-col>
              <b-col  id="mobileBreadcrumb3" v-bind:class="[ checkSelected(2), checkCompleted(2), checkCentreMobile(2)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(2)">Centre grab poles</b-col>
@@ -39,7 +39,7 @@
              <b-col id="mobileBreadcrumb6" v-bind:class="[ checkSelected(5),checkCompleted(5), checkCentreMobile(5)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(5)">Lower side wall</b-col>
              <b-col id="mobileBreadcrumb7" v-bind:class="[ checkSelected(6),checkCompleted(6), checkCentreMobile(6)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(6)">Side wall design</b-col>
              <b-col id="mobileBreadcrumb8" v-bind:class="[ checkSelected(7), checkCompleted(7), checkCentreMobile(7)]" class="breadItem mobileBread" v-on:click="clickSummaryBreadcrumb(7)">Summary</b-col>
-<!--             <b-col @click="moveMobileMenuR()">Right</b-col>-->
+             <b-col @click="moveMobileMenuR()">Right</b-col>
          </b-row>
 
         <b-row v-if="welcomeScreen">
@@ -220,6 +220,10 @@ export default {
       },
       goTo(route) {
           router.push(route);
+      },
+      moveMobileMenuL() {
+        this.prevScreen(this.index);
+        console.log('move to' + this.index-1);
       }
   },
 
