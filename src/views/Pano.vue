@@ -7,7 +7,7 @@
   <b-row class="pano_frame">
     <b-col >
       <div class="controls">
-        <b-dropdown text="Select View">
+        <b-dropdown text="Select View" class="select">
           <b-dropdown-item
           v-for="(name, index) in this.sceneNames"
           v-bind:key="index"
@@ -22,7 +22,7 @@
         People:
         <b-iconstack font-scale="1.5" v-show="people">
         <b-icon stacked icon="circle" variant="primary"></b-icon>
-        <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
+        <b-icon stacked scale="0.5" icon="people-fill" variant="primary"></b-icon>
         </b-iconstack>
         <b-iconstack font-scale="1.5" v-show="!people">
         <b-icon stacked icon="circle" variant="warning"></b-icon>
@@ -530,13 +530,13 @@
   // }
 
   .pano_frame {
-    height: 88vh;
+    height: 86vh;
     text-align: left;
     
   }
 
   #pano {
-    height: 88vh;
+    height: 86vh;
     left: 0;
     overflow: hidden;
     /* max-width: none; */
@@ -544,12 +544,15 @@
 
   .pano {
     max-width: none;
-    padding-left: 0
+    padding-left: 0;
+    overflow: hidden;
   }
+
+  // Add a media rule so this is slightly less
   .controls {
     position: absolute;
-    top: 5%;
-    left: 5%;
+    top: 2%;
+    left: 3%;
     z-index: 100;
   }
 
@@ -565,17 +568,27 @@
 
   .people-toggle {
     display:inline-block;
-    background: #6c757d;
-    color: white;
-    padding: 0.4em 0.8em;
+    background: white;
+    color: black;
+    padding: 0.3em 0.8em;
+    border: 1px solid black;
     border-radius: 0.3em;
     vertical-align: middle;
     /* padding-left: 0.2em;
     padding-right: 0.2em; */
+    cursor: pointer;
+    margin-left: 0.2em;
   }
 
   .people-toggle-on {
     background-color: #559ad9;
+  }
+
+  .select button {
+    background-color: white;
+    // border: black;
+    border: 1px solid black;
+    color: black;
   }
 
 </style>
