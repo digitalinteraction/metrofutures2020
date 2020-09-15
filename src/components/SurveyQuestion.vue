@@ -484,7 +484,7 @@
     }
 
     .display {
-        display: flex;
+        display: block;
     }
 
     .hide {
