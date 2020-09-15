@@ -530,13 +530,13 @@
   // }
 
   .pano_frame {
-    height: 88vh;
+    height: 86vh;
     text-align: left;
     
   }
 
   #pano {
-    height: 88vh;
+    height: 86vh;
     left: 0;
     overflow: hidden;
     /* max-width: none; */
@@ -544,7 +544,8 @@
 
   .pano {
     max-width: none;
-    padding-left: 0
+    padding-left: 0;
+    overflow: hidden;
   }
   .controls {
     position: absolute;
