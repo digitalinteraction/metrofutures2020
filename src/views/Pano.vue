@@ -3,52 +3,39 @@
   <b-row v-if="welcomeScreen">
         <welcomeConsent title="Explore your new Metro!" page="explore" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
-  <MainHeader title="Explore Your Metro"/>
-
+  <MainHeader title="Explore Your Metro"/> 
   <b-row class="pano_frame">
     <b-col >
+      <div class="controls">
+        <b-dropdown text="Select View">
+          <b-dropdown-item
+          v-for="(name, index) in this.sceneNames"
+          v-bind:key="index"
+          :active="selectedId===index"
+          v-on:click="selectScene(index)"
+          >
+          {{ name }}
+          </b-dropdown-item>
+        </b-dropdown>
+        
+        <div class="people-toggle" v-bind:class="{ 'people-toggle-on': people }" v-on:click="togglePeople()">
+        People:
+        <b-iconstack font-scale="1.5" v-show="people">
+        <b-icon stacked icon="circle" variant="primary"></b-icon>
+        <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
+        </b-iconstack>
+        <b-iconstack font-scale="1.5" v-show="!people">
+        <b-icon stacked icon="circle" variant="warning"></b-icon>
+        <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
+        <b-icon stacked icon="slash" variant="warning"></b-icon>
+        </b-iconstack>
+        </div>
+      </div>
       <div ref="pano" id="pano"></div>
     </b-col>
   </b-row>
 
-  <b-row>
-    <b-col>
-      <div><img class="topdown" src="https://cdn.metrofutures.org.uk/misc/TopDown.png" alt=""></div>
-    </b-col>
-  </b-row>
-
-  <b-row>
-    <b-col>
-      
-      <!-- <div>Current view: {{ getSelectedName() }}</div> -->
-      <b-dropdown text="Select View">
-        <b-dropdown-item 
-          v-for="(name, index) in this.sceneNames" 
-          v-bind:key="index" 
-          :active="selectedId===index"  
-          v-on:click="selectScene(index)"
-        >
-          <!-- :active is TO DO based on new arch -->
-          {{ name }}
-        </b-dropdown-item>
-      </b-dropdown>
-    </b-col>
-    <b-col>
-      <div class="people-toggle" v-bind:class="{ 'people-toggle-on': people }" v-on:click="togglePeople()">
-        People:
-        <b-iconstack font-scale="1.5" v-show="people">
-          <b-icon stacked icon="circle" variant="primary"></b-icon>
-          <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
-        </b-iconstack>
-        <b-iconstack font-scale="1.5" v-show="!people">
-          <b-icon stacked icon="circle" variant="warning"></b-icon>
-          <b-icon stacked scale="0.5" icon="people-fill"></b-icon>
-          <b-icon stacked icon="slash" variant="warning"></b-icon>
-        </b-iconstack>
-      </div>
-    </b-col>
-    
-  </b-row>
+  
 
   <b-row>
     <b-col>
@@ -538,31 +525,38 @@
 <style lang="scss">
   @import '@/assets/_variables.scss';
 
-  body {
-    text-align: center;
-  }
+  // body {
+  //   text-align: center;
+  // }
 
   .pano_frame {
-    height: 70vh;
+    height: 88vh;
     text-align: left;
     
+  }
+
+  #pano {
+    height: 88vh;
+    left: 0;
+    overflow: hidden;
+    /* max-width: none; */
   }
 
   .pano {
     max-width: none;
     padding-left: 0
   }
-
-  #pano {
-    height: 70vh;
-    left: 0;
-    overflow: hidden;
-    /* max-width: none; */
+  .controls {
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    z-index: 100;
   }
 
   .hotspot {
     background: none;
     display: none;
+    z-index: -1;
   }
 
   .topdown {
