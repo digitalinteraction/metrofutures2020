@@ -142,8 +142,15 @@
 
                 // handler: function (newAnswers, oldAnswers) {  // You can see the old and new objects, but don't really need this
                 handler: function () {
-                    console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
-                    this.generateOptionURLs()
+
+                    if (this.index === 6) {
+                        // do alternate API call for final question
+                        console.log(`Q${this.index} (final question): Detected answers changed, fetching new URLs`)
+                        this.generateOptionURLsFinalQ();
+                    } else {
+                        console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
+                        this.generateOptionURLs()
+                    }
                 },
                 deep: true,  // Without this the watcher doesn't look at answers.[anything], so doesn't run
             },
@@ -382,7 +389,7 @@
 
         },
         mounted() {
-            if (this.index === 6) {
+            if (this.index === 5) {
                 // do alternate API call for final question
                 console.log('final q');
                 this.generateOptionURLsFinalQ();
