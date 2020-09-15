@@ -95,15 +95,15 @@ export default [
     options: [
       {
         desc: "White",
-        img: "img src 1"
+        img: "Square_Configurator_swatches-16.svg"
       },
       {
         desc: "Light grey",
-        img: "img src 2"
+        img: "Square_Configurator_swatches-17.svg"
       },
       {
         desc: "Dark grey",
-        img: "img src 2"
+        img: "Square_Configurator_swatches-18.svg"
       }
     ]
   },
