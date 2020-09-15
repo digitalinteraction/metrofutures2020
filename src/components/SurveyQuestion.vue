@@ -422,6 +422,7 @@
 
     .optionRow {
         padding-bottom: 0.3em;
+        cursor: pointer;
     }
 
     .bold {
