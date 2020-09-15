@@ -1,9 +1,9 @@
 <template>
-    <b-container fluid>
-        <b-row class="survey-question">
+    <b-container fluid id="surveyqContainer">
+        <b-row class="survey-question text-left">
             <!--image column-->
 
-            <b-col class="largeImgColumn col-lg-9 col-12">
+            <b-col class="largeImgColumn col-lg-9 col-12 ">
 
                 <!--                todo stadler logo over image-->
                 <!--                todo day and night option-->
@@ -59,7 +59,7 @@
                                :class="selectClass(x)">
                             <!--                            todo replace with appropriate choices per question using {{ option.img }}-->
                             <b-col class="optionImg">
-                                <b-img class="float-left" fluid v-bind:src="'/squares/' + option.img"></b-img>
+                                <b-img class="float-left" v-bind:src="'/squares/' + option.img"></b-img>
                             </b-col>
                             <b-col class="optionText">
                                 <p>{{ option.desc }}</p>
@@ -142,8 +142,15 @@
 
                 // handler: function (newAnswers, oldAnswers) {  // You can see the old and new objects, but don't really need this
                 handler: function () {
-                    console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
-                    this.generateOptionURLs()
+
+                    if (this.index === 6) {
+                        // do alternate API call for final question
+                        console.log(`Q${this.index} (final question): Detected answers changed, fetching new URLs`)
+                        this.generateOptionURLsFinalQ();
+                    } else {
+                        console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
+                        this.generateOptionURLs()
+                    }
                 },
                 deep: true,  // Without this the watcher doesn't look at answers.[anything], so doesn't run
             },
@@ -164,6 +171,7 @@
             nextQuestion() {
                 // prevent navigation without answering (and if no stored answer)
                 const answerStored = this.getConfigAnswers[this.index]
+
                 if (this.selected !== -1 || answerStored !== undefined) {
 
                     // you've answered now or in the past
@@ -177,6 +185,8 @@
                             comment: this.surveyText
                         }
 
+                        if (this.index !== 6) {
+
                         this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
                             headers: {
                                 Cookie: this.$cookies.get('mfsid')
@@ -188,10 +198,24 @@
                             })
                             .catch(error => error.response ? console.log(error.response.data) : console.log(error))
 
+                    } else {
+                            console.log('save new question');
+                            // question 6 endpoint
+                            // todo add in new endpoint here
+                            // this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
+                            //     headers: {
+                            //         Cookie: this.$cookies.get('mfsid')
+                            //     },
+                            //     params: payload
+                            // })
+                            //     .then(response => {
+                            //         console.info('Survey response: ' + response);
+                            //     })
+                            //     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+                        }
+
                         // update stored answers
                         this.addConfigAnswer(payload);
-                    }
-
                     // move to next question
                     this.incrementIndex()
                     this.$parent.nextScreen(this.index)  // Trigger parent to render next question screen
@@ -199,6 +223,7 @@
                     //you haven't answered
                     // console.log('error');
                     this.displayError = true;
+                }
                 }
             },
 
@@ -235,6 +260,15 @@
                 // Get day and night option image Urls and store in respective arrays
                 this.allUrlsAPICall(payload)
                    
+            },
+            async generateOptionURLsFinalQ() {
+                // Fetch all day and night URLs for our current index
+                // Get a clean "basic" set of answers to generate
+                let payload = this.sanitiseConfigAnswers()
+                payload.qindex = this.index+1
+                // Get day and night option image Urls and store in respective arrays
+                this.allUrlsAPICallFinalQ(payload)
+
             },
             sanitiseConfigAnswers() {
                 // Get and sanitise (remove undefined) the answers
@@ -274,10 +308,13 @@
                 } else if (this.index+1 === 4) {
                     // bike stand
                     cam = 4;
-                } else if (this.index+1 === 5 || this.index+1 === 6) {
+                } else if (this.index+1 === 5) {
                     // priority seats
-                    // There are 2 more camera angles here
-                    cam = 14;
+                    cam = 5;
+                } else if(this.index+1 === 6 || this.index+1 === 7) {
+                    // side wall
+
+                    cam = 6;
                 }
                 return cam
             },
@@ -286,6 +323,34 @@
 
                 // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
                 this.axios.get(`/api/images/optionUrls`, {
+                    headers: {
+                        Cookie: this.$cookies.get('mfsid')
+                    },
+                    params: payload
+                })
+                    .then(response => {
+                        // Store the response in array for later use
+                        // Maybe wrap this in a try as o7 might not be there (although it is always specified in the API)
+                        if(response.data) {
+                            this.optionImages.day = response.data.day
+                            this.optionImages.night = response.data.night
+                            // Unless we have already selected one
+                            if (this.selected !== 0 && this.selected < response.data.day.length) {
+                                this.setFirstImage(response.data.day[this.selected])
+                            } else {
+                                this.setFirstImage(response.data.day[0])
+                            }
+                        } else {
+                            console.log("no options returned:", response.data)
+                        }
+                    })
+                    .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
+            },
+            async allUrlsAPICallFinalQ(payload) {
+                // console.log('requesting image with this payload:', payload);
+
+                // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
+                this.axios.get(`/api/images/endwall`, {
                     headers: {
                         Cookie: this.$cookies.get('mfsid')
                     },
@@ -324,7 +389,14 @@
 
         },
         mounted() {
-            this.generateOptionURLs()
+            if (this.index === 5) {
+                // do alternate API call for final question
+                console.log('final q');
+                this.generateOptionURLsFinalQ();
+            } else {
+                this.generateOptionURLs()
+            }
+
      }
     }
 
@@ -339,7 +411,10 @@
     .optionImg {
         padding-right: 0;
         padding-left: 0;
-
+        & img {
+            width: 100px;
+            height: auto;
+        }
     }
 
     #localAuthority {
@@ -358,6 +433,7 @@
 
     .largeImgColumn {
         padding-right: 0;
+        padding-left: 0 !important;
     }
 
     .questionTextRow {
@@ -367,14 +443,23 @@
         }
     }
 
-    /*Fix to make a half border under question*/
-    .questionTextRow:after {
-        content: "";
-        display: block;
-        width: 40%;
-        padding-top: 1em;
-        margin-bottom: 1.5em;
-        border-bottom: 2px solid #FEC600;
+    /*only show yellow half border when cols are in a single row*/
+    @media only screen and (min-width: 990px) {
+        /*Fix to make a half border under question*/
+        .questionTextRow:after {
+            content: "";
+            display: block;
+            width: 40%;
+            padding-top: 0.1em;
+            margin-bottom: 1.5em;
+            margin-left: 1.6em;
+            border-bottom: 2px solid #FEC600;
+        }
+    }
+
+    #surveyqContainer {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
 
     .calvert {
@@ -391,6 +476,7 @@
 
     .optionRow {
         padding-bottom: 0.3em;
+        cursor: pointer;
     }
 
     .bold {
@@ -408,7 +494,7 @@
         background-color: #DDDDDD;
 
         & img {
-            border-right: 2px solid black;
+            border-right: 3px solid #FEC600;
         }
     }
 
@@ -433,10 +519,10 @@
 
     .surveyFreeText {
         text-align: left;
-        padding: 1em;
         font-weight: bold;
         font-size: small;
-
+    margin-bottom: 1em;
+        margin-top: 1em;
     }
 
 
@@ -445,12 +531,17 @@
     }
 
     /* Medium devices */
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 764px) {
         .optionImg {
-            width: 70px;
-            height: auto;
+            img {
+                width: 50px;
+                height: auto;
+            }
+
         }
     }
+
+
 
 
 

@@ -12,7 +12,8 @@ export default {
         2: undefined,
         3: undefined,
         4: undefined,
-        5: undefined
+        5: undefined,
+        6: undefined
     }
 
 }

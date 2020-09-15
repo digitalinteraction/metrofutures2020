@@ -5,7 +5,7 @@
         <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
       </router-link>
     </b-col>
-    <b-col>
+    <b-col class="dd-menu">
       <h3 class="calvert"> {{ title }}</h3>
     </b-col>
 
@@ -44,7 +44,8 @@ export default {
     cursor: pointer;
     color: $font-color;
 }
-
+.dd-menu {
+}
 // .dd-menu {
 //   background-color: $metro-yellow;
 // }

@@ -106,5 +106,28 @@ export default [
         img: "img src 2"
       }
     ]
-  }
-  ]
+  },
+      {
+        id: 6,
+        question: "Select your preferred back wall design:",
+        options: [
+          {
+            desc: "Plain",
+            img: "img src 1"
+          },
+          {
+            desc: "Artwork",
+            img: "img src 2"
+          },
+          {
+            desc: "Landmark",
+            img: "img src 2"
+          },
+          {
+            desc: "People",
+            img: "img src 2"
+          }
+        ]
+      }
+      ]
+

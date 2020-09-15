@@ -104,7 +104,30 @@ export default {
       else { return true }
     },
     submit() {
-      console.log(`Looking at scene ${this.$parent.selectedId}, hotspot ${this.data.title}. Submitting content: ${this.hotspotText}`)
+      let correctId = this.$parent.getSceneIDByDropdown(this.$parent.selectedId);
+      console.log(`Looking at scene ${correctId}, hotspot ${this.data.title}. Submitting content: ${this.hotspotText}`)
+      let payload = {
+        "hotspotName": this.data.title,
+        "sceneId": correctId,
+        "comment": "",
+        "likert": "",
+      }
+      if (this.likertRating > 0) {
+        payload.likert = this.likertRating
+      }
+      if (this.hotspotText) {
+        payload.comment = this.hotspotText
+      }
+      this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/explore`, {
+          headers: {
+              Cookie: this.$cookies.get('mfsid')
+          },
+          params: payload
+      })
+          .then(response => {
+              console.info('Survey response: ' + response);
+          })
+          .catch(error => error.response ? console.log(error.response.data) : console.log(error))
       this.hotspotText = ""
       this.submitted = true
     },
@@ -129,7 +152,7 @@ export default {
       console.log("Detected video stopped")
       this.videoEl.pause()
       this.videoPlaying = false;
-    }
+    },
   },
   mounted() {
     if (this.data.visual) {

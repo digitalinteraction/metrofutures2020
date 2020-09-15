@@ -10,7 +10,7 @@
           <b-img id="metroLogo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
         </b-col>
         <b-col>
-          <MainMenu class="aboutText text-center"></MainMenu>
+          <MainMenu class="text-right" ></MainMenu>
           <!-- <p id="aboutText" v-on:click="goTo('/about')">
             About Metro Futures
             <b-icon-chevron-down variant="primary"></b-icon-chevron-down>
@@ -96,7 +96,7 @@
       <div class="menu-col-wrapper">
         <div class="mobile-option" v-on:click="goTo('/explore')">
           <div class="mobile-header">
-            <b-img src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
+            <b-img class="menuImg w-100" src="../assets/yourMetroMob.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo">
               <h3>Your Metro</h3>
             </div>
@@ -106,7 +106,7 @@
 
         <div class="mobile-option" @click="goTo('/configure')">
           <div class="mobile-header">
-            <b-img src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
+            <b-img class="menuImg w-100" src="../assets/yourChoiceMob.png" fluid alt="image of train front"></b-img>
             <div class="moreInfo">
               <h3>Your Choices</h3>
             </div>
@@ -116,7 +116,7 @@
         
        <div class="mobile-option" @click="goTo('/journeys')">
           <div class="mobile-header">
-            <b-img src="../assets/yourJourneys2Mob.jpg" fluid alt="image of example metro passenger"></b-img>
+            <b-img class="menuImg w-100" src="../assets/yourJourneys2Mob.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo">
               <h3>Your Journeys - Launching soon!</h3>
             </div>
@@ -175,7 +175,7 @@ export default {
     console.log(this.windowHeight);
 
     // google analytics post
-    const measurementID = "UA-85374573-24";
+    const measurementID = process.env.VUE_APP_GA_ID;
     const clientID = this.$cookies.get("mfsid");
     const page = this.$route.path;
     const pageName = this.$route.name;
@@ -213,6 +213,17 @@ export default {
   padding-bottom: 0.8em;
   text-align: right;
 }
+
+.text-right {
+  color: black;
+  float: right;
+  margin-top: 3em;
+  cursor: pointer;
+  padding-bottom: 0.8em;
+  text-align: right;
+
+}
+
 .menuCol {
   padding-left: 0 !important;
   padding-right: 0 !important;

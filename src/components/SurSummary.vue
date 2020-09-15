@@ -1,152 +1,199 @@
 <template>
     <b-container fluid>
+<b-row>
+    <b-col>
+        <b-carousel
+                id="carousel-1"
+                :interval="0"
+                controls
+                indicators
+                background="#ababab"
+                img-width="1024"
+                img-height="480"
+                style="text-shadow: 1px 1px 2px #333;"
+        >
 
-        <div v-if="showQuestions">
-          <div class="row">
-            <b-col  class="largeImgColumn col-lg-8 col-12">
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[0]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
 
-                <b-img fluid :src="images[0]"></b-img>
-            </b-col>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[1]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
 
-            <b-col class="col-lg-3 col-12">
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[2]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[3]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[4]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[5]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[6]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>    <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[7]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+        </b-carousel>
+    </b-col>
+</b-row>
 
-                <p class="summaryText">To help with this public consultation, please tell us a little more about yourself and your Metro journeys. Afterwards you can explore images of the Metro that you configured, and you can share it on social media!</p>
+        <b-modal hide-footer="true" id="questionModal" title="">
+            <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys.</p>
 
-                <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
-                <b-form-select @change="removeErrorText()" v-model="purpose" :options="purposes">Please select an
-                    option
-                </b-form-select>
+            <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
+            <b-form-select  v-model="purpose" :options="purposes">Please select an
+                option
+            </b-form-select>
 
-                <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
+            <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
 
-                <b-form-select @change="removeErrorText()" v-model="frequency" :options="frequencies">Please select an
-                    option
-                </b-form-select>
+            <b-form-select  v-model="frequency" :options="frequencies">Please select an
+                option
+            </b-form-select>
 
-                <p class="calvert question"><span class="bold">Gender?</span></p>
-                <b-form-select @change="changeGender" v-model="gender" :options="genders">Please select an
-                    option
-                </b-form-select>
+            <p class="calvert question"><span class="bold">Gender?</span></p>
+            <b-form-select @change="changeGender" v-model="gender" :options="genders">Please select an
+                option
+            </b-form-select>
 
-                <div v-if="otherGender" id="genderTextDiv">
+            <div v-if="otherGender" id="genderTextDiv">
                         <textarea
                                 id="textarea"
                                 v-model="genderOtherText"
                                 placeholder="Enter your gender..."
                                 rows="2" class="form-control"
                         ></textarea>
-                </div>
+            </div>
 
-                <p class="calvert question"><span class="bold">Ethnicity?</span></p>
-                <b-form-select @change="removeErrorText()" v-model="ethnicity" :options="ethnicities">Please select an
-                    option
-                </b-form-select>
+            <p class="calvert question"><span class="bold">Ethnicity?</span></p>
+            <b-form-select  v-model="ethnicity" :options="ethnicities">Please select an
+                option
+            </b-form-select>
 
-                <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
-                <b-form-group>
-                    <b-form-radio @change="removeErrorText()" v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
-                    <b-form-radio @change="removeErrorText()" v-model="dis" name="some-radios" value="no">No</b-form-radio>
-                </b-form-group>
+            <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
+            <b-form-group>
+                <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
+                <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
+            </b-form-group>
 
-                <div v-if="dis === 'yes'">
+            <div v-if="dis === 'yes'">
                 <p class="calvert "><span class="bold">If yes, what?</span></p>
                 <b-form-select v-model="disability" :options="disabilities">Please select an
                     option
                 </b-form-select>
 
 
-</div>
-                <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
-                <div v-if="fillQuestionsError">
-                    Please answer all of the questions
-                </div>
+            </div>
+            <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
+        </b-modal>
 
-            </b-col>
-</div>
-        </div>
 
-        <div v-if="!showQuestions">
-            <b-row>
-                <b-col class="largeImgColumn col-lg-8 col-12">
-                    <b-carousel
-                            id="carousel-1"
-                            :interval="0"
-                            controls
-                            indicators
-                            background="#ababab"
-                            img-width="1024"
-                            img-height="480"
-                            style="text-shadow: 1px 1px 2px #333;"
-                    >
 
-                        <b-carousel-slide>
-                            <template v-slot:img>
-                                <img
-                                        class="d-block img-fluid w-100"
-                                        width="1024"
-                                        height="480"
-                                        v-bind:src="images[0]"
-                                        alt="image slot"
-                                >
-                            </template>
-                        </b-carousel-slide>
+    <b-row id="optionsRow">
+      <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
+      <b-col id="option3" class="option"  @click="createPDF"><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
+        <b-col class="option"> <router-link to="/"><p class="text-center">RETURN TO HOME</p></router-link></b-col>
+      <b-col  class="option">
+          <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
+              <b-dropdown-item>   <ShareNetwork
+                      network="facebook"
+                      url="https://metrofutures.org.uk/configure"
+                      title="Something about Metro"
+                      description="Something more about Metro."
+                      quote="Quote"
+                      hashtags="metro"
+              > Facebook
+                  <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
+              </ShareNetwork>
+              </b-dropdown-item>
 
-                        <b-carousel-slide>
-                            <template v-slot:img>
-                                <img
-                                        class="d-block img-fluid w-100"
-                                        width="1024"
-                                        height="480"
-                                        v-bind:src="images[1]"
-                                        alt="image slot"
-                                >
-                            </template>
-                        </b-carousel-slide>
 
-                        <b-carousel-slide>
-                            <template v-slot:img>
-                                <img
-                                        class="d-block img-fluid w-100"
-                                        width="1024"
-                                        height="480"
-                                        v-bind:src="images[2]"
-                                        alt="image slot"
-                                >
-                            </template>
-                        </b-carousel-slide>
-                        <b-carousel-slide>
-                            <template v-slot:img>
-                                <img
-                                        class="d-block img-fluid w-100"
-                                        width="1024"
-                                        height="480"
-                                        v-bind:src="images[3]"
-                                        alt="image slot"
-                                >
-                            </template>
-                        </b-carousel-slide>
-                    </b-carousel>
-                </b-col>
-                <b-col class="col-lg-3 col-12">
-                    <p class="calvert"></p>
-                    <p id="option1" class="option" @click="toggleFeatures()"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p>
-                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>
-                    <p id="option3" class="option "><b-icon-envelope></b-icon-envelope> SEND PDF</p>
-                    <p id="option4" class="option text-center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23z" fill="#626262"/></svg>
-                        SHARE</p>
+              <b-dropdown-item>
+                  <ShareNetwork
+                          network="twitter"
+                          url="https://metrofutures.org.uk/configure"
+                          title="Something about metro"
+                          twitter-user="thebestmetro"
+                          hashtags="metro"
+                  > Twitter
+                      <b-img src="../assets/twitter.png" height="30px;"></b-img>
 
-                </b-col>
-            </b-row>
+                  </ShareNetwork>
+              </b-dropdown-item>
 
-        </div>
+          </b-dropdown>
+      </b-col>
 
-<!--    <b-row id="optionsRow">-->
-<!--      <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>-->
-<!--      <b-col id="option2" class="option "><p class="borderRight text-center"><b-icon-printer></b-icon-printer> PRINT </p></b-col>-->
-<!--      <b-col id="option3" class="option "><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>-->
-<!--      <b-col id="option4" class="option text-center"><p class="text-center"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" focusable="false" width="1em" height="1em" style="-ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg);" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M22.46 6c-.77.35-1.6.58-2.46.69c.88-.53 1.56-1.37 1.88-2.38c-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29c0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15c0 1.49.75 2.81 1.91 3.56c-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07a4.28 4.28 0 0 0 4 2.98a8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21C16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56c.84-.6 1.56-1.36 2.14-2.23z" fill="#626262"/></svg>-->
-<!--        SHARE</p></b-col>-->
-<!--    </b-row>-->
+    </b-row>
 
     <b-row v-if="viewFeatures">
       <b-col>
@@ -172,13 +219,11 @@
         <p>22 Priority seats for elderly and pregnant</p>
         <p>270 Max occupancy</p>
         <p>Passenger screen displays</p>
-        <p>Onboard wifi*</p>
+        <p>Onboard network connectivity</p>
       </b-col>
     </b-row>
 
-    <b-row id="optionsAsterix" class="text-center">
-      <p>* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas faucibus mollis interdum.</p>
-    </b-row>
+   
       </b-col>
     </b-row>
 
@@ -191,6 +236,7 @@
 
 <script>
 import {mapGetters} from "vuex";
+import jsPDF from 'jspdf'
 
 export default {
   name: 'SurSummary',
@@ -222,13 +268,13 @@ export default {
     ])
   },
   methods: {
-  toggleFeatures() {
-    if (this.viewFeatures) {
-      this.viewFeatures = false;
-    } else {
-      this.viewFeatures = true;
-    }
-  },
+      toggleFeatures() {
+          if (this.viewFeatures) {
+              this.viewFeatures = false;
+          } else {
+              this.viewFeatures = true;
+          }
+      },
       onSlideStart() {
           this.sliding = true
       },
@@ -236,20 +282,16 @@ export default {
           this.sliding = false
       },
       submitInfo() {
-      //check fields have been completed
-      if (!this.gender || !this.ethnicity || !this.purpose || !this.frequency) {
-          this.fillQuestionsError = true;
-      } else {
-
+          this.$bvModal.hide('questionModal');
           // if gender other text is filled in then send this instead
           if (this.genderOtherText) {
-          if (this.genderOtherText.length > 0) {
-              this.gender = this.genderOtherText;
+              if (this.genderOtherText.length > 0) {
+                  this.gender = this.genderOtherText;
+              }
           }
-      }
           // submit answers
           let payload = {
-              2:this.gender,
+              2: this.gender,
               3: this.ethnicity,
               4: this.disability,
               5: this.purpose,
@@ -267,23 +309,91 @@ export default {
               })
               .catch(error => error.response ? console.log(error.response.data) : console.log(error))
           this.showQuestions = false;
-      }
       },
       changeGender() {
-      this.removeErrorText();
           if (this.gender === 'Other/Prefer to self-describe') {
               this.otherGender = true;
           } else {
               this.otherGender = false;
           }
       },
-      removeErrorText() {
-      //remove error message if all questions have been completed
-          if (this.gender && this.ethnicity && this.purpose && this.frequency) {
-              this.fillQuestionsError = true;
-          }
-      }
+      async createPDF() {
+          console.log('create pdf');
+          //let pdfName = 'Metro Futures';
+          var doc = new jsPDF();
+          doc.text("Metro Futures", 10, 10);
+          //doc.save(pdfName + '.pdf');
 
+          //for each image in slideshow, get dataturi and add to pdf, adding to a new position
+          let positionx = 20;
+          let positiony = 20;
+
+
+          console.log(this.images.length);
+
+          this.getDataUri(this.images[0]).then((image1) => {
+              doc.addImage(image1, 'PNG', positionx, positiony, 178, 100);
+              console.log('add 1');
+              this.getDataUri(this.images[1]).then((image2) => {
+                  doc.addImage(image2, 'PNG', positionx, positiony + 120, 178, 100);
+                  console.log('add 2');
+                  doc.addPage(); //page break
+                  this.getDataUri(this.images[2]).then((image3) => {
+                      doc.addImage(image3, 'PNG', positionx, positiony, 178, 100);
+                      console.log('add 3');
+                      this.getDataUri(this.images[3]).then((image4) => {
+                          doc.addImage(image4, 'PNG', positionx, positiony + 120, 178, 100);
+                          doc.addPage(); //page break
+                          console.log('add 3');
+                          this.getDataUri(this.images[4]).then((image5) => {
+                              doc.addImage(image5, 'PNG', positionx, positiony, 178, 100);
+                              console.log('add 3');
+                          this.getDataUri(this.images[5]).then((image6) => {
+                              doc.addImage(image6, 'PNG', positionx, positiony + 120, 178, 100);
+                              doc.addPage(); //page break
+                              console.log('add 3');
+                              this.getDataUri(this.images[6]).then((image7) => {
+                              doc.addImage(image7, 'PNG', positionx, positiony, 178, 100);
+                                  console.log('add 3');
+                              this.getDataUri(this.images[7]).then((image8) => {
+                              doc.addImage(image8, 'PNG', positionx, positiony + 120, 178, 100);
+                                  console.log('ready');
+                          doc.output('dataurlnewwindow');
+                        });
+                  });
+              });
+          });
+                      });
+                  });
+              });
+          });
+
+
+      },
+      // https://stackoverflow.com/a/58936995/13075525
+      getDataUri(url) {
+          return new Promise(resolve => {
+              var image = new Image();
+              image.setAttribute('crossOrigin', 'anonymous'); //getting images from external domain
+
+              image.onload = function () {
+                  var canvas = document.createElement('canvas');
+                  canvas.width = this.naturalWidth;
+                  canvas.height = this.naturalHeight;
+
+                  //next three lines for white background in case png has a transparent background
+                  var ctx = canvas.getContext('2d');
+                  ctx.fillStyle = '#fff';  /// set white fill style
+                  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                  canvas.getContext('2d').drawImage(this, 0, 0);
+
+                  resolve(canvas.toDataURL('image/jpeg'));
+              };
+              image.src = url;
+          })
+
+      }
   },
 
  beforeMount() {
@@ -298,9 +408,10 @@ export default {
      const o5 = answers[4] !== undefined ? answers[4]+1 : 1
      const o6 = answers[5] !== undefined ? answers[5]+1 : 1
      const o7 = this.lighting ? parseInt(this.lighting) : 1
+     const design = answers[6] !== undefined ? answers[5]+1 : 1
 
     // for each camera angle, add on question answers and get image from API
-    const cameraAngles = [1, 2, 4, 14];
+    const cameraAngles = [1, 2, 3, 4, 5, 6, 13];
     for (const cam of cameraAngles) {
 
         let payload = {
@@ -314,19 +425,37 @@ export default {
             o7
         }
         this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-            headers: {
-                Cookie: this.$cookies.get('mfsid')
-            },
             params: payload
         })
             .then(response => {
-                this.images.push(response.data.url);console.log(payload);
+                this.images.push(response.data.url);
+
+                // add new end wall design from different endpoint
+                let payload2 = {
+                    cam: cam,
+                    o1,
+                    o2,
+                    o3,
+                    o4,
+                    o5,
+                    o6,
+                    o7,
+                    design
+                }
+
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/endwall`, {
+                    params: payload2
+                })
+                .then(response2 => {
+                    this.images.push(response2.data.url);
+                })
             })
             .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
     }
 
-
-
+    },
+    mounted() {
+      this.$bvModal.show('questionModal');
     }
 
 }
@@ -354,7 +483,15 @@ font-size: small;
 .option {
   padding: 1em;
     cursor: pointer;
+    color: black !important;
+    & a {
+        color: black !important;
+        text-decoration: none !important;
+    }
 }
+
+
+
 #optionsAsterix {
   font-size: small;
 padding-top: 1em;

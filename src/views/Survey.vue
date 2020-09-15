@@ -9,9 +9,7 @@
             <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
           </router-link>
         </b-col>
-        <b-col v-if="summary">
           <h3 class="calvert">Your Choices</h3>
-        </b-col>
 
         <b-col>
 <!--           todo add link here-->
@@ -20,15 +18,29 @@
         </b-col>
       </b-row>
 
-      <b-row class="surveyBreadcrumb" align-v="center">
+      <b-row class="surveyBreadcrumb fullScreenMenu" align-v="center">
           <b-col id="breadcrumb0" v-bind:class="[checkSelected(0), checkCompleted(0)]" class="firstMenuCol breadItem" v-on:click="clickBreadcrumb(0)" >Floor, seats and glass partitions</b-col>
           <b-col id="breadcrumb1" v-bind:class="[checkSelected(1), checkCompleted(1)]" class="breadItem" v-on:click="clickBreadcrumb(1)">Doors, grab poles and floor markings</b-col>
           <b-col id="breadcrumb3" v-bind:class="[checkSelected(2), checkCompleted(2)]" class="breadItem" v-on:click="clickBreadcrumb(2)">Centre grab poles</b-col>
           <b-col id="breadcrumb4" v-bind:class="[checkSelected(3), checkCompleted(3)]" class="breadItem" v-on:click="clickBreadcrumb(3)">Bike racks</b-col>
           <b-col id="breadcrumb5" v-bind:class="[checkSelected(4), checkCompleted(4)]" class="breadItem" v-on:click="clickBreadcrumb(4)">Seats</b-col>
           <b-col id="breadcrumb6" v-bind:class="[checkSelected(5), checkCompleted(5)]" class="breadItem" v-on:click="clickBreadcrumb(5)">Lower side wall</b-col>
-          <b-col id="breadcrumb7" v-bind:class="[checkSelected(6), checkCompleted(6)]" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb(6)">Summary</b-col>
+          <b-col id="breadcrumb7" v-bind:class="[checkSelected(6), checkCompleted(6)]" class="breadItem" v-on:click="clickBreadcrumb(6)">Side wall design</b-col>
+          <b-col id="breadcrumb8" v-bind:class="[checkSelected(7), checkCompleted(7)]" class="lastMenuCol breadItem" v-on:click="clickSummaryBreadcrumb(7)">Summary</b-col>
       </b-row>
+
+         <b-row class="surveyBreadcrumb mobileMenu" align-v="center">
+<!--             <b-col @click="moveMobileMenuL()">Left</b-col>-->
+             <b-col id="mobileBreadcrumb1" v-bind:class="[ checkSelected(0), checkCompleted(0), checkCentreMobile(0)] " class="breadItem mobileBread" v-on:click="clickBreadcrumb(0)" >Floor, seats and glass partitions</b-col>
+             <b-col id="mobileBreadcrumb2"  v-bind:class="[ checkSelected(1), checkCompleted(1) , checkCentreMobile(1)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(1)">Doors, grab poles and floor markings</b-col>
+             <b-col  id="mobileBreadcrumb3" v-bind:class="[ checkSelected(2), checkCompleted(2), checkCentreMobile(2)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(2)">Centre grab poles</b-col>
+             <b-col  id="mobileBreadcrumb4" v-bind:class="[ checkSelected(3),checkCompleted(3), checkCentreMobile(3)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(3)">Bike racks</b-col>
+             <b-col  id="mobileBreadcrumb5" v-bind:class="[ checkSelected(4),checkCompleted(4), checkCentreMobile(4)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(4)">Seats</b-col>
+             <b-col id="mobileBreadcrumb6" v-bind:class="[ checkSelected(5),checkCompleted(5), checkCentreMobile(5)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(5)">Lower side wall</b-col>
+             <b-col id="mobileBreadcrumb7" v-bind:class="[ checkSelected(6),checkCompleted(6), checkCentreMobile(6)]" class="breadItem mobileBread" v-on:click="clickBreadcrumb(6)">Side wall design</b-col>
+             <b-col id="mobileBreadcrumb8" v-bind:class="[ checkSelected(7), checkCompleted(7), checkCentreMobile(7)]" class="breadItem mobileBread" v-on:click="clickSummaryBreadcrumb(7)">Summary</b-col>
+<!--             <b-col @click="moveMobileMenuR()">Right</b-col>-->
+         </b-row>
 
         <b-row v-if="welcomeScreen">
             <SurWelcome @finishedWelcome="welcomeScreen=false"></SurWelcome>
@@ -90,6 +102,7 @@ export default {
         false, 
         false, 
         false,
+        false
       ]
     }
   },
@@ -131,6 +144,14 @@ export default {
         console.log("Can't decrement as:", qindex)
       }
     },
+      moveMobileMenul(breadcrumbIndex) {
+        if (breadcrumbIndex !== 0) {
+            // make currently highlighted breadcrumb disapear
+
+            // show previous breadcrumb
+        }
+
+      },
     goToScreen(qindex) {
       // Disable all other screens and enable specified screen
       let i, n = this.screens.length
@@ -140,7 +161,7 @@ export default {
       this.screens[qindex] = true
     },
     checkSelected: function(breadcrumbIndex) {
-      if (breadcrumbIndex === 6 && this.summary === true) {
+      if (breadcrumbIndex === 7 && this.summary === true) {
           //highlight summary
           return 'breadSelected';  // Delicious :-D
       }
@@ -158,7 +179,20 @@ export default {
             return 'qAnswered';
         }
     },
+      checkCentreMobile(breadcrumbIndex) {
+          if (breadcrumbIndex === 7 && this.summary === true) {
+              //highlight summary
+              return 'displayBread';  // Delicious :-D
+          }
+          // don't highlight first breadcrumb until welcome screen is completed
+          else if (breadcrumbIndex === 0 && this.welcomeScreen === false && this.index === breadcrumbIndex) {
+              return 'displayBread';
+          } else if (breadcrumbIndex !== 0 && this.index === breadcrumbIndex) {
+              return 'displayBread';
+          }
+      },
     clickBreadcrumb(breadcrumbIndex) {
+        console.log(breadcrumbIndex)
       // navigate to previously completed questions but not current index or uncompleted questions
         if (breadcrumbIndex !== this.index && this.configAnswers[breadcrumbIndex] !== undefined) {
             this.setIndex(breadcrumbIndex);
@@ -186,6 +220,10 @@ export default {
       },
       goTo(route) {
           router.push(route);
+      },
+      moveMobileMenuL() {
+        this.prevScreen(this.index);
+        console.log('move to' + this.index-1);
       }
   },
 
@@ -197,7 +235,7 @@ export default {
 
     // google analytics post
 
-    const measurementID = "UA-85374573-24";
+    const measurementID = process.env.VUE_APP_GA_ID;
     const clientID = this.$cookies.get('mfsid');
     const page= this.$route.path;
     const pageName = this.$route.name;
@@ -230,6 +268,18 @@ export default {
     font-size: small;
 }
 
+// for mobiles, only show current breadcrumb in screen centre
+  .mobileBread {
+      display: none;
+  }
+
+  .displayBread {
+display: flex;
+}
+
+.hideBread {
+    display: none;
+}
 
 .breadItem {
   font-family: "Open Sans", sans-serif;
@@ -244,7 +294,7 @@ export default {
 
 .breadItem.breadSelected {
   /*  todo remove space between yellow line and bottom edge of grey bar*/
-  border-bottom: 2px solid #FEC600;
+  border-bottom: 4px solid #FEC600;
   color: black;
     font-weight: bold;
 }
@@ -255,9 +305,18 @@ export default {
     cursor: pointer;
 }
 
+.mobileMenu {
+    display: flex;
+}
 
+  @media only screen and (max-width: 764px) {
+  .fullScreenMenu {
+      display: none;
+  }
 
-  @media only screen and (min-width: 768px) {
+  }
+
+  @media only screen and (min-width: 765px) {
     /*centre menu columns on larger screens*/
     .firstMenuCol {
       margin-left: 4em;
@@ -266,6 +325,10 @@ export default {
     .lastMenuCol {
       margin-right: 4em;
     }
+      .mobileMenu {
+          display: none;
+      }
+
 
   }
 </style>
