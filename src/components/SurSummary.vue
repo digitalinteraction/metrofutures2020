@@ -1,170 +1,181 @@
 <template>
     <b-container fluid>
+<b-row>
+    <b-col>
+        <b-carousel
+                id="carousel-1"
+                :interval="0"
+                controls
+                indicators
+                background="#ababab"
+                img-width="1024"
+                img-height="480"
+                style="text-shadow: 1px 1px 2px #333;"
+        >
 
-        <div v-if="showQuestions">
-          <div class="row">
-            <b-col  class="largeImgColumn col-lg-8 col-12">
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[0]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
 
-                <b-img fluid :src="images[0]"></b-img>
-            </b-col>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[1]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
 
-            <b-col class="col-lg-3 col-12">
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[2]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+            <b-carousel-slide>
+                <template v-slot:img>
+                    <img
+                            class="d-block img-fluid w-100"
+                            width="1024"
+                            height="480"
+                            v-bind:src="images[3]"
+                            alt="image slot"
+                    >
+                </template>
+            </b-carousel-slide>
+        </b-carousel>
+    </b-col>
+</b-row>
 
-                <p class="summaryText">To help with this public consultation, please tell us a little more about yourself and your Metro journeys. Afterwards you can explore images of the Metro that you configured, and you can share it on social media!</p>
+        <b-modal hide-footer="true" id="questionModal" title="">
+            <p class="summaryText">To help with this public consultation, please tell us a little more about yourself and your Metro journeys. Afterwards you can explore images of the Metro that you configured, and you can share it on social media!</p>
 
-                <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
-                <b-form-select  v-model="purpose" :options="purposes">Please select an
-                    option
-                </b-form-select>
+            <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
+            <b-form-select  v-model="purpose" :options="purposes">Please select an
+                option
+            </b-form-select>
 
-                <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
+            <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
 
-                <b-form-select  v-model="frequency" :options="frequencies">Please select an
-                    option
-                </b-form-select>
+            <b-form-select  v-model="frequency" :options="frequencies">Please select an
+                option
+            </b-form-select>
 
-                <p class="calvert question"><span class="bold">Gender?</span></p>
-                <b-form-select @change="changeGender" v-model="gender" :options="genders">Please select an
-                    option
-                </b-form-select>
+            <p class="calvert question"><span class="bold">Gender?</span></p>
+            <b-form-select @change="changeGender" v-model="gender" :options="genders">Please select an
+                option
+            </b-form-select>
 
-                <div v-if="otherGender" id="genderTextDiv">
+            <div v-if="otherGender" id="genderTextDiv">
                         <textarea
                                 id="textarea"
                                 v-model="genderOtherText"
                                 placeholder="Enter your gender..."
                                 rows="2" class="form-control"
                         ></textarea>
-                </div>
+            </div>
 
-                <p class="calvert question"><span class="bold">Ethnicity?</span></p>
-                <b-form-select  v-model="ethnicity" :options="ethnicities">Please select an
-                    option
-                </b-form-select>
+            <p class="calvert question"><span class="bold">Ethnicity?</span></p>
+            <b-form-select  v-model="ethnicity" :options="ethnicities">Please select an
+                option
+            </b-form-select>
 
-                <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
-                <b-form-group>
-                    <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
-                    <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
-                </b-form-group>
+            <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
+            <b-form-group>
+                <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
+                <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
+            </b-form-group>
 
-                <div v-if="dis === 'yes'">
+            <div v-if="dis === 'yes'">
                 <p class="calvert "><span class="bold">If yes, what?</span></p>
                 <b-form-select v-model="disability" :options="disabilities">Please select an
                     option
                 </b-form-select>
 
 
-</div>
-                <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
-
-            </b-col>
-</div>
-        </div>
-
-        <div v-if="!showQuestions">
-            <b-row>
-                <b-col class="largeImgColumn col-lg-8 col-12">
-                    <b-carousel
-                            id="carousel-1"
-                            :interval="0"
-                            controls
-                            indicators
-                            background="#ababab"
-                            img-width="1024"
-                            img-height="480"
-                            style="text-shadow: 1px 1px 2px #333;"
-                    >
-
-                        <b-carousel-slide>
-                            <template v-slot:img>
-                                <img
-                                        class="d-block img-fluid w-100"
-                                        width="1024"
-                                        height="480"
-                                        v-bind:src="images[0]"
-                                        alt="image slot"
-                                >
-                            </template>
-                        </b-carousel-slide>
-
-                        <b-carousel-slide>
-                            <template v-slot:img>
-                                <img
-                                        class="d-block img-fluid w-100"
-                                        width="1024"
-                                        height="480"
-                                        v-bind:src="images[1]"
-                                        alt="image slot"
-                                >
-                            </template>
-                        </b-carousel-slide>
-
-                        <b-carousel-slide>
-                            <template v-slot:img>
-                                <img
-                                        class="d-block img-fluid w-100"
-                                        width="1024"
-                                        height="480"
-                                        v-bind:src="images[2]"
-                                        alt="image slot"
-                                >
-                            </template>
-                        </b-carousel-slide>
-                        <b-carousel-slide>
-                            <template v-slot:img>
-                                <img
-                                        class="d-block img-fluid w-100"
-                                        width="1024"
-                                        height="480"
-                                        v-bind:src="images[3]"
-                                        alt="image slot"
-                                >
-                            </template>
-                        </b-carousel-slide>
-                    </b-carousel>
-                </b-col>
-                <b-col class="col-lg-3 col-12">
-                    <p class="calvert"></p>
-                    <p id="option1" class="option" @click="toggleFeatures()"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p>
-
-<!--                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>-->
-                    <p id="option3" class="option " @click="createPDF"><b-icon-envelope></b-icon-envelope> SEND PDF</p>
-                    
-
-<!--                    social sharing-->
-                    <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
-                        <b-dropdown-item>   <ShareNetwork
-                                network="facebook"
-                                url="https://metrofutures.org.uk/configure"
-                                title="Something about Metro"
-                                description="Something more about Metro."
-                                quote="Quote"
-                                hashtags="metro"
-                        > Facebook
-                            <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
-                        </ShareNetwork>
-                        </b-dropdown-item>
+            </div>
+            <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
+        </b-modal>
 
 
-                        <b-dropdown-item>
-                            <ShareNetwork
-                                    network="twitter"
-                                    url="https://metrofutures.org.uk/configure"
-                                    title="Something about metro"
-                                    twitter-user="thebestmetro"
-                                    hashtags="metro"
-                            > Twitter
-                                <b-img src="../assets/twitter.png" height="30px;"></b-img>
 
-                            </ShareNetwork>
-                        </b-dropdown-item>
+<!--        <div v-if="showQuestions">-->
+<!--          <div class="row">-->
+<!--            <b-col  class="largeImgColumn col-lg-8 col-12">-->
 
-                    </b-dropdown>
-                </b-col>
-            </b-row>
+<!--                <b-img fluid :src="images[0]"></b-img>-->
+<!--            </b-col>-->
 
-        </div>
+<!--            <b-col class="col-lg-3 col-12">-->
+
+<!--             -->
+
+<!--            </b-col>-->
+<!--</div>-->
+<!--        </div>-->
+
+<!--        <div v-if="!showQuestions">-->
+<!--            <b-row>-->
+<!--                <b-col class="largeImgColumn col-lg-8 col-12">-->
+
+<!--                </b-col>-->
+<!--                <b-col class="col-lg-3 col-12">-->
+<!--                    <p class="calvert"></p>-->
+<!--                    <p id="option1" class="option" @click="toggleFeatures()"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p>-->
+
+<!--&lt;!&ndash;                    <p id="option2" class="option "><b-icon-printer></b-icon-printer> PRINT </p>&ndash;&gt;-->
+<!--                    <p id="option3" class="option " @click="createPDF"><b-icon-envelope></b-icon-envelope> SEND PDF</p>-->
+<!--                    -->
+
+<!--&lt;!&ndash;                    social sharing&ndash;&gt;-->
+<!--                    <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">-->
+<!--                        <b-dropdown-item>   <ShareNetwork-->
+<!--                                network="facebook"-->
+<!--                                url="https://metrofutures.org.uk/configure"-->
+<!--                                title="Something about Metro"-->
+<!--                                description="Something more about Metro."-->
+<!--                                quote="Quote"-->
+<!--                                hashtags="metro"-->
+<!--                        > Facebook-->
+<!--                            <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>-->
+<!--                        </ShareNetwork>-->
+<!--                        </b-dropdown-item>-->
+
+
+<!--                        <b-dropdown-item>-->
+<!--                            <ShareNetwork-->
+<!--                                    network="twitter"-->
+<!--                                    url="https://metrofutures.org.uk/configure"-->
+<!--                                    title="Something about metro"-->
+<!--                                    twitter-user="thebestmetro"-->
+<!--                                    hashtags="metro"-->
+<!--                            > Twitter-->
+<!--                                <b-img src="../assets/twitter.png" height="30px;"></b-img>-->
+
+<!--                            </ShareNetwork>-->
+<!--                        </b-dropdown-item>-->
+
+<!--                    </b-dropdown>-->
+<!--                </b-col>-->
+<!--            </b-row>-->
+
+<!--        </div>-->
 
 <!--    <b-row id="optionsRow">-->
 <!--      <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>-->
@@ -261,7 +272,7 @@ export default {
           this.sliding = false
       },
       submitInfo() {
-
+          this.$bvModal.hide('questionModal');
           // if gender other text is filled in then send this instead
           if (this.genderOtherText) {
               if (this.genderOtherText.length > 0) {
@@ -405,6 +416,9 @@ export default {
             .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
     }
 
+    },
+    mounted() {
+      this.$bvModal.show('questionModal');
     }
 
 }
