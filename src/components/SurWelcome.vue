@@ -1,6 +1,6 @@
 <template>
 
-    <b-container fluid class="text-left">
+    <b-container fluid class="text-left fullScreenContainer">
 
                 <b-img fluid v-if="!showLAQuestion" src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
 
@@ -231,5 +231,15 @@
     #LAButton {
        margin-top: 2em;
        margin-bottom: 2em;
+    }
+
+    .largeImgColumn {
+        padding-left: 0!important;
+        padding-right: 0!important;
+    }
+
+    .fullScreenContainer {
+        padding-left: 0!important;
+        padding-right: 0!important;
     }
 </style>
