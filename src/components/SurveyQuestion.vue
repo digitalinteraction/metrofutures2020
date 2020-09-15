@@ -411,6 +411,15 @@
                 const path = process.env.VUE_APP_SQUARES_URL + imagePath;
                 console.log(path);
                 return path;
+            },
+            checkLighting(light) {
+                // Attempted to get the radio buttons to 
+                console.log(light, this.lighting)
+                if(light === this.lighting) {
+                    return true
+                } else {
+                    return false
+                }
             }
 
         },
@@ -562,6 +571,10 @@
 
     #LAButton {
         margin-top: 1em;
+    }
+
+    .lightHighlight {
+        background-color: yellow;
     }
 
     /* Medium devices */
