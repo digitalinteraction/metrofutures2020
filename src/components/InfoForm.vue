@@ -76,7 +76,7 @@
         <p class="calvert question">
           <span class="bold">Do you have a disability?</span>
         </p>
-        <b-form-group>
+        <b-form-group class="checkbox question">
           <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
           <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
         </b-form-group>
@@ -298,6 +298,13 @@ export default {
 <style scoped>
 .calvert {
   font-family: Calvert, serif;
+}
+.question {
+    padding-top: 1em;
+}
+
+.checkbox {
+  padding-left: 1em;
 }
 .errorText {
   color: red;
