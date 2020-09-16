@@ -72,10 +72,21 @@
                 </b-row>
 
                 <!--                feedback section-->
-                <b-row>
+                <b-row v-show="index < 6">
                     <b-col>
                         <div class="surveyFreeText">
                             <label class="calvert" for="survey-text-response">Leave Feedback (optional) </label>
+                            <textarea v-model="surveyText" placeholder="Got something to say? Let us know..."
+                                      class="form-control" rows="2"></textarea>
+                        </div>
+                    </b-col>
+                </b-row>
+
+<!--                something else option for q 7-->
+                <b-row v-show="index === 6 && this.selected === 4">
+                    <b-col>
+                        <div class="surveyFreeText">
+                            <label class="calvert" for="survey-text-response">Leave end wall design idea: </label>
                             <textarea v-model="surveyText" placeholder="Got something to say? Let us know..."
                                       class="form-control" rows="2"></textarea>
                         </div>
@@ -86,13 +97,13 @@
 <!--               <&#45;&#45; 2 different buttons depending on if q has previously been completed or not&ndash;&gt;-->
                 <b-row>
                 <b-col>
-                    <b-button v-bind:class="displayContinue()" block variant="outline-secondary" @click="nextQuestion">Continue</b-button>
+                    <b-button class="continueBtn" v-bind:class="displayContinue()" block variant="outline-secondary" @click="nextQuestion">Continue</b-button>
                 </b-col>
                 </b-row>
 
                 <b-row>
                     <b-col>
-                        <b-button v-bind:class="displayUpdate()" block variant="outline-secondary" @click="nextQuestion">Update</b-button>
+                        <b-button class="continueBtn"  v-bind:class="displayUpdate()" block variant="outline-secondary" @click="nextQuestion">Update</b-button>
                     </b-col>
                 </b-row>
 
@@ -492,6 +503,10 @@
         }
     }
 
+    .continueBtn {
+        margin-top: 1em;
+    }
+
     .display {
         display: block;
     }
@@ -564,7 +579,7 @@
         text-align: left;
         font-weight: bold;
         font-size: small;
-    margin-bottom: 1em;
+    
         margin-top: 1em;
     }
 
