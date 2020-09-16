@@ -1,6 +1,6 @@
 require('dotenv').config()
 const imageFolder = "endwall";
-const seatIdMap = ["A", "B", "C", "D"];
+const seatIdMap = ["A", "B", "C", "D", "A"];
 
 module.exports = async(req, res) => {
   if(!req.cookies.mfsid){
@@ -14,7 +14,7 @@ module.exports = async(req, res) => {
       // SEND SINGLE URL FOR THIS DESIGN
       if(typeof(req.query.design) !== undefined) {
         let options = validateQuery(req.query)
-        if (options && req.query.design > 0 && req.query.design < 5) {
+        if (options && req.query.design > 0 && req.query.design < 6) {
           console.log("design is specified", req.query.design)
           // Specify design
           options.design = convertDesign(req.query.design)
@@ -25,7 +25,8 @@ module.exports = async(req, res) => {
           // SENDING ALL URLS FOR THIS OPTION SET
           let options = validateQuery(req.query)
           let data = generateUrls(options)
-          sendResponse(req, res, 200, data);
+          let moddedData = addFifthOption(data)
+          sendResponse(req, res, 200, moddedData);
         }
         // Get options from the get request 
         // if(true) {
@@ -197,6 +198,16 @@ function convertDesign(designId) {
   } else {
     return seatIdMap[0]
   }
+}
+
+function addFifthOption(data) {
+  // console.log(data.day)
+  data.day.push(data.day[0])
+  // console.log(data.night)
+  data.night.push(data.night[0])
+  // data.day[0] add to tend
+  // data.night[0] add to tend
+  return data
 }
 
 function generateUrls(options) {
