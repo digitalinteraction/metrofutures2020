@@ -91,17 +91,7 @@
                             alt="image slot"
                     >
                 </template>
-            </b-carousel-slide>    <b-carousel-slide>
-                <template v-slot:img>
-                    <img
-                            class="d-block img-fluid w-100"
-                            width="1024"
-                            height="480"
-                            v-bind:src="images[7]"
-                            alt="image slot"
-                    >
-                </template>
-            </b-carousel-slide>
+            </b-carousel-slide>    
         </b-carousel>
     </b-col>
 </b-row>
@@ -352,9 +342,6 @@ export default {
                               this.getDataUri(this.images[6]).then((image7) => {
                               doc.addImage(image7, 'PNG', positionx, positiony, 178, 100);
                                   console.log('add 3');
-                              this.getDataUri(this.images[7]).then((image8) => {
-                              doc.addImage(image8, 'PNG', positionx, positiony + 120, 178, 100);
-                                  console.log('ready');
                           doc.output('dataurlnewwindow');
                         });
                   });
@@ -363,7 +350,7 @@ export default {
                       });
                   });
               });
-          });
+
 
 
       },
@@ -411,43 +398,49 @@ export default {
     const cameraAngles = [1, 2, 3, 4, 5, 6, 13];
     for (const cam of cameraAngles) {
 
-        let payload = {
-            cam: cam,
-            o1,
-            o2,
-            o3,
-            o4,
-            o5,
-            o6,
-            o7
-        }
-        this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-            params: payload
-        })
-            .then(response => {
-                this.images.push(response.data.url);
-
-                // add new end wall design from different endpoint
-                let payload2 = {
-                    cam: cam,
-                    o1,
-                    o2,
-                    o3,
-                    o4,
-                    o5,
-                    o6,
-                    o7,
-                    design
-                }
-
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/endwall`, {
-                    params: payload2
+        if (cam !== 6) {
+            console.log('url 1 for cam ' + cam);
+            let payload = {
+                cam: cam,
+                o1,
+                o2,
+                o3,
+                o4,
+                o5,
+                o6,
+                o7
+            }
+            this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
+                params: payload
+            })
+                .then(response => {
+                    this.images.push(response.data.url);
                 })
+                .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
+        } else {
+
+            // add new end wall design from different endpoint
+            let payload2 = {
+                cam: cam,
+                o1,
+                o2,
+                o3,
+                o4,
+                o5,
+                o6,
+                o7,
+                design
+            }
+
+            this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/endwall`, {
+                params: payload2
+            })
                 .then(response2 => {
                     this.images.push(response2.data.url);
+                    console.log('url 2 for cam ' + cam + ' ' + response2.data.url);
                 })
-            })
-            .catch(error => error.response ? console.log('fetch image error' + error.response.data) : console.log(error))
+        }
+
     }
 
     },
