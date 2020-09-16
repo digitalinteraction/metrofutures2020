@@ -21,11 +21,11 @@
         </router-link>
         <p>Move around 360-degree images at seven points in and around the train to discover new features and provide feedback on them. Use the toggle switch to explore the train with and without people on board. Some features appear in more than one image.</p>
       </div>
-      <div id="choices" v-if="page === 'choices'">
+      <div id="choices" class="modal-container" v-if="page === 'choices'">
         <!--  <h2>Add the Finishing Touches!</h2> -->
         <p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media.</p>
       </div>
-      <div id="journeys" v-if="page === 'journeys'">
+      <div id="journeys" class="modal-container" v-if="page === 'journeys'">
         <!--   <h2>Step into Someone Else’s Shoes</h2> -->
         <p>Pick one of six people, go on a typical Metro journey with them and consider how well the new trains fit their needs. These are not real people but the issues they face are real and reflect what people like them have told us about travelling on trains.</p>
       </div>
@@ -33,8 +33,10 @@
       <p
         id="menu"
         v-if="page === 'menu'"
-      >Help shape your new Metro in three ways. Choose a section to begin.</p>
-      <br />
+        class="modal-container"
+      >
+      Help shape your new Metro in three ways. Choose a section to begin.</p>
+      <!-- <br /> -->
 
       <!-- explore page needs demographic info collecting, also does privacy in this situation -->
       <div v-if="page === 'explore' && getInfoCompleted === false">
@@ -42,7 +44,7 @@
       </div>
 
       <!-- if privacy is not collected -->
-      <div id="privacy-container" v-if="privacyNotice===false && page !== 'explore'">
+      <div id="privacy-container" class="modal-container" v-if="privacyNotice===false && page !== 'explore'">
         <div>
           <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project.</p>
 
@@ -136,25 +138,31 @@ export default {
 </script>
 
 <style scoped>
-.calvert {
-  font-family: Calvert, serif;
-}
+  .modal-container {
+    text-align: left; 
+  }
 
-#info-back-button {
-  color: black;
-  padding-bottom: 2em;
-}
+  .calvert {
+    font-family: Calvert, serif;
+  }
 
-.privacy-list {
-  text-align: left;
-  padding-bottom: 1em;
-  font-size: smaller;
-}
+  #info-back-button {
+    color: black;
+    padding-bottom: 2em;
+  }
 
-.modal-links{
-  font-size: x-small;
-}
-a {
-  color: black;
-}
+  .privacy-list {
+    text-align: left;
+    padding-bottom: 1em;
+    font-size: smaller;
+  }
+
+  .modal-links{
+    font-size: x-small;
+    text-align: center;
+  }
+  a {
+    color: black;
+  }
+
 </style>
