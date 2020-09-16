@@ -9,8 +9,6 @@
         <b-icon stacked icon="circle-fill" class="icon-backing"></b-icon>
         <b-icon stacked icon="x"></b-icon>
       </b-iconstack>
-      <!-- <b-icon icon="info-circle" font-scale="1.5" v-on:click="toggle()" v-show="!visible"></b-icon>
-      <b-icon icon="x-circle" font-scale="1.5"  v-on:click="toggle()" v-show="visible"></b-icon> -->
     </div>
     
     <!-- <img src="/favicon.ico" alt="" class="icon" > -->
@@ -38,7 +36,7 @@
 
           <div v-if="data.visual">
 
-            <video class="embed-video" :class="{ 'embed-large' : vidFullscreen }" ref="embedded">
+            <video class="embed-video" :class="{ 'embed-large' : vidFullscreen }" ref="embedded" :controls="vidFullscreen ? true : false">
               <source :src="data.visual" type="video/webm" >
               <p>Your browser doesn't support HTML5 video. Here is a <a href="https://cdn.metrofutures.org.uk/doors/Door_Exterior_1.mp4">link to the video</a> instead.</p>
             </video>
@@ -49,12 +47,13 @@
                 <b-icon stacked icon="stop-fill"  v-show="videoPlaying"></b-icon>
               </b-iconstack>
 
-              <!-- <b-iconstack font-scale="2" v-show="!vidFullscreen" v-on:click="videoFull()">
+
+              <b-iconstack font-scale="2" v-on:click="videoFull()">
                 <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
                 <b-icon stacked scale="0.5" icon="arrows-fullscreen" ></b-icon>
               </b-iconstack>
-
-              <b-iconstack font-scale="2" v-show="vidFullscreen" v-on:click="videoShrink()">
+              
+              <!-- <b-iconstack font-scale="2" v-show="vidFullscreen" v-on:click="videoShrink()">
                 <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
                 <b-icon stacked scale="0.5" icon="arrows-angle-contract"></b-icon>
               </b-iconstack> -->
@@ -75,7 +74,8 @@
           </b-form>
 
           <div v-if="submitted" class="text-center thanks-notif">
-            <b-icon icon="patch-check-fll" font-scale="1" class="thanks-check"></b-icon> Thanks for your comment.
+            <span v-show="likertRating === 0"><b-icon icon="patch-check-fll" font-scale="1" class="thanks-check"></b-icon> Thanks for your comment.</span>
+            <span v-show="!hotspotText && likertRating > 0"><b-icon icon="patch-check-fll" font-scale="1" class="thanks-check"></b-icon> Thanks for your rating.</span>
           </div>
 
         </div>
@@ -149,6 +149,15 @@ export default {
     },
     videoFull() {
       console.log("Going fullscreen now")
+      if (this.videoEl.requestFullscreen) {
+        this.videoEl.requestFullscreen();
+      } else if (this.videoEl.mozRequestFullScreen) {
+        this.videoEl.mozRequestFullScreen();
+      } else if (this.videoEl.webkitRequestFullscreen) {
+        this.videoEl.webkitRequestFullscreen();
+      } else if (this.videoEl.msRequestFullscreen) { 
+        this.videoEl.msRequestFullscreen();
+      }
       this.vidFullscreen = true;
     },
     videoShrink() {
@@ -159,6 +168,15 @@ export default {
       console.log("Detected video stopped")
       this.videoEl.pause()
       this.videoPlaying = false;
+    },
+    checkFullscreen() {
+      if (this.data.visual) {
+        // Needs to be run on the document not element
+        console.log("Returning:", this.videoEl.fullscreenEnabled)
+        return this.videoEl.fullscreenEnabled
+      } else {
+        return false
+      }
     },
   },
   mounted() {
