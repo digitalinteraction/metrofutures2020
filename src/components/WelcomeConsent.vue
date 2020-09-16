@@ -15,6 +15,10 @@
       </template>
       <div id="explore" v-if="page === 'explore'">
         <!-- <h2>Explore your new Metro!</h2>-->
+        <router-link to="/" id="info-back-button" v-if="getInfoCompleted === false" @click="exitBack">
+          <b-icon-chevron-left></b-icon-chevron-left>
+          Home
+        </router-link>
         <p>Move around 360-degree images at seven points in and around the train to discover new features and provide feedback on them. Use the toggle switch to explore the train with and without people on board. Some features appear in more than one image.</p>
       </div>
       <div id="choices" v-if="page === 'choices'">
@@ -121,6 +125,9 @@ export default {
         this.$parent.triggerLAQuestion();
       }
     },
+    exitBack() {
+      this.$bvModal.hide("privacyNoticeModal");
+    },
     ...mapMutations(["acknowledgePrivacy", "completeInfo"])
   }
 };
@@ -129,5 +136,10 @@ export default {
 <style scoped>
 .calvert {
   font-family: Calvert, serif;
+}
+
+#info-back-button {
+  color: black;
+  padding-bottom: 2em;
 }
 </style>
