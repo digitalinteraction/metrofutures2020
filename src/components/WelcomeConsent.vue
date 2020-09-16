@@ -65,6 +65,8 @@
         <div class="modal-footer privacy-buttons">
           <b-button block @click="confirmPrivacy" :disabled="tick === false">Continue</b-button>
         </div>
+
+        <p class="modal-links"><a href="#" v-b-modal.privacy-modal>Privacy Policy</a> | <a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
       </div>
 
       <!-- continue, if privacy done before -->
@@ -147,5 +149,12 @@ export default {
   text-align: left;
   padding-bottom: 1em;
   font-size: smaller;
+}
+
+.modal-links{
+  font-size: x-small;
+}
+a {
+  color: black;
 }
 </style>
