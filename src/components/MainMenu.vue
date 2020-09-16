@@ -1,17 +1,34 @@
 <template>
   <div class="dropdown-container">
-    <b-dropdown id="dropdown-1" class="m-md-2 menu" variant="outline-primary" aria-expanded="false"> 
-      <template v-slot:button-content>
-       Menu
-      </template>
-      <b-dropdown-item to="/">Home</b-dropdown-item>
-      <b-dropdown-item to="/explore">Explore</b-dropdown-item>
-      <b-dropdown-item to="/configure">Configure</b-dropdown-item>
-      <b-dropdown-item to="/about">About</b-dropdown-item>
-      <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
-      <b-dropdown-item href="#" v-b-modal.terms-modal>Terms and Conditions</b-dropdown-item>
-      <b-dropdown-item href="#" v-b-modal.privacy-modal>Privacy Policy</b-dropdown-item>
-    </b-dropdown>
+    <div class="dropdown-full">
+      <b-dropdown id="dropdown-1" class="m-md-2 menu" variant="outline-primary" aria-expanded="false"> 
+        <template v-slot:button-content>
+        Menu
+        </template>
+        <b-dropdown-item to="/">Home</b-dropdown-item>
+        <b-dropdown-item to="/explore">Explore</b-dropdown-item>
+        <b-dropdown-item to="/configure">Configure</b-dropdown-item>
+        <b-dropdown-item to="/about">About</b-dropdown-item>
+        <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
+        <b-dropdown-item href="#" v-b-modal.terms-modal>Terms and Conditions</b-dropdown-item>
+        <b-dropdown-item href="#" v-b-modal.privacy-modal>Privacy Policy</b-dropdown-item>
+      </b-dropdown>
+     </div>
+
+    <div class="dropdown-mob">
+      <b-dropdown id="dropdown-1" class="m-md-2 menu" variant="outline-primary" aria-expanded="false"> 
+        <template v-slot:button-content>
+        ☰
+        </template>
+        <b-dropdown-item to="/">Home</b-dropdown-item>
+        <b-dropdown-item to="/explore">Explore</b-dropdown-item>
+        <b-dropdown-item to="/configure">Configure</b-dropdown-item>
+        <b-dropdown-item to="/about">About</b-dropdown-item>
+        <!-- <b-dropdown-item><router-link to="/journeys">Your Journeys</router-link></b-dropdown-item> -->
+        <b-dropdown-item href="#" v-b-modal.terms-modal>Terms and Conditions</b-dropdown-item>
+        <b-dropdown-item href="#" v-b-modal.privacy-modal>Privacy Policy</b-dropdown-item>
+      </b-dropdown>
+     </div>
     <!-- Compontents for modals -->
         <Privacy/>
         <Terms/>
@@ -53,9 +70,27 @@
     border-right: 5px solid $metro-yellow;
   }
 
-  .dropdown-container {
+
+
+    .dropdown-container {
     text-align: right;
   }
+
+  .dropdown-mob {
+    display: none;
+  }
+
+
+@media all and (max-width: 765px) {
+  .dropdown-mob {
+    display: block;
+    position: relative;
+  }
+
+  .dropdown-full{
+    display: none;
+  }
+}
 
 </style>
 
