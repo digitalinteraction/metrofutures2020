@@ -60,7 +60,10 @@ Vue.use(VueRouter)
   // Catch all route at the end just dumps you back at the start
   {
     path: '*',
-    component: Menu
+    component: Menu,
+    meta: {
+      title: 'Metro Futures'
+    }
   }
 ];
 
