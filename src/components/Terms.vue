@@ -59,13 +59,13 @@
     <p class="termsText">
       Any communication or material you transmit to us by email or otherwise, including any data, questions, comments, suggestions, or the like is, and will be treated as, nonconfidential and nonproprietary. Furthermore, you expressly agree that we are free to use any ideas, concepts, know-how, or techniques contained in any communication you send to us without compensation and for any purpose whatsoever, including but not limited to, developing, manufacturing and marketing products and services using such information.
     </p>
-    <p class="termsText"><strong>Site Terms of Use:</strong> Use of this Site is governed by, and subject to, the Terms of Use contained at <a v-bind:href="url + '/terms'">{{ url }}/terms</a> . This Privacy Policy is incorporated into such terms. Your use, or access, of the Site constitutes your agreement to be bound by these provisions.
+    <p class="termsText"><strong>Site Terms of Use:</strong> Use of this Site is governed by, and subject to these Terms of Use. The Privacy Policy is incorporated into such terms. Your use, or access, of the Site constitutes your agreement to be bound by these provisions.
     IF YOU DO NOT AGREE TO THESE TERMS OF USE YOU MAY NOT ACCESS OR OTHERWISE USE THE SITE.</p>
     <p class="termsText">
       <strong>Transfers of Personal Data Outside the EEA:</strong> The personal data that we collect from you may be transferred to, and stored at, a destination outside the European Economic Area ("EEA"). It may also be processed by staff operating outside the EEA who work for us or for one of our suppliers. By submitting your personal data, you agree to this transfer, storing or processing. We will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this privacy policy.
     </p>
     <p class="termsText"><strong>Contact:</strong>For questions or concerns relating to privacy, we can be contacted at: <a v-bind:href="'mailto:'+ email">{{ email }}</a>.</p>
-    <p class="termsText"><strong>Effective Date:</strong> This Privacy Policy was last updated on 20 August 2020.</p>
+    <p class="termsText"><strong>Effective Date:</strong> Last updated on 16 September 2020.</p>
   <!-- random comment -->
   </b-modal>
 </template>
