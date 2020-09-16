@@ -36,8 +36,8 @@
 
           <div v-if="data.visual">
 
-            <video class="embed-video" :class="{ 'embed-large' : vidFullscreen }" ref="embedded" :controls="vidFullscreen ? true : false">
-              <source :src="data.visual" type="video/webm" >
+            <video preload="yes" class="embed-video" :class="{ 'embed-large' : vidFullscreen }" ref="embedded" :controls="vidFullscreen ? true : false">
+              <source :src="data.visual" type="video/mp4" >
               <p>Your browser doesn't support HTML5 video. Here is a <a href="https://cdn.metrofutures.org.uk/doors/Door_Exterior_1.mp4">link to the video</a> instead.</p>
             </video>
             <div class="controls-video text-center"> 
