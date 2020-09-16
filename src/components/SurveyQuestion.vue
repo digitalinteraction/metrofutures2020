@@ -59,7 +59,8 @@
                                :class="selectClass(x)">
                             <!--                            todo replace with appropriate choices per question using {{ option.img }}-->
                             <b-col class="optionImg">
-                                <b-img class="float-left" v-bind:src="'/squares/' + option.img"></b-img>
+                                <!-- <b-img class="float-left" v-bind:src="'/squares/' + option.img"></b-img> -->
+                                <b-img class="float-left" v-bind:src="'https://cdn.metrofutures.org.uk/squares/' + option.img"></b-img>
                             </b-col>
                             <b-col class="optionText">
                                 <p>{{ option.desc }}</p>
