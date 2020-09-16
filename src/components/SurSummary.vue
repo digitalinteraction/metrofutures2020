@@ -166,11 +166,9 @@
           <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
               <b-dropdown-item>   <ShareNetwork
                       network="facebook"
-                      url="https://metrofutures.org.uk/configure"
-                      title="Something about Metro"
-                      description="Something more about Metro."
-                      quote="Quote"
-                      hashtags="metro"
+                      url="https://metrofutures.org.uk"
+                      title="I just customised my perfect Metro."
+                      description="Have a play around and make your own at: metrofutures.org.uk"
               > Facebook
                   <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
               </ShareNetwork>
@@ -180,10 +178,9 @@
               <b-dropdown-item>
                   <ShareNetwork
                           network="twitter"
-                          url="https://metrofutures.org.uk/configure"
-                          title="Something about metro"
-                          twitter-user="thebestmetro"
-                          hashtags="metro"
+                          url="https://metrofutures.org.uk"
+                          title="Check out my customised Metro. You can make your own at: metrofutures.org.uk"
+                          twitter-user="My_Metro"
                   > Twitter
                       <b-img src="../assets/twitter.png" height="30px;"></b-img>
 
