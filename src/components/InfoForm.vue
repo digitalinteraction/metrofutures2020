@@ -3,7 +3,7 @@
     <b-col>
       <b-row id="localAuthority">
         <p class="calvert">Before you begin, please tell us:</p>
-        <p class="calvert">
+        <p class="calvert" v-bind:class="{ errorText: displayError }">
           <span class="bold">Where do you live? (Which local authority?)*</span>
         </p>
         <br />
@@ -22,7 +22,7 @@
         </div>
         <br />
         <br />
-        <p class="calvert question">
+        <p class="calvert question" v-bind:class="{ errorText: displayError }">
           <span class="bold">How old are you?*</span>
         </p>
         <b-form-select @change="changeAge" v-model="age" :options="ages">
@@ -298,5 +298,8 @@ export default {
 <style scoped>
 .calvert {
   font-family: Calvert, serif;
+}
+.errorText {
+  color: red;
 }
 </style>
