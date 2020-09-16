@@ -159,10 +159,10 @@
 
 
     <b-row id="optionsRow">
-      <b-col id="option1" class="option col-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
+      <b-col id="option1" class="option col-lg-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
       <b-col id="option3" class="option"  @click="createPDF"><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
         <b-col class="option"> <router-link to="/"><p class="text-center">RETURN TO HOME</p></router-link></b-col>
-      <b-col  class="option">
+      <b-col  class="option" id="shareCol">
           <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
               <b-dropdown-item>   <ShareNetwork
                       network="facebook"
@@ -472,6 +472,10 @@ font-size: small;
     padding-top: 2em;
 }
 
+#dropdown-1 {
+    margin-top: 0;
+}
+
 .borderRight {
   border-right: 1px #DDDDDD solid;
   padding-right: 0.5em;
@@ -503,11 +507,20 @@ padding-top: 1em;
 
 #option1 {
   padding-right: 0;
+    margin-top: 0;
+}
+
+p.text-right {
+    margin-top: 0;
 }
 
   #option4 {
     background-color: #FEC600;
   }
+
+#shareCol {
+    padding-top: 0.2em;
+}
 
   .featuresRow {
     border-bottom: 1px #dddddd solid;

@@ -52,13 +52,13 @@
                        v-bind:class="[ checkSelected(3),checkCompleted(3), checkCentreMobile(3)]" v-on:click="clickBreadcrumb(3)">Bike racks
                 </b-col>
                 <b-col class="breadItem mobileBread" id="mobileBreadcrumb5"
-                       v-bind:class="[ checkSelected(4),checkCompleted(4), checkCentreMobile(4)]" v-on:click="clickBreadcrumb(4)">Seats
+                       v-bind:class="[ checkSelected(4),checkCompleted(4), checkCentreMobile(4)]" v-on:click="clickBreadcrumb(4)">Priority seats
                 </b-col>
                 <b-col class="breadItem mobileBread" id="mobileBreadcrumb6"
                        v-bind:class="[ checkSelected(5),checkCompleted(5), checkCentreMobile(5)]" v-on:click="clickBreadcrumb(5)">Lower side wall
                 </b-col>
                 <b-col class="breadItem mobileBread" id="mobileBreadcrumb7"
-                       v-bind:class="[ checkSelected(6),checkCompleted(6), checkCentreMobile(6)]" v-on:click="clickBreadcrumb(6)">Side wall design
+                       v-bind:class="[ checkSelected(6),checkCompleted(6), checkCentreMobile(6)]" v-on:click="clickBreadcrumb(6)">Back wall design
                 </b-col>
                 <b-col class="breadItem mobileBread"
                        id="mobileBreadcrumb8"
@@ -75,9 +75,9 @@
                             <b-dropdown-item v-on:click="clickBreadcrumb(1)" class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(1)">Doors, grab poles and floor markings</b-dropdown-item>
                             <b-dropdown-item v-on:click="clickBreadcrumb(2)"  class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(2)">Centre grab poles</b-dropdown-item>
                             <b-dropdown-item v-on:click="clickBreadcrumb(3)" class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(3)">Bike racks</b-dropdown-item>
-                            <b-dropdown-item v-on:click="clickBreadcrumb(4)" class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(4)">Seats</b-dropdown-item>
+                            <b-dropdown-item v-on:click="clickBreadcrumb(4)" class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(4)">Priority seats</b-dropdown-item>
                             <b-dropdown-item v-on:click="clickBreadcrumb(5)" class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(5)">Lower side wall</b-dropdown-item>
-                            <b-dropdown-item v-on:click="clickBreadcrumb(6)" class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(6)">Side wall design</b-dropdown-item>
+                            <b-dropdown-item v-on:click="clickBreadcrumb(6)" class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(6)">Back wall design</b-dropdown-item>
                             <b-dropdown-item v-on:click="clickBreadcrumb(7)" class="dropdownBreadcrumb" v-bind:class="formatBreadcrumbDropdown(7)">Summary</b-dropdown-item>
                         </b-dropdown>
                     </div>
