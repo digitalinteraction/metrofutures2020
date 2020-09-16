@@ -47,7 +47,7 @@
           <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project.</p>
 
           <p>We collect the following data about you:</p>
-          <ul>
+          <ul class="privacy-list">
             <li>Your choices for the design of the metro</li>
             <li>Any free text answers you provide</li>
             <li>If you chose to be contacted for further consultation about the Metro Futures, your email address</li>
@@ -141,5 +141,11 @@ export default {
 #info-back-button {
   color: black;
   padding-bottom: 2em;
+}
+
+.privacy-list {
+  text-align: left;
+  padding-bottom: 1em;
+  font-size: smaller;
 }
 </style>
