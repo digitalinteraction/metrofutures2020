@@ -4,21 +4,7 @@
 
         <b-container align="center" fluid>
 
-            <b-row align-v="center" id="headerRow">
-                <b-col>
-                    <router-link to="/">
-                        <b-img alt="Metro logo" class="float-left" fluid id="logo"
-                               src="../assets/metroLogoTemp.png"></b-img>
-                    </router-link>
-                </b-col>
-                <h3 class="calvert">Configure Your Choices</h3>
-
-                <b-col>
-                    <!--           todo add link here-->
-                    <MainMenu class="text-right"></MainMenu>
-                    <!-- <p v-on:click="goTo('/journeys')" class="float-right personasLink" >Explore some of our Metro users?</p> -->
-                </b-col>
-            </b-row>
+            <MainHeader title="Configure Your Choices"/> 
 
             <b-row align-v="center" class="surveyBreadcrumb fullScreenMenu">
                 <b-col class="firstMenuCol breadItem" id="breadcrumb0"
@@ -136,7 +122,7 @@
     import SurSummary from '@/components/SurSummary.vue'
     import router from "../router";
     import SurWelcome from "../components/SurWelcome";
-    import MainMenu from '@/components/MainMenu.vue';
+    import MainHeader from '@/components/MainHeader.vue';
 
     export default {
         name: 'Home',
@@ -145,7 +131,7 @@
             SurveyQuestion,
             // PrivacyNotice,
             SurSummary,
-            MainMenu,
+            MainHeader,
         },
         data() {
             return {

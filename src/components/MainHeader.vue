@@ -44,8 +44,7 @@ export default {
     cursor: pointer;
     color: $font-color;
 }
-.dd-menu {
-}
+
 // .dd-menu {
 //   background-color: $metro-yellow;
 // }
