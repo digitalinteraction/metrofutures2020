@@ -109,14 +109,14 @@ export default [
   },
       {
         id: 6,
-        question: "Select your preferred end wall design:",
+        question: "Select your preferred end wall style (example images shown):",
         options: [
           {
-            desc: "Plain",
+            desc: "Blank",
             img: "Square_Configurator_swatches-19.svg"
           },
           {
-            desc: "Artwork",
+            desc: "Comissioned Artwork",
             img: "Square_Configurator_swatches-20.svg"
           },
           {
