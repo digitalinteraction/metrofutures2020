@@ -109,7 +109,7 @@ export default [
   },
       {
         id: 6,
-        question: "Select your preferred back wall design:",
+        question: "Select your preferred end wall design:",
         options: [
           {
             desc: "Plain",
@@ -120,12 +120,16 @@ export default [
             img: "img src 2"
           },
           {
-            desc: "Landmark",
+            desc: "North East Landmarks",
             img: "img src 2"
           },
           {
-            desc: "People",
+            desc: "North East People",
             img: "img src 2"
+          },
+          {
+            desc: "Something else",
+            img: "Square_Configurator_swatches-16.svg"
           }
         ]
       }
