@@ -113,23 +113,23 @@ export default [
         options: [
           {
             desc: "Plain",
-            img: "img src 1"
+            img: "Square_Configurator_swatches-19.svg"
           },
           {
             desc: "Artwork",
-            img: "img src 2"
+            img: "Square_Configurator_swatches-20.svg"
           },
           {
             desc: "North East Landmarks",
-            img: "img src 2"
+            img: "Square_Configurator_swatches-21.svg"
           },
           {
             desc: "North East People",
-            img: "img src 2"
+            img: "Square_Configurator_swatches-22.svg"
           },
           {
             desc: "Something else",
-            img: "Square_Configurator_swatches-16.svg"
+            img: "Square_Configurator_swatches-19.svg"
           }
         ]
       }

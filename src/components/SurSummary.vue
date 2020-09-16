@@ -91,7 +91,7 @@
                             alt="image slot"
                     >
                 </template>
-            </b-carousel-slide>    
+            </b-carousel-slide>
         </b-carousel>
     </b-col>
 </b-row>
