@@ -15,6 +15,9 @@ export default {
     getConfigAnswers(state) {
         return state.configAnswers;
     },
+    getConfigAnswerFirst(state) {
+        return state.configAnswers[0]
+    },
     getDemographic(state) {
         return state.demographic;
     }

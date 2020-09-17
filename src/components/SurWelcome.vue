@@ -2,21 +2,17 @@
 
     <b-container fluid class="text-left fullScreenContainer">
 
-                <b-img fluid v-if="!showLAQuestion" src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
+        <b-img fluid v-if="imageFull" src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
 
-
-        <b-row v-if="showLAQuestion">
-
+        <b-row v-if="!imageFull">
             <b-col class="largeImgColumn col-lg-9 col-12">
-            <!--                Local authority question image-->
-            <b-img fluid src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
+                <!--                Local authority question image-->
+                <b-img fluid src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
             </b-col>
 
             <!--            LA q-->
             <b-col class="col-lg-3 col-12">
-
-
-                <b-row id="localAuthority">
+                <b-row id="localAuthority" v-if="checkLAQuestion()">
                     <p class="calvert">Before you begin, please tell us:</p>
                     <p class="calvert"><span class="bold">Where do you live? (Which local authority?)</span></p>
                     <br>
@@ -38,16 +34,20 @@
                     <b-form-select @change="changeAge" v-model="age" :options="ages">Please select an
                         option
                     </b-form-select>
-                    <b-button id="LAButton" block variant="outline-secondary" @click="submitLA">Continue</b-button>
+                    <span v-if="displayError"><strong>Please answer the two questions to continue.</strong> This information is important for the consultation and your answers are given anonymously.</span>
+                    <b-button id="LAButton" block variant="outline-secondary" @click="submitLA">Get Started</b-button>
                 </b-row>
-                <b-row v-if="displayError">
+                <b-row class="continue-row" v-if="!checkLAQuestion()">
                     <b-col>
-                        <p>Please answer the two questions to continue. This information is important for the consultation and your answers are given anonymously.</p>
+                        <div class="calvert text-center">External Train Livery</div>
+                        <div class="text-center">Configure your choices for seven internal features</div>
+                        <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="!this.getConfigAnswerFirst < 0">Get Started</b-button>
+                        <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="this.getConfigAnswerFirst >= 0">Continue</b-button>
                     </b-col>
                 </b-row>
             </b-col>
 
-            </b-row>
+        </b-row>
 
 
 
@@ -81,8 +81,8 @@
         </b-modal>-->
 
         <b-row v-if="welcomeScreen">
-        <welcomeConsent title="Add the Finishing Touches!" page="choices" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
-      </b-row>
+            <welcomeConsent title="Add the Finishing Touches!" page="choices" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+        </b-row>
 
     </b-container>
 
@@ -103,7 +103,8 @@
                 welcomeScreen: true,
                 tick: false,
                 imageURL:'',
-                showLAQuestion: false,
+                imageFull: true,
+                LAQuestion: false,
                 localAuthority: '',
                 authorities: [
                     {value: 'CountyDurham', text: 'Country Durham'},
@@ -126,17 +127,17 @@
             this.fetchFrontImage();
         },
         computed: {
-            ...mapGetters([
-                'privacyNotice', "getInfoCompleted"])
+            ...mapGetters(['privacyNotice', "getInfoCompleted", "getDemographic", "getConfigAnswerFirst"])
         },
         methods: {
+            ...mapMutations(['acknowledgePrivacy', "completeInfo", "completeDemographic"]),
             confirmPrivacy () {
                 this.acknowledgePrivacy();
                 this.$bvModal.hide('privacyNoticeModal');
-                this.showLAQuestion = true;
+                // this.showLAQuestion = true;
             },
             triggerLAQuestion() {
-                this.showLAQuestion = true
+                this.imageFull = false;
             },
             submitLA() {
                 if (!this.localAuthority || !this.age) {
@@ -144,7 +145,7 @@
                     this.displayError = true;
                 } else {
                     this.completeInfo();
-
+                    this.completeDemographic();
                     //if answered 'other' and user has entered free text send that instead
                     if (this.localAuthority === 'Other' && this.LAOtherText) {
                         if (this.LAOtherText.length > 0) {
@@ -171,6 +172,10 @@
                     this.$emit('finishedWelcome');
 
                 }
+            },
+            continueClick() {
+                // If we have answered the demographic questions, we just continue
+                this.$emit('finishedWelcome');
             },
             changeLA() {
                 // if other is selected display free text box
@@ -212,23 +217,38 @@
 
 
             },
-            ...mapMutations([
-                'acknowledgePrivacy', "completeInfo"])
+            checkLAQuestion() {
+                if (this.getDemographic === true) {
+                    // We have done the demographic question
+                    return false
+                } else {
+                    return true
+                }
+            },
         }
     }
 </script>
 
 <style scoped>
-.calvert {
-    font-family: Calvert, serif;
-}
+    .calvert {
+        font-family: Calvert, serif;
+    }
 
     #localAuthority {
         padding: 2em;
     }
 
+    .continue-row {
+        padding: 2em;
+    }
+
     #LAButton {
-       margin-top: 2em;
+       margin-top: 0.5em;
+       margin-bottom: 2em;
+    }
+
+    .continueButton {
+       margin-top: 0.5em;
        margin-bottom: 2em;
     }
 
