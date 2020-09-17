@@ -17,16 +17,12 @@
       >
         <b-col >
           <div class="mainCard">
-            {{ person.name }}
+            <router-link :to="`/journeys/${person.name}`">
+              {{ person.name }}
+            </router-link>
             <img :src="cdnUrl + person.img" alt="">
           </div>
           <div class="moreInfo">{{ person.desc }}</div>
-        </b-col>
-      </b-row>
-
-      <b-row>
-        <b-col>
-          <PersonaViewer pIndex="0"></PersonaViewer>
         </b-col>
       </b-row>
 
@@ -38,7 +34,6 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import PersonaViewer from '@/components/PersonaViewer.vue'
 import MainHeader from '@/components/MainHeader.vue'
 import welcomeConsent from "../components/WelcomeConsent";
 
@@ -54,7 +49,6 @@ export default {
   components: {
     welcomeConsent,
     MainHeader,
-    PersonaViewer,
   },
   computed: {
     ...mapGetters([

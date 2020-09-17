@@ -40,6 +40,14 @@ Vue.use(Meta)
     }
   },
   {
+    path: '/journeys/:persona',
+    name: 'Journey',
+    component: () => import(/* webpackChunkName: "persona" */ '../components/PersonaViewer.vue'),
+    meta: {
+      title: 'Metro Futures - Experience Your Journeys'
+    }
+  },
+  {
     path: '/explore',
     name: 'Metro Futures - Explore Your Metro',
     component: () => import(/* webpackChunkName: "explore" */ '../views/Pano.vue')
