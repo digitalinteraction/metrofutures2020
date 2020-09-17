@@ -18,7 +18,7 @@ Vue.use(VueRouter)
     name: 'About',
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
     meta: {
-      title: 'Metro Futures'
+      title: 'About Metro Futures'
     },
   },
   {
@@ -45,7 +45,10 @@ Vue.use(VueRouter)
   {
     path: '/configure',
     name: 'Survey',
-    component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue')
+    component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue'),
+    meta: {
+      title: 'Metro Futures - Configure Your Choices'
+    }
   },
   // {
   //   path: '/journeys',
@@ -54,7 +57,7 @@ Vue.use(VueRouter)
   // },
   {
     path: '/explore',
-    name: 'Metro Futures - Your Metro',
+    name: 'Metro Futures - Explore Your Metro',
     component: () => import(/* webpackChunkName: "walthrough" */ '../views/Pano.vue')
   },
   // Catch all route at the end just dumps you back at the start

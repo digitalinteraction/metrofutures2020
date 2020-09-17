@@ -24,6 +24,14 @@ export default {
   meta: {
       title: 'Metro Futures'
   },
+  watch: {
+      $route: {
+          immediate: true,
+          handler(to) {
+              document.title = to.meta.title || 'Metro Futures';
+          }
+      },
+  }
   
 }
 
