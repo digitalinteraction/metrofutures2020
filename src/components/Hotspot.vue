@@ -193,8 +193,8 @@ export default {
 <style lang="scss">
   @import '@/assets/_variables.scss';
 
-  .hotspot_container {
-  }
+  // .hotspot_container {
+  // }
 
   .hidden {
     background: none;
@@ -279,8 +279,8 @@ export default {
     color: $font-color;
   }
 
-  .hotspot_button {
-  }
+  // .hotspot_button {
+  // }
 
   .thanks-check {
     color: $metro-green;

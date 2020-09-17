@@ -24,6 +24,9 @@ export default {
   meta: {
       title: 'Metro Futures'
   },
+  metaInfo: {
+    title: "Metro Futures"
+  },
   watch: {
       $route: {
           immediate: true,
