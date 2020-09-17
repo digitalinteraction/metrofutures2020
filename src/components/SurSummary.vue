@@ -169,7 +169,7 @@
                   <ShareNetwork
                           network="twitter"
                           url="https://metrofutures.org.uk"
-                          title="Check out my customised Metro. You can make your own at: metrofutures.org.uk"
+                          title="Check out my customised Metro. You can make your own at:"
                           twitter-user="My_Metro"
                   > Twitter
                       <b-img src="../assets/twitter.png" height="30px;"></b-img>
