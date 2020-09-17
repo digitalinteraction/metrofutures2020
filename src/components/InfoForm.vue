@@ -255,6 +255,7 @@ export default {
         this.displayError = true;
       } else {
       this.completeInfo();
+      this.completeDemographic();
       this.$bvModal.hide("privacyNoticeModal");
       // if gender other text is filled in then send this instead
       if (this.genderOtherText) {
@@ -291,7 +292,7 @@ export default {
     close() {
       this.$bvModal.hide("privacyNoticeModal");
     },
-    ...mapMutations(["acknowledgePrivacy", "completeInfo"])
+    ...mapMutations(["acknowledgePrivacy", "completeInfo", "completeDemographic"])
   }
   
 };

@@ -15,6 +15,6 @@ export default {
         4: undefined,
         5: undefined,
         6: undefined
-    }
-
+    },
+    demographic: false,
 }
