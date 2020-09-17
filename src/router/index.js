@@ -24,30 +24,9 @@ Vue.use(Meta)
     },
   },
   {
-    path: '/privacy',
-    name: 'Privacy',
-    component: () => import(/* webpackChunkName: "privacy" */ '../views/Privacy.vue'),
-    meta: {
-      title: 'Metro Futures Privacy Policy'
-    }
-  },
-  {
-    path: '/terms',
-    name: 'Terms',
-    component: () => import(/* webpackChunkName: "terms" */ '../views/Terms.vue'),
-    meta: {
-      title: 'Metro Futures Terms and Conditions'
-    }
-  },
-  {
-    path: '/signup',
-    name: 'Signup',
-    component: () => import(/* webpackChunkName: "Signup" */ '../views/Signup.vue')
-  },
-  {
     path: '/configure',
     name: 'Survey',
-    component: () => import(/* webpackChunkName: "survey" */ '../views/Survey.vue'),
+    component: () => import(/* webpackChunkName: "configure" */ '../views/Survey.vue'),
     meta: {
       title: 'Metro Futures - Configure Your Choices'
     }
@@ -63,7 +42,7 @@ Vue.use(Meta)
   {
     path: '/explore',
     name: 'Metro Futures - Explore Your Metro',
-    component: () => import(/* webpackChunkName: "walthrough" */ '../views/Pano.vue')
+    component: () => import(/* webpackChunkName: "explore" */ '../views/Pano.vue')
   },
   // Catch all route at the end just dumps you back at the start
   {
