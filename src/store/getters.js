@@ -23,5 +23,9 @@ export default {
     },
     getWelcome(state) {
         return state.welcomeModal;
+    },
+    getPersonas(state) {
+        return state.personas;
     }
+    
 }

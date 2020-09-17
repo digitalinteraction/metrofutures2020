@@ -4,21 +4,30 @@
       <b-row v-if="welcomeScreen">
         <welcomeConsent title="Your Journeys" page="journeys" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
-      <b-row><b-col><MainHeader title="Your Journeys"></MainHeader></b-col></b-row>
       <b-row>
-        <b-col><h3 class="centered">Coming Soon</h3></b-col>
-      </b-row>
-      <b-row v-show="enabled"><b-col>
-          <p>Below you will find our interactive documentary where you can explore how design choices in the new Metro carriages will impact on different users.</p>  
-      </b-col></b-row>
-      <b-row v-show="enabled">
-        <b-col cols="1"></b-col>
         <b-col>
-          <div id="idoc">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/7wnRi3Sclm8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
+          <MainHeader title="Explore Your Journeys"></MainHeader>
         </b-col>
-        <b-col cols="1"></b-col>
+      </b-row>
+
+      <b-row 
+        v-for="(person, pIndex) in this.getPersonas" 
+        :key="pIndex"
+        class="personaContainer"
+      >
+        <b-col >
+          <div class="mainCard">
+            {{ person.name }}
+            <img :src="cdnUrl + person.img" alt="">
+          </div>
+          <div class="moreInfo">{{ person.desc }}</div>
+        </b-col>
+      </b-row>
+
+      <b-row>
+        <b-col>
+          <PersonaViewer pIndex="0"></PersonaViewer>
+        </b-col>
       </b-row>
 
     </b-container>
@@ -28,27 +37,48 @@
 </template>
 
 <script>
-// @ is an alias to /src
+import {mapGetters} from 'vuex'
+import PersonaViewer from '@/components/PersonaViewer.vue'
 import MainHeader from '@/components/MainHeader.vue'
 import welcomeConsent from "../components/WelcomeConsent";
+
 export default {
   name: 'Personas',
   data() {
     return {
       welcomeScreen: true,
-      enabled: false
+      enabled: false,
+      cdnUrl: "https://cdn.metrofutures.org.uk/personas/images/"
     }
   },
   components: {
     welcomeConsent,
-    MainHeader
-  }
+    MainHeader,
+    PersonaViewer,
+  },
+  computed: {
+    ...mapGetters([
+      'getPersonas'
+    ])
+  },
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
+  @import '@/assets/_variables.scss';
+
   .centered {
     text-align: center;
     font-style: italic;
+  }
+
+  .personaContainer {
+    text-align: left;
+    height: 10vh;
+    border: 1px solid black;
+  }
+
+  .personaContainer img {
+    height: 10vh;
   }
 </style>

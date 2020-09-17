@@ -1,9 +1,11 @@
 import questions from "@/data/survey.js"
 import pano_data from "@/data/pano_data.js"
+import personas from "@/data/personas.js"
 
 export default {
     questions,
     pano_data: pano_data[0],
+    personas,
     index: 0,
     privacyNotice: false,
     infoFormDone: false,
