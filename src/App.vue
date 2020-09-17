@@ -21,11 +21,13 @@ export default {
   components: {
     // Header
   },
-  meta: {
-      title: 'Metro Futures'
-  },
   metaInfo: {
-    title: "Metro Futures"
+    meta: [
+      { title: "Metro Futures"},
+      { charset: 'utf-8' },
+      { name: 'description', content: 'Consultation on the new Tyne and Wear Metro train design.' },
+      { name: 'og:title', content: 'Metro Futures' }
+    ]
   },
   watch: {
       $route: {
