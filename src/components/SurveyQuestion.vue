@@ -604,7 +604,10 @@
                 width: 50px;
                 height: auto;
             }
+        }
 
+        .continueBtn {
+            margin-bottom: 1.5rem;
         }
     }
 
