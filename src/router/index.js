@@ -52,11 +52,14 @@ Vue.use(Meta)
       title: 'Metro Futures - Configure Your Choices'
     }
   },
-  // {
-  //   path: '/journeys',
-  //   name: 'Personas',
-  //   component: () => import(/* webpackChunkName: "idoc" */ '../views/Personas.vue')
-  // },
+  {
+    path: '/journeys',
+    name: 'Personas',
+    component: () => import(/* webpackChunkName: "personas" */ '../views/Personas.vue'),
+    meta: {
+      title: 'Metro Futures - Experience Your Journeys'
+    }
+  },
   {
     path: '/explore',
     name: 'Metro Futures - Explore Your Metro',
