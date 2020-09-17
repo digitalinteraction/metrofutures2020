@@ -224,6 +224,7 @@ export default {
     ...mapGetters(["privacyNotice", "getInfoCompleted"])
   },
   methods: {
+    ...mapMutations(["acknowledgePrivacy", "completeInfo", "completeDemographic"]),
     changeGender() {
       if (this.gender === "Other/Prefer to self-describe") {
         this.otherGender = true;
@@ -255,6 +256,7 @@ export default {
         this.displayError = true;
       } else {
       this.completeInfo();
+      this.completeDemographic();
       this.$bvModal.hide("privacyNoticeModal");
       // if gender other text is filled in then send this instead
       if (this.genderOtherText) {
@@ -291,7 +293,7 @@ export default {
     close() {
       this.$bvModal.hide("privacyNoticeModal");
     },
-    ...mapMutations(["acknowledgePrivacy", "completeInfo"])
+    
   }
   
 };

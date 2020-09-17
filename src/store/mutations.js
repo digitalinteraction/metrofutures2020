@@ -24,5 +24,11 @@ export default {
   addConfigAnswer(state, answer) {
     // console.log('save answer ' + answer.qid + answer.option )
     state.configAnswers[answer.qid] = answer.resp;
-  }
+  },
+  completeDemographic(state) {
+    state.demographic = true;
+  },
+  disableWelcomeModal(state) {
+    state.welcomeModal = false;
+  },
 }

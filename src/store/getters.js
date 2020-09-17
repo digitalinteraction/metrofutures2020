@@ -3,12 +3,25 @@ export default {
         return state.privacyNotice
     },
     getInfoCompleted(state) {
-        return state.infoFormDone
+        if (state.infoFormDone || state.demographic) {
+            return true
+        } else { 
+            return false
+        }
     },
     getIndex(state) {
         return state.index
     },
     getConfigAnswers(state) {
         return state.configAnswers;
+    },
+    getConfigAnswerFirst(state) {
+        return state.configAnswers[0]
+    },
+    getDemographic(state) {
+        return state.demographic;
+    },
+    getWelcome(state) {
+        return state.welcomeModal;
     }
 }

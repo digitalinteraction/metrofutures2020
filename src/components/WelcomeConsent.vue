@@ -121,18 +121,22 @@ export default {
       this.$bvModal.hide("privacyNoticeModal");
       if (this.page === "choices") {
         this.$parent.triggerLAQuestion();
+      } else if (this.page === "menu") {
+        this.disableWelcomeModal();
       }
     },
     close() {
       this.$bvModal.hide("privacyNoticeModal");
       if (this.page === "choices") {
         this.$parent.triggerLAQuestion();
+      } else if (this.page === "menu") {
+        this.disableWelcomeModal();
       }
     },
     exitBack() {
       this.$bvModal.hide("privacyNoticeModal");
     },
-    ...mapMutations(["acknowledgePrivacy", "completeInfo"])
+    ...mapMutations(["acknowledgePrivacy", "completeInfo", "disableWelcomeModal"])
   }
 };
 </script>
