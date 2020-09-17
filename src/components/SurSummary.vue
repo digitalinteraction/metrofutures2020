@@ -96,7 +96,7 @@
     </b-col>
 </b-row>
 
-        <b-modal hide-footer="true" id="questionModal" title="">
+        <b-modal hide-footer id="questionModal" title="">
             <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys.</p>
 
             <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
@@ -290,10 +290,6 @@ export default {
               },
               params: payload
           })
-              .then(response => {
-                  console.log(response);
-
-              })
               .catch(error => error.response ? console.log(error.response.data) : console.log(error))
           this.showQuestions = false;
       },
@@ -305,7 +301,6 @@ export default {
           }
       },
       async createPDF() {
-          console.log('create pdf');
           //let pdfName = 'Metro Futures';
           var doc = new jsPDF();
           doc.text("Metro Futures", 10, 10);
@@ -315,33 +310,23 @@ export default {
           let positionx = 20;
           let positiony = 20;
 
-
-          console.log(this.images.length);
-
           this.getDataUri(this.images[0]).then((image1) => {
               doc.addImage(image1, 'PNG', positionx, positiony, 178, 100);
-              console.log('add 1');
               this.getDataUri(this.images[1]).then((image2) => {
                   doc.addImage(image2, 'PNG', positionx, positiony + 120, 178, 100);
-                  console.log('add 2');
                   doc.addPage(); //page break
                   this.getDataUri(this.images[2]).then((image3) => {
                       doc.addImage(image3, 'PNG', positionx, positiony, 178, 100);
-                      console.log('add 3');
                       this.getDataUri(this.images[3]).then((image4) => {
                           doc.addImage(image4, 'PNG', positionx, positiony + 120, 178, 100);
                           doc.addPage(); //page break
-                          console.log('add 3');
                           this.getDataUri(this.images[4]).then((image5) => {
                               doc.addImage(image5, 'PNG', positionx, positiony, 178, 100);
-                              console.log('add 3');
                           this.getDataUri(this.images[5]).then((image6) => {
                               doc.addImage(image6, 'PNG', positionx, positiony + 120, 178, 100);
                               doc.addPage(); //page break
-                              console.log('add 3');
                               this.getDataUri(this.images[6]).then((image7) => {
                               doc.addImage(image7, 'PNG', positionx, positiony, 178, 100);
-                                  console.log('add 3');
                           doc.output('dataurlnewwindow');
                         });
                   });
@@ -399,7 +384,6 @@ export default {
     for (const cam of cameraAngles) {
 
         if (cam !== 6) {
-            console.log('url 1 for cam ' + cam);
             let payload = {
                 cam: cam,
                 o1,
@@ -437,7 +421,7 @@ export default {
             })
                 .then(response2 => {
                     this.images.push(response2.data.url);
-                    console.log('url 2 for cam ' + cam + ' ' + response2.data.url);
+                    // console.log('url 2 for cam ' + cam + ' ' + response2.data.url);
                 })
         }
 

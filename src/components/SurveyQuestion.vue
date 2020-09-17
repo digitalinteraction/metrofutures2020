@@ -292,11 +292,16 @@
 
             async generateOptionURLs() {
                 // Fetch all day and night URLs for our current index
-                // Get a clean "basic" set of answers to generate
-                let payload = this.sanitiseConfigAnswers()
-                payload.qindex = this.index+1
-                // Get day and night option image Urls and store in respective arrays
-                this.allUrlsAPICall(payload)
+                // we shouldn't do this for q7 because that uses a different method
+                if (this.index+1 < 7) {
+                    let payload = this.sanitiseConfigAnswers()
+                    payload.qindex = this.index+1
+                    // Get day and night option image Urls and store in respective arrays
+                    this.allUrlsAPICall(payload)
+                } else {
+                    console.log("Ignoring call for q7")
+                }
+                
                    
             },
             async generateOptionURLsFinalQ() {
@@ -438,7 +443,6 @@
         mounted() {
             if (this.index === 5) {
                 // do alternate API call for final question
-                console.log('final q');
                 this.generateOptionURLsFinalQ();
             } else {
                 this.generateOptionURLs()

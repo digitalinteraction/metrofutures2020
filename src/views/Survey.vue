@@ -172,7 +172,7 @@
             },
             nextScreen(qindex) {
                 if (qindex >= this.screens.length - 1) {
-                    console.log("Can't increment as:", qindex, this.screens.length - 1)
+                    console.log("Endwall")
                 } else {
                     this.toggleScreen(qindex)
                     this.toggleScreen(qindex + 1)
