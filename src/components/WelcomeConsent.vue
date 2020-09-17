@@ -13,7 +13,7 @@
       <template v-slot:modal-title>
         <h2>{{title}}</h2>
       </template>
-      <div id="explore" v-if="page === 'explore'">
+      <div id="explore" v-if="page === 'explore'" class="text-left">
         <!-- <h2>Explore your new Metro!</h2>-->
         <router-link to="/" id="info-back-button" v-if="getInfoCompleted === false" @click="exitBack">
           <b-icon-chevron-left></b-icon-chevron-left>

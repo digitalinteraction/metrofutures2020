@@ -41,7 +41,7 @@
                     <b-col>
                         <div class="calvert text-center">External Train Livery</div>
                         <div class="text-center">Configure your choices for seven internal features</div>
-                        <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="!this.getConfigAnswerFirst < 0">Get Started</b-button>
+                        <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="typeof(this.getConfigAnswerFirst) === 'undefined'">Get Started</b-button>
                         <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="this.getConfigAnswerFirst >= 0">Continue</b-button>
                     </b-col>
                 </b-row>

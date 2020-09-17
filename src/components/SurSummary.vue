@@ -97,7 +97,7 @@
 </b-row>
 
         <b-modal hide-footer id="questionModal" title="">
-            <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys.</p>
+            <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys (optional).</p>
 
             <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
             <b-form-select  v-model="purpose" :options="purposes">Please select an
