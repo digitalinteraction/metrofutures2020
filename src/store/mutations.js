@@ -27,5 +27,8 @@ export default {
   },
   completeDemographic(state) {
     state.demographic = true;
-  }
+  },
+  disableWelcomeModal(state) {
+    state.welcomeModal = false;
+  },
 }

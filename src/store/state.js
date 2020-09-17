@@ -17,4 +17,5 @@ export default {
         6: undefined
     },
     demographic: false,
+    welcomeModal: true,
 }

@@ -1,8 +1,8 @@
 <template>
   <div class="menu">
     <b-container>
-      <b-row v-if="welcomeScreen">
-        <welcomeConsent title="Welcome" page="menu" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+      <b-row v-if="getWelcome">
+        <welcomeConsent title="Welcome" page="menu" @finishedWelcome="disableWelcomeModal()"></welcomeConsent>
       </b-row>
       <b-row>
         <b-col></b-col>
@@ -140,6 +140,7 @@
 
 <script>
 // @ is an alias to /src
+import { mapGetters, mapMutations } from "vuex";
 import Footer from "@/components/Footer";
 import router from "../router";
 import welcomeConsent from "../components/WelcomeConsent";
@@ -152,11 +153,6 @@ export default {
     Footer,
     MainMenu
   },
-  methods: {
-    goTo(route) {
-      router.push(route);
-    }
-  },
   data() {
     return {
       welcomeScreen: true,
@@ -164,6 +160,15 @@ export default {
       hoverYourChoice: false,
       hoverYourJourney: false
     };
+  },
+  computed: {
+    ...mapGetters(["getWelcome"])
+  },
+  methods: {
+    ...mapMutations(["disableWelcomeModal"]),
+    goTo(route) {
+      router.push(route);
+    },
   },
   async mounted() {
     this.axios

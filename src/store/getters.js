@@ -20,5 +20,8 @@ export default {
     },
     getDemographic(state) {
         return state.demographic;
+    },
+    getWelcome(state) {
+        return state.welcomeModal;
     }
 }
