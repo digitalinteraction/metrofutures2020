@@ -113,7 +113,7 @@
                 LAQuestion: false,
                 localAuthority: '',
                 authorities: [
-                    {value: 'CountyDurham', text: 'Country Durham'},
+                    {value: 'CountyDurham', text: 'County Durham'},
                     {value: 'Gateshead', text: 'Gateshead'},
                     {value: 'Newcastle', text: 'Newcastle'},
                     {value: 'NorthTyneside', text: 'North Tyneside'},
