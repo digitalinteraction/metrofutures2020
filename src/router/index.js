@@ -36,6 +36,14 @@ Vue.use(Meta)
     name: 'Metro Futures - Explore Your Metro',
     component: () => import(/* webpackChunkName: "explore" */ '../views/Pano.vue')
   },
+  {
+    path: '/workshops',
+    name: 'Workshops',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Workshops.vue'),
+    meta: {
+      title: 'Metro Futures - Workshops'
+    },
+  },
   // Catch all route at the end just dumps you back at the start
   {
     path: '*',
