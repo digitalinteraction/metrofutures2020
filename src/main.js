@@ -8,8 +8,7 @@ import VueAxios from 'vue-axios'
 import VueCookies from 'vue-cookies'
 import VueSocialSharing from 'vue-social-sharing'
 import UUID from "vue-uuid";
- 
-
+import browserDetect from "vue-browser-detect-plugin";
 
 
 // Bootstrap CSS
@@ -27,6 +26,7 @@ Vue.use(VueAxios, axios)
 Vue.use(VueCookies)
 Vue.use(VueSocialSharing);
 Vue.use(UUID);
+Vue.use(browserDetect);
 
 new Vue({
   router,
