@@ -2,13 +2,27 @@
   <div>
     <MainHeader :title="personaName"></MainHeader>
     <div class="personaContent">
-      Main content will go here
+      <b-container>
+        <b-row>
+          <b-col class="border">Breadcrumbs, other pieces</b-col>
+        </b-row>
+        <b-row>
+          <b-col class="border">
+            Main Image here
+          </b-col>
+          <b-col class="border">Questions will appear over here</b-col>
+        </b-row>
+        <b-row>
+          <Footer></Footer>
+        </b-row>
+      </b-container>
     </div>
   </div>
 </template>
 
 <script>
 import MainHeader from '@/components/MainHeader.vue';
+import Footer from '@/components/Footer.vue';
 export default {
   name: "PersonaViewer",
   props: {
@@ -16,6 +30,7 @@ export default {
   },
   components: {
     MainHeader,
+    Footer,
   },
   data() {
     return {
@@ -40,6 +55,11 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import '@/assets/_variables.scss';
+
+  .border {
+    border: 1px solid black;
+  }
 
 </style>
