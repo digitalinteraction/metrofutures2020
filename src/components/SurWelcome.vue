@@ -16,8 +16,11 @@
                     <p class="calvert">Before you begin, please tell us:</p>
                     <p class="calvert"><span class="bold">Where do you live? (Which local authority?)</span></p>
                     <br>
-                    <b-form-select @change="changeLA" v-model="localAuthority" :options="authorities">Please select an
-                        option
+                    <b-form-select @change="changeLA" v-model="localAuthority" :options="authorities">
+                        <template v-slot:first>
+                            <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                        </template>
+                        Please select an option
                     </b-form-select>
                     <div v-if="otherLA" id="LATextDiv">
                         <textarea
@@ -31,8 +34,11 @@
                     <br>
                     <br>
                     <p class="calvert question"><span class="bold">How old are you?</span></p>
-                    <b-form-select @change="changeAge" v-model="age" :options="ages">Please select an
-                        option
+                    <b-form-select @change="changeAge" v-model="age" :options="ages">
+                        <template v-slot:first>
+                            <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                        </template>
+                        Please select an option
                     </b-form-select>
                     <span v-if="displayError"><strong>Please answer the two questions to continue.</strong> This information is important for the consultation and your answers are given anonymously.</span>
                     <b-button id="LAButton" block variant="outline-secondary" @click="submitLA">Get Started</b-button>

@@ -100,19 +100,28 @@
             <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys (optional).</p>
 
             <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
-            <b-form-select  v-model="purpose" :options="purposes">Please select an
-                option
+            <b-form-select  v-model="purpose" :options="purposes">
+                <template v-slot:first>
+                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                </template>
+                Please select an option
             </b-form-select>
 
             <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
 
-            <b-form-select  v-model="frequency" :options="frequencies">Please select an
-                option
+            <b-form-select  v-model="frequency" :options="frequencies">
+                <template v-slot:first>
+                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                </template>
+                Please select an option
             </b-form-select>
 
             <p class="calvert question"><span class="bold">Gender?</span></p>
-            <b-form-select @change="changeGender" v-model="gender" :options="genders">Please select an
-                option
+            <b-form-select @change="changeGender" v-model="gender" :options="genders">
+                <template v-slot:first>
+                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                </template>
+                Please select an option
             </b-form-select>
 
             <div v-if="otherGender" id="genderTextDiv">
@@ -125,8 +134,11 @@
             </div>
 
             <p class="calvert question"><span class="bold">Ethnicity?</span></p>
-            <b-form-select  v-model="ethnicity" :options="ethnicities">Please select an
-                option
+            <b-form-select  v-model="ethnicity" :options="ethnicities">
+                <template v-slot:first>
+                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                </template>
+                Please select an option
             </b-form-select>
 
             <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
