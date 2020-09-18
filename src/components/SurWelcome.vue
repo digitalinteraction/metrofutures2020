@@ -119,6 +119,7 @@
                     {value: 'NorthTyneside', text: 'North Tyneside'},
                     {value: 'Northumberland', text: 'Northumberland'},
                     {value: 'SouthTyneside', text: 'South Tyneside'},
+                    {value: 'Sunderland', text: 'Sunderland'},
                     {value: 'OtherNorthEast', text: 'Other North East'},
                     {value: 'Other', text: 'Other'}
                 ],
