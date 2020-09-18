@@ -8,6 +8,9 @@
         </p>
         <br />
         <b-form-select required @change="changeLA" v-model="localAuthority" :options="authorities">
+          <template v-slot:first>
+            <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+          </template>
           Please select an
           option
         </b-form-select>
@@ -26,14 +29,20 @@
           <span class="bold">How old are you?*</span>
         </p>
         <b-form-select @change="changeAge" v-model="age" :options="ages">
+          <template v-slot:first>
+            <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+          </template>
           Please select an
           option
         </b-form-select>
 
-        <p class="calvert question">
+        <p class="calvert question text-left">
           <span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span>
         </p>
         <b-form-select v-model="purpose" :options="purposes">
+          <template v-slot:first>
+            <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+          </template>
           Please select an
           option
         </b-form-select>
@@ -91,13 +100,10 @@
           </b-form-select>
         </div>
 
-          <b-button v-if="privacyNotice===true" block @click="submitInfo">Continue</b-button>
+        <p v-if="displayError">Please answer the first two questions marked * to continue. This information is important for the consultation and your answers are given anonymously.</p>
 
-      </b-row>
-      <b-row v-if="displayError">
-        <b-col>
-          <p>Please answer the first two questions marked * to continue. This information is important for the consultation and your answers are given anonymously.</p>
-        </b-col>
+        <b-button v-if="privacyNotice===true" block @click="submitInfo">Continue</b-button>
+
       </b-row>
     </b-col>
 

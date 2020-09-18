@@ -1,13 +1,7 @@
 <template>
   <div id="app">
-<!--    <div id="nav">-->
-<!--      <Header msg="Welcome"/>-->
-<!--      <router-link to="/">Home</router-link> |-->
-<!--      <router-link to="/about">About</router-link> |-->
-<!--      <router-link to="/survey">Survey</router-link> |-->
-<!--      <router-link to="/idoc">Documentary</router-link> |-->
-<!--      <router-link to="/walkthrough">Walkthroughs</router-link>-->
-<!--    </div>-->
+    
+    <b-alert variant="warning" v-if="incompatible()" show>We've detected you are using an old version of your web browser. You may not get the best experience, and some features may not work correctly. Please update your browser, or use a recent version of Google Chrome or Mozilla Firefox. {{ this.$browserDetect.name }}</b-alert>
     <router-view/>
   </div>
 </template>
@@ -36,7 +30,32 @@ export default {
               document.title = to.meta.title || 'Metro Futures';
           }
       },
-  }
+  },
+  methods: {
+    incompatible() {
+      if(this.$browserDetect.isSafari && this.$browserDetect.meta.version < 11) {
+        return true
+      } 
+      if (this.$browserDetect.isIE) {
+        return true
+      }
+
+      if(this.$browserDetect.isFirefox && this.$browserDetect.meta.version < 77) {
+        return true
+      } 
+
+      if(this.$browserDetect.isChrome && this.$browserDetect.meta.version < 83) {
+        return true
+      } 
+      
+      // Otherwise
+      return false
+      
+    },
+  },
+  mounted() {
+    console.log(this.$browserDetect)
+  },
   
 }
 

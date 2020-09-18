@@ -100,19 +100,28 @@
             <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys (optional).</p>
 
             <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
-            <b-form-select  v-model="purpose" :options="purposes">Please select an
-                option
+            <b-form-select  v-model="purpose" :options="purposes">
+                <template v-slot:first>
+                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                </template>
+                Please select an option
             </b-form-select>
 
             <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
 
-            <b-form-select  v-model="frequency" :options="frequencies">Please select an
-                option
+            <b-form-select  v-model="frequency" :options="frequencies">
+                <template v-slot:first>
+                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                </template>
+                Please select an option
             </b-form-select>
 
             <p class="calvert question"><span class="bold">Gender?</span></p>
-            <b-form-select @change="changeGender" v-model="gender" :options="genders">Please select an
-                option
+            <b-form-select @change="changeGender" v-model="gender" :options="genders">
+                <template v-slot:first>
+                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                </template>
+                Please select an option
             </b-form-select>
 
             <div v-if="otherGender" id="genderTextDiv">
@@ -125,8 +134,11 @@
             </div>
 
             <p class="calvert question"><span class="bold">Ethnicity?</span></p>
-            <b-form-select  v-model="ethnicity" :options="ethnicities">Please select an
-                option
+            <b-form-select  v-model="ethnicity" :options="ethnicities">
+                <template v-slot:first>
+                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+                </template>
+                Please select an option
             </b-form-select>
 
             <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
@@ -154,27 +166,29 @@
         <b-col class="option"> <router-link to="/"><p class="text-center">RETURN TO HOME</p></router-link></b-col>
       <b-col  class="option" id="shareCol">
           <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
-              <b-dropdown-item>   <ShareNetwork
-                      network="facebook"
-                      url="https://metrofutures.org.uk"
-                      title="I just customised my perfect Metro."
-                      description="Have a play around and make your own at: metrofutures.org.uk"
-              > Facebook
+              <b-dropdown-item>   
+                    <ShareNetwork
+                        network="facebook"
+                        url="https://metrofutures.org.uk"
+                        title="I just customised my perfect Metro."
+                        description="Have a play around and make your own at: metrofutures.org.uk"
+                        hashtags="ShapeYourMetro"
+                    > Facebook
                   <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
-              </ShareNetwork>
+                    </ShareNetwork>
               </b-dropdown-item>
 
 
               <b-dropdown-item>
-                  <ShareNetwork
-                          network="twitter"
-                          url="https://metrofutures.org.uk"
-                          title="Check out my customised Metro. You can make your own at:"
-                          twitter-user="My_Metro"
-                  > Twitter
-                      <b-img src="../assets/twitter.png" height="30px;"></b-img>
-
-                  </ShareNetwork>
+                    <ShareNetwork
+                        network="twitter"
+                        url="https://metrofutures.org.uk"
+                        title="Check out my customised Metro. You can make your own at:"
+                        twitter-user="My_Metro"
+                        hashtags="ShapeYourMetro"
+                    > Twitter
+                        <b-img src="../assets/twitter.png" height="30px;"></b-img>
+                    </ShareNetwork>
               </b-dropdown-item>
 
           </b-dropdown>

@@ -26,6 +26,9 @@ export default {
     },
     getPersonas(state) {
         return state.personas;
+    },
+    getUuid(state) {
+        return state.uuid;
     }
     
 }

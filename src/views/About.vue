@@ -121,6 +121,7 @@
 </template>
 
 <script>
+    import {mapGetters} from 'vuex'
     import Footer from "@/components/Footer";
     import MainHeader from '@/components/MainHeader.vue'
     //import router from "../router";
@@ -131,20 +132,23 @@
             Footer,
             MainHeader
         },
+        computed: {
+            ...mapGetters([
+                'getUuid'
+            ]),
+        },
         methods: {
+            
             goBackAPage() {
 
             }
         },
         mounted() {
             this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
-                .then(response => {
-                    console.log(response);
-                })
 
             // google analytics post request
             const measurementID = process.env.VUE_APP_GA_ID;
-            const clientID = this.$cookies.get('mfsid');
+            const clientID = this.getUuid;
             const page = this.$route.path;
             const pageName = this.$route.name;
             const documentHost = location.host;
