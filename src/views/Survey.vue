@@ -156,7 +156,8 @@
             ]),
             ...mapGetters([
                 'privacyNotice',
-                'getConfigAnswers'
+                'getConfigAnswers',
+                'getUuid'
             ]),
             summary: function () {
                 // view summary when question index shows the user has passed the final question
@@ -278,25 +279,28 @@
             moveMobileMenuL() {
                 this.prevScreen(this.index);
                 console.log('move to' + this.index - 1);
-            }
+            },
+            async analyticsPost() {
+                // google analytics post
+
+                const measurementID = process.env.VUE_APP_GA_ID;
+                // const clientID = this.$cookies.get('mfsid');
+                const clientID = this.getUuid;
+                const page = this.$route.path;
+                const pageName = this.$route.name;
+                const documentHost = location.host;
+
+                const fullURL = 'https://www.google-analytics.com/collect?v=1&t=pageview&tid=' + measurementID + '&cid=' + clientID + '&t=pageview&dh=' + documentHost + '&dp=' + page + '&dt=' + pageName;
+                this.axios.post(fullURL);
+            },
         },
 
         async mounted() {
             this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
-                .then(response => {
-                    console.log(response);
-                })
 
-            // google analytics post
+            this.analyticsPost()
 
-            const measurementID = process.env.VUE_APP_GA_ID;
-            const clientID = this.$cookies.get('mfsid');
-            const page = this.$route.path;
-            const pageName = this.$route.name;
-            const documentHost = location.host;
-
-            const fullURL = 'https://www.google-analytics.com/collect?v=1&t=pageview&tid=' + measurementID + '&cid=' + clientID + '&t=pageview&dh=' + documentHost + '&dp=' + page + '&dt=' + pageName;
-            this.axios.post(fullURL);
+            
         }
     }
 

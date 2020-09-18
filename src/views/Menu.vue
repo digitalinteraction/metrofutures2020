@@ -162,7 +162,7 @@ export default {
     };
   },
   computed: {
-    ...mapGetters(["getWelcome"])
+    ...mapGetters(["getWelcome", "getUuid"])
   },
   methods: {
     ...mapMutations(["disableWelcomeModal"]),
@@ -173,15 +173,12 @@ export default {
   async mounted() {
     this.axios
       .get(`${process.env.VUE_APP_API_URL}/api/get-session`)
-      .then(response => {
-        console.log(response);
-      });
+
     this.windowHeight = window.innerHeight;
-    console.log(this.windowHeight);
 
     // google analytics post
     const measurementID = process.env.VUE_APP_GA_ID;
-    const clientID = this.$cookies.get("mfsid");
+    const clientID = this.getUuid;
     const page = this.$route.path;
     const pageName = this.$route.name;
     const documentHost = location.host;

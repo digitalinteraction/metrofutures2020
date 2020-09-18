@@ -312,7 +312,7 @@
 <script>
   const marzipano = require("marzipano");
   // import {mapState, mapGetters, mapMutations} from 'vuex'
-  import {mapState} from 'vuex'
+  import {mapState, mapGetters} from 'vuex'
   import MainHeader from '@/components/MainHeader.vue'
   import Hotspot from '@/components/Hotspot.vue'
   import welcomeConsent from "../components/WelcomeConsent";
@@ -356,7 +356,10 @@
     computed: {
       ...mapState([
         'pano_data',
-      ])      
+      ]),
+      ...mapGetters([
+          'getUuid'
+      ]),
     },
     methods: {
       initPanoViewer() {
@@ -494,13 +497,10 @@
       },
       async initialRequests() {
         this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
-            .then(response => {
-              console.log(response);
-            })
 
         // google analytics post
         const measurementID = process.env.VUE_APP_GA_ID;
-        const clientID = this.$cookies.get('mfsid');
+        const clientID = this.getUuid;
         const page= this.$route.path;
         const pageName = this.$route.name;
         const documentHost = location.host;

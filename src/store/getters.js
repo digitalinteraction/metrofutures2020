@@ -23,5 +23,8 @@ export default {
     },
     getWelcome(state) {
         return state.welcomeModal;
+    },
+    getUuid(state) {
+        return state.uuid;
     }
 }

@@ -67,6 +67,7 @@
 
 <script>
     // @ is an alias to /src
+    import {mapGetters} from 'vuex'
     import Privacy from "@/components/Privacy";
     import Terms from "@/components/Terms";
 
@@ -85,6 +86,11 @@
                 confirmed: false,
                 windowHeight: '100vh'
             }
+        },
+        computed: {
+            ...mapGetters([
+                'getUuid'
+            ]),
         },
         watch: {
             email(value) {
@@ -158,7 +164,7 @@
             // google analytics post
 
             const measurementID = process.env.VUE_APP_GA_ID;
-            const clientID = this.$cookies.get('mfsid');
+            const clientID = this.getUuid;
             const page= this.$route.path;
             const pageName = this.$route.name;
             const documentHost = location.host;

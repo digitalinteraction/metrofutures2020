@@ -1,7 +1,9 @@
 import questions from "@/data/survey.js"
 import pano_data from "@/data/pano_data.js"
+import { uuid } from 'vue-uuid';
 
 export default {
+    uuid: uuid.v1(),
     questions,
     pano_data: pano_data[0],
     index: 0,
