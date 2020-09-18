@@ -8,6 +8,9 @@
         </p>
         <br />
         <b-form-select required @change="changeLA" v-model="localAuthority" :options="authorities">
+          <template v-slot:first>
+            <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
+          </template>
           Please select an
           option
         </b-form-select>
@@ -91,13 +94,10 @@
           </b-form-select>
         </div>
 
-          <b-button v-if="privacyNotice===true" block @click="submitInfo">Continue</b-button>
+        <p v-if="displayError">Please answer the first two questions marked * to continue. This information is important for the consultation and your answers are given anonymously.</p>
 
-      </b-row>
-      <b-row v-if="displayError">
-        <b-col>
-          <p>Please answer the first two questions marked * to continue. This information is important for the consultation and your answers are given anonymously.</p>
-        </b-col>
+        <b-button v-if="privacyNotice===true" block @click="submitInfo">Continue</b-button>
+
       </b-row>
     </b-col>
 
