@@ -8,7 +8,9 @@
     </b-row>
     <b-row>
       <b-col>
-        <p>Have your say on your new Metro by joining one of several online discussion workshops. Places are limited so, please register in advance.</p>
+        <div class="introContainer">
+          <p>Have your say on your new Metro by joining one of several online discussion workshops. Places are limited so, please register in advance.</p>
+        </div>
       </b-col>
     </b-row>
 
@@ -19,6 +21,7 @@
           tag="article"
           :header="shop.dateTime"
           header-tag="header"
+          class="workshopCard"
         >
           <b-card-text>
             {{ shop.desc }}
@@ -104,6 +107,15 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import '@/assets/_variables.scss';
+
+  .introContainer {
+    padding-top: 2em;
+  }
+
+  .workshopCard {
+    margin-bottom: 1em;
+  }
 
 </style>
