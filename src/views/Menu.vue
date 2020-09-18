@@ -28,12 +28,12 @@
           @mouseleave="hoverYourMetro = false"
           class="menuCol"
         >
-          <div v-if="!hoverYourMetro">
+          <div v-show="!hoverYourMetro">
             <b-img class="menuImg" src="../assets/yourMetro.png" fluid alt="image of inside of carriage"></b-img>
             <h3 class="imgTitles">Explore Your Metro</h3>
           </div>
 
-          <div v-if="hoverYourMetro" class="hoveredImg">
+          <div v-show="hoverYourMetro" class="hoveredImg">
             <b-img class="enlargeImg" src="../assets/yourMetro.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo w-100">
               <h3>Explore Your Metro</h3>
@@ -49,12 +49,12 @@
           @mouseleave="hoverYourChoice = false"
           class="menuCol"
         >
-          <div v-if="!hoverYourChoice">
+          <div v-show="!hoverYourChoice">
             <b-img class="menuImg" src="../assets/yourChoiceTemp.png" fluid alt="image of train front"></b-img>
             <h3 class="imgTitles">Configure Your Metro</h3>
           </div>
 
-          <div v-if="hoverYourChoice" class="hoveredImg">
+          <div v-show="hoverYourChoice" class="hoveredImg">
             <b-img
               class="enlargeImg"
               src="../assets/yourChoiceTemp.png"
@@ -75,12 +75,12 @@
           @mouseleave="hoverYourJourney = false"
           class="menuCol"
         >
-          <div v-if="!hoverYourJourney">
+          <div v-show="!hoverYourJourney">
             <b-img class="menuImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <h3 class="imgTitles">Your Journeys - Launching soon!</h3>
           </div>
 
-          <div v-if="hoverYourJourney" class="hoveredImg">
+          <div v-show="hoverYourJourney" class="hoveredImg">
             <b-img class="enlargeImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo w-100">
               <h3>Your Journeys - Launching soon!</h3>
