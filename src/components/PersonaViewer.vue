@@ -4,7 +4,9 @@
     <div class="personaContent">
       <b-container>
         <b-row>
-          <b-col class="border">Breadcrumbs, other pieces</b-col>
+          <b-col class="border">
+            {{ persona }}
+          </b-col>
         </b-row>
         <b-row>
           <b-col class="border">
@@ -27,6 +29,7 @@ export default {
   name: "PersonaViewer",
   props: {
     pIndex: Number,
+    persona: Object,
   },
   components: {
     MainHeader,

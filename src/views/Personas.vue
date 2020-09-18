@@ -11,7 +11,7 @@
       </b-row>
 
       <b-row 
-        v-for="(person, pIndex) in this.getPersonas" 
+        v-for="(person, pIndex) in getPersonas" 
         :key="pIndex"
         class="personaContainer"
       >
