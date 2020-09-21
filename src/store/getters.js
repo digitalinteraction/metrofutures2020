@@ -27,6 +27,17 @@ export default {
     getPersonas(state) {
         return state.personas;
     },
+    // getPersonaByName(state, name) {
+    //     // state.personas.find("name")
+    //     console.log("Searching for", name)
+    //     return state.personas[0]
+    // },
+    getPersonaByName: (state) => (name) => {
+        console.log("Searching for", name)
+        let result = state.personas.find(persona => persona.name === name)
+        console.log(result)
+        return result
+    },
     getUuid(state) {
         return state.uuid;
     }

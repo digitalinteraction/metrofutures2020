@@ -5,7 +5,7 @@
       <b-container>
         <b-row>
           <b-col class="border">
-            {{ persona }}
+            <!-- {{ persona }} -->
           </b-col>
         </b-row>
         <b-row>
@@ -23,14 +23,11 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
 import Footer from '@/components/Footer.vue';
 export default {
   name: "PersonaViewer",
-  props: {
-    pIndex: Number,
-    persona: Object,
-  },
   components: {
     MainHeader,
     Footer,
@@ -38,8 +35,16 @@ export default {
   data() {
     return {
       personaName: "",
+      personaInfo: {},
     }
   },
+  computed: {
+    ...mapGetters(["getPersonas"]) 
+  },
+  methods: {
+    
+  },
+
   beforeRouteUpdate (to, from, next) {
     // react to route changes...
     // If personaName is not in our list, don't update
@@ -51,6 +56,7 @@ export default {
   mounted() {
     // Get persona name from route
     this.personaName = this.$route.params.persona
+    this.personaInfo = this.$store.getters.getPersonaByName(this.personaName)
     // Need a guard to make sure we are accessing ones that exist
 
   }

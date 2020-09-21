@@ -22,7 +22,7 @@
             </router-link>
             <img :src="cdnUrl + person.img" alt="">
           </div>
-          <div class="moreInfo">{{ person.desc }}</div>
+          <!-- <div class="moreInfo">{{ person.desc }}</div> -->
         </b-col>
       </b-row>
 
