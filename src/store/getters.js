@@ -34,7 +34,6 @@ export default {
     // },
     getPersonaByName: (state) => (name) => {
         let result = state.personas.find(persona => persona.name === name)
-        console.log(result)
         return result
     },
     getPersonaStages: (state) => (name) => {
