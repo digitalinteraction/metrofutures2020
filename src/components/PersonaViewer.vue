@@ -1,11 +1,11 @@
 <template>
-  <div>
+  <div @fullscreenchange="onFullscreenChange">>
     <MainHeader :title="personaName"></MainHeader>
     <div class="personaContent">
       <b-container>
         <b-row>
           <b-col class="border">
-            <b-progress class="mt-2" :max="6" animated show-value>
+            <b-progress class="mt-2" :max="5" animated show-value>
               <b-progress-bar :value="currentStageId" variant="warning"></b-progress-bar>
             </b-progress>
           </b-col>
@@ -40,7 +40,6 @@
           <b-col class="border col-lg-3 col-12">
             <span class="question-wrapper" v-show="mainVid.finished">
               <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
-              <!-- {{ personaInfo.desc }} -->
               
               <!-- Options -->
               <div class="options" v-if="stageInfo.questions[currentQuestionId].options">
@@ -122,10 +121,20 @@ export default {
     ...mapGetters(["getPersonas"]) 
   },
   methods: {
+    onFullscreenChange() {
+      // https://gruhn.github.io/vue-qrcode-reader/demos/Fullscreen.html
+      console.log("Detected change in fullscreen")
+    },
     nextScene() {
-      // Get next stage
-      // From that get video URL
-      // and get next question
+      // Load next video
+      // get the next stage Id from the current stage info
+      this.currentStageId = this.getNextStageId(this.currentStageId)
+
+      // Load that question 
+      this.currentQuestionId = this.getNextQuestionId(this.currentStageId)
+
+      // Load that video
+      this.loadVideo(this.currentStageId)
     },
     videoPlay() {
 
@@ -149,16 +158,15 @@ export default {
       // TO DO
       console.log("Submitting to API")
 
-      // Load next video
-      // get the next stage Id from the current stage info
-      let nextId = this.getNextStageId(this.currentStageId)
-      this.currentStageId = nextId
+      if(this.currentStageId < this.stageInfo.stages.length-1) {
+        this.nextScene()
+      } else {
+        // Final question will be rendered by now, so progress to final question
+        console.log("Finished - start final questions")
+        this.currentQuestionId += 1
+      }
 
-      // Load that question 
-      this.currentQuestionId = this.getNextQuestionId(this.currentStageId)
-
-      // Load that video
-      this.loadVideo(nextId)
+      
     },
     sendResponse() {
       // API call of our response
