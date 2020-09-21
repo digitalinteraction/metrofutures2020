@@ -5,34 +5,40 @@
       <b-container>
         <b-row>
           <b-col class="border">
-            Breadcrumbs here
+            <b-progress class="mt-2" :max="6" animated show-value>
+              <b-progress-bar :value="currentStageId" variant="warning"></b-progress-bar>
+            </b-progress>
           </b-col>
         </b-row>
         <b-row>
           <b-col class="border col-lg-9 col-12">
 
-            <video class="embed-video" ref="mainVideo" controls="true">
-              <!-- poster="https://cdn.metrofutures.org.uk/doors/PosterExterior.png" -->
-              <source src="https://cdn.metrofutures.org.uk/personas/p0/Polly1.mp4" type="video/mp4" >
-              <!-- <p>Your browser doesn't support HTML5 video. Here is a <a :href="data.visual">link to the video</a> instead.</p> -->
+            <video class="mainEmbed" ref="mainVideo" controls="true">
+              <source :src="mainVid.src" type="video/mp4" :poster="mainVid.poster">
+              <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
+            </video>
+
+            <video class="loadingVideo" ref="loadingVideo" controls="true" hidden>
+              <source :src="loadingVid.src" type="video/mp4">
+              <p>Your browser doesn't support HTML5 video. Here is a <a :href="loadingVid.src">link to the video</a> instead.</p>
             </video>
             
-            <div class="controls-video text-center"> 
-              <b-iconstack font-scale="2" v-on:click="videoPlayButton()" v-show="!videoFinished">
+            <!-- <div class="controls-video text-center"> 
+              <b-iconstack font-scale="2" v-on:click="videoPlayButton()" v-show="!mainVid.finished">
                 <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
-                <b-icon stacked icon="play-fill"  v-show="!videoPlaying"></b-icon>
-                <b-icon stacked icon="stop-fill"  v-show="videoPlaying"></b-icon>
+                <b-icon stacked icon="play-fill"  v-show="!mainVid.playing"></b-icon>
+                <b-icon stacked icon="stop-fill"  v-show="mainVid.playing"></b-icon>
               </b-iconstack>
 
-              <b-iconstack font-scale="2" v-on:click="replayButton()" v-show="videoFinished">
+              <b-iconstack font-scale="2" v-on:click="replayButton()" v-show="mainVid.finished">
                 <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
                 <b-icon stacked icon="arrow-repeat"></b-icon>
               </b-iconstack>
-            </div>
+            </div> -->
 
           </b-col>
           <b-col class="border col-lg-3 col-12">
-            <span class="question-wrapper" v-show="videoFinished">
+            <span class="question-wrapper" v-show="mainVid.finished">
               <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
               <!-- {{ personaInfo.desc }} -->
               
@@ -55,7 +61,7 @@
               
               <!-- Free comment -->
               <div class="surveyFreeText" v-if="stageInfo.questions[currentQuestionId].comment">
-                <label class="calvert" for="survey-text-response">Leave Feedback (optional) </label>
+                <label class="calvert" for="survey-text-response">Leave Feedback</label>
                 <textarea
                 v-model="commentText"
                 placeholder="Got something to say? Let us know..."
@@ -66,7 +72,8 @@
               </div>
               
               <!-- Submit button -->
-              <b-button block variant="outline-secondary" @click="submitQuestion()">Submit</b-button>
+              <!-- <b-button block variant="outline-secondary" @click="submitQuestion()">Continue</b-button> -->
+              <b-button block variant="warning" @click="submitQuestion()">Continue</b-button>
             </span>
           </b-col>
         </b-row>
@@ -96,8 +103,16 @@ export default {
       currentStageId: 0,
       currentQuestionId: 0,
       videoEl: false,
-      videoPlaying: false,
-      videoFinished: false,
+      mainVid: {
+        playing: false,
+        finished: false,
+        src: "",
+        poster: "",
+      },
+      loadingVid: {
+        src: "",
+        element: {},
+      },
       // Form data
       likertRating: 0,
       commentText: "",
@@ -117,11 +132,11 @@ export default {
     },
     videoStop() {
       console.log("video has stopped")
-      this.videoFinished = true;
+      this.mainVid.finished = true;
     },
     videoPlayButton() {
       // If we are finished don't do anything
-      if(!this.videoFinished) {
+      if(!this.mainVid.finished) {
         // Play if we have paused, pause if we are playing
         console.log("play/pause current video")
       }
@@ -132,26 +147,47 @@ export default {
     submitQuestion() {
       // Fire off the response to the API
       // TO DO
+      console.log("Submitting to API")
 
       // Load next video
-      // get the nextId from the current stage info
+      // get the next stage Id from the current stage info
+      let nextId = this.getNextStageId(this.currentStageId)
+      this.currentStageId = nextId
+
+      // Load that question 
+      this.currentQuestionId = this.getNextQuestionId(this.currentStageId)
 
       // Load that video
-
-      // Load that question
+      this.loadVideo(nextId)
     },
     sendResponse() {
       // API call of our response
     },
     getNextQuestionId(stageIndex) {
-      // Given the passed in stage, get the correct question
+      // Given the passed in stage, get the correct question ** Doesn't actually search by ID yet **
       // stageIndex and questionIndex usually match, but this is just in case people change their mind re: question order
       return this.stageInfo.stages[stageIndex].questionId
     },
     getNextStageId(stageIndex) {
-      // Given the passed in stage, get the next stageId
+      // Given the passed in stage, get the next stageId ** Doesn't actually search by ID yet **
       // Usually sequential, but this is just in case people change their mind re: stage order
       return this.stageInfo.stages[stageIndex].nextId
+    },
+    buildVideoUrl(videoName) {
+      let cdnUrl = "https://cdn.metrofutures.org.uk/personas/"
+      return cdnUrl+`p${this.stageInfo.pId}/${videoName}`
+    },
+    loadVideo(nextId) {
+      this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[nextId].videoUrl)
+      console.log("Setting video src")
+      this.videoEl.setAttribute('src',this.mainVid.src)
+      this.videoEl.currentTime = 0
+      this.videoEl.play()
+      this.mainVid.playing = false
+      this.mainVid.finished = false
+    },
+    hiddenLoad() {
+      // Load video src into hidden video to make it load
     }
   },
 
@@ -167,6 +203,9 @@ export default {
     // Get the video element
     this.videoEl = this.$refs.mainVideo
     this.videoEl.addEventListener('ended', this.videoStop);
+
+    // Get the loading element too
+    this.loadingVid.element = this.$refs.loadingVideo
   },
   created() {
     // Need a guard to make sure we are accessing ones that exist
@@ -175,6 +214,9 @@ export default {
 
     // Get stages and questions
     this.stageInfo = this.$store.getters.getPersonaStages(this.personaName)
+
+    // Set attributes for first video
+    this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[0].videoUrl)
 
   }
 
@@ -188,7 +230,7 @@ export default {
     border: 1px solid black;
   }
 
-  .embed-video {
+  .mainEmbed {
     width: 500px;
   }
 
