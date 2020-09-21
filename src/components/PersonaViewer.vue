@@ -139,6 +139,19 @@ export default {
       // Load that video
 
       // Load that question
+    },
+    sendResponse() {
+      // API call of our response
+    },
+    getNextQuestionId(stageIndex) {
+      // Given the passed in stage, get the correct question
+      // stageIndex and questionIndex usually match, but this is just in case people change their mind re: question order
+      return this.stageInfo.stages[stageIndex].questionId
+    },
+    getNextStageId(stageIndex) {
+      // Given the passed in stage, get the next stageId
+      // Usually sequential, but this is just in case people change their mind re: stage order
+      return this.stageInfo.stages[stageIndex].nextId
     }
   },
 
