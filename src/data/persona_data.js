@@ -1,6 +1,6 @@
 export default [
   {
-    id: 5, 
+    pId: 5, 
     name: "Mary",
     stages: [
       {id: 0, }
@@ -10,7 +10,7 @@ export default [
     ]
   },
   {
-    id: 3, 
+    pId: 3, 
     name: "Polly",
     stages: [
       {id: 0, videoUrl: "Polly1.mp4", nextId: 1, questionId: 0},

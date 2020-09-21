@@ -1,6 +1,7 @@
 import questions from "@/data/survey.js"
 import pano_data from "@/data/pano_data.js"
 import personas from "@/data/personas.js"
+import personaStages from "@/data/persona_data.js"
 import { uuid } from 'vue-uuid';
 
 export default {
@@ -8,6 +9,7 @@ export default {
     questions,
     pano_data: pano_data[0],
     personas,
+    personaStages,
     index: 0,
     privacyNotice: false,
     infoFormDone: false,

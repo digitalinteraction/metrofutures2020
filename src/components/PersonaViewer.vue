@@ -33,13 +33,16 @@
           </b-col>
           <b-col class="border col-lg-3 col-12">
             <span class="question-wrapper" v-show="videoFinished">
-              <div class="question-text">Question text here, blah blah blah?</div>
+              <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
               <!-- {{ personaInfo.desc }} -->
               
               <!-- Options -->
+              <div class="options" v-if="stageInfo.questions[currentQuestionId].options">
+                Options layout will appear here
+              </div>
               
               <!-- Likert -->
-              <div class="likert">
+              <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
                 <b-form-rating
                 class="likert_item"
                 v-model="likertRating"
@@ -51,7 +54,7 @@
               </div>
               
               <!-- Free comment -->
-              <div class="surveyFreeText" >
+              <div class="surveyFreeText" v-if="stageInfo.questions[currentQuestionId].comment">
                 <label class="calvert" for="survey-text-response">Leave Feedback (optional) </label>
                 <textarea
                 v-model="commentText"
@@ -63,7 +66,7 @@
               </div>
               
               <!-- Submit button -->
-              <b-button block variant="outline-secondary">Submit</b-button>
+              <b-button block variant="outline-secondary" @click="submitQuestion()">Submit</b-button>
             </span>
           </b-col>
         </b-row>
@@ -89,7 +92,9 @@ export default {
     return {
       personaName: "",
       personaInfo: {},
+      stageInfo: {},
       currentStageId: 0,
+      currentQuestionId: 0,
       videoEl: false,
       videoPlaying: false,
       videoFinished: false,
@@ -123,6 +128,17 @@ export default {
     },
     videoNext() {
       // Get the next video and load it into the element
+    },
+    submitQuestion() {
+      // Fire off the response to the API
+      // TO DO
+
+      // Load next video
+      // get the nextId from the current stage info
+
+      // Load that video
+
+      // Load that question
     }
   },
 
@@ -135,15 +151,18 @@ export default {
     next(false);  // Will cancel the route (use if not valid route)
   },
   mounted() {
+    // Get the video element
+    this.videoEl = this.$refs.mainVideo
+    this.videoEl.addEventListener('ended', this.videoStop);
+  },
+  created() {
     // Need a guard to make sure we are accessing ones that exist
     this.personaName = this.$route.params.persona  // Get persona name from route
     this.personaInfo = this.$store.getters.getPersonaByName(this.personaName)
 
-    // Get the video element
-    this.videoEl = this.$refs.mainVideo
-    this.videoEl.addEventListener('ended', this.videoStop);
-
     // Get stages and questions
+    this.stageInfo = this.$store.getters.getPersonaStages(this.personaName)
+
   }
 
 }

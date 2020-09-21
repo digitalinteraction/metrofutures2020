@@ -33,9 +33,14 @@ export default {
     //     return state.personas[0]
     // },
     getPersonaByName: (state) => (name) => {
-        console.log("Searching for", name)
         let result = state.personas.find(persona => persona.name === name)
         console.log(result)
+        return result
+    },
+    getPersonaStages: (state) => (name) => {
+        // console.log("Fetching persona stages for", name)
+        let result = state.personaStages.find(persona => persona.name === name)
+        // console.log(result)
         return result
     },
     getUuid(state) {
