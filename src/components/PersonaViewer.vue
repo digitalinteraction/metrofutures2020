@@ -232,28 +232,27 @@ export default {
       // Check what we currently require from the question, compute whether we've got what we need
       let question = this.stageInfo.questions[this.currentQuestionId]
       let invalid = true
-      // If only likert
+      // If likert and comment, comment is optional
       if (question.likert && question.comment) {
-        console.log("both comment and likert are requested, so we ONLY want likert")
         if (this.likertRating > 0) {
           invalid = false
         }
+      // If only likert
       } else if (question.likert) {
-        console.log("require only likert")
         if (this.likertRating > 0) {
           invalid = false
         }
+      // If options
       } else if (question.options) {
         console.log("require options")
         if (!this.optionSelection) {
-          console.log("Haven't selected an option")
           invalid = true
         } else {
           invalid = false
         }
       } else if (question.comment) {
         // Not sure we ever use this
-        console.log("require only comment")
+        console.log("Uncommon - require only comment")
         if (this.commentText) {
           invalid = false
         }
