@@ -322,7 +322,7 @@ export default {
 
     // Autoplay video
     // This is sometimes blocked by the device
-    this.videoEl.play()
+    // this.videoEl.play()
 
     // Get the loading element too
     this.loadingVid.element = this.$refs.loadingVideo
