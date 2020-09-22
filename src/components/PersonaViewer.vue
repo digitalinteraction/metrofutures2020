@@ -259,7 +259,7 @@ export default {
     },
     getLikertText(likertType) {
       switch(likertType) {
-        case "well":
+        case "poor":
           return "1 = very poor, 5 = very well"
         case "verywell":
           case true:
