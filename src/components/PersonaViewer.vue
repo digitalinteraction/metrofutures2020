@@ -43,9 +43,20 @@
             <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
             
             <!-- Options -->
-            <!-- TO DO TO DO -->
             <div class="options" v-if="stageInfo.questions[currentQuestionId].options">
-              <strong>Options layout will appear here</strong>
+              <b-row class="optionRow" 
+                align-v="center" 
+                v-for="(opt, x) in options"
+                :key="x"
+                @click="selectOption(x)"
+              >
+                <b-col class="optionImg">
+                    <b-img class="float-left" v-bind:src="'https://cdn.metrofutures.org.uk/squares/' + opt.img"></b-img>
+                </b-col>
+                <b-col class="optionText">
+                    <p>{{ opt.desc }}</p>
+                </b-col>
+            </b-row>
             </div>
             
             <!-- Likert -->
@@ -126,6 +137,13 @@ export default {
         src: "",
         element: {},
       },
+      options: [
+        // Placeholder until we load from state
+        {desc: "Option 1", img: "Square_Configurator_swatches-01.svg"},
+        {desc: "Option 2", img: "Square_Configurator_swatches-02.svg"},
+        {desc: "Option 3", img: "Square_Configurator_swatches-03.svg"},
+
+      ],
       // Form data
       likertRating: 0,
       commentText: "",
@@ -281,6 +299,9 @@ export default {
         case "safer":
           return "1 = no safer, 5 = very safe"
       }
+    },
+    selectOption(index) {
+      this.optionSelection = index;
     }
   },
 
@@ -300,6 +321,7 @@ export default {
     // this.videoEl.addEventListener('pause', this.videoPause);
 
     // Autoplay video
+    // This is sometimes blocked by the device
     this.videoEl.play()
 
     // Get the loading element too
@@ -325,11 +347,23 @@ export default {
 <style lang="scss">
   @import '@/assets/_variables.scss';
 
+  #logo {
+    height: 4em;
+    padding-left: 1em;
+    // padding-top: 1em;
+  }
+
   .mainEmbed {
     width: 100%;
-    height: 70vh;
+    height: 90%;
     // width: 450px !important;
     // height: auto !important;
+    padding-top: 1em;
+  }
+
+  .question-text {
+    padding-top: 1em;
+    padding-bottom: 1em;
   }
 
   .personaContent {
@@ -341,8 +375,23 @@ export default {
     text-align: center;
   }
 
+  .optionImg {
+    padding-right: 0;
+    padding-left: 0;
+    & img {
+      width: 100px;
+      height: auto;
+    }
+  }
+  
   // Media rules for tablets and horizontal phones
+  @media only screen and (min-width: $media-small+1) {
+
+  }
 
   // Media rule for phones screens
+  @media only screen and (max-width: $media-small) {
+    
+    }
 
 </style>
