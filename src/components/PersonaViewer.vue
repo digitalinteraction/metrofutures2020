@@ -5,7 +5,7 @@
     <b-container class="personaContent">
       <b-row>
         <b-col>
-          <b-progress class="mt-2" :max="5" animated show-value>
+          <b-progress class="mt-2" :max="5" show-value>
             <b-progress-bar :value="currentStageId" variant="warning"></b-progress-bar>
           </b-progress>
         </b-col>
@@ -13,7 +13,7 @@
       <b-row>
         <b-col class="col-lg-9 col-12">
 
-          <video class="mainEmbed" ref="mainVideo" controls="true" v-show="!transcript">
+          <video class="mainEmbed" ref="mainVideo" controls="true">
             <source :src="mainVid.src" type="video/mp4" :poster="mainVid.poster">
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
           </video>
@@ -26,18 +26,9 @@
           <b-button @click="toggleTranscript()">Transcript</b-button>
 
           <div class="transcript" v-if="transcript">
-            <p>
-              I walk along the coast to get to the Metro in the morning. It’s usually very cold and this morning it’s absolutely freezing! I've got music and PE today, so I've got tons of stuff to carry – PE kit, saxophone and school bag! It takes me ten minutes to walk to the Metro station.
+            <p v-for="(para, index) in stageInfo.transcript" :key="index">
+              {{ para.text }}
             </p>
-
-            <p>
-              I like getting to school 'bang on time' so, I get the train just after 7 am. I know exactly where to stand—and on a good day it goes exactly as planned—next to the second piece of glass at the station.
-            </p>
-
-            <p>
-              When the Metro arrives, it’s quite busy. It looks like there are still a few seats left, but I stand in the multi-purpose space for my journey, rather than sit between people.
-            </p>
-
           </div>
 
 
