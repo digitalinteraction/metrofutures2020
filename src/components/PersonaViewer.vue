@@ -13,8 +13,9 @@
       <b-row>
         <b-col class="col-lg-9 col-12">
 
-          <video class="mainEmbed" ref="mainVideo" controls="true">
+          <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
             <source :src="mainVid.src" type="video/mp4" :poster="mainVid.poster">
+            <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN"> 
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
           </video>
 
@@ -119,6 +120,7 @@ export default {
         finished: false,
         src: "",
         poster: "",
+        cap: "",
       },
       loadingVid: {
         src: "",
@@ -239,6 +241,7 @@ export default {
     },
     loadVideo(nextId) {
       this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[nextId].videoUrl)
+      this.mainVid.cap = this.mainVid.src+".vtt"
       console.log("Setting video src")
       this.videoEl.setAttribute('src',this.mainVid.src)
       this.videoEl.currentTime = 0
@@ -290,6 +293,7 @@ export default {
     // this.videoEl.addEventListener('pause', this.videoPause);
 
     // Autoplay video
+    this.videoEl.play()
 
     // Get the loading element too
     this.loadingVid.element = this.$refs.loadingVideo
@@ -304,6 +308,7 @@ export default {
 
     // Set attributes for first video
     this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[0].videoUrl)
+    this.mainVid.cap = this.mainVid.src+".vtt"
 
   }
 
