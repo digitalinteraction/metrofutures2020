@@ -211,29 +211,36 @@ export default {
     },
     invalidForm() {
       // Returns true if invalid
-      // Check what we currently require from the question
+      // Check what we currently require from the question, compute whether we've got what we need
       let question = this.stageInfo.questions[this.currentQuestionId]
-      let valid = true
-      if (question.likert) {
-        console.log("require likert")
-      }
-      if (question.comment) {
-        // Comments optional if something else is specified
-        console.log("require comment")
-      }
-      if (question.options) {
+      let invalid = true
+      // If only likert
+      if (question.likert && question.comment) {
+        console.log("both comment and likert are requested, so we ONLY want likert")
+        if (this.likertRating > 0) {
+          invalid = false
+        }
+      } else if (question.likert) {
+        console.log("require only likert")
+        if (this.likertRating > 0) {
+          invalid = false
+        }
+      } else if (question.options) {
         console.log("require options")
         if (!this.optionSelection) {
           console.log("Haven't selected an option")
-          valid = false
+          invalid = true
         } else {
-          valid = true
+          invalid = false
         }
-      }
-      console.log(valid)
-      
-      return true
-      // return valid
+      } else if (question.comment) {
+        // Not sure we ever use this
+        console.log("require only comment")
+        if (this.commentText) {
+          invalid = false
+        }
+      }       
+      return invalid
     },
     buildVideoUrl(videoName) {
       let cdnUrl = "https://cdn.metrofutures.org.uk/personas/"
