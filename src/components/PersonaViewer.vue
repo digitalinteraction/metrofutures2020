@@ -1,96 +1,103 @@
 <template>
   <div @fullscreenchange="onFullscreenChange">
     <MainHeader :title="personaName+`'s Journey`"></MainHeader>
-    <div class="personaContent">
-      <b-container>
-        <b-row>
-          <b-col>
-            <b-progress class="mt-2" :max="5" animated show-value>
-              <b-progress-bar :value="currentStageId" variant="warning"></b-progress-bar>
-            </b-progress>
-          </b-col>
-        </b-row>
-        <b-row>
-          <b-col class="col-lg-9 col-12">
+    
+    <b-container class="personaContent">
+      <b-row>
+        <b-col>
+          <b-progress class="mt-2" :max="5" animated show-value>
+            <b-progress-bar :value="currentStageId" variant="warning"></b-progress-bar>
+          </b-progress>
+        </b-col>
+      </b-row>
+      <b-row>
+        <b-col class="col-lg-9 col-12">
 
-            <video class="mainEmbed" ref="mainVideo" controls="true">
-              <source :src="mainVid.src" type="video/mp4" :poster="mainVid.poster">
-              <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
-            </video>
+          <video class="mainEmbed" ref="mainVideo" controls="true" v-show="!transcript">
+            <source :src="mainVid.src" type="video/mp4" :poster="mainVid.poster">
+            <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
+          </video>
 
-            <video class="loadingVideo" ref="loadingVideo" controls="true" hidden>
-              <source :src="loadingVid.src" type="video/mp4">
-              <p>Your browser doesn't support HTML5 video. Here is a <a :href="loadingVid.src">link to the video</a> instead.</p>
-            </video>
+          <!-- <video class="loadingVideo" ref="loadingVideo" controls="true" hidden>
+            <source :src="loadingVid.src" type="video/mp4">
+            <p>Your browser doesn't support HTML5 video. Here is a <a :href="loadingVid.src">link to the video</a> instead.</p>
+          </video> -->
+
+          <b-button @click="toggleTranscript()">Transcript</b-button>
+
+          <div class="transcript" v-if="transcript">
+            <p>
+              I walk along the coast to get to the Metro in the morning. It’s usually very cold and this morning it’s absolutely freezing! I've got music and PE today, so I've got tons of stuff to carry – PE kit, saxophone and school bag! It takes me ten minutes to walk to the Metro station.
+            </p>
+
+            <p>
+              I like getting to school 'bang on time' so, I get the train just after 7 am. I know exactly where to stand—and on a good day it goes exactly as planned—next to the second piece of glass at the station.
+            </p>
+
+            <p>
+              When the Metro arrives, it’s quite busy. It looks like there are still a few seats left, but I stand in the multi-purpose space for my journey, rather than sit between people.
+            </p>
+
+          </div>
+
+
+        </b-col>
+        <b-col class="col-lg-3 col-12">
+          <span class="starter-wrapper" v-if="!personaStarted">
+            Click play (<b-icon font-scale="1" icon="play-fill"></b-icon>) on the video to start {{ personaName }}'s journey.
+          </span>
+
+          <span class="question-wrapper" v-show="mainVid.finished && !personaFinished">
+            <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
             
-            <!-- <div class="controls-video text-center"> 
-              <b-iconstack font-scale="2" v-on:click="videoPlayButton()" v-show="!mainVid.finished">
-                <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
-                <b-icon stacked icon="play-fill"  v-show="!mainVid.playing"></b-icon>
-                <b-icon stacked icon="stop-fill"  v-show="mainVid.playing"></b-icon>
-              </b-iconstack>
-
-              <b-iconstack font-scale="2" v-on:click="replayButton()" v-show="mainVid.finished">
-                <b-icon stacked icon="circle-fill" variant="primary"></b-icon>
-                <b-icon stacked icon="arrow-repeat"></b-icon>
-              </b-iconstack>
-            </div> -->
-
-          </b-col>
-          <b-col class="col-lg-3 col-12">
-            <span class="starter-wrapper" v-if="!personaStarted">
-              Click play (<b-icon font-scale="1" icon="play-fill"></b-icon>) on the video to start {{ personaName }}'s journey.
-            </span>
-
-            <span class="question-wrapper" v-show="mainVid.finished && !personaFinished">
-              <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
-              
-              <!-- Options -->
-              <div class="options" v-if="stageInfo.questions[currentQuestionId].options">
-                <strong>Options layout will appear here</strong>
-              </div>
-              
-              <!-- Likert -->
-              <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
-                <b-form-rating
-                class="likert_item"
-                v-model="likertRating"
-                icon-empty="circle"
-                icon-full="circle-fill"
-                variant="warning"
-                >
-                </b-form-rating>
-              </div>
-              
-              <!-- Free comment -->
-              <div class="surveyFreeText" v-if="stageInfo.questions[currentQuestionId].comment">
-                <!-- <label class="calvert" for="survey-text-response">Leave Feedback</label> -->
-                <textarea
-                  v-model="commentText"
-                  placeholder="Your comment..."
-                  class="form-control"
-                  rows="2"
-                  :state="commentText.length >= 2"
-                >
-                </textarea>
-              </div>
-              
-              <!-- Submit button -->
-              <!-- <b-button block variant="outline-secondary" @click="submitQuestion()">Continue</b-button> -->
-              <b-button block variant="warning" @click="submitQuestion()">Continue</b-button>
-            </span>
-            <span class="finished-wrapper" v-if="personaFinished">
-              <div>
-                <b-button to="/journeys">Back to Journeys</b-button>
-              </div>
-            </span>
-          </b-col>
-        </b-row>
-        <b-row>
-          <Footer></Footer>
-        </b-row>
-      </b-container>
-    </div>
+            <!-- Options -->
+            <!-- TO DO TO DO -->
+            <div class="options" v-if="stageInfo.questions[currentQuestionId].options">
+              <strong>Options layout will appear here</strong>
+            </div>
+            
+            <!-- Likert -->
+            <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
+              <span class="likert-text">{{ getLikertText(stageInfo.questions[currentQuestionId].likert) }}</span>
+              <b-form-rating
+              class="likert_item"
+              v-model="likertRating"
+              icon-empty="circle"
+              icon-full="circle-fill"
+              variant="warning"
+              >
+              </b-form-rating>
+            </div>
+            
+            <!-- Free comment -->
+            <div class="surveyFreeText" v-if="stageInfo.questions[currentQuestionId].comment">
+              <!-- <label class="calvert" for="survey-text-response">Leave Feedback</label> -->
+              <textarea
+                v-model="commentText"
+                placeholder="Your comment..."
+                class="form-control"
+                rows="2"
+                :state="commentText.length >= 2"
+              >
+              </textarea>
+            </div>
+            
+            <!-- Submit button -->
+            <!-- <b-button block variant="outline-secondary" @click="submitQuestion()">Continue</b-button> -->
+            <b-button block variant="warning" @click="submitQuestion()" :disabled="invalidForm()">Continue</b-button>
+          </span>
+          <span class="finished-wrapper" v-if="personaFinished">
+            <div>
+              <b-button to="/journeys">Back to Journeys</b-button>
+            </div>
+          </span>
+        </b-col>
+      </b-row>
+      <b-row>
+        <Footer></Footer>
+      </b-row>
+    </b-container>
+    
   </div>
 </template>
 
@@ -114,6 +121,7 @@ export default {
       personaStarted: false,
       personaFinished: false,
       finalQuestion: false,
+      transcript: false,
       videoEl: false,
       mainVid: {
         playing: false,
@@ -128,6 +136,7 @@ export default {
       // Form data
       likertRating: 0,
       commentText: "",
+      optionSelection: false,
     }
   },
   computed: {
@@ -170,7 +179,7 @@ export default {
     },
     submitQuestion() {
       // Check validity of responses
-      if(this.validForm()) {
+      if(!this.invalidForm()) {
         // Fire off the response to the API
         // TO DO
         console.log("Submitting to API")
@@ -187,6 +196,11 @@ export default {
             this.finalisePersona()
           }
         }
+        // Reset the form elements
+        this.likertRating = 0;
+        this.commentText = "";
+        this.optionSelection = false;
+
       }
     },
     sendResponse() {
@@ -202,10 +216,31 @@ export default {
       // Usually sequential, but this is just in case people change their mind re: stage order
       return this.stageInfo.stages[stageIndex].nextId
     },
-    validForm() {
+    invalidForm() {
+      // Returns true if invalid
       // Check what we currently require from the question
-      // Check the input in that field is valid
+      let question = this.stageInfo.questions[this.currentQuestionId]
+      let valid = true
+      if (question.likert) {
+        console.log("require likert")
+      }
+      if (question.comment) {
+        // Comments optional if something else is specified
+        console.log("require comment")
+      }
+      if (question.options) {
+        console.log("require options")
+        if (!this.optionSelection) {
+          console.log("Haven't selected an option")
+          valid = false
+        } else {
+          valid = true
+        }
+      }
+      console.log(valid)
+      
       return true
+      // return valid
     },
     buildVideoUrl(videoName) {
       let cdnUrl = "https://cdn.metrofutures.org.uk/personas/"
@@ -220,6 +255,9 @@ export default {
       this.mainVid.playing = false
       this.mainVid.finished = false
     },
+    toggleTranscript() {
+      this.transcript = !this.transcript
+    },
     hiddenLoad() {
       // Load video src into hidden video to make it load
     },
@@ -228,6 +266,21 @@ export default {
       this.mainVid.finished = true
       this.personaFinished = true
     },
+    getLikertText(likertType) {
+      switch(likertType) {
+        case "well":
+          return "1 = very poor, 5 = very well"
+        case "verywell":
+          case true:
+          return "1 = not very well, 5 = very well"
+        case "unclear":
+          return "1 = very unclear, 5 = very clear"
+        case "useful":
+          return "1 = not at all useful, 5 = very useful"
+        case "safer":
+          return "1 = no safer, 5 = very safe"
+      }
+    }
   },
 
   beforeRouteUpdate (to, from, next) {
@@ -244,6 +297,8 @@ export default {
     this.videoEl.addEventListener('ended', this.videoStop);
     this.videoEl.addEventListener('play', this.videoPlay);
     // this.videoEl.addEventListener('pause', this.videoPause);
+
+    // Autoplay video
 
     // Get the loading element too
     this.loadingVid.element = this.$refs.loadingVideo
@@ -274,8 +329,13 @@ export default {
     // height: auto !important;
   }
 
-  .container {
+  .personaContent {
     max-width: 100%;
+  }
+
+  .likert-text {
+    font-size: 0.75em;
+    text-align: center;
   }
 
   // Media rules for tablets and horizontal phones
