@@ -187,8 +187,7 @@ export default {
       // Check validity of responses
       if(!this.invalidForm()) {
         // Fire off the response to the API
-        // TO DO
-        console.log("Submitting to API")
+        this.sendResponse()
 
         if(this.currentStageId < this.stageInfo.stages.length-1) {
           this.nextScene()
@@ -207,10 +206,38 @@ export default {
         this.commentText = "";
         this.optionSelection = false;
 
+      } else {
+        console.log("This shouldn't have happened because the form is not valid")
       }
     },
     sendResponse() {
       // API call of our response
+      // Need to check some of the optional values first
+      let payload = {
+        personaName: this.personaName,
+        stageId: this.currentStageId,
+      }
+
+      if (this.commentText) {
+        payload.comment = this.commentText
+      }
+
+      if (this.likertRating) {
+        payload.likert = this.likertRating
+      }
+
+      if (this.optionSelection) {
+        payload.option = this.optionSelection
+      }
+
+      console.log("Submitting payload", payload)
+      this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/journey`, {
+        params: payload
+      })
+        .then(response => {
+          console.info('Survey response:', response);
+        })
+        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
     },
     getNextQuestionId(stageIndex) {
       // Given the passed in stage, get the correct question ** Doesn't actually search by ID yet **

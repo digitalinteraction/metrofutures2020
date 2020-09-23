@@ -57,31 +57,38 @@ module.exports = async(req, res) => {
     console.log('Unauthorized');
     sendResponse(req, res, 403, "Unauthorized");
   } else {
-    console.log('valid cookie');
+    // console.log('valid cookie');
     let sessid = req.cookies.mfsid
     try {
       await sequelize.sync({ alter: true });  // This makes sure the DB matches the model, and will change it
       if (req.body) {
         let params = req.body.params
-        console.log("Survey - Body:", params)
+        // console.log("Survey - Body:", params)
         // Check we have the essentials and they're not empty
-        if (typeof(params["hotspotName"]) !== undefined && params["hotspotName"] && typeof(params["sceneId"] && params["sceneId"] >= 0) !== undefined) {
-          if(params["comment"] && params["likert"]) {
-            // We have both content
-            await Response.create({hotspotName: params["hotspotName"], sceneId: params["sceneId"], comment: params["comment"], likert: params["likert"], sessid: sessid})
-            sendResponse(req, res, 200, "Submitted successfully.")
-          } else if (params["comment"]) {
-            // We only have comment
-            await Response.create({hotspotName: params["hotspotName"], sceneId: params["sceneId"], comment: params["comment"], likert: null, sessid: sessid})
-            sendResponse(req, res, 200, "Submitted successfully.")
-          } else if (params["likert"]) {
-            // We only have likert
-            await Response.create({hotspotName: params["hotspotName"], sceneId: params["sceneId"], comment: null, likert: params["likert"], sessid: sessid})
-            sendResponse(req, res, 200, "Submitted successfully.")
-          } else {
-            // We don't have data
-            sendResponse(req, res, 400, "Incorrect formatting.")
+        if (typeof(params["personaName"]) !== undefined && params["personaName"] && typeof(params["stageId"] && params["stageId"] >= 0) !== undefined) {
+          let comment = null;
+          let likert = null;
+          let option = null;
+          // Likert, comment and option can all be empty
+          // Usual case: likert w/ optional comment
+          // Option w/ optional comment
+          if(params["comment"]) {
+            comment = params["comment"]
+          } 
+          if (params["likert"]) {
+            likert = params["likert"]
           }
+          if (params["option"]) {
+            option = params["option"]
+          }
+
+          if (!comment && !likert && !option) {
+            // We haven't actually submitted any data, we shouldn't be here
+            sendResponse(req, res, 400, "Incorrectly formatted")
+          }
+          await Response.create({personaName: params["personaName"], stageId: params["stageId"], comment: comment, likert: likert, option: option, sessid: sessid})
+          // console.log("Submitted", params["personaName"], params["stageId"], comment, likert, option)
+          sendResponse(req, res, 200, "Submitted successfully.")
         } else {
           sendResponse(req, res, 200, "No body params")
         }
