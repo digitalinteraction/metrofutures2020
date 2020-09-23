@@ -24,22 +24,14 @@
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="loadingVid.src">link to the video</a> instead.</p>
           </video> -->
 
-          <b-button @click="toggleTranscript()">Transcript</b-button>
-
-          <div class="transcript" v-if="transcript">
-            <p v-for="(para, index) in stageInfo.transcript" :key="index">
-              {{ para.text }}
-            </p>
-          </div>
-
-
         </b-col>
-        <b-col class="col-lg-3 col-12">
+        <b-col class="col-lg-3 col-12" v-show="mainVid.finished && !personaFinished">
           <span class="starter-wrapper" v-if="!personaStarted">
             Click play (<b-icon font-scale="1" icon="play-fill"></b-icon>) on the video to start {{ personaName }}'s journey.
           </span>
 
-          <span class="question-wrapper" v-show="mainVid.finished && !personaFinished">
+          <!-- This is a relic of v-show around the question only rather than whole column -->
+          <span class="question-wrapper" >
             <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
             
             <!-- Options -->
@@ -96,6 +88,17 @@
             </div>
           </span>
         </b-col>
+      </b-row>
+      <b-row>
+        <b-button @click="toggleTranscript()">Transcript</b-button>
+        <div class="transcript" v-show="transcript">
+          <p>
+            {{ stageInfo.transcript[currentStageId].text }}
+          </p>
+          <!-- <p v-for="(para, index) in stageInfo.transcript" :key="index">
+            {{ para.text }}
+          </p> -->
+        </div>
       </b-row>
     </b-container>
     
@@ -180,6 +183,7 @@ export default {
     },
     videoStop() {
       this.mainVid.finished = true;
+      this.transcript = false;
     },
     videoNext() {
       // Get the next video and load it into the element
@@ -268,7 +272,7 @@ export default {
       // If options
       } else if (question.options) {
         console.log("require options")
-        if (this.optionSelection >= 0) {
+        if (this.optionSelection === 0 || this.optionSelection > 0) {
           invalid = false
           } else {
           invalid = true
@@ -306,6 +310,7 @@ export default {
       // Finalises all elements ready to go back to persona menu
       this.mainVid.finished = true
       this.personaFinished = true
+      this.transcript = false
     },
     getLikertText(likertType) {
       switch(likertType) {
