@@ -96,9 +96,6 @@
           </span>
         </b-col>
       </b-row>
-      <b-row>
-        <Footer></Footer>
-      </b-row>
     </b-container>
     
   </div>
@@ -107,12 +104,10 @@
 <script>
 import {mapGetters} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
-import Footer from '@/components/Footer.vue';
 export default {
   name: "PersonaViewer",
   components: {
     MainHeader,
-    Footer,
   },
   data() {
     return {
