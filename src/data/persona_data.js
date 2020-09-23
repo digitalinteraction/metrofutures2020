@@ -72,7 +72,7 @@ export default [
     ],
     questions: [
       {id: 0, text: "Which combination of pole and door colours, and floor markings are best for Desmond?", options: "colours", comment: true, likert: false},
-      {id: 1, text: "Which style of seating is best for Desmond?", options: "seating", comment: true, likert: false},
+      {id: 1, text: "Which style of seating is best for Desmond?", options: "seats", comment: true, likert: false},
       {id: 2, text: "Should priority seats be indicated with different colours for Desmond and Jim?", options: "priority", comment: true, likert: false},
       {id: 3, text: "How clear is the passenger information screen for Desmond?", options: "", comment: true, likert: "unclear"},
       {id: 4, text: "Which side wall panel colour is best for Desmond?", options: "sidewall", comment: true, likert: false},
@@ -161,7 +161,7 @@ export default [
       {id: 5, videoUrl: "Mary6.mp4", nextId: null, questionId: 5},
     ],
     questions: [
-      {id: 0, text: "Should priority seats be indicated with different colours?", options: "yes", comment: true, likert: false},
+      {id: 0, text: "Should priority seats be indicated with different colours?", options: "priority", comment: true, likert: false},
       {id: 1, text: "Which pole is best for Mary?", options: "poles", comment: true, likert: false},
       {id: 2, text: "How safe do these train features make Mary feel?", options: "", comment: false, likert: "safer"},
       {id: 3, text: "How clear is the passenger information screen?", options: "", comment: true, likert: "unclear"},

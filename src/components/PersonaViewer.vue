@@ -11,7 +11,7 @@
         </b-col>
       </b-row>
       <b-row>
-        <b-col class="col-lg-9 col-12">
+        <b-col class="col-12" :class="videoWidth()">
 
           <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
             <source :src="mainVid.src" type="video/mp4" :poster="mainVid.poster">
@@ -25,7 +25,7 @@
           </video> -->
 
         </b-col>
-        <b-col class="col-lg-3 col-12" v-show="mainVid.finished">
+        <b-col class="col-lg-3 col-12"  v-show="mainVid.finished">
           <span class="starter-wrapper" v-if="!personaStarted">
             Click play (<b-icon font-scale="1" icon="play-fill"></b-icon>) on the video to start {{ personaName }}'s journey.
           </span>
@@ -36,9 +36,10 @@
             
             <!-- Options -->
             <div class="options" v-if="stageInfo.questions[currentQuestionId].options">
+              <!-- {{ getOptions(0) }} -->
               <b-row class="optionRow" 
                 align-v="center" 
-                v-for="(opt, x) in options"
+                v-for="(opt, x) in getOptions(stageInfo.questions[currentQuestionId].options)"
                 :key="x"
                 @click="selectOption(x)"
                 :class="selectClass(x)"
@@ -106,7 +107,7 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapState} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
 export default {
   name: "PersonaViewer",
@@ -151,6 +152,7 @@ export default {
   },
   computed: {
     ...mapGetters(["getPersonas"]),
+    ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
         console.log("comment is invalid")
@@ -231,7 +233,7 @@ export default {
         payload.likert = this.likertRating
       }
 
-      if (this.optionSelection) {
+      if (this.optionSelection === 0 || this.optionSelection) {
         payload.option = this.optionSelection
       }
 
@@ -336,6 +338,32 @@ export default {
         selectClass = 'selected'
       }
       return selectClass
+    },
+    videoWidth() {
+      if (this.mainVid.finished) {
+        return "col-lg-9"
+      } else {
+        return "col-lg-12"
+      }
+    },
+    getOptions(optionType) {
+      console.log("Getting options for", optionType)
+      switch(optionType) {
+        case "seats":
+          return this.questions[0].options
+        case "colours":
+          return this.questions[1].options
+        case "pole":
+          return this.questions[2].options
+        case "bike":
+          return this.questions[3].options
+        case "priority":
+          return this.questions[4].options
+        case "sidewall":
+          return this.questions[5].options
+        case "endwall":
+          return this.questions[6].options
+      }
     },
   },
 

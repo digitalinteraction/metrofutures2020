@@ -78,11 +78,11 @@ module.exports = async(req, res) => {
           if (params["likert"]) {
             likert = params["likert"]
           }
-          if (params["option"]) {
+          if (params["option"] === "0" || params["option"] === 0 || params["option"]) {
             option = params["option"]
-          }
+          } 
 
-          if (!comment && !likert && !option) {
+          if (!comment && !likert && option === null) {
             // We haven't actually submitted any data, we shouldn't be here
             sendResponse(req, res, 400, "Incorrectly formatted")
           }
