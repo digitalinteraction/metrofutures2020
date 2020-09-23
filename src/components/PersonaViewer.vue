@@ -267,10 +267,10 @@ export default {
       // If options
       } else if (question.options) {
         console.log("require options")
-        if (!this.optionSelection) {
-          invalid = true
-        } else {
+        if (this.optionSelection >= 0) {
           invalid = false
+          } else {
+          invalid = true
         }
       } else if (question.comment) {
         // Not sure we ever use this
