@@ -25,13 +25,13 @@
           </video> -->
 
         </b-col>
-        <b-col class="col-lg-3 col-12" v-show="mainVid.finished && !personaFinished">
+        <b-col class="col-lg-3 col-12" v-show="mainVid.finished">
           <span class="starter-wrapper" v-if="!personaStarted">
             Click play (<b-icon font-scale="1" icon="play-fill"></b-icon>) on the video to start {{ personaName }}'s journey.
           </span>
 
           <!-- This is a relic of v-show around the question only rather than whole column -->
-          <span class="question-wrapper" >
+          <span class="question-wrapper" v-if="!personaFinished">
             <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
             
             <!-- Options -->
