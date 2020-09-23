@@ -49,6 +49,7 @@
                 v-for="(opt, x) in options"
                 :key="x"
                 @click="selectOption(x)"
+                :class="selectClass(x)"
               >
                 <b-col class="optionImg">
                     <b-img class="float-left" v-bind:src="'https://cdn.metrofutures.org.uk/squares/' + opt.img"></b-img>
@@ -323,7 +324,14 @@ export default {
     },
     selectOption(index) {
       this.optionSelection = index;
-    }
+    },
+    selectClass(x) {
+      let selectClass = ''
+      if (this.optionSelection === x) {
+        selectClass = 'selected'
+      }
+      return selectClass
+    },
   },
 
   beforeRouteUpdate (to, from, next) {
@@ -402,6 +410,15 @@ export default {
     & img {
       width: 100px;
       height: auto;
+    }
+  }
+
+  .selected {
+    /*   todo add tick to image*/
+    background-color: #DDDDDD;
+
+    & img {
+      border-right: 3px solid #FEC600;
     }
   }
   
