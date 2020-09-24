@@ -14,7 +14,13 @@
         <b-col class="col-12" :class="videoWidth()">
 
           <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
-            <source :src="mainVid.src" type="video/mp4" :poster="mainVid.poster">
+            <source 
+              :src="mainVid.src" 
+              type="video/mp4" 
+              :poster="mainVid.poster" 
+              webkit-playsinline="true" 
+              playsinline="true"
+            >
             <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN"> 
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
           </video>
@@ -30,7 +36,7 @@
             Click play (<b-icon font-scale="1" icon="play-fill"></b-icon>) on the video to start {{ personaName }}'s journey.
           </span>
 
-          <!-- This is a relic of v-show around the question only rather than whole column -->
+          
           <span class="question-wrapper" v-if="!personaFinished">
             <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
             
@@ -85,7 +91,28 @@
           </span>
           <span class="finished-wrapper" v-if="personaFinished">
             <div>
-              <b-button to="/journeys">Back to Journeys</b-button>
+              <b-button to="/journeys">Experience more journeys</b-button>
+              <b-button>
+                <ShareNetwork
+                  network="facebook"
+                  url="https://metrofutures.org.uk"
+                  title="I just customised my perfect Metro."
+                  description="Have a play around and make your own at: metrofutures.org.uk"
+                  hashtags="ShapeYourMetro"
+                >Share on Facebook
+                </ShareNetwork>
+              </b-button>
+              
+              <b-button>
+                <ShareNetwork
+                  network="twitter"
+                  url="https://metrofutures.org.uk"
+                  title="Check out my customised Metro. You can make your own at:"
+                  twitter-user="My_Metro"
+                  hashtags="ShapeYourMetro"
+                  >Share on Twitter
+                </ShareNetwork>
+              </b-button>
             </div>
           </span>
         </b-col>
@@ -96,10 +123,8 @@
           <p>
             {{ stageInfo.transcript[currentStageId].text }}
           </p>
-          <!-- <p v-for="(para, index) in stageInfo.transcript" :key="index">
-            {{ para.text }}
-          </p> -->
         </div>
+        <div class="retinopathy" v-if="personaName==='Desmond'"><strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a></div>
       </b-row>
     </b-container>
     
@@ -280,10 +305,11 @@ export default {
           invalid = true
         }
       } else if (question.comment) {
-        // Not sure we ever use this
-        console.log("Uncommon - require only comment")
+        // Use this on final question
         if (this.commentText) {
           invalid = false
+        } else {
+          invalid = true
         }
       }       
       return invalid
