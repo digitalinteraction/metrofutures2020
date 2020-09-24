@@ -49,7 +49,9 @@
 
           
           <span class="question-wrapper" v-if="!personaFinished">
-            <div class="question-text">{{ stageInfo.questions[currentQuestionId].text }}</div>
+            <div class="question-text">
+              {{ stageInfo.questions[currentQuestionId].text }}
+            </div>
             
             <!-- Options -->
             <div class="options" v-if="stageInfo.questions[currentQuestionId].options">
@@ -61,11 +63,11 @@
                 @click="selectOption(x)"
                 :class="selectClass(x)"
               >
-                <b-col class="optionImg">
+                <b-col class="optionImg col-4">
                     <b-img class="float-left" v-bind:src="'https://cdn.metrofutures.org.uk/squares/' + opt.img"></b-img>
                 </b-col>
-                <b-col class="optionText">
-                    <p>{{ opt.desc }}</p>
+                <b-col class="optionText col-8">
+                    {{ opt.desc }}
                 </b-col>
             </b-row>
             </div>
@@ -88,11 +90,6 @@
                 <span class="flex-grow-1">3</span>
                 <span class="flex-grow-1">4</span>
                 <span class="flex-grow-1">5</span>
-                <!-- <b-col cols="2">1</b-col>
-                <b-col cols="2">2</b-col>
-                <b-col cols="2">3</b-col>
-                <b-col cols="2">4</b-col>
-                <b-col cols="2">5</b-col> -->
               </b-row>
             </div>
             
@@ -112,7 +109,7 @@
             
             <!-- Submit button -->
             <!-- <b-button block variant="outline-secondary" @click="submitQuestion()">Continue</b-button> -->
-            <b-button block variant="warning" @click="submitQuestion()" :disabled="invalidForm()">Continue</b-button>
+            <b-button block variant="warning" @click="submitQuestion()" :disabled="invalidForm()" class="continueButton">Continue</b-button>
           </span>
 
           <!-- Finalised content -->
@@ -520,6 +517,8 @@ export default {
   .question-text {
     padding-top: 1em;
     padding-bottom: 1em;
+    font-family: $font-family-calvert;
+    font-size: 1.2rem;
   }
 
   .personaContent {
@@ -543,15 +542,21 @@ export default {
   .rating-label {
     padding-left: 1.5em;
     padding-right: 1.5em;
+    font-family: $font-family-calvert;
   }
 
   .optionImg {
     padding-right: 0;
     padding-left: 0;
     & img {
-      width: 100px;
+      width: auto;
       height: auto;
     }
+  }
+
+  .optionText {
+    text-align: left;
+    padding-left: 1em;
   }
 
   .optionRow {
@@ -572,8 +577,6 @@ export default {
       border-right: 3px solid #FEC600;
     }
   }
-
-  
 
   .finalButtons {
     margin-top: 1em;
@@ -598,10 +601,30 @@ export default {
   .transcriptButton {
     margin-top: 1em;
   }
+
+  .transcript p {
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+  }
   
   // Media rules for tablets and horizontal phones
-  @media only screen and (min-width: $media-small+1) {
+  @media only screen and (min-width: $media-small+1 ) {
 
+  }
+
+  @media only screen and (max-width: 991px) {
+    .continueButton {
+      margin-bottom: 1.5em;
+    }
+
+    // .optionImg {
+    //   padding-right: 0;
+    //   padding-left: 0;
+    //   & img {
+    //     width: 150px;
+    //     height: auto;
+    //   }
+    // }
   }
 
   // Media rule for phones screens
@@ -609,6 +632,17 @@ export default {
     .personaContent {
       max-width: 100%;
     }
+
+    .optionImg {
+    padding-right: 0;
+    padding-left: 0;
+      & img {
+        width: auto;
+        height: auto;
+      }
+    }
+
+    
   }
 
 </style>
