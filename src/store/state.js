@@ -5,14 +5,12 @@ import personaStages from "@/data/persona_data.js"
 import { uuid } from 'vue-uuid';
 
 export default {
-    uuid: uuid.v1(),
+    uuid: uuid.v1(),  // Sent to GA for tracking sessions
     questions,
     pano_data: pano_data[0],
     personas,
     personaStages,
     index: 0,
-    privacyNotice: false,
-    infoFormDone: false,
     configAnswers: {
         0: undefined,
         1: undefined,
@@ -22,6 +20,8 @@ export default {
         5: undefined,
         6: undefined
     },
-    demographic: false,
-    welcomeModal: true,
+    privacyNotice: false,  // Privacy and terms
+    demographic: false,  // Mandatory demographics
+    infoFormDone: false,  // The optional part of demographic info
+    welcomeModal: true,  // Disaply the welcome modal on menu
 }

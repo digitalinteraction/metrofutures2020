@@ -3,15 +3,24 @@
     <MainHeader :title="personaName+`'s Journey`"></MainHeader>
     
     <b-container class="personaContent">
-      <b-row>
+      <b-row class="demoQuestions" v-show="!getDemographic">
+        <b-col>
+          <BasicDemo></BasicDemo>
+        </b-col>
+      </b-row>
+
+      <b-row v-show="getDemographic">
         <b-col>
           <b-progress class="mt-2" :max="5" show-value>
             <b-progress-bar :value="currentStageId" variant="warning"></b-progress-bar>
           </b-progress>
         </b-col>
       </b-row>
-      <b-row>
-        <b-col class="col-12" :class="videoWidth()">
+      
+      
+      <b-row v-show="getDemographic">
+      <!-- <b-row> -->
+        <b-col class="col-12" :class="videoWidth()" >
 
           <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
             <source 
@@ -119,7 +128,7 @@
           </span>
         </b-col>
       </b-row>
-      <b-row>
+      <b-row v-show="getDemographic">
         <b-button @click="toggleTranscript()">Transcript</b-button>
         <div class="transcript" v-show="transcript">
           <p>
@@ -136,10 +145,12 @@
 <script>
 import {mapGetters, mapState} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
+import BasicDemo from '@/components/BasicDemo.vue'
 export default {
   name: "PersonaViewer",
   components: {
     MainHeader,
+    BasicDemo,
   },
   data() {
     return {
@@ -177,8 +188,16 @@ export default {
       optionSelection: false,
     }
   },
+  // watch: {
+  //   getDemographic: function() {
+  //     if (this.getDemographic === true) {
+  //       console.log("Assigning event listeners")
+  //       this.assignEventListeners()
+  //     }
+  //   }
+  // },
   computed: {
-    ...mapGetters(["getPersonas"]),
+    ...mapGetters(['getDemographic']),
     ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
@@ -206,6 +225,7 @@ export default {
       this.loadVideo(this.currentStageId)
     },
     videoPlay() {
+      console.log("playing")
       if(!this.personaStarted) {
         this.personaStarted = true;
       }
@@ -213,6 +233,7 @@ export default {
     videoStop() {
       this.mainVid.finished = true;
       this.transcript = false;
+      console.log("Video finished")
     },
     videoNext() {
       // Get the next video and load it into the element
@@ -393,6 +414,11 @@ export default {
           return this.questions[6].options
       }
     },
+    // assignEventListeners() {
+    //   this.videoEl = this.$refs.mainVideo
+    //   this.videoEl.addEventListener('ended', this.videoStop);
+    //   this.videoEl.addEventListener('play', this.videoPlay);
+    // }
   },
 
   beforeRouteUpdate (to, from, next) {
@@ -441,6 +467,10 @@ export default {
     height: 4em;
     padding-left: 1em;
     // padding-top: 1em;
+  }
+
+  .demoQuestions {
+    padding-top: 2em;
   }
 
   .mainEmbed {
