@@ -109,7 +109,7 @@ export default {
   .title {
     background-color: rgba($color: #000000, $alpha: 0.55);
     color: white;
-    padding: 1em 1em 0.75em 1.6em ;
+    padding: 1em 1em 0.75em 2em ;
     margin-right: 0.5em;
   }
 
