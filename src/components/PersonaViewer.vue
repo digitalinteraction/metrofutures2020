@@ -510,8 +510,6 @@ export default {
     width: 100%;
     height: 100%;
     max-width: 1400px;
-    // width: 450px !important;
-    // height: auto !important;
     padding-top: 1em;
   }
 

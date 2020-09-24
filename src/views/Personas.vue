@@ -16,7 +16,9 @@
         class="personaContainer"
       >
         <b-row>
-          <b-col class="imgCol" @click="selectPersona(pIndex)">
+          <!-- <b-col class="imgCol" @click="selectPersona(pIndex)" :style="{ backgroundImage: 'url('+')'}"> -->
+          <b-col class="imgCol" @click="selectPersona(pIndex)" :style="{ backgroundImage: getBackground(pIndex)}">
+          <!-- <b-col class="imgCol" @click="selectPersona(pIndex)" :style="{ background-image: 'url('+getBackground(pIndex)+')'}"> -->
               <div class="mainCard" >
                 <span class="title">{{ person.name }}'s journey</span>
                 <!-- <img :src="cdnUrl + person.img" alt=""> -->
@@ -60,6 +62,26 @@ export default {
       enabled: false,
       cdnUrl: "https://cdn.metrofutures.org.uk/personas/images/",
       selected: null,
+      images: [
+        {type: "mob",
+        images: [
+          "jessica-mob.jpg",
+          "sanjeev-mob.jpg",
+          "desmond-mob.jpg",
+          "polly-mob.jpg",
+          "robert-mob.jpg",
+          "mary-mob.jpg",
+        ]},
+        {type: "desk",
+        images: [
+          "jessica.jpg",
+          "sanjeev.jpg",
+          "desmond.jpg",
+          "polly.jpg",
+          "robert.jpg",
+          "mary.jpg",
+        ]}
+      ]
     }
   },
   components: {
@@ -79,6 +101,11 @@ export default {
         this.selected = personaIndex;
       }
     },
+    getBackground(personaIndex) {
+      let image = this.images[0].images[personaIndex]
+      let url = `https://cdn.metrofutures.org.uk/personas/images/${image}`
+      return `url(${url})`
+    }
   },
 }
 </script>
@@ -100,10 +127,12 @@ export default {
   }
 
   .imgCol {
-    background-image: url("../assets/yourJourneys2Mob.jpg");
+    // background-image: url("../assets/yourJourneys2Mob.jpg");
     background-color: lightgray;
+    background-size: cover;
     height: 100px;
     line-height: 7.9em;
+    padding-left: 0;
   }
 
   .title {
@@ -154,7 +183,7 @@ export default {
     }
 
     .imgCol {
-      background-image: url("../assets/yourJourneys2Mob.jpg");
+      // background-image: url("../assets/yourJourneys2Mob.jpg");
     }
 
   }
