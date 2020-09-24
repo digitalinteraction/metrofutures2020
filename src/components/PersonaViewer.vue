@@ -489,6 +489,6 @@ export default {
   // Media rule for phones screens
   @media only screen and (max-width: $media-small) {
     
-    }
+  }
 
 </style>
