@@ -28,6 +28,7 @@
               type="video/mp4" 
               :poster="mainVid.poster" 
               playsinline
+              webkit-playsinline
             >
             <!-- webkit-playsinline="true" 
               playsinline="true" -->
@@ -55,7 +56,7 @@
               <!-- {{ getOptions(0) }} -->
               <b-row class="optionRow" 
                 align-v="center" 
-                v-for="(opt, x) in getOptions(stageInfo.questions[currentQuestionId].options)"
+                v-for="(opt, x) in options"
                 :key="x"
                 @click="selectOption(x)"
                 :class="selectClass(x)"
@@ -99,9 +100,15 @@
             <!-- <b-button block variant="outline-secondary" @click="submitQuestion()">Continue</b-button> -->
             <b-button block variant="warning" @click="submitQuestion()" :disabled="invalidForm()">Continue</b-button>
           </span>
+
+          <!-- Finalised content -->
           <span class="finished-wrapper" v-if="personaFinished">
-            <!-- Optional demographic information -->
-            <div>
+            <!-- Optional demographic information if we haven't done it elsewhere -->
+            <div class="optDemographic" v-show="!getOnlyInfo">
+              <OptDemo></OptDemo>
+            </div>
+
+            <div v-show="getOnlyInfo">
               <b-button to="/journeys">Experience more journeys</b-button>
               <b-button>
                 <ShareNetwork
@@ -146,11 +153,14 @@
 import {mapGetters, mapState} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
 import BasicDemo from '@/components/BasicDemo.vue'
+import OptDemo from '@/components/OptDemo.vue'
+
 export default {
   name: "PersonaViewer",
   components: {
     MainHeader,
     BasicDemo,
+    OptDemo,
   },
   data() {
     return {
@@ -197,7 +207,7 @@ export default {
   //   }
   // },
   computed: {
-    ...mapGetters(['getDemographic']),
+    ...mapGetters(['getDemographic', 'getOnlyInfo']),
     ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
@@ -220,6 +230,12 @@ export default {
 
       // Load that question 
       this.currentQuestionId = this.getNextQuestionId(this.currentStageId)
+
+      // Get options if it is an options selection
+      if (this.stageInfo.questions[this.currentQuestionId].options) {
+        console.log("Fetching options for next question")
+        this.options = this.getOptions(this.stageInfo.questions[this.currentQuestionId].options)
+      }
 
       // Load that video
       this.loadVideo(this.currentStageId)
@@ -442,6 +458,13 @@ export default {
 
     // Get the loading element too
     this.loadingVid.element = this.$refs.loadingVideo
+
+    // Fetch options if needed
+    // Get options if it is an options selection
+      if (this.stageInfo.questions[this.currentQuestionId].options) {
+        console.log("Fetching options for next question")
+        this.options = this.getOptions(this.stageInfo.questions[this.currentQuestionId].options)
+      }
   },
   created() {
     // Need a guard to make sure we are accessing ones that exist

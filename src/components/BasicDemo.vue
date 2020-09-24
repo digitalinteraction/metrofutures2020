@@ -60,7 +60,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["completeInfo", "completeDemographic"]),
+    ...mapMutations(["completeDemographic"]),
     changeLA() {
       // if other is selected display free text box
       if (this.localAuthority === 'Other') {
@@ -86,7 +86,7 @@ export default {
       if (!this.invalid()) {
         // Form is valid
         
-        // From state - completeInfo and completeDemographic
+        // completeDemographic on state
         this.completeDemographic();
 
         if (this.localAuthority === 'Other' && this.LAOtherText) {

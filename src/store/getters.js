@@ -9,6 +9,9 @@ export default {
             return false
         }
     },
+    getOnlyInfo(state) {
+        return state.infoFormDone
+    },
     getIndex(state) {
         return state.index
     },

@@ -162,7 +162,7 @@ export default [
     ],
     questions: [
       {id: 0, text: "Should priority seats be indicated with different colours?", options: "priority", comment: true, likert: false},
-      {id: 1, text: "Which pole is best for Mary?", options: "poles", comment: true, likert: false},
+      {id: 1, text: "Which pole is best for Mary?", options: "pole", comment: true, likert: false},
       {id: 2, text: "How safe do these train features make Mary feel?", options: "", comment: false, likert: "safer"},
       {id: 3, text: "How clear is the passenger information screen?", options: "", comment: true, likert: "unclear"},
       {id: 4, text: "How clear are the door light and sound indications?", options: "", comment: true, likert: "unclear"},
