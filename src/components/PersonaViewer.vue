@@ -215,20 +215,11 @@ export default {
       optionSelection: false,
     }
   },
-  // watch: {
-  //   getDemographic: function() {
-  //     if (this.getDemographic === true) {
-  //       console.log("Assigning event listeners")
-  //       this.assignEventListeners()
-  //     }
-  //   }
-  // },
   computed: {
     ...mapGetters(['getDemographic', 'getOnlyInfo']),
     ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
-        console.log("comment is invalid")
         return false
       } else {
         return true
@@ -250,7 +241,6 @@ export default {
 
       // Get options if it is an options selection
       if (this.stageInfo.questions[this.currentQuestionId].options) {
-        console.log("Fetching options for next question")
         this.options = this.getOptions(this.stageInfo.questions[this.currentQuestionId].options)
       }
 
@@ -258,7 +248,6 @@ export default {
       this.loadVideo(this.currentStageId)
     },
     videoPlay() {
-      console.log("playing")
       if(!this.personaStarted) {
         this.personaStarted = true;
       }
@@ -266,7 +255,6 @@ export default {
     videoStop() {
       this.mainVid.finished = true;
       this.transcript = false;
-      console.log("Video finished")
     },
     videoNext() {
       // Get the next video and load it into the element
@@ -282,7 +270,6 @@ export default {
         } else {
           if(this.finalQuestion === false) {
             // Final question will be rendered by now, so progress to final question
-            console.log("Finished - start final questions")
             this.currentQuestionId += 1
             this.finalQuestion = true
           } else {
@@ -295,7 +282,7 @@ export default {
         this.optionSelection = false;
 
       } else {
-        console.log("This shouldn't have happened because the form is not valid")
+        console.log("Form is not valid")
       }
     },
     sendResponse() {
@@ -318,7 +305,6 @@ export default {
         payload.option = this.optionSelection
       }
 
-      console.log("Submitting payload", payload)
       this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/journey`, {
         params: payload
       })
@@ -354,7 +340,6 @@ export default {
         }
       // If options
       } else if (question.options) {
-        console.log("require options")
         if (this.optionSelection === 0 || this.optionSelection > 0) {
           invalid = false
           } else {
@@ -377,7 +362,6 @@ export default {
     loadVideo(nextId) {
       this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[nextId].videoUrl)
       this.mainVid.cap = this.mainVid.src+".vtt"
-      console.log("Setting video src")
       this.videoEl.setAttribute('src',this.mainVid.src)
       this.videoEl.currentTime = 0
       this.videoEl.play()
@@ -429,7 +413,6 @@ export default {
       }
     },
     getOptions(optionType) {
-      console.log("Getting options for", optionType)
       switch(optionType) {
         case "seats":
           return this.questions[0].options
@@ -479,7 +462,6 @@ export default {
     // Fetch options if needed
     // Get options if it is an options selection
       if (this.stageInfo.questions[this.currentQuestionId].options) {
-        console.log("Fetching options for next question")
         this.options = this.getOptions(this.stageInfo.questions[this.currentQuestionId].options)
       }
   },
