@@ -95,7 +95,7 @@
             
             <!-- Free comment -->
             <div class="surveyFreeText" v-if="stageInfo.questions[currentQuestionId].comment">
-              <label class="calvert" for="commentInput">Leave Feedback</label>
+              <label for="commentInput" class="sr-only" label-sr-only>Your comment...</label>
               <textarea
                 id="commentInput"
                 v-model="commentText"
