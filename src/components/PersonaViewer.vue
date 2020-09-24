@@ -72,21 +72,35 @@
             
             <!-- Likert -->
             <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
-              <span class="likert-text">{{ getLikertText(stageInfo.questions[currentQuestionId].likert) }}</span>
+              <label for="likertInput" class="likert-text">{{ getLikertText(stageInfo.questions[currentQuestionId].likert) }}</label>
               <b-form-rating
-              class="likert_item"
+              id="likertInput"
+              class="likert-item"
               v-model="likertRating"
               icon-empty="circle"
               icon-full="circle-fill"
               variant="warning"
               >
               </b-form-rating>
+              <b-row align-h="center" class="rating-label">
+                <span class="flex-grow-1">1</span>
+                <span class="flex-grow-1">2</span>
+                <span class="flex-grow-1">3</span>
+                <span class="flex-grow-1">4</span>
+                <span class="flex-grow-1">5</span>
+                <!-- <b-col cols="2">1</b-col>
+                <b-col cols="2">2</b-col>
+                <b-col cols="2">3</b-col>
+                <b-col cols="2">4</b-col>
+                <b-col cols="2">5</b-col> -->
+              </b-row>
             </div>
             
             <!-- Free comment -->
             <div class="surveyFreeText" v-if="stageInfo.questions[currentQuestionId].comment">
-              <!-- <label class="calvert" for="survey-text-response">Leave Feedback</label> -->
+              <label class="calvert" for="commentInput">Leave Feedback</label>
               <textarea
+                id="commentInput"
                 v-model="commentText"
                 placeholder="Your comment..."
                 class="form-control"
@@ -147,7 +161,7 @@
       </b-row>
       <b-row v-show="getDemographic && !personaFinished && !mainVid.finished">
         <b-col>
-            <b-button @click="toggleTranscript()" variant="primary">
+            <b-button @click="toggleTranscript()" variant="primary" class="transcriptButton">
               Transcript 
               <b-icon font-scale="1" icon="chevron-down" v-show="!transcript"></b-icon>
               <b-icon font-scale="1" icon="chevron-up" v-show="transcript"></b-icon>
@@ -497,7 +511,7 @@ export default {
 
   .mainEmbed {
     width: 100%;
-    height: 90%;
+    height: 100%;
     // width: 450px !important;
     // height: auto !important;
     padding-top: 1em;
@@ -510,11 +524,25 @@ export default {
 
   .personaContent {
     max-width: 100%;
+    max-width: $media-max-width;
+  }
+
+  .likert {
+    margin-bottom: 0.5em;
+  }
+
+  .likert-label {
+    text-align: center;
   }
 
   .likert-text {
     font-size: 0.75em;
     text-align: center;
+  }
+
+  .rating-label {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
   }
 
   .optionImg {
@@ -526,6 +554,16 @@ export default {
     }
   }
 
+  .optionRow {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+  }
+
+  .surveyFreeText {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+  }
+
   .selected {
     /*   todo add tick to image*/
     background-color: #DDDDDD;
@@ -534,6 +572,8 @@ export default {
       border-right: 3px solid #FEC600;
     }
   }
+
+  
 
   .finalButtons {
     margin-top: 1em;
@@ -554,6 +594,10 @@ export default {
     padding-top: 1em;
     text-align: left;
   }
+
+  .transcriptButton {
+    margin-top: 1em;
+  }
   
   // Media rules for tablets and horizontal phones
   @media only screen and (min-width: $media-small+1) {
@@ -562,7 +606,9 @@ export default {
 
   // Media rule for phones screens
   @media only screen and (max-width: $media-small) {
-    
+    .personaContent {
+      max-width: 100%;
+    }
   }
 
 </style>
