@@ -109,40 +109,57 @@
             </div>
 
             <div v-show="getOnlyInfo">
-              <b-button to="/journeys">Experience more journeys</b-button>
-              <b-button>
-                <ShareNetwork
+              <div class="finalButtons">
+                <b-button to="/journeys" variant="primary">Experience more journeys</b-button>
+              </div>
+
+              <div class="finalButtons">
+                <b-button to="/" variant="primary">Return to Home</b-button>
+              </div>
+              <div class="finalButtons">
+                <b-button class="fbShare">
+                  <ShareNetwork
                   network="facebook"
                   url="https://metrofutures.org.uk"
                   title="I just customised my perfect Metro."
                   description="Have a play around and make your own at: metrofutures.org.uk"
                   hashtags="ShapeYourMetro"
-                >Share on Facebook
-                </ShareNetwork>
-              </b-button>
+                  >Share on Facebook
+                  </ShareNetwork>
+                </b-button>
+              </div>
               
-              <b-button>
-                <ShareNetwork
+              <div class="finalButtons">
+                <b-button class="twitterShare">
+                  <ShareNetwork
                   network="twitter"
                   url="https://metrofutures.org.uk"
                   title="Check out my customised Metro. You can make your own at:"
                   twitter-user="My_Metro"
                   hashtags="ShapeYourMetro"
                   >Share on Twitter
-                </ShareNetwork>
-              </b-button>
+                  </ShareNetwork>
+                </b-button>
+              </div>
             </div>
           </span>
         </b-col>
       </b-row>
-      <b-row v-show="getDemographic">
-        <b-button @click="toggleTranscript()">Transcript</b-button>
-        <div class="transcript" v-show="transcript">
-          <p>
-            {{ stageInfo.transcript[currentStageId].text }}
-          </p>
-        </div>
-        <div class="retinopathy" v-if="personaName==='Desmond'"><strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a></div>
+      <b-row v-show="getDemographic && !personaFinished && !mainVid.finished">
+        <b-col>
+            <b-button @click="toggleTranscript()" variant="primary">
+              Transcript 
+              <b-icon font-scale="1" icon="chevron-down" v-show="!transcript"></b-icon>
+              <b-icon font-scale="1" icon="chevron-up" v-show="transcript"></b-icon>
+            </b-button>
+          <div class="transcript" v-show="transcript">
+            <p>
+              {{ stageInfo.transcript[currentStageId].text }}
+            </p>
+          </div>
+          <div class="retinopathy" v-if="personaName==='Desmond'"><strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a></div>
+        </b-col>
+        
       </b-row>
     </b-container>
     
@@ -534,6 +551,26 @@ export default {
     & img {
       border-right: 3px solid #FEC600;
     }
+  }
+
+  .finalButtons {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+
+  .fbShare {
+    background-color: #3B4BA2;
+    color: white;
+  }
+
+  .twitterShare {
+    background-color: #00BAFE;
+    color: white;
+  }
+
+  .transcript {
+    padding-top: 1em;
+    text-align: left;
   }
   
   // Media rules for tablets and horizontal phones
