@@ -112,6 +112,39 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+  @import '@/assets/_variables.scss';
+
+  textarea {
+    max-width: $content-max-width / 3;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  select {
+    max-width: $content-max-width / 3;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  button {
+    max-width: $content-max-width / 3;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1.5em;
+  }
+
+  // Media rule for phones screens
+  @media only screen and (max-width: $media-small) {
+    
+    .demoWrapper {
+      max-width: 100%;
+    }
+
+    button {
+      margin-bottom: 1.5em;
+    }
+
+  }
 
 </style>

@@ -509,7 +509,7 @@ export default {
   .mainEmbed {
     width: 100%;
     height: 100%;
-    max-width: 1400px;
+    max-width: $video-max-width;
     padding-top: 1em;
   }
 
@@ -522,7 +522,7 @@ export default {
 
   .personaContent {
     // max-width: 100%;
-    max-width: 1900px;
+    max-width: $content-max-width;
   }
 
   .likert {
