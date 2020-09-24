@@ -1,6 +1,6 @@
 <template>
   <div class="idoc">
-    <b-container class="bv-example-row">
+    <b-container class="personaMain">
       <b-row v-if="welcomeScreen">
         <welcomeConsent title="Your Journeys" page="journeys" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
@@ -20,8 +20,10 @@
               <div class="mainCard" >
                 <span class="title">{{ person.name }}'s journey</span>
                 <!-- <img :src="cdnUrl + person.img" alt=""> -->
-                <b-icon font-scale="1" icon="chevron-down" v-show="selected !== pIndex"></b-icon>
-                <b-icon font-scale="1" icon="chevron-up" v-show="selected === pIndex"></b-icon>
+                <span class="chevron">
+                  <b-icon font-scale="1" icon="chevron-down" v-show="selected !== pIndex"></b-icon>
+                  <b-icon font-scale="1" icon="chevron-up" v-show="selected === pIndex"></b-icon>
+                </span>
               </div>
           </b-col>
         </b-row>
@@ -32,7 +34,7 @@
               {{ person.desc }}
             </p>
             <div class="text-center">
-              <b-button :to="`/journeys/${person.name}`" variant="primary" class="followButton text-center">Follow {{ person.name }}'s journey</b-button>
+              <b-button :to="`/journeys/${person.name}`" variant="primary" class="followButton">Follow {{ person.name }}'s journey</b-button>
             </div>
           </div>
         </b-row>
@@ -91,7 +93,6 @@ export default {
 
   .mainCard {
     font-family: $font-family-calvert;
-    padding-left: 1em;
     padding-right: 1em;
     padding-top: 1em;
     // padding-bottom: 0.5em;
@@ -102,12 +103,19 @@ export default {
     background-image: url("../assets/yourJourneys2Mob.jpg");
     background-color: lightgray;
     height: 100px;
+    line-height: 7.9em;
   }
 
   .title {
-    background-color: darkgray;
-    padding: 0.25em 0.25em 0 0.25em ;
-    vertical-align: bottom;
+    background-color: rgba($color: #000000, $alpha: 0.55);
+    color: white;
+    padding: 1em 1em 0.75em 1.6em ;
+    margin-right: 0.5em;
+  }
+
+  .chevron {
+    text-align: right;
+    color: white;
   }
 
   .subCard {
@@ -118,8 +126,15 @@ export default {
     font-family: $font-family-sans-serif;
   }
 
+  .personaDesc {
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
   .followButton {
     font-weight: bold;
+    padding-left: 3em;
+    padding-right: 3em;
   }
 
   .personaContainer {
@@ -132,10 +147,15 @@ export default {
 
   // Media rule for phones screens
   @media only screen and (max-width: $media-small) {
-    .container {
+    .personaMain {
       max-width: 100%;
       padding-left: 0;
       padding-right: 0;
     }
+
+    .imgCol {
+      background-image: url("../assets/yourJourneys2Mob.jpg");
+    }
+
   }
 </style>
