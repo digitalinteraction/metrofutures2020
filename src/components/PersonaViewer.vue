@@ -18,9 +18,10 @@
               :src="mainVid.src" 
               type="video/mp4" 
               :poster="mainVid.poster" 
-              webkit-playsinline="true" 
-              playsinline="true"
+              playsinline
             >
+            <!-- webkit-playsinline="true" 
+              playsinline="true" -->
             <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN"> 
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
           </video>
@@ -90,6 +91,7 @@
             <b-button block variant="warning" @click="submitQuestion()" :disabled="invalidForm()">Continue</b-button>
           </span>
           <span class="finished-wrapper" v-if="personaFinished">
+            <!-- Optional demographic information -->
             <div>
               <b-button to="/journeys">Experience more journeys</b-button>
               <b-button>
