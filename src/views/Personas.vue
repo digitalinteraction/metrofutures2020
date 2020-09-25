@@ -10,6 +10,10 @@
         </b-col>
       </b-row>
 
+      <b-row>
+        <b-col>Six people and six different journeys that reflect real experiences of travelling on Metro and other trains that people have shared with us*. Step into their shoes, experience the new trains from their points of view, and think about how well they fit their needs. Each journey consists of six video clips with one or more questions after each. Pick someone to begin.</b-col>
+      </b-row>
+
       <div
         v-for="(person, pIndex) in getPersonas" 
         :key="pIndex"
@@ -33,6 +37,7 @@
         <b-row>
           <div class="subCard" v-show="selected === pIndex"> 
             <p class="personaDesc">
+              Step into {{ person.name }}'s shoes:
               {{ person.desc }}
             </p>
             <div class="text-center">
@@ -42,6 +47,10 @@
         </b-row>
 
       </div>
+
+      <b-row>
+        <b-col>*These are made-up people based on the experiences of real people.</b-col>
+      </b-row>
 
     </b-container>
 

@@ -32,7 +32,7 @@
               playsinline
               webkit-playsinline="webkit-playsinline"
             >
-            <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN"> 
+            <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack"> 
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
           </video>
 
@@ -174,6 +174,9 @@
         </b-col>
         
       </b-row>
+      <b-row>
+        <b-button @click="check()">Test</b-button>
+      </b-row>
     </b-container>
     
   </div>
@@ -204,6 +207,7 @@ export default {
       finalQuestion: false,
       transcript: false,
       videoEl: false,
+      trackEl: false,
       mainVid: {
         playing: false,
         finished: false,
@@ -240,6 +244,9 @@ export default {
     },
   },
   methods: {
+    check() {
+      console.log("text")
+    },
     onFullscreenChange() {
       // https://gruhn.github.io/vue-qrcode-reader/demos/Fullscreen.html
       console.log("Detected change in fullscreen")
@@ -393,8 +400,12 @@ export default {
       this.videoEl.setAttribute('src',this.mainVid.src)
       this.videoEl.currentTime = 0
       this.videoEl.play()
+      this.trackEl.setAttribute('src', this.mainVid.cap)
+      // Thought it wasn't showing?
+      // this.trackEl.track.setAttribute('mode', "showing")
       this.mainVid.playing = false
       this.mainVid.finished = false
+      this.$forceUpdate();
     },
     toggleTranscript() {
       this.transcript = !this.transcript
@@ -494,6 +505,10 @@ export default {
     // this.videoEl.addEventListener('pause', this.videoPause);
 
     this.videoEl.setAttribute('playsInline',true)
+
+    // Do subtitles
+    this.trackEl = this.$refs.mainTrack
+    this.trackEl.setAttribute('hidden', true)
 
     // Autoplay video
     // This is sometimes blocked by the device
