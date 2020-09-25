@@ -11,8 +11,10 @@
 
       <b-row v-show="getDemographic">
         <b-col>
-          <b-progress class="mt-2" :max="5" show-value>
-            <b-progress-bar :value="currentStageId" variant="warning"></b-progress-bar>
+          <b-progress class="mt-2" :max="6" show-value>
+            <b-progress-bar :value="currentStageId+1" variant="warning">
+              <span class="progressLabel">Stop: {{ currentStageId+1 }} / 6</span>
+            </b-progress-bar>
           </b-progress>
         </b-col>
       </b-row>
@@ -20,7 +22,7 @@
       
       <b-row v-show="getDemographic">
       <!-- <b-row> -->
-        <b-col class="col-12" :class="videoWidth()" >
+        <b-col class="col-12" :class="videoWidth()">
 
           <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
             <source 
@@ -119,14 +121,15 @@
 
             <div v-show="getOnlyInfo">
               <div class="finalButtons">
-                <b-button to="/journeys" variant="primary">Experience more journeys</b-button>
+                <b-button to="/journeys" variant="primary" block>Experience more journeys</b-button>
               </div>
 
               <div class="finalButtons">
-                <b-button to="/" variant="primary">Return to Home</b-button>
+                <b-button to="/" variant="primary" block>Return to Home</b-button>
               </div>
+
               <div class="finalButtons">
-                <b-button class="fbShare">
+                <b-button class="fbShare" block>
                   <ShareNetwork
                   network="facebook"
                   url="https://metrofutures.org.uk"
@@ -139,7 +142,7 @@
               </div>
               
               <div class="finalButtons">
-                <b-button class="twitterShare">
+                <b-button class="twitterShare" block>
                   <ShareNetwork
                   network="twitter"
                   url="https://metrofutures.org.uk"
@@ -156,17 +159,18 @@
       </b-row>
       <b-row v-show="getDemographic && !personaFinished && !mainVid.finished">
         <b-col>
-            <b-button @click="toggleTranscript()" variant="primary" class="transcriptButton">
-              Transcript 
-              <b-icon font-scale="1" icon="chevron-down" v-show="!transcript"></b-icon>
-              <b-icon font-scale="1" icon="chevron-up" v-show="transcript"></b-icon>
-            </b-button>
+          <div class="retinopathy" v-if="personaName==='Desmond'"><strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a></div>
+          <b-button @click="toggleTranscript()" variant="primary" class="transcriptButton">
+            Transcript 
+            <b-icon font-scale="1" icon="chevron-down" v-show="!transcript"></b-icon>
+            <b-icon font-scale="1" icon="chevron-up" v-show="transcript"></b-icon>
+          </b-button>
           <div class="transcript" v-show="transcript">
             <p>
               {{ stageInfo.transcript[currentStageId].text }}
             </p>
           </div>
-          <div class="retinopathy" v-if="personaName==='Desmond'"><strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a></div>
+          
         </b-col>
         
       </b-row>
@@ -593,18 +597,37 @@ export default {
   }
 
   .finalButtons {
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    & a {
+      font-weight: bold;
+    }
+    
+    & button {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   .fbShare {
     background-color: #3B4BA2;
     color: white;
+    & a {
+      color: white;
+      font-weight: normal;
+    }
   }
 
   .twitterShare {
     background-color: #00BAFE;
-    color: white;
+    border: 0;
+    color: white !important;
+    & a {
+      color: white;
+      font-weight: normal;
+    }
   }
 
   .transcript {
@@ -619,6 +642,11 @@ export default {
   .transcript p {
     padding-left: 0.75em;
     padding-right: 0.75em;
+  }
+
+  .progressLabel {
+    color: black;
+    font-weight: 400;
   }
   
   // Media rules for tablets and horizontal phones
