@@ -189,7 +189,7 @@ export default {
     }
 
     .personaContainer:last-child {
-      margin-bottom: 1em;
+      margin-bottom: 4em;
     }
 
   }
