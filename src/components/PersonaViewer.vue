@@ -532,6 +532,10 @@ export default {
     padding-top: 1em;
   }
 
+  .mainEmbed:focus {
+    outline: none !important;
+  }
+
   .question-text {
     padding-top: 1em;
     padding-bottom: 1em;
