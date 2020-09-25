@@ -59,6 +59,7 @@ export default {
   data() {
     return {
       welcomeScreen: true,
+      windowWidth: window.innerWidth,
       enabled: false,
       cdnUrl: "https://cdn.metrofutures.org.uk/personas/images/",
       selected: null,
@@ -74,12 +75,12 @@ export default {
         ]},
         {type: "desk",
         images: [
-          "jessica.jpg",
-          "sanjeev.jpg",
-          "desmond.jpg",
-          "polly.jpg",
-          "robert.jpg",
-          "mary.jpg",
+          "jessica-desktop.jpg",
+          "sanjeev-desktop.jpg",
+          "desmond-desktop.jpg",
+          "polly-desktop.jpg",
+          "robert-desktop.jpg",
+          "mary-desktop.jpg",
         ]}
       ]
     }
@@ -102,8 +103,14 @@ export default {
       }
     },
     getBackground(personaIndex) {
-      let image = this.images[0].images[personaIndex]
-      let url = `https://cdn.metrofutures.org.uk/personas/images/${image}`
+      let url = ""
+      if(this.windowWidth > 700) {
+        console.log("Desktop")
+        url = `https://cdn.metrofutures.org.uk/personas/images/${this.images[1].images[personaIndex]}`
+      } else {
+        url = `https://cdn.metrofutures.org.uk/personas/images/${this.images[0].images[personaIndex]}`
+      }
+      
       return `url(${url})`
     }
   },
