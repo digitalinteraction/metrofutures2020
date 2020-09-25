@@ -264,21 +264,21 @@ export default {
     videoStop() {
       this.mainVid.finished = true;
       this.transcript = false;
-      // Try closing full screen
-      console.log("trying to close fullscreen")
-      if (this.videoEl.exitFullscreen) {
-        console.log("main")
-        this.videoEl.exitFullscreen();
-      } else if (this.videoEl.mozCancelFullScreen) { /* Firefox */
-        console.log("FF")
-        this.videoEl.mozCancelFullScreen();
-      } else if (this.videoEl.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-        console.log("iOs")
-        this.videoEl.webkitExitFullscreen();
-      } else if (this.videoEl.msExitFullscreen) { /* IE/Edge */
-        console.log("edge")
-        this.videoEl.msExitFullscreen();
-      }
+      // // Try closing full screen
+      // console.log("trying to close fullscreen")
+      // if (this.videoEl.exitFullscreen) {
+      //   console.log("main")
+      //   this.videoEl.exitFullscreen();
+      // } else if (this.videoEl.mozCancelFullScreen) { /* Firefox */
+      //   console.log("FF")
+      //   this.videoEl.mozCancelFullScreen();
+      // } else if (this.videoEl.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+      //   console.log("iOs")
+      //   this.videoEl.webkitExitFullscreen();
+      // } else if (this.videoEl.msExitFullscreen) { /* IE/Edge */
+      //   console.log("edge")
+      //   this.videoEl.msExitFullscreen();
+      // }
     },
     videoNext() {
       // Get the next video and load it into the element

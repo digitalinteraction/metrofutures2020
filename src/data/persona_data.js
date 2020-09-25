@@ -77,8 +77,8 @@ export default [
       {id: 3, text: "How clear is the passenger information screen for Desmond?", options: "", comment: true, likert: "unclear"},
       {id: 4, text: "Which side wall panel colour is best for Desmond?", options: "sidewall", comment: true, likert: false},
       // Final questions must always be present
-      {id: 5, text: "Thinking about Polly's journey, how well do the new trains suit the needs of someone like Polly?", options: "", comment: true, likert: "verywell", },
-      {id: 6, text: "Please explain what work well and what doesn’t work well in the new trains for someone like Polly?", options: "", comment: true, likert: false},
+      {id: 5, text: "Thinking about Desmond's journey, how well do the new trains suit the needs of someone like Desmond?", options: "", comment: true, likert: "verywell", },
+      {id: 6, text: "Please explain what work well and what doesn’t work well in the new trains for someone like Desmond?", options: "", comment: true, likert: false},
     ],
     transcript: [ 
       {text: "It’s Saturday evening and I’m dressed in style. Me and the boys are having an evening of culture at the Sage. I’m meeting them at Gateshead Interchange and we’ll walk there together. The Metro train arrives at Tyne Dock station. As I’m getting on, I need to watch out for the pole in the middle of the entrance area – I’ve bashed into it in the past."},
