@@ -104,8 +104,7 @@ export default {
     },
     getBackground(personaIndex) {
       let url = ""
-      if(this.windowWidth > 700) {
-        console.log("Desktop")
+      if(this.windowWidth > 764) {
         url = `https://cdn.metrofutures.org.uk/personas/images/${this.images[1].images[personaIndex]}`
       } else {
         url = `https://cdn.metrofutures.org.uk/personas/images/${this.images[0].images[personaIndex]}`

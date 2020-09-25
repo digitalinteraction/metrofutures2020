@@ -642,6 +642,7 @@ export default {
   .transcript p {
     padding-left: 0.75em;
     padding-right: 0.75em;
+    text-align: left;
   }
 
   .progressLabel {
