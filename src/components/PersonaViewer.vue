@@ -1,6 +1,18 @@
 <template>
   <div @fullscreenchange="onFullscreenChange">
     <MainHeader :title="personaName+`'s Journey`"></MainHeader>
+
+    <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
+      <source 
+        :src="mainVid.src" 
+        type="video/mp4" 
+        :poster="mainVid.poster" 
+        playsinline
+        webkit-playsinline="webkit-playsinline"
+      >
+      <track kind="captions" type="text/webvtt" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack"> 
+      <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
+    </video>
     
     <b-container class="personaContent">
       <b-row class="demoQuestions" v-show="!getDemographic">
@@ -24,7 +36,7 @@
       <!-- <b-row> -->
         <b-col class="col-12" :class="videoWidth()">
 
-          <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
+          <!-- <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
             <source 
               :src="mainVid.src" 
               type="video/mp4" 
@@ -34,7 +46,7 @@
             >
             <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack"> 
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
-          </video>
+          </video> -->
 
           <!-- <video class="loadingVideo" ref="loadingVideo" controls="true" hidden>
             <source :src="loadingVid.src" type="video/mp4">
@@ -208,6 +220,7 @@ export default {
       transcript: false,
       videoEl: false,
       trackEl: false,
+      captions: true,
       mainVid: {
         playing: false,
         finished: false,
@@ -245,7 +258,12 @@ export default {
   },
   methods: {
     check() {
-      console.log("text")
+      console.log("Now playing vvt:")
+      console.log(this.trackEl.track.mode, this.trackEl.src)
+      console.log(this.trackEl.track.cues)
+      // Manually add the VTTs to the video
+      const cueEn = new VTTCue(0, 15, 'Test subtitle I hope this works');
+      this.trackEl.track.addCue(cueEn)
     },
     onFullscreenChange() {
       // https://gruhn.github.io/vue-qrcode-reader/demos/Fullscreen.html
@@ -275,21 +293,18 @@ export default {
     videoStop() {
       this.mainVid.finished = true;
       this.transcript = false;
-      // // Try closing full screen
-      // console.log("trying to close fullscreen")
-      // if (this.videoEl.exitFullscreen) {
-      //   console.log("main")
-      //   this.videoEl.exitFullscreen();
-      // } else if (this.videoEl.mozCancelFullScreen) { /* Firefox */
-      //   console.log("FF")
-      //   this.videoEl.mozCancelFullScreen();
-      // } else if (this.videoEl.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-      //   console.log("iOs")
-      //   this.videoEl.webkitExitFullscreen();
-      // } else if (this.videoEl.msExitFullscreen) { /* IE/Edge */
-      //   console.log("edge")
-      //   this.videoEl.msExitFullscreen();
-      // }
+
+      if(this.captions) {
+        // Remove the text track
+        let textTrack = this.videoEl.textTracks[0];
+        let cues = textTrack.cues;
+        
+        for(let i = cues.length; i>0; i--) {
+          textTrack.removeCue(cues[i])
+        }
+
+        // this.trackEl.track.mode = "disabled"
+      }
     },
     videoNext() {
       // Get the next video and load it into the element
@@ -398,11 +413,14 @@ export default {
       this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[nextId].videoUrl)
       this.mainVid.cap = this.mainVid.src+".vtt"
       this.videoEl.setAttribute('src',this.mainVid.src)
+      this.trackEl.track.mode = "showing"
+      this.trackEl.setAttribute('src', this.mainVid.cap)
+      console.log("Now playing vvt:")
+      console.log(this.trackEl.track.mode, this.trackEl.src)
+      console.log(this.trackEl.track.cues)
       this.videoEl.currentTime = 0
       this.videoEl.play()
-      this.trackEl.setAttribute('src', this.mainVid.cap)
       // Thought it wasn't showing?
-      // this.trackEl.track.setAttribute('mode', "showing")
       this.mainVid.playing = false
       this.mainVid.finished = false
       this.$forceUpdate();
@@ -509,6 +527,10 @@ export default {
     // Do subtitles
     this.trackEl = this.$refs.mainTrack
     this.trackEl.setAttribute('hidden', true)
+
+    console.log("Now playing vvt:")
+    console.log(this.trackEl.track.mode, this.trackEl.src)
+    console.log(this.trackEl.track.cues)
 
     // Autoplay video
     // This is sometimes blocked by the device
