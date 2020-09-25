@@ -9,6 +9,9 @@ export default {
             return false
         }
     },
+    getOnlyInfo(state) {
+        return state.infoFormDone
+    },
     getIndex(state) {
         return state.index
     },
@@ -24,7 +27,26 @@ export default {
     getWelcome(state) {
         return state.welcomeModal;
     },
+    getPersonas(state) {
+        return state.personas;
+    },
+    // getPersonaByName(state, name) {
+    //     // state.personas.find("name")
+    //     console.log("Searching for", name)
+    //     return state.personas[0]
+    // },
+    getPersonaByName: (state) => (name) => {
+        let result = state.personas.find(persona => persona.name === name)
+        return result
+    },
+    getPersonaStages: (state) => (name) => {
+        // console.log("Fetching persona stages for", name)
+        let result = state.personaStages.find(persona => persona.name === name)
+        // console.log(result)
+        return result
+    },
     getUuid(state) {
         return state.uuid;
     }
+    
 }

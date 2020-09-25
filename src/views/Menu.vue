@@ -77,13 +77,13 @@
         >
           <div v-show="!hoverYourJourney">
             <b-img class="menuImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
-            <h3 class="imgTitles text-left">Your Journeys - Launching soon!</h3>
+            <h3 class="imgTitles text-left">Your Journeys</h3>
           </div>
 
           <div v-show="hoverYourJourney" class="hoveredImg">
             <b-img class="enlargeImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo w-100">
-              <h3>Your Journeys - Launching soon!</h3>
+              <h3>Your Journeys</h3>
               <p
                 v-show="false"
               >New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
@@ -118,7 +118,7 @@
           <div class="mobile-header">
             <b-img class="menuImg w-100" src="../assets/yourJourneys2Mob.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo">
-              <h3>Your Journeys - Launching soon!</h3>
+              <h3>Your Journeys</h3>
             </div>
           </div>
           <p v-show="false"
