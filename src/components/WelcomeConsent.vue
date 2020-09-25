@@ -27,7 +27,7 @@
       </div>
       <div id="journeys" class="modal-container" v-if="page === 'journeys'">
         <!--   <h2>Step into Someone Else’s Shoes</h2> -->
-        <p>Pick one of six people, go on a typical Metro journey with them and consider how well the new trains fit their needs. These are not real people but the issues they face are real and reflect what people like them have told us about travelling on trains.</p>
+        <p>Pick one of six people, go on a typical Metro journey with them and consider how well the new trains fit their needs. These are not real people but the issues they face are real and reflect what people like them have told us about travelling on trains. Each journey consists of six video clips with a question after each.</p>
       </div>
 
       <p

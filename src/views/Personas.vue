@@ -170,6 +170,8 @@ export default {
     text-align: left;
   }
 
+  
+
   // .personaContainer img {
   //   height: 10vh;
   // }
@@ -184,6 +186,10 @@ export default {
 
     .imgCol {
       // background-image: url("../assets/yourJourneys2Mob.jpg");
+    }
+
+    .personaContainer:last-child {
+      margin-bottom: 1em;
     }
 
   }

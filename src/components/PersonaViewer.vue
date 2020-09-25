@@ -28,10 +28,8 @@
               type="video/mp4" 
               :poster="mainVid.poster" 
               playsinline
-              webkit-playsinline
+              webkit-playsinline="webkit-playsinline"
             >
-            <!-- webkit-playsinline="true" 
-              playsinline="true" -->
             <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN"> 
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
           </video>
