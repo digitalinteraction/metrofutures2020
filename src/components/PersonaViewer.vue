@@ -229,7 +229,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getDemographic', 'getOnlyInfo']),
+    ...mapGetters(['getDemographic', 'getOnlyInfo', 'getUuid']),
     ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
@@ -458,11 +458,20 @@ export default {
           return this.questions[6].options
       }
     },
-    // assignEventListeners() {
-    //   this.videoEl = this.$refs.mainVideo
-    //   this.videoEl.addEventListener('ended', this.videoStop);
-    //   this.videoEl.addEventListener('play', this.videoPlay);
-    // }
+    getSession() {
+      this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+    },
+    postGA() {
+      // google analytics post request
+      const measurementID = process.env.VUE_APP_GA_ID;
+      const clientID = this.getUuid;
+      const page = this.$route.path;
+      const pageName = this.$route.name;
+      const documentHost = location.host;
+
+      const fullURL = 'https://www.google-analytics.com/collect?v=1&t=pageview&tid=' + measurementID + '&cid=' + clientID + '&t=pageview&dh=' + documentHost + '&dp=' + page + '&dt=' + pageName;
+      this.axios.post(fullURL);
+    }
   },
 
   beforeRouteUpdate (to, from, next) {
@@ -474,6 +483,10 @@ export default {
     next(false);  // Will cancel the route (use if not valid route)
   },
   mounted() {
+    // Basic functions
+    this.getSession()
+    this.postGA()
+
     // Get the video element
     this.videoEl = this.$refs.mainVideo
     this.videoEl.addEventListener('ended', this.videoStop);
