@@ -139,8 +139,8 @@
                   <ShareNetwork
                   network="facebook"
                   url="https://metrofutures.org.uk"
-                  title="I just customised my perfect Metro."
-                  description="Have a play around and make your own at: metrofutures.org.uk"
+                  :title="'I checked how well the new Tyne and Wear Metro fits the needs of someone like ' + personaName + '.'"
+                  description="Experience your new Metro in someone else's shoes."
                   hashtags="ShapeYourMetro"
                   >Share on Facebook
                   </ShareNetwork>
@@ -152,7 +152,7 @@
                   <ShareNetwork
                   network="twitter"
                   url="https://metrofutures.org.uk"
-                  title="Check out my customised Metro. You can make your own at:"
+                  :title="'I checked how well the new Tyne and Wear Metro fits the needs of someone like ' + personaName + '. Experience your new Metro in someone else\'s shoes at:'"
                   twitter-user="My_Metro"
                   hashtags="ShapeYourMetro"
                   >Share on Twitter
