@@ -187,7 +187,8 @@
         
       </b-row>
       <b-row>
-        <b-button @click="check()">Test</b-button>
+        <b-button @click="check()">Log Cues</b-button>
+        <b-button @click="populateCues()">Add Cues</b-button>
       </b-row>
     </b-container>
     
@@ -261,6 +262,9 @@ export default {
       console.log("Now playing vvt:")
       console.log(this.trackEl.track.mode, this.trackEl.src)
       console.log(this.trackEl.track.cues)
+      
+    },
+    populateCues() {
       // Manually add the VTTs to the video
       const cueEn = new VTTCue(0, 15, 'Test subtitle I hope this works');
       this.trackEl.track.addCue(cueEn)
