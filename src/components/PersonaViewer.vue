@@ -10,7 +10,7 @@
         playsinline
         webkit-playsinline="webkit-playsinline"
       >
-      <track kind="captions" type="text/webvtt" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack" :key="videoKey"> 
+      <track kind="captions" type="text/webvtt" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack" :key="trackKey"> 
       <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
     </video>
     
@@ -221,8 +221,9 @@ export default {
       transcript: false,
       videoEl: false,
       trackEl: false,
-      videoKey: 0,
-      captions: false,
+      trackKey: 0,
+      trackUpdate: false,
+      captions: "disabled",
       mainVid: {
         playing: false,
         finished: false,
@@ -260,7 +261,13 @@ export default {
   },
   updated: function () {
     this.$nextTick(function() {
-      console.log("Video rerendered")
+      if(this.trackUpdate) {
+        console.log("Getting reference to the new DOM element")
+        this.trackEl = this.$refs.mainTrack
+        console.log(`At end of last video track was ${this.captions}, so we should set video to this (currently set to ${this.trackEl.track.mode})`)
+        this.trackEl.track.mode = this.captions
+        this.trackUpdate = false;
+      }
     })
   },
   methods: {
@@ -419,12 +426,13 @@ export default {
       this.updateCaptions(this.trackEl.track.mode)
       this.trackEl.setAttribute('src', this.mainVid.cap)
       
-      this.videoKey += 1;  // This will trigger a re-render of the element
+      this.trackKey += 1;  // This will trigger a re-render of the element
+      this.trackUpdate = true;
 
       // Wind the video back and start playing. 
       this.videoEl.currentTime = 0
       this.videoEl.play()
-      this.trackEl.track.mode = this.captions;
+      // this.trackEl.track.mode = this.captions;
       this.mainVid.finished = false
     },
     toggleTranscript() {
@@ -532,12 +540,6 @@ export default {
 
     // Do subtitles
     this.trackEl = this.$refs.mainTrack
-
-    // this.trackEl.setAttribute('hidden', true)
-
-    // Autoplay video
-    // This is sometimes blocked by the device
-    // this.videoEl.play()
 
     // Get the loading element too
     this.loadingVid.element = this.$refs.loadingVideo
