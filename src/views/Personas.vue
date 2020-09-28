@@ -1,7 +1,7 @@
 <template>
   <div class="idoc">
     <b-container class="personaMain">
-      <b-row v-if="welcomeScreen">
+      <b-row v-if="!privacyNotice">
         <welcomeConsent title="Your Journeys" page="journeys" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
       <b-row>
@@ -101,7 +101,8 @@ export default {
   computed: {
     ...mapGetters([
       'getPersonas',
-      'getUuid'
+      'getUuid',
+      'privacyNotice'
     ])
   },
   methods: {

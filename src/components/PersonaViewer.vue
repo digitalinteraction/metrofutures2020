@@ -1,5 +1,9 @@
 <template>
   <div @fullscreenchange="onFullscreenChange">
+    <b-row v-if="!privacyNotice">
+        <welcomeConsent :title="personaName+`'s Journey`" page="journeys"></welcomeConsent>
+      </b-row>
+
     <MainHeader :title="personaName+`'s Journey`"></MainHeader>
 
     
@@ -186,6 +190,7 @@ import {mapGetters, mapState} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
 import BasicDemo from '@/components/BasicDemo.vue'
 import OptDemo from '@/components/OptDemo.vue'
+import welcomeConsent from "../components/WelcomeConsent";
 
 export default {
   name: "PersonaViewer",
@@ -193,6 +198,7 @@ export default {
     MainHeader,
     BasicDemo,
     OptDemo,
+    welcomeConsent,
   },
   data() {
     return {
@@ -236,7 +242,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getDemographic', 'getOnlyInfo', 'getUuid']),
+    ...mapGetters(['getDemographic', 'getOnlyInfo', 'getUuid', 'privacyNotice']),
     ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
