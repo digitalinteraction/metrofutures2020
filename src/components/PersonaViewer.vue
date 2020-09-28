@@ -72,7 +72,8 @@
                     <b-img class="float-left" v-bind:src="'https://cdn.metrofutures.org.uk/squares/' + opt.img"></b-img>
                 </b-col>
                 <b-col class="optionText col-8">
-                    <span class="option-letter" v-if="stageInfo.questions[currentQuestionId].options != 'priority'">{{ optionLetter(x) }} - </span>
+                    <!-- <span class="option-letter" v-if="stageInfo.questions[currentQuestionId].options != 'priority'">{{ optionLetter(x) }} - </span> -->
+                    <span class="option-letter">{{ optionLetter(x) }} - </span>
                     {{ opt.desc }}
                 </b-col>
             </b-row>
