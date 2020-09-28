@@ -1,6 +1,8 @@
 <template>
   <div @fullscreenchange="onFullscreenChange">
     <MainHeader :title="personaName+`'s Journey`"></MainHeader>
+
+    
     
     <b-container class="personaContent">
       <b-row class="demoQuestions" v-show="!getDemographic">
@@ -24,7 +26,7 @@
       <!-- <b-row> -->
         <b-col class="col-12" :class="videoWidth()">
 
-          <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
+          <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto" >
             <source 
               :src="mainVid.src" 
               type="video/mp4" 
@@ -32,7 +34,7 @@
               playsinline
               webkit-playsinline="webkit-playsinline"
             >
-            <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack"> 
+            <track kind="captions" type="text/webvtt" :src="mainVid.cap" srclang="en" label="English" ref="mainTrack" :key="trackKey"> 
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
           </video>
 
@@ -174,9 +176,6 @@
         </b-col>
         
       </b-row>
-      <b-row>
-        <b-button @click="check()">Test</b-button>
-      </b-row>
     </b-container>
     
   </div>
@@ -208,6 +207,9 @@ export default {
       transcript: false,
       videoEl: false,
       trackEl: false,
+      trackKey: 0,
+      trackUpdate: false,
+      captions: "disabled",
       mainVid: {
         playing: false,
         finished: false,
@@ -243,13 +245,19 @@ export default {
       }
     },
   },
+  updated: function () {
+    this.$nextTick(function() {
+      if(this.trackUpdate) {
+        this.trackEl = this.$refs.mainTrack
+        this.trackEl.track.mode = this.captions
+        this.trackUpdate = false;
+      }
+    })
+  },
   methods: {
-    check() {
-      console.log("text")
-    },
     onFullscreenChange() {
       // https://gruhn.github.io/vue-qrcode-reader/demos/Fullscreen.html
-      console.log("Detected change in fullscreen")
+
     },
     nextScene() {
       // Load next video
@@ -275,21 +283,6 @@ export default {
     videoStop() {
       this.mainVid.finished = true;
       this.transcript = false;
-      // // Try closing full screen
-      // console.log("trying to close fullscreen")
-      // if (this.videoEl.exitFullscreen) {
-      //   console.log("main")
-      //   this.videoEl.exitFullscreen();
-      // } else if (this.videoEl.mozCancelFullScreen) { /* Firefox */
-      //   console.log("FF")
-      //   this.videoEl.mozCancelFullScreen();
-      // } else if (this.videoEl.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-      //   console.log("iOs")
-      //   this.videoEl.webkitExitFullscreen();
-      // } else if (this.videoEl.msExitFullscreen) { /* IE/Edge */
-      //   console.log("edge")
-      //   this.videoEl.msExitFullscreen();
-      // }
     },
     videoNext() {
       // Get the next video and load it into the element
@@ -316,9 +309,11 @@ export default {
         this.commentText = "";
         this.optionSelection = false;
 
-      } else {
-        console.log("Form is not valid")
-      }
+      } 
+      // else {
+      //   console.log("Form is not valid")
+
+      // }
     },
     sendResponse() {
       // API call of our response
@@ -395,17 +390,23 @@ export default {
       return cdnUrl+`p${this.stageInfo.pId}/${videoName}`
     },
     loadVideo(nextId) {
+      // Set video and caption sources in data and DOM
       this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[nextId].videoUrl)
       this.mainVid.cap = this.mainVid.src+".vtt"
       this.videoEl.setAttribute('src',this.mainVid.src)
+
+      // Set captions in data and dom
+      this.updateCaptions(this.trackEl.track.mode)
+      this.trackEl.setAttribute('src', this.mainVid.cap)
+      
+      this.trackKey += 1;  // This will trigger a re-render of the element
+      this.trackUpdate = true;
+
+      // Wind the video back and start playing. 
       this.videoEl.currentTime = 0
       this.videoEl.play()
-      this.trackEl.setAttribute('src', this.mainVid.cap)
-      // Thought it wasn't showing?
-      // this.trackEl.track.setAttribute('mode', "showing")
-      this.mainVid.playing = false
+      // this.trackEl.track.mode = this.captions;
       this.mainVid.finished = false
-      this.$forceUpdate();
     },
     toggleTranscript() {
       this.transcript = !this.transcript
@@ -482,7 +483,10 @@ export default {
 
       const fullURL = 'https://www.google-analytics.com/collect?v=1&t=pageview&tid=' + measurementID + '&cid=' + clientID + '&t=pageview&dh=' + documentHost + '&dp=' + page + '&dt=' + pageName;
       this.axios.post(fullURL);
-    }
+    },
+    updateCaptions(captionStatus) {
+      this.captions = captionStatus;
+    },
   },
 
   beforeRouteUpdate (to, from, next) {
@@ -508,11 +512,6 @@ export default {
 
     // Do subtitles
     this.trackEl = this.$refs.mainTrack
-    this.trackEl.setAttribute('hidden', true)
-
-    // Autoplay video
-    // This is sometimes blocked by the device
-    // this.videoEl.play()
 
     // Get the loading element too
     this.loadingVid.element = this.$refs.loadingVideo
