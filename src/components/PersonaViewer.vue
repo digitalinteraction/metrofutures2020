@@ -2,7 +2,7 @@
   <div @fullscreenchange="onFullscreenChange">
     <MainHeader :title="personaName+`'s Journey`"></MainHeader>
 
-    <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
+    <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto" >
       <source 
         :src="mainVid.src" 
         type="video/mp4" 
@@ -10,7 +10,7 @@
         playsinline
         webkit-playsinline="webkit-playsinline"
       >
-      <track kind="captions" type="text/webvtt" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack"> 
+      <track kind="captions" type="text/webvtt" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack" :key="videoKey"> 
       <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
     </video>
     
@@ -221,7 +221,8 @@ export default {
       transcript: false,
       videoEl: false,
       trackEl: false,
-      captions: true,
+      videoKey: 0,
+      captions: false,
       mainVid: {
         playing: false,
         finished: false,
@@ -256,6 +257,11 @@ export default {
         return true
       }
     },
+  },
+  updated: function () {
+    this.$nextTick(function() {
+      console.log("Video rerendered")
+    })
   },
   methods: {
     check() {
@@ -297,18 +303,7 @@ export default {
     videoStop() {
       this.mainVid.finished = true;
       this.transcript = false;
-
-      if(this.captions) {
-        // Remove the text track
-        let textTrack = this.videoEl.textTracks[0];
-        let cues = textTrack.cues;
-        
-        for(let i = cues.length; i>0; i--) {
-          textTrack.removeCue(cues[i])
-        }
-
-        // this.trackEl.track.mode = "disabled"
-      }
+      console.log("Finished")
     },
     videoNext() {
       // Get the next video and load it into the element
@@ -414,20 +409,23 @@ export default {
       return cdnUrl+`p${this.stageInfo.pId}/${videoName}`
     },
     loadVideo(nextId) {
+      // Set video and caption sources in data and DOM
+      console.log("loading new video")
       this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[nextId].videoUrl)
       this.mainVid.cap = this.mainVid.src+".vtt"
       this.videoEl.setAttribute('src',this.mainVid.src)
-      this.trackEl.track.mode = "showing"
+
+      // Set captions in data and dom
+      this.updateCaptions(this.trackEl.track.mode)
       this.trackEl.setAttribute('src', this.mainVid.cap)
-      console.log("Now playing vvt:")
-      console.log(this.trackEl.track.mode, this.trackEl.src)
-      console.log(this.trackEl.track.cues)
+      
+      this.videoKey += 1;  // This will trigger a re-render of the element
+
+      // Wind the video back and start playing. 
       this.videoEl.currentTime = 0
       this.videoEl.play()
-      // Thought it wasn't showing?
-      this.mainVid.playing = false
+      this.trackEl.track.mode = this.captions;
       this.mainVid.finished = false
-      this.$forceUpdate();
     },
     toggleTranscript() {
       this.transcript = !this.transcript
@@ -504,7 +502,11 @@ export default {
 
       const fullURL = 'https://www.google-analytics.com/collect?v=1&t=pageview&tid=' + measurementID + '&cid=' + clientID + '&t=pageview&dh=' + documentHost + '&dp=' + page + '&dt=' + pageName;
       this.axios.post(fullURL);
-    }
+    },
+    updateCaptions(captionStatus) {
+      this.captions = captionStatus;
+      console.log("captions are", captionStatus)
+    },
   },
 
   beforeRouteUpdate (to, from, next) {
@@ -530,11 +532,8 @@ export default {
 
     // Do subtitles
     this.trackEl = this.$refs.mainTrack
-    this.trackEl.setAttribute('hidden', true)
 
-    console.log("Now playing vvt:")
-    console.log(this.trackEl.track.mode, this.trackEl.src)
-    console.log(this.trackEl.track.cues)
+    // this.trackEl.setAttribute('hidden', true)
 
     // Autoplay video
     // This is sometimes blocked by the device
