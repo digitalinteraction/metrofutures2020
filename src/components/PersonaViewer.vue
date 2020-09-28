@@ -2,17 +2,7 @@
   <div @fullscreenchange="onFullscreenChange">
     <MainHeader :title="personaName+`'s Journey`"></MainHeader>
 
-    <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto" >
-      <source 
-        :src="mainVid.src" 
-        type="video/mp4" 
-        :poster="mainVid.poster" 
-        playsinline
-        webkit-playsinline="webkit-playsinline"
-      >
-      <track kind="captions" type="text/webvtt" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack" :key="trackKey"> 
-      <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
-    </video>
+    
     
     <b-container class="personaContent">
       <b-row class="demoQuestions" v-show="!getDemographic">
@@ -36,7 +26,7 @@
       <!-- <b-row> -->
         <b-col class="col-12" :class="videoWidth()">
 
-          <!-- <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto">
+          <video class="mainEmbed" ref="mainVideo" controls="true" crossorigin="anonymous"  preload="auto" >
             <source 
               :src="mainVid.src" 
               type="video/mp4" 
@@ -44,9 +34,9 @@
               playsinline
               webkit-playsinline="webkit-playsinline"
             >
-            <track kind="captions" :src="mainVid.cap" srclang="en" label="Journey Video - EN" ref="mainTrack"> 
+            <track kind="captions" type="text/webvtt" :src="mainVid.cap" srclang="en" label="English" ref="mainTrack" :key="trackKey"> 
             <p>Your browser doesn't support HTML5 video. Here is a <a :href="mainVid.src">link to the video</a> instead.</p>
-          </video> -->
+          </video>
 
           <!-- <video class="loadingVideo" ref="loadingVideo" controls="true" hidden>
             <source :src="loadingVid.src" type="video/mp4">
@@ -186,10 +176,6 @@
         </b-col>
         
       </b-row>
-      <b-row>
-        <b-button @click="check()">Log Cues</b-button>
-        <b-button @click="populateCues()">Add Cues</b-button>
-      </b-row>
     </b-container>
     
   </div>
@@ -262,29 +248,16 @@ export default {
   updated: function () {
     this.$nextTick(function() {
       if(this.trackUpdate) {
-        console.log("Getting reference to the new DOM element")
         this.trackEl = this.$refs.mainTrack
-        console.log(`At end of last video track was ${this.captions}, so we should set video to this (currently set to ${this.trackEl.track.mode})`)
         this.trackEl.track.mode = this.captions
         this.trackUpdate = false;
       }
     })
   },
   methods: {
-    check() {
-      console.log("Now playing vvt:")
-      console.log(this.trackEl.track.mode, this.trackEl.src)
-      console.log(this.trackEl.track.cues)
-      
-    },
-    populateCues() {
-      // Manually add the VTTs to the video
-      const cueEn = new VTTCue(0, 15, 'Test subtitle I hope this works');
-      this.trackEl.track.addCue(cueEn)
-    },
     onFullscreenChange() {
       // https://gruhn.github.io/vue-qrcode-reader/demos/Fullscreen.html
-      console.log("Detected change in fullscreen")
+
     },
     nextScene() {
       // Load next video
@@ -310,7 +283,6 @@ export default {
     videoStop() {
       this.mainVid.finished = true;
       this.transcript = false;
-      console.log("Finished")
     },
     videoNext() {
       // Get the next video and load it into the element
@@ -337,9 +309,11 @@ export default {
         this.commentText = "";
         this.optionSelection = false;
 
-      } else {
-        console.log("Form is not valid")
-      }
+      } 
+      // else {
+      //   console.log("Form is not valid")
+
+      // }
     },
     sendResponse() {
       // API call of our response
@@ -417,7 +391,6 @@ export default {
     },
     loadVideo(nextId) {
       // Set video and caption sources in data and DOM
-      console.log("loading new video")
       this.mainVid.src = this.buildVideoUrl(this.stageInfo.stages[nextId].videoUrl)
       this.mainVid.cap = this.mainVid.src+".vtt"
       this.videoEl.setAttribute('src',this.mainVid.src)
@@ -513,7 +486,6 @@ export default {
     },
     updateCaptions(captionStatus) {
       this.captions = captionStatus;
-      console.log("captions are", captionStatus)
     },
   },
 
