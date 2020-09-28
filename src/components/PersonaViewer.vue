@@ -498,6 +498,10 @@ export default {
     updateCaptions(captionStatus) {
       this.captions = captionStatus;
     },
+    getPoster() {
+      let cdnUrl = "https://cdn.metrofutures.org.uk/personas/"
+      return cdnUrl+`p${this.stageInfo.pId}/poster.jpg`
+    },
   },
 
   beforeRouteUpdate (to, from, next) {
@@ -526,6 +530,9 @@ export default {
 
     // Get the loading element too
     this.loadingVid.element = this.$refs.loadingVideo
+
+    // Set the poster
+    this.getPoster();
 
     // Fetch options if needed
     // Get options if it is an options selection
