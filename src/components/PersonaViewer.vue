@@ -57,7 +57,6 @@
             
             <!-- Options -->
             <div class="options" v-if="stageInfo.questions[currentQuestionId].options">
-              <!-- {{ getOptions(0) }} -->
               <b-row class="optionRow" 
                 align-v="center" 
                 v-for="(opt, x) in options"
@@ -69,6 +68,7 @@
                     <b-img class="float-left" v-bind:src="'https://cdn.metrofutures.org.uk/squares/' + opt.img"></b-img>
                 </b-col>
                 <b-col class="optionText col-8">
+                    <span class="option-letter" v-if="stageInfo.questions[currentQuestionId].options != 'priority'">{{ optionLetter(x) }} - </span>
                     {{ opt.desc }}
                 </b-col>
             </b-row>
@@ -232,6 +232,7 @@ export default {
       likertRating: 0,
       commentText: "",
       optionSelection: false,
+      optLetters: ["A", "B", "C", "D", "E", "F"]
     }
   },
   computed: {
@@ -444,6 +445,9 @@ export default {
         selectClass = 'selected'
       }
       return selectClass
+    },
+    optionLetter(index) {
+      return this.optLetters[index]
     },
     videoWidth() {
       if (this.mainVid.finished) {
