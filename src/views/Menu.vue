@@ -84,9 +84,7 @@
             <b-img class="enlargeImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo w-100">
               <h3>Your Journeys</h3>
-              <p
-                v-show="false"
-              >New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
+              <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
             </div>
           </div>
         </b-col>
@@ -121,8 +119,7 @@
               <h3>Your Journeys</h3>
             </div>
           </div>
-          <p v-show="false"
-            >New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
+          <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
         </div>
 
       </div>
