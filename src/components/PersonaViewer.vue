@@ -5,8 +5,6 @@
       </b-row>
 
     <MainHeader :title="personaName+`'s Journey`"></MainHeader>
-
-    
     
     <b-container class="personaContent">
       <b-row class="demoQuestions" v-show="!getDemographic">
@@ -153,7 +151,7 @@
                   <ShareNetwork
                   network="twitter"
                   url="https://metrofutures.org.uk"
-                  :title="'I checked how well the new Tyne and Wear Metro fits the needs of someone like ' + personaName + '. Experience your new Metro in someone else\'s shoes at:'"
+                  :title="generateShareText()"
                   twitter-user="My_Metro"
                   hashtags="ShapeYourMetro"
                   >Share on Twitter
@@ -502,6 +500,30 @@ export default {
       let cdnUrl = "https://cdn.metrofutures.org.uk/personas/"
       return cdnUrl+`p${this.stageInfo.pId}/poster.jpg`
     },
+    generateShareText() {
+      let option = ""
+      switch(this.personaName) {
+        case "Jessica":
+          option = "a young mum like Jessica"
+          break;
+        case "Sanjeev":        
+          option = "a cycle commuter like Sanjeev"
+          break;
+        case "Desmond":
+          option = "a visually impaired person like Desmond"
+          break;
+        case "Polly":
+          option = "a young person like Polly"
+          break;
+        case "Robert":
+          option = "a wheelchair user like Robert"
+          break;
+        case "Mary":
+          option = "an older person like Mary"
+          break;
+      }
+      return `I checked how well the new Tyne and Wear Metro fits the needs of ${option}. Experience your new Metro in someone else's shoes at:`
+    }
   },
 
   beforeRouteUpdate (to, from, next) {
