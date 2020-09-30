@@ -581,7 +581,7 @@ export default[
             "yaw": 0.9738039530410099,
             "pitch": -0.5876734585715866,
             "title": "CCTV",
-            "text": "Text"
+            "text": "CCTV cameras mounted throughout the train"
           },
           {
             "yaw": 2.3010557823641182,
@@ -653,7 +653,7 @@ export default[
             "yaw": 0.9738039530410099,
             "pitch": -0.5876734585715866,
             "title": "CCTV",
-            "text": "Text"
+            "text": "CCTV cameras mounted throughout the train"
           },
           {
             "yaw": 2.3010557823641182,
