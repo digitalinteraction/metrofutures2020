@@ -104,7 +104,7 @@
 
                 <b-row>
                     <b-col>
-                        <b-button class="continueBtn"  v-bind:class="displayUpdate()" block variant="outline-secondary" @click="nextQuestion">Update</b-button>
+                        <b-button class="continueBtn"  v-bind:class="displayUpdate()" block variant="primary" @click="nextQuestion">Save & Continue</b-button>
                     </b-col>
                 </b-row>
 
@@ -494,6 +494,10 @@
         }
     }
 
+    .optionRow {
+        padding-left: 1.5em;
+    }
+
     /*only show yellow half border when cols are in a single row*/
     @media only screen and (min-width: 990px) {
         /*Fix to make a half border under question*/
@@ -583,9 +587,11 @@
     .surveyFreeText {
         text-align: left;
         font-weight: bold;
-        font-size: small;
-    
+        // font-size: small;
         margin-top: 1em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+
     }
 
 
