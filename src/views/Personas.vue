@@ -11,7 +11,7 @@
       </b-row>
 
       <b-row>
-        <b-col>Six people and six different journeys that reflect real experiences of travelling on Metro and other trains that people have shared with us*. Step into their shoes, experience the new trains from their points of view, and think about how well they fit their needs. Each journey consists of six video clips with one or more questions after each. Pick someone to begin.</b-col>
+        <b-col class="introText">Six people and six different journeys that reflect real experiences of travelling on Metro and other trains that people have shared with us*. Step into their shoes, experience the new trains from their points of view, and think about how well they fit their needs. Each journey consists of six video clips with one or more questions after each. Pick someone to begin.</b-col>
       </b-row>
 
       <div
@@ -49,7 +49,14 @@
       </div>
 
       <b-row>
-        <b-col>*These are made-up people based on the experiences of real people.</b-col>
+        <b-col class="outroText">*These are made-up people based on the experiences of real people.</b-col>
+      </b-row>
+
+      <b-row>
+        <b-col class="imgCredits">
+          Image credits: Jessica: Photo by <a href="https://unsplash.com/@4dgraphic">https://unsplash.com/@4dgraphic</a> | Robert: Photo by <a href="https://unsplash.com/@nathanmcdine">https://unsplash.com/@nathanmcdine</a> | Sanjeev: Photo by <a href="https://unsplash.com/@haadi7">https://unsplash.com/@haadi7</a> | Polly: Photo by <a href="https://unsplash.com/@realbench">https://unsplash.com/@realbench</a> | Desmond: <a href="https://pixnio.com/people/male-men/portrait-of-older-african-man-close-up-face">https://pixnio.com/people/male-men/portrait-of-older-african-man-close-up-face</a> | Mary: <a href="https://pxhere.com/en/photo/807134">https://pxhere.com/en/photo/807134</a>
+
+        </b-col>
       </b-row>
 
     </b-container>
@@ -206,6 +213,25 @@ export default {
     text-align: left;
   }
 
+  .introText {
+    padding: 1em;
+  }
+
+  .imgCredits {
+    padding-top: 1em;
+    padding-bottom: 1.5em;
+    font-size: 0.7em;
+    font-style: italic;
+    & a {
+      color: black;
+      text-decoration: underline;
+    }
+  }
+
+  .outroText {
+    padding-top: 1em;
+  }
+
   
 
   // .personaContainer img {
@@ -226,6 +252,19 @@ export default {
 
     .personaContainer:last-child {
       margin-bottom: 4em;
+    }
+
+    .introText {
+      padding: 0.5em 1.75em 1em 1.75em;
+    }
+
+    .outroText {
+      padding-top: 1em;
+      
+    }
+
+    .imgCredits {
+      padding-bottom: 1.5em;
     }
 
   }
