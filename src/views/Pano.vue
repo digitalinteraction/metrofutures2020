@@ -554,6 +554,10 @@
     top: 2%;
     left: 3%;
     z-index: 100;
+    & .btn {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
   .hotspot {
