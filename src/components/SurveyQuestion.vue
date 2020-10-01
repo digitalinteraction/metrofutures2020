@@ -36,18 +36,15 @@
 
             <!--            survey-->
             <b-col class="col-lg-3 col-12">
-                <b-row v-if="this.index !== 0">
-
-                    <b-col>
-                        <p id="backOption" @click="previousQuestion">
-                            <b-icon-chevron-left></b-icon-chevron-left>
-                            Back
-                        </p>
-                    </b-col>
-                </b-row>
                 <!--                Question-->
                 <b-row class="questionTextRow">
-                    <p class="calvert"><span class="bold">{{ question.question }}</span></p>
+                    <!-- <p id="backOption" @click="previousQuestion" v-if="this.index !== 0">
+                        <b-icon-chevron-left></b-icon-chevron-left>
+                        Back
+                    </p> -->
+                    <p class="calvert">
+                        <span class="bold">{{ question.question }}</span>
+                    </p>
                 </b-row>
 
                 <!--Options-->
@@ -488,8 +485,8 @@
     }
 
     .questionTextRow {
+        padding-top: 1.5em;
         & p {
-            padding-top: 2em;
             padding-left: 1.5em;
         }
     }
