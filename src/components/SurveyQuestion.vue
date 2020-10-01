@@ -57,17 +57,16 @@
                                :key="x"
                                @click="selectOption(x)"
                                :class="selectClass(x)">
-                            <!--                            todo replace with appropriate choices per question using {{ option.img }}-->
-                            <b-col class="optionImg">
-                                <!-- <b-img class="float-left" v-bind:src="'/squares/' + option.img"></b-img> -->
+                            <b-col class="optionImg col-4">
                                 <b-img class="float-left" v-bind:src="'https://cdn.metrofutures.org.uk/squares/' + option.img"></b-img>
+                                <b-iconstack class="icon-stack" font-scale="1.5" v-on:click="toggle()" v-show="selectClass(x) === 'selected'">
+                                    <b-icon stacked icon="circle-fill" class="icon-backing"></b-icon>
+                                    <b-icon stacked icon="check-circle" class="icon-check"></b-icon>
+                                </b-iconstack>
                             </b-col>
-                            <b-col class="optionText">
+                            <b-col class="optionText col-8">
                                 <p>{{ option.desc }}</p>
                             </b-col>
-                            <!-- <b-form-checkbox>
-  {{ option.desc }}
-</b-form-checkbox> -->
                         </b-row>
                     </b-col>
                 </b-row>
@@ -454,6 +453,7 @@
 </script>
 
 <style scoped lang="scss">
+  @import '@/assets/_variables.scss';
     /*todo for smaller screens stack image and question columns and make image clickable to go horizontal full screen*/
     .survey-question {
         width: 100%;
@@ -498,19 +498,7 @@
         padding-left: 1.5em;
     }
 
-    /*only show yellow half border when cols are in a single row*/
-    @media only screen and (min-width: 990px) {
-        /*Fix to make a half border under question*/
-        .questionTextRow:after {
-            content: "";
-            display: block;
-            width: 40%;
-            padding-top: 0.1em;
-            margin-bottom: 1.5em;
-            margin-left: 1.6em;
-            border-bottom: 2px solid #FEC600;
-        }
-    }
+    
 
     .continueBtn {
         margin-top: 1em;
@@ -538,7 +526,11 @@
     }
 
     .optionText {
-        padding-left: 0;
+        padding-left: 1em;
+
+        & p {
+            margin-bottom: 0;
+        }
     }
 
     .optionRow {
@@ -563,6 +555,20 @@
         & img {
             border-right: 3px solid #FEC600;
         }
+    }
+
+    .icon-stack {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .icon-backing {
+        color: $metro-green;
+    }
+
+    .icon-check {
+        color: white;
     }
 
     #textarea {
@@ -594,7 +600,6 @@
 
     }
 
-
     #LAButton {
         margin-top: 1em;
     }
@@ -603,7 +608,7 @@
         background-color: yellow;
     }
 
-    /* Medium devices */
+    /* Small devices */
     @media only screen and (max-width: 764px) {
         .optionImg {
             img {
@@ -615,9 +620,25 @@
         .continueBtn {
             margin-bottom: 1.5rem;
         }
+
+        .optionText {
+            padding-left: 0;
+        }
     }
 
-
+    /*only show yellow half border when cols are in a single row*/
+    @media only screen and (min-width: 990px) {
+        /*Fix to make a half border under question*/
+        .questionTextRow:after {
+            content: "";
+            display: block;
+            width: 40%;
+            padding-top: 0.1em;
+            margin-bottom: 1.5em;
+            margin-left: 1.6em;
+            border-bottom: 2px solid #FEC600;
+        }
+    }
 
 
 
