@@ -136,12 +136,13 @@
               <div class="finalButtons">
                 <b-button class="fbShare" block>
                   <ShareNetwork
-                  network="facebook"
-                  url="https://metrofutures.org.uk"
-                  :title="'I checked how well the new Tyne and Wear Metro fits the needs of someone like ' + personaName + '.'"
-                  description="Experience your new Metro in someone else's shoes."
-                  hashtags="ShapeYourMetro"
-                  >Share on Facebook
+                    network="facebook"
+                    url="https://metrofutures.org.uk"
+                    :title="'I checked how well the new Tyne and Wear Metro fits the needs of someone like ' + personaName + '.'"
+                    description="Experience your new Metro in someone else's shoes."
+                    hashtags="ShapeYourMetro"
+                  >
+                    Share on Facebook
                   </ShareNetwork>
                 </b-button>
               </div>
@@ -674,11 +675,17 @@ export default {
     padding-right: 1em;
     & a {
       font-weight: bold;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 500px;
     }
     
     & button {
       margin-top: 0;
       margin-bottom: 0;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 500px;
     }
   }
 
