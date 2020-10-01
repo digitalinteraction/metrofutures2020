@@ -4,15 +4,15 @@ export default [
     question: "Select your preferred seating style:",
     options: [
       {
-        desc: "Light grey, dots, dots, LEATHER",
+        desc: "Light grey, dots, dots",
         img: "Square_Configurator_swatches-01.svg"
       },
       {
-        desc: "Green, plain, stripes, LEATHER",
+        desc: "Green, plain, stripes",
         img: "Square_Configurator_swatches-02.svg"
       },
       {
-        desc: "Dark grey, logo, logo, LEATHER",
+        desc: "Dark grey, logo, logo",
         img: "Square_Configurator_swatches-03.svg"
       }
     ]

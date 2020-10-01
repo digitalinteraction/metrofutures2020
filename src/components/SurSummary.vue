@@ -183,7 +183,7 @@
                     <ShareNetwork
                         network="twitter"
                         url="https://metrofutures.org.uk"
-                        title="Check out my customised Metro. You can make your own at:"
+                        title="I've just customised my Metro. You can make your own at:"
                         twitter-user="My_Metro"
                         hashtags="ShapeYourMetro"
                     > Twitter
