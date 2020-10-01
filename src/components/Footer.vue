@@ -12,6 +12,9 @@
                         <b-img fluid id="stadler" alt="Stadler Logo" src="../assets/stadlerLogoBW.svg"></b-img>
                     </div>
                 </div>
+                <div class="footer-logo footer-openlab" id="lab">
+                    <a href="https://openlab.ncl.ac.uk/"><b-img fluid id="openlab" alt="Open Lab Logo" src="../assets/openlabLogoBlack.svg"></b-img></a>
+                </div>
                 <div class="footer-logo footer-center-left">
                     <div class="test">
                     <p><a href="#" v-b-modal.privacy-modal>Privacy Policy</a></p>
@@ -20,9 +23,7 @@
                 <div class="footer-logo footer-center-right">
                     <p><a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
                 </div>
-                <div class="footer-logo footer-openlab" id="lab">
-                    <b-img fluid id="openlab" alt="Open Lab Logo" src="../assets/openlabLogoBlack.svg"></b-img>
-                </div>
+                
             </div>
         </div>
         <!-- Compontents for modals are in menu 
