@@ -98,6 +98,15 @@
             Please select an
             option
           </b-form-select>
+
+          <textarea
+            id="textarea"
+            v-model="disabilityOtherText"
+            placeholder="Please describe."
+            rows="2"
+            class="form-control"
+            v-show="disability === 'Other'"
+          ></textarea>
         </div>
 
         <p v-if="displayError">Please answer the first two questions marked * to continue. This information is important for the consultation and your answers are given anonymously.</p>
@@ -192,6 +201,7 @@ export default {
       ],
       dis: "no", // yes/no answer to trigger options
       disability: "",
+      disabilityOtherText: "",
       disabilities: [
         "Visual impairment",
         "Mobility impairment",
@@ -271,6 +281,11 @@ export default {
           this.gender = this.genderOtherText;
         }
       }
+      if (this.disability === "Other") {
+        if (this.disabilityOtherText.length > 0) {
+          this.disability = this.disabilityOtherText
+        }
+      }
       // submit answers
       let payload = {
         0: this.localAuthority,
@@ -311,7 +326,7 @@ export default {
   font-family: Calvert, serif;
 }
 .question {
-    padding-top: 1em;
+  padding-top: 1em;
 }
 
 .checkbox {
