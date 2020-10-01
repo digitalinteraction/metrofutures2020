@@ -70,9 +70,7 @@
     border-right: 5px solid $metro-yellow;
   }
 
-
-
-    .dropdown-container {
+  .dropdown-container {
     text-align: right;
   }
 
@@ -85,6 +83,7 @@
   .dropdown-mob {
     display: block;
     position: relative;
+    padding-right: 1em;
   }
 
   .dropdown-full{

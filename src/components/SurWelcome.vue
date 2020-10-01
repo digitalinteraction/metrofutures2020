@@ -151,7 +151,6 @@
                     // no answer for one or both fields
                     this.displayError = true;
                 } else {
-                    this.completeInfo();
                     this.completeDemographic();
                     //if answered 'other' and user has entered free text send that instead
                     if (this.localAuthority === 'Other' && this.LAOtherText) {

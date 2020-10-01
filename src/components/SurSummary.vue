@@ -3,24 +3,24 @@
 <b-row>
     <b-col>
         <b-carousel
-                id="carousel-1"
-                :interval="0"
-                controls
-                indicators
-                background="#ababab"
-                img-width="1024"
-                img-height="480"
-                style="text-shadow: 1px 1px 2px #333;"
+            id="carousel-1"
+            :interval="0"
+            controls
+            indicators
+            background="#ababab"
+            img-width="1024"
+            img-height="480"
+            style="text-shadow: 1px 1px 2px #333;"
         >
 
             <b-carousel-slide>
                 <template v-slot:img>
                     <img
-                            class="d-block img-fluid w-100"
-                            width="1024"
-                            height="480"
-                            v-bind:src="images[0]"
-                            alt="image slot"
+                        class="d-block img-fluid w-100"
+                        width="1024"
+                        height="480"
+                        v-bind:src="images[0]"
+                        alt="Images of your customised train"
                     >
                 </template>
             </b-carousel-slide>
@@ -96,7 +96,7 @@
     </b-col>
 </b-row>
 
-        <b-modal hide-footer id="questionModal" title="">
+        <b-modal hide-footer id="questionModal" title="" v-if="!getOnlyInfo">
             <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys (optional).</p>
 
             <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
@@ -164,7 +164,7 @@
 
 
             </div>
-            <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
+            <b-button class="submitButton" block variant="outline-secondary" @click="submitInfo">Continue</b-button>
         </b-modal>
 
 
@@ -245,7 +245,7 @@
 </template>
 
 <script>
-import {mapGetters} from "vuex";
+import {mapGetters, mapMutations} from "vuex";
 import jsPDF from 'jspdf'
 
 export default {
@@ -275,10 +275,12 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'getConfigAnswers'
+      'getConfigAnswers',
+      "getOnlyInfo"
     ])
   },
   methods: {
+      ...mapMutations(["completeInfo"]),
       toggleFeatures() {
           if (this.viewFeatures) {
               this.viewFeatures = false;
@@ -294,6 +296,7 @@ export default {
       },
       submitInfo() {
           this.$bvModal.hide('questionModal');
+          this.completeInfo();
           // if gender other text is filled in then send this instead
           if (this.genderOtherText) {
               if (this.genderOtherText.length > 0) {
@@ -508,7 +511,9 @@ padding-top: 1em;
   text-align: justify;
 }
 
-.submitBtn {margin-bottom: 1em;}
+.submitButton {
+    margin-top: 1em;
+}
 
 
 #option1 {
