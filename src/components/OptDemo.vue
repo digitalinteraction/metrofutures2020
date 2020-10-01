@@ -55,6 +55,14 @@
       <b-form-select v-model="disability" :options="disabilities">Please select an
       option
       </b-form-select>
+      <textarea
+        id="textDisability"
+        v-model="disabilityOtherText"
+        placeholder="Please describe."
+        rows="2"
+        class="form-control"
+        v-show="disability === 'Other'"
+      ></textarea>
     </div>
     <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
   </div>
@@ -76,6 +84,7 @@ export default {
       ethnicities: ['White', 'Black/Black British', 'Asian/Asian British', 'Chinese/Thai/Japanese', 'Mixed', 'Other'],
       dis: 'no', // yes/no answer to trigger options
       disability: '',
+      disabilityOtherText: "",
       disabilities: ['Visual impairment', 'Mobility impairment', 'Hearing impairment', 'Cognitive impairment', 'Other'],
       purpose: '',
       purposes: ['Work', 'Leisure', 'Shopping', 'Visiting friends/relative', 'Other'],
@@ -98,24 +107,24 @@ export default {
           this.gender = this.genderOtherText;
         }
       }
-
-      if (this.gender && this.ethnicity && this.disability && this.purpose && this.frequency) {
-        // We are OK to submit as we have something
-        // submit answers
-        let payload = {
-            2: this.gender,
-            3: this.ethnicity,
-            4: this.disability,
-            5: this.purpose,
-            6: this.frequency
+      if (this.disability === "Other") {
+        if (this.disabilityOtherText.length > 0) {
+          this.disability = this.disabilityOtherText
         }
-        this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
-          params: payload
-        })
-          .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-      } else {
-        console.log("Optional")
       }
+
+      let payload = {
+        2: this.gender,
+        3: this.ethnicity,
+        4: this.disability,
+        5: this.purpose,
+        6: this.frequency
+      }
+      this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
+        params: payload
+      })
+        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+
 
       this.completeInfo();
     }

@@ -153,6 +153,15 @@
                     option
                 </b-form-select>
 
+                <textarea
+                    id="textarea"
+                    v-model="disabilityOtherText"
+                    placeholder="Please describe."
+                    rows="2"
+                    class="form-control"
+                    v-show="disability === 'Other'"
+                ></textarea>
+
 
             </div>
             <b-button block variant="outline-secondary" @click="submitInfo">Continue</b-button>
@@ -255,6 +264,7 @@ export default {
         ethnicities: ['White', 'Black/Black British', 'Asian/Asian British', 'Chinese/Thai/Japanese', 'Mixed', 'Other'],
         dis: 'no', // yes/no answer to trigger options
         disability: '',
+        disabilityOtherText: "",
         disabilities: ['Visual impairment', 'Mobility impairment', 'Hearing impairment', 'Cognitive impairment', 'Other'],
         purpose: '',
         purposes: ['Work', 'Leisure', 'Shopping', 'Visiting friends/relative', 'Other'],
@@ -290,6 +300,11 @@ export default {
                   this.gender = this.genderOtherText;
               }
           }
+          if (this.disability === "Other") {
+                if (this.disabilityOtherText.length > 0) {
+                this.disability = this.disabilityOtherText
+                }
+            }
           // submit answers
           let payload = {
               2: this.gender,
