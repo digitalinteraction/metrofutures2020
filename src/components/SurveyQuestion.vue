@@ -560,7 +560,7 @@
     .icon-stack {
         position: absolute;
         top: 0;
-        right: 0;
+        left: 0;
     }
 
     .icon-backing {
@@ -608,11 +608,33 @@
         background-color: yellow;
     }
 
+    /*only show yellow half border when cols are in a single row*/
+    @media only screen and (min-width: 992px) {
+        /*Fix to make a half border under question*/
+        .questionTextRow:after {
+            content: "";
+            display: block;
+            width: 40%;
+            padding-top: 0.1em;
+            margin-bottom: 1.5em;
+            margin-left: 1.6em;
+            border-bottom: 2px solid #FEC600;
+        }
+
+        .optionImg {
+            img {
+                width: auto;
+                height: auto;
+            }
+        }
+
+    }
+
     /* Small devices */
     @media only screen and (max-width: 764px) {
         .optionImg {
             img {
-                width: 50px;
+                width: 75%;
                 height: auto;
             }
         }
@@ -624,21 +646,15 @@
         .optionText {
             padding-left: 0;
         }
+
+        // .icon-stack {
+        //     position: absolute;
+        //     top: 0;
+        //     right: 25%;
+        // }
     }
 
-    /*only show yellow half border when cols are in a single row*/
-    @media only screen and (min-width: 990px) {
-        /*Fix to make a half border under question*/
-        .questionTextRow:after {
-            content: "";
-            display: block;
-            width: 40%;
-            padding-top: 0.1em;
-            margin-bottom: 1.5em;
-            margin-left: 1.6em;
-            border-bottom: 2px solid #FEC600;
-        }
-    }
+    
 
 
 
