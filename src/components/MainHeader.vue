@@ -13,8 +13,6 @@
       <MainMenu></MainMenu>
     </b-col>
 
-
-    
   </b-row>
 </template>
 
@@ -34,6 +32,10 @@ export default {
 
 <style lang="scss">
   @import '@/assets/_variables.scss';
+
+  #headerRow {
+    border-bottom: 0.08em solid #dddddd;
+  }
 
 .calvert {
   font-family: $font-family-calvert;

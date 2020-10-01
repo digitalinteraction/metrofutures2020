@@ -4,9 +4,12 @@
         <welcomeConsent :title="personaName+`'s Journey`" page="journeys"></welcomeConsent>
       </b-row>
 
-    <MainHeader :title="personaName+`'s Journey`"></MainHeader>
+    
     
     <b-container class="personaContent">
+      
+      <MainHeader :title="personaName+`'s Journey`"></MainHeader>
+
       <b-row class="demoQuestions" v-show="!getDemographic">
         <b-col>
           <BasicDemo></BasicDemo>
@@ -613,7 +616,7 @@ export default {
 
   .personaContent {
     // max-width: 100%;
-    max-width: $content-max-width;
+    max-width: $media-max-width;
   }
 
   .likert {
