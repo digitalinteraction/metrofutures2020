@@ -18,9 +18,9 @@
 
       <b-row v-show="getDemographic">
         <b-col>
-          <b-progress class="mt-2" :max="6" show-value>
-            <b-progress-bar :value="currentStageId+1" variant="warning">
-              <span class="progressLabel">Stop: {{ currentStageId+1 }} / 6</span>
+          <b-progress class="mt-2" :max="8" show-value>
+            <b-progress-bar :value="currentQuestionId+1" variant="warning">
+              <span class="progressLabel">Stop: {{ currentQuestionId+1 }} / 8</span>
             </b-progress-bar>
           </b-progress>
         </b-col>
@@ -303,6 +303,7 @@ export default {
         // Fire off the response to the API
         this.sendResponse()
 
+
         if(this.currentStageId < this.stageInfo.stages.length-1) {
           this.nextScene()
         } else {
@@ -311,6 +312,7 @@ export default {
             this.currentQuestionId += 1
             this.finalQuestion = true
           } else {
+            this.currentQuestionId += 1
             this.finalisePersona()
           }
         }
@@ -327,10 +329,10 @@ export default {
     },
     sendResponse() {
       // API call of our response
-      // Need to check some of the optional values first
+      // Mapped questionID to stageID as there are 2 extra questions where stageID does not increment
       let payload = {
         personaName: this.personaName,
-        stageId: this.currentStageId,
+        stageId: this.currentQuestionId,
       }
 
       if (this.commentText) {
