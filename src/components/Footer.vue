@@ -12,7 +12,7 @@
                         <b-img fluid id="stadler" alt="Stadler Logo" src="../assets/stadlerLogoBW.svg"></b-img>
                     </div>
                 </div>
-                <div class="footer-logo footer-openlab" id="lab">
+                <div class="footer-logo footer-openlab" id="labMob">
                     <a href="https://openlab.ncl.ac.uk/"><b-img fluid id="openlab" alt="Open Lab Logo" src="../assets/openlabLogoBlack.svg"></b-img></a>
                 </div>
                 <div class="footer-logo footer-center-left">
@@ -23,7 +23,9 @@
                 <div class="footer-logo footer-center-right">
                     <p><a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
                 </div>
-                
+                <div class="footer-logo footer-openlab" id="lab">
+                    <a href="https://openlab.ncl.ac.uk/"><b-img fluid id="openlab" alt="Open Lab Logo" src="../assets/openlabLogoBlack.svg"></b-img></a>
+                </div>
             </div>
         </div>
         <!-- Compontents for modals are in menu 
@@ -68,94 +70,110 @@
         text-align :right;
     }
 
-
-p {
-     margin: 0;
-        font-family: "Open Sans", Arial,serif;
-        font-size: small;
-}
-.footer-container {
-    display: flex;
-    flex-direction: row;
-    
-    .footer-logo {
-        margin-top: auto;
-        margin-bottom: auto;
-        flex: 1;
-        a {
-            color: black;
-        }
+    p {
+        margin: 0;
+            font-family: "Open Sans", Arial,serif;
+            font-size: small;
     }
-
-    .footer-left{
+    .footer-container {
         display: flex;
         flex-direction: row;
-        align-items: center;
-        .sub-logo {
-            flex: 1;
-        }
-    }
-
-    .footer-center-left {
-        p{
-            text-align: right;
-            padding-right: 5%;
-            
-        }
-        div {
-            border-right: 2px solid #FEC600;
-        }
-    }
-
-    .footer-center-right {
         
-        p{
-            padding-left: 5%;
-            text-align: left
+        .footer-logo {
+            margin-top: auto;
+            margin-bottom: auto;
+            flex: 1;
+            a {
+                color: black;
+            }
+        }
+
+        .footer-left{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            .sub-logo {
+                flex: 1;
+            }
+        }
+
+        .footer-center-left {
+            p{
+                text-align: right;
+                padding-right: 5%;
+                
+            }
+            div {
+                border-right: 2px solid #FEC600;
+            }
+        }
+
+        .footer-center-right {
+            
+            p{
+                padding-left: 5%;
+                text-align: left
+            }
+        }
+
+        .footer-openlab {
+            p{
+                text-align: right;
+            }
         }
     }
 
-    .footer-openlab {
-        p{
-            text-align: right;
-        }
+    #labMob {
+        display: none;
     }
-}
+
+    #lab {
+        display: block;
+    }
     
       
-@media all and (max-width:800px) //800px for tablets and phones.
-{
-    .footer-container {
-        flex-direction: column;
-        .footer-logo {
-            width:100%;
-            text-align: center;
-            p{
-                text-align: center;
-                padding: 0%;
-            }   
-            div {
-            border: none;
+    @media all and (max-width:800px) //800px for tablets and phones.
+    {
+        // This displays the other logo so it stacks correctly on mobile
+        #labMob {
+            display: block;
         }
-        }
-        .footer-left{
-        display: flex;
-        flex-direction: column;
-        .sub-logo {
-            flex: 1;
-        }
-    }
-    }
 
-    #nexus{
-        max-width: 8%;
+        #lab {
+            display: none;
+        }
+
+        .footer-container {
+            flex-direction: column;
+            .footer-logo {
+                width:100%;
+                text-align: center;
+                p{
+                    text-align: center;
+                    padding: 0%;
+                }   
+                div {
+                    border: none;
+                }
+            }
+            .footer-left{
+                display: flex;
+                flex-direction: column;
+                .sub-logo {
+                    flex: 1;
+                }
+            }
+        }
+
+        #nexus{
+            max-width: 8%;
+        }
+        #stadler {
+            max-width: 50%;
+        }
+        #openlab {
+            max-width: 15%;
+        }
     }
-    #stadler {
-        max-width: 50%;
-    }
-    #openlab {
-        max-width: 15%;
-    }
-}
 
 </style>
