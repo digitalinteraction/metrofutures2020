@@ -210,7 +210,7 @@ export default {
       stageInfo: {},
       currentStageId: 0,  // Which video should be played
       currentQuestionId: 0,  // Which question should be displayed
-      personaStarted: false,
+      personaStarted: false,  // Triggers questions/modals etc
       personaFinished: false,
       finalQuestion: false,
       transcript: false,
