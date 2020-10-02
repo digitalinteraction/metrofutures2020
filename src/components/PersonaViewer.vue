@@ -208,8 +208,8 @@ export default {
       personaName: "",
       personaInfo: {},
       stageInfo: {},
-      currentStageId: 0,
-      currentQuestionId: 0,
+      currentStageId: 0,  // Which video should be played
+      currentQuestionId: 0,  // Which question should be displayed
       personaStarted: false,
       personaFinished: false,
       finalQuestion: false,
