@@ -171,11 +171,12 @@ export default {
 
   .imgCol {
     // background-image: url("../assets/yourJourneys2Mob.jpg");
-    background-color: lightgray;
+    // background-color: lightgray;
     background-size: cover;
-    height: 100px;
-    line-height: 7.9em;
+    height: 200px;
+    line-height: 20.5em;
     padding-left: 0;
+    z-index: 10;
   }
 
   .title {
@@ -248,6 +249,8 @@ export default {
 
     .imgCol {
       // background-image: url("../assets/yourJourneys2Mob.jpg");
+      height: 100px;
+      line-height: 7.9em;
     }
 
     .personaContainer:last-child {
