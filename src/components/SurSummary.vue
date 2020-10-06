@@ -212,24 +212,23 @@
           Exterior
         </b-col>
         <b-col>
-          <p>4 Carriages</p>
+          <p>5 Carriages</p>
           <p>One connected space</p>
-          <p>8 Doors per side</p>
+          <p>8 paira of Double Doors per side</p>
           <p>LED highlights</p>
-          <p>Video feed front and rear</p>
         </b-col>
       </b-row>
 
     <b-row class="featuresRow">
       <b-col>Interior</b-col>
       <b-col>
-        <p>108 Seating capacity</p>
-        <p>8 Disability spaces</p>
-        <p>4 Multipurpose bike & pram zones</p>
-        <p>22 Priority seats for elderly and pregnant</p>
-        <p>270 Max occupancy</p>
-        <p>Passenger screen displays</p>
-        <p>Onboard network connectivity</p>
+        <p>108 Seating capacity (with potential for additional tip-up seats in multi-use zones under consideration)</p>
+        <p>4 dedicated wheelchair spaces</p>
+        <p>4 multi-use bike & pram zones</p>
+        <p>22 priority seats for older and pregnant people</p>
+        <p>600 passengers maximum train capacity</p>
+        <p>Passenger information displays</p>
+        <p>Onboard seamless connectivity</p>
       </b-col>
     </b-row>
 
