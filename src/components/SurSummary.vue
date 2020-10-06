@@ -214,7 +214,7 @@
         <b-col>
           <p>5 Carriages</p>
           <p>One connected space</p>
-          <p>8 paira of Double Doors per side</p>
+          <p>8 pairs of double doors per side</p>
           <p>LED highlights</p>
         </b-col>
       </b-row>
