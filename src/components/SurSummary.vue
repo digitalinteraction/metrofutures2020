@@ -231,7 +231,6 @@
         <p>Onboard seamless connectivity</p>
       </b-col>
     </b-row>
-
    
       </b-col>
     </b-row>
