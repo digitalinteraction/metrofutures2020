@@ -66,7 +66,7 @@
     </p>
     <p class="termsText"><strong>Contact:</strong>For questions or concerns relating to privacy, we can be contacted at: <a v-bind:href="'mailto:'+ email">{{ email }}</a>.</p>
     <p class="termsText"><strong>Effective Date:</strong> Last updated on 16 September 2020.</p>
-  <!-- random comment -->
+  <!-- random comment  -->
   </b-modal>
 </template>
 
