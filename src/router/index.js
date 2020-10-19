@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Meta from 'vue-meta'
-import Menu from '../views/Menu.vue'
+// import Menu from '../views/Menu.vue'
+import Holding from '../views/Holding.vue'
 
 Vue.use(VueRouter)
 Vue.use(Meta)
@@ -10,7 +11,7 @@ Vue.use(Meta)
   {
     path: '/',
     name: 'Home',
-    component: Menu,
+    component: Holding,
     meta: {
       title: 'Metro Futures'
     }
@@ -23,47 +24,47 @@ Vue.use(Meta)
       title: 'About Metro Futures'
     },
   },
-  {
-    path: '/configure',
-    name: 'Survey',
-    component: () => import(/* webpackChunkName: "configure" */ '../views/Survey.vue'),
-    meta: {
-      title: 'Metro Futures - Configure Your Choices'
-    }
-  },
-  {
-    path: '/journeys',
-    name: 'Personas',
-    component: () => import(/* webpackChunkName: "personas" */ '../views/Personas.vue'),
-    meta: {
-      title: 'Metro Futures - Experience Your Journeys'
-    }
-  },
-  {
-    path: '/journeys/:persona',
-    name: 'Journey',
-    component: () => import(/* webpackChunkName: "persona" */ '../components/PersonaViewer.vue'),
-    meta: {
-      title: 'Metro Futures - Experience Your Journeys'
-    }
-  },
-  {
-    path: '/explore',
-    name: 'Metro Futures - Explore Your Metro',
-    component: () => import(/* webpackChunkName: "explore" */ '../views/Pano.vue')
-  },
-  {
-    path: '/workshops',
-    name: 'Workshops',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Workshops.vue'),
-    meta: {
-      title: 'Metro Futures - Workshops'
-    },
-  },
+  // {
+  //   path: '/configure',
+  //   name: 'Survey',
+  //   component: () => import(/* webpackChunkName: "configure" */ '../views/Survey.vue'),
+  //   meta: {
+  //     title: 'Metro Futures - Configure Your Choices'
+  //   }
+  // },
+  // {
+  //   path: '/journeys',
+  //   name: 'Personas',
+  //   component: () => import(/* webpackChunkName: "personas" */ '../views/Personas.vue'),
+  //   meta: {
+  //     title: 'Metro Futures - Experience Your Journeys'
+  //   }
+  // },
+  // {
+  //   path: '/journeys/:persona',
+  //   name: 'Journey',
+  //   component: () => import(/* webpackChunkName: "persona" */ '../components/PersonaViewer.vue'),
+  //   meta: {
+  //     title: 'Metro Futures - Experience Your Journeys'
+  //   }
+  // },
+  // {
+  //   path: '/explore',
+  //   name: 'Metro Futures - Explore Your Metro',
+  //   component: () => import(/* webpackChunkName: "explore" */ '../views/Pano.vue')
+  // },
+  // {
+  //   path: '/workshops',
+  //   name: 'Workshops',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/Workshops.vue'),
+  //   meta: {
+  //     title: 'Metro Futures - Workshops'
+  //   },
+  // },
   // Catch all route at the end just dumps you back at the start
   {
     path: '*',
-    component: Menu,
+    component: Holding,
     meta: {
       title: 'Metro Futures'
     }
