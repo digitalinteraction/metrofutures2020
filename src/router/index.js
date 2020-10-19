@@ -16,14 +16,14 @@ Vue.use(Meta)
       title: 'Metro Futures'
     }
   },
-  {
-    path: '/about',
-    name: 'About',
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta: {
-      title: 'About Metro Futures'
-    },
-  },
+  // {
+  //   path: '/about',
+  //   name: 'About',
+  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+  //   meta: {
+  //     title: 'About Metro Futures'
+  //   },
+  // },
   // {
   //   path: '/configure',
   //   name: 'Survey',
