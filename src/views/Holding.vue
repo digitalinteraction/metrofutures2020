@@ -9,6 +9,7 @@
             <!-- text to display before user has registered-->
             <div class="registerText" v-if="!confirmed">
                 <h1 class="metroFont calvert">This part of the public consultation on new Metro trains is now closed. Check back soon for an update on next steps.</h1>
+                <p>Sign up to the Nexus Metro newsletter at the bottom of the page <a href="https://www.nexus.org.uk/metro">here</a></p>
             </div>
 
             <!--<b-img id="bgroundImg" src="../assets/Teaser1_2_rails_longer.png" fluid alt="Metro image"></b-img>-->
