@@ -37,6 +37,8 @@ export default {
 <style lang="scss">
 @import '@/assets/_variables.scss';
 
+// This is all based on: https://github.com/tfeltwell/metro/blob/1b7851e4bf22e77ef4369aaf0eedafa108bdd401/src/views/Home.vue
+
 .heading { 
   font-family: $font-family-calvert;
 }
