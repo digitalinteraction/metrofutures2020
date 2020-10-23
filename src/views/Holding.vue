@@ -8,8 +8,8 @@
         <div class="mainBody">
             <!-- text to display before user has registered-->
             <div class="registerText" v-if="!confirmed">
-                <h1 class="metroFont calvert">This part of the public consultation on new Metro trains is now closed. Check back soon for an update on next steps.</h1>
-                <p>Sign up to the Nexus Metro newsletter at the bottom of the page <a href="https://www.nexus.org.uk/metro">here</a></p>
+                <h1 class="metroFont calvert">This part of the public consultation on new Metro trains is now closed. </h1>
+                <p>Sign up for the Metro newsletter on the Nexus website for further updates on the Metro Futures programme <a href="https://www.nexus.org.uk/metro">here</a>.</p>
             </div>
 
             <!--<b-img id="bgroundImg" src="../assets/Teaser1_2_rails_longer.png" fluid alt="Metro image"></b-img>-->
@@ -20,7 +20,7 @@
                       <b-img fluid id="stadlerLogo" src="../assets/stadlerLogo.svg"></b-img>
                     </b-col>
                     <b-col id="lab">
-                      <b-img id="openlabLogo" fluid src="../assets/openlabLogoWhite.svg"></b-img>
+                      <a href="https://openlab.ncl.ac.uk/"><b-img id="openlabLogo" fluid src="../assets/openlabLogoWhite.svg"></b-img></a>
                     </b-col>
                 </b-row>
 
@@ -122,6 +122,10 @@ export default {
         transform: translateX(-50%);
         width: 80vw;
         left: 50%;
+        background-color: rgba(39, 39, 39, 0.7);
+        border-radius: 0.5em;
+        padding-top: 0.5em;
+        padding-bottom: 0.5em;
     }
     .confirmedText {
         position: absolute;
@@ -151,7 +155,7 @@ export default {
             font-size: 2.3vmin;
         }
         .registerText {
-            top: 49%;
+            top: 45%;
         }
         .confirmedText {
             top: 42%;
