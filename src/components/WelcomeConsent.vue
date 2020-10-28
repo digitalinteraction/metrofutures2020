@@ -13,37 +13,27 @@
       <template v-slot:modal-title>
         <h2>{{title}}</h2>
       </template>
+
+      <!-- Text for each page -->
+
       <div id="explore" v-if="page === 'explore'" class="text-left">
-        <router-link to="/" id="info-back-button" v-if="getInfoCompleted === false" @click="exitBack">
-          <b-icon-chevron-left></b-icon-chevron-left>
-          Home
-        </router-link>
         <p>Move around 360-degree images at seven points in and around the train to discover new features. Use the toggle switch to explore the train with and without people on board. Some features appear in more than one image.</p>
       </div>
+
       <div id="choices" class="modal-container" v-if="page === 'choices'">
-        <!--  <h2>Add the Finishing Touches!</h2> -->
         <p>This part of the public consultation is now closed. You can still explore the preferences by trying out options for seven different features of the new Metro trains.</p>
       </div>
+
       <div id="journeys" class="modal-container" v-if="page === 'journeys'">
-        <!--   <h2>Step into Someone Else’s Shoes</h2> -->
         <p>Pick one of six people, go on a typical Metro journey with them and consider how well the new trains fit their needs. These are not real people but the issues they face are real and reflect what people like them have told us about travelling on trains. Each journey consists of six video clips with a question after each.</p>
       </div>
 
-      <p
-        id="menu"
-        v-if="page === 'menu'"
-        class="modal-container"
-      >
-      Help shape your new Metro in three ways. Choose a section to begin.</p>
-      <!-- <br /> -->
-
-      <!-- explore page needs demographic info collecting, also does privacy in this situation -->
-      <div v-if="page === 'explore' && getInfoCompleted === false">
-        <infoForm></infoForm>
+      <div id="menu" class="modal-container" v-if="page === 'menu'">
+        Help shape your new Metro in three ways. Choose a section to begin.
       </div>
 
-      <!-- if privacy is not collected -->
-      <div id="privacy-container" class="modal-container" v-if="privacyNotice===false && page !== 'explore'">
+      <!-- if privacy is not collected, display here -->
+      <div id="privacy-container" class="modal-container" v-if="privacyNotice===false">
         <div>
           <p>This part of the public consultation is now closed. Any information you give to the site (e.g. your choices for the design of the metro) will not be recorded. In using this site, you agree that you are happy with the following:</p>
 
@@ -69,7 +59,7 @@
         <p class="modal-links"><a href="#" v-b-modal.privacy-modal>Privacy Policy</a> | <a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
       </div>
 
-      <!-- continue, if privacy done before -->
+      <!-- continue, if privacy done already -->
       <div v-if="noQuestions">
         <b-button block @click="close">Continue</b-button>
       </div>
@@ -79,13 +69,12 @@
 
 <script>
 import { mapGetters, mapMutations } from "vuex";
-import infoForm from "../components/InfoForm";
+// import infoForm from "../components/InfoForm";
 //import VueCookies from 'vue-cookies'
 
 export default {
   name: "welcomeConsent",
   components: {
-    infoForm
   },
   data() {
     return {
@@ -101,10 +90,10 @@ export default {
     this.$bvModal.show("privacyNoticeModal");
   },
   computed: {
-    ...mapGetters(["privacyNotice", "getInfoCompleted"]),
+    ...mapGetters(["privacyNotice"]),
     noQuestions: function() {
         // check if privacy and info form are complete if modal called from relevant page
-        if (this.page === "explore" && this.getInfoCompleted && this.privacyNotice)
+        if (this.page === "explore" && this.privacyNotice)
         {
           return true
         } else if( this.page !=="explore" && this.privacyNotice){
