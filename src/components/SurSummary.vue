@@ -1,239 +1,171 @@
 <template>
     <b-container fluid>
-<b-row>
-    <b-col>
-        <b-carousel
-            id="carousel-1"
-            :interval="0"
-            controls
-            indicators
-            background="#ababab"
-            img-width="1024"
-            img-height="480"
-            style="text-shadow: 1px 1px 2px #333;"
-        >
+        <b-row>
+            <b-col>
+                <b-carousel
+                    id="carousel-1"
+                    :interval="0"
+                    controls
+                    indicators
+                    background="#ababab"
+                    img-width="1024"
+                    img-height="480"
+                    style="text-shadow: 1px 1px 2px #333;"
+                >
 
-            <b-carousel-slide>
-                <template v-slot:img>
-                    <img
-                        class="d-block img-fluid w-100"
-                        width="1024"
-                        height="480"
-                        v-bind:src="images[0]"
-                        alt="Images of your customised train"
-                    >
-                </template>
-            </b-carousel-slide>
+                    <b-carousel-slide>
+                        <template v-slot:img>
+                            <img
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[0]"
+                                alt="Images of your customised train"
+                            >
+                        </template>
+                    </b-carousel-slide>
 
-            <b-carousel-slide>
-                <template v-slot:img>
-                    <img
-                            class="d-block img-fluid w-100"
-                            width="1024"
-                            height="480"
-                            v-bind:src="images[1]"
-                            alt="image slot"
-                    >
-                </template>
-            </b-carousel-slide>
+                    <b-carousel-slide>
+                        <template v-slot:img>
+                            <img
+                                    class="d-block img-fluid w-100"
+                                    width="1024"
+                                    height="480"
+                                    v-bind:src="images[1]"
+                                    alt="image slot"
+                            >
+                        </template>
+                    </b-carousel-slide>
 
-            <b-carousel-slide>
-                <template v-slot:img>
-                    <img
-                            class="d-block img-fluid w-100"
-                            width="1024"
-                            height="480"
-                            v-bind:src="images[2]"
-                            alt="image slot"
-                    >
-                </template>
-            </b-carousel-slide>
-            <b-carousel-slide>
-                <template v-slot:img>
-                    <img
-                            class="d-block img-fluid w-100"
-                            width="1024"
-                            height="480"
-                            v-bind:src="images[3]"
-                            alt="image slot"
-                    >
-                </template>
-            </b-carousel-slide>
-            <b-carousel-slide>
-                <template v-slot:img>
-                    <img
-                            class="d-block img-fluid w-100"
-                            width="1024"
-                            height="480"
-                            v-bind:src="images[4]"
-                            alt="image slot"
-                    >
-                </template>
-            </b-carousel-slide>
-            <b-carousel-slide>
-                <template v-slot:img>
-                    <img
-                            class="d-block img-fluid w-100"
-                            width="1024"
-                            height="480"
-                            v-bind:src="images[5]"
-                            alt="image slot"
-                    >
-                </template>
-            </b-carousel-slide>
-            <b-carousel-slide>
-                <template v-slot:img>
-                    <img
-                            class="d-block img-fluid w-100"
-                            width="1024"
-                            height="480"
-                            v-bind:src="images[6]"
-                            alt="image slot"
-                    >
-                </template>
-            </b-carousel-slide>
-        </b-carousel>
-    </b-col>
-</b-row>
+                    <b-carousel-slide>
+                        <template v-slot:img>
+                            <img
+                                    class="d-block img-fluid w-100"
+                                    width="1024"
+                                    height="480"
+                                    v-bind:src="images[2]"
+                                    alt="image slot"
+                            >
+                        </template>
+                    </b-carousel-slide>
+                    <b-carousel-slide>
+                        <template v-slot:img>
+                            <img
+                                    class="d-block img-fluid w-100"
+                                    width="1024"
+                                    height="480"
+                                    v-bind:src="images[3]"
+                                    alt="image slot"
+                            >
+                        </template>
+                    </b-carousel-slide>
+                    <b-carousel-slide>
+                        <template v-slot:img>
+                            <img
+                                    class="d-block img-fluid w-100"
+                                    width="1024"
+                                    height="480"
+                                    v-bind:src="images[4]"
+                                    alt="image slot"
+                            >
+                        </template>
+                    </b-carousel-slide>
+                    <b-carousel-slide>
+                        <template v-slot:img>
+                            <img
+                                    class="d-block img-fluid w-100"
+                                    width="1024"
+                                    height="480"
+                                    v-bind:src="images[5]"
+                                    alt="image slot"
+                            >
+                        </template>
+                    </b-carousel-slide>
+                    <b-carousel-slide>
+                        <template v-slot:img>
+                            <img
+                                    class="d-block img-fluid w-100"
+                                    width="1024"
+                                    height="480"
+                                    v-bind:src="images[6]"
+                                    alt="image slot"
+                            >
+                        </template>
+                    </b-carousel-slide>
+                </b-carousel>
+            </b-col>
+        </b-row>
 
-        <b-modal hide-footer id="questionModal" title="" v-if="!getOnlyInfo">
-            <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys (optional).</p>
+        <b-row>
+            <b-col>
+                <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys (optional).</p>
+            </b-col>
+        </b-row>
 
-            <p class="calvert question"><span class="bold">What is your main purpose for travelling on Tyne and Wear Metro?</span></p>
-            <b-form-select  v-model="purpose" :options="purposes">
-                <template v-slot:first>
-                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
-                </template>
-                Please select an option
-            </b-form-select>
-
-            <p class="calvert question"><span class="bold">How often do you travel on Tyne and Wear Metro?</span></p>
-
-            <b-form-select  v-model="frequency" :options="frequencies">
-                <template v-slot:first>
-                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
-                </template>
-                Please select an option
-            </b-form-select>
-
-            <p class="calvert question"><span class="bold">Gender?</span></p>
-            <b-form-select @change="changeGender" v-model="gender" :options="genders">
-                <template v-slot:first>
-                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
-                </template>
-                Please select an option
-            </b-form-select>
-
-            <div v-if="otherGender" id="genderTextDiv">
-                        <textarea
-                                id="textarea"
-                                v-model="genderOtherText"
-                                placeholder="Enter your gender..."
-                                rows="2" class="form-control"
-                        ></textarea>
-            </div>
-
-            <p class="calvert question"><span class="bold">Ethnicity?</span></p>
-            <b-form-select  v-model="ethnicity" :options="ethnicities">
-                <template v-slot:first>
-                    <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
-                </template>
-                Please select an option
-            </b-form-select>
-
-            <p class="calvert question"><span class="bold">Do you have a disability?</span></p>
-            <b-form-group>
-                <b-form-radio v-model="dis" name="some-radios" value="yes">Yes</b-form-radio>
-                <b-form-radio v-model="dis" name="some-radios" value="no">No</b-form-radio>
-            </b-form-group>
-
-            <div v-if="dis === 'yes'">
-                <p class="calvert "><span class="bold">If yes, what?</span></p>
-                <b-form-select v-model="disability" :options="disabilities">Please select an
-                    option
-                </b-form-select>
-
-                <textarea
-                    id="textarea"
-                    v-model="disabilityOtherText"
-                    placeholder="Please describe."
-                    rows="2"
-                    class="form-control"
-                    v-show="disability === 'Other'"
-                ></textarea>
+        <b-row id="optionsRow">
+            <b-col id="option1" class="option col-lg-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
+            <b-col id="option3" class="option"  @click="createPDF"><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
+                <b-col class="option"> <router-link to="/"><p class="text-center">RETURN TO HOME</p></router-link></b-col>
+            <b-col  class="option" id="shareCol">
+                <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
+                    <b-dropdown-item>   
+                            <ShareNetwork
+                                network="facebook"
+                                url="https://metrofutures.org.uk"
+                                title="I just customised my perfect Metro."
+                                description="Have a play around and make your own at: metrofutures.org.uk"
+                                hashtags="ShapeYourMetro"
+                            > Facebook
+                        <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
+                            </ShareNetwork>
+                    </b-dropdown-item>
 
 
-            </div>
-            <b-button class="submitButton" block variant="outline-secondary" @click="submitInfo">Continue</b-button>
-        </b-modal>
+                    <b-dropdown-item>
+                            <ShareNetwork
+                                network="twitter"
+                                url="https://metrofutures.org.uk"
+                                title="I've just customised my Metro. You can make your own at:"
+                                twitter-user="My_Metro"
+                                hashtags="ShapeYourMetro"
+                            > Twitter
+                                <b-img src="../assets/twitter.png" height="30px;"></b-img>
+                            </ShareNetwork>
+                    </b-dropdown-item>
 
+                </b-dropdown>
+            </b-col>
 
+        </b-row>
 
-    <b-row id="optionsRow">
-      <b-col id="option1" class="option col-lg-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
-      <b-col id="option3" class="option"  @click="createPDF"><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
-        <b-col class="option"> <router-link to="/"><p class="text-center">RETURN TO HOME</p></router-link></b-col>
-      <b-col  class="option" id="shareCol">
-          <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
-              <b-dropdown-item>   
-                    <ShareNetwork
-                        network="facebook"
-                        url="https://metrofutures.org.uk"
-                        title="I just customised my perfect Metro."
-                        description="Have a play around and make your own at: metrofutures.org.uk"
-                        hashtags="ShapeYourMetro"
-                    > Facebook
-                  <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
-                    </ShareNetwork>
-              </b-dropdown-item>
+        <b-row v-if="viewFeatures">
+            <b-col>
+                <b-row class="featuresRow">
+                    <b-col>
+                    Exterior
+                    </b-col>
+                    <b-col>
+                    <p>5 Carriages</p>
+                    <p>One connected space</p>
+                    <p>8 pairs of double doors per side</p>
+                    <p>LED highlights</p>
+                    </b-col>
+                </b-row>
 
-
-              <b-dropdown-item>
-                    <ShareNetwork
-                        network="twitter"
-                        url="https://metrofutures.org.uk"
-                        title="I've just customised my Metro. You can make your own at:"
-                        twitter-user="My_Metro"
-                        hashtags="ShapeYourMetro"
-                    > Twitter
-                        <b-img src="../assets/twitter.png" height="30px;"></b-img>
-                    </ShareNetwork>
-              </b-dropdown-item>
-
-          </b-dropdown>
-      </b-col>
-
-    </b-row>
-
-    <b-row v-if="viewFeatures">
-      <b-col>
-      <b-row class="featuresRow">
-        <b-col>
-          Exterior
-        </b-col>
-        <b-col>
-          <p>5 Carriages</p>
-          <p>One connected space</p>
-          <p>8 pairs of double doors per side</p>
-          <p>LED highlights</p>
-        </b-col>
-      </b-row>
-
-    <b-row class="featuresRow">
-      <b-col>Interior</b-col>
-      <b-col>
-        <p>108 Seating capacity (with potential for additional tip-up seats in multi-use zones under consideration)</p>
-        <p>4 dedicated wheelchair spaces</p>
-        <p>4 multi-use bike & pram zones</p>
-        <p>22 priority seats for older and pregnant people</p>
-        <p>600 passengers maximum train capacity</p>
-        <p>Passenger information displays</p>
-        <p>Onboard seamless connectivity</p>
-      </b-col>
-    </b-row>
-   
-      </b-col>
-    </b-row>
+                <b-row class="featuresRow">
+                    <b-col>Interior</b-col>
+                    <b-col>
+                        <p>108 Seating capacity (with potential for additional tip-up seats in multi-use zones under consideration)</p>
+                        <p>4 dedicated wheelchair spaces</p>
+                        <p>4 multi-use bike & pram zones</p>
+                        <p>22 priority seats for older and pregnant people</p>
+                        <p>600 passengers maximum train capacity</p>
+                        <p>Passenger information displays</p>
+                        <p>Onboard seamless connectivity</p>
+                    </b-col>
+                </b-row>
+            </b-col>
+        </b-row>
 
       <b-row id="stadlerFooter">
         <b-img src="../assets/stadlerBlack.svg"></b-img>

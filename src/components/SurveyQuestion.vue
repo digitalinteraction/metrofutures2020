@@ -69,7 +69,7 @@
                 </b-row>
 
                 <!--                feedback section-->
-                <b-row v-show="index < 6">
+                <!-- <b-row v-show="index < 6">
                     <b-col>
                         <div class="surveyFreeText">
                             <label class="calvert" for="survey-text-response">Leave Feedback (optional) </label>
@@ -77,10 +77,10 @@
                                       class="form-control" rows="2"></textarea>
                         </div>
                     </b-col>
-                </b-row>
+                </b-row> -->
 
 <!--                something else option for q 7-->
-                <b-row v-show="index === 6 && this.selected === 4">
+                <!-- <b-row v-show="index === 6 && this.selected === 4">
                     <b-col>
                         <div class="surveyFreeText">
                             <label class="calvert" for="survey-text-response">Leave end wall design idea: </label>
@@ -88,7 +88,7 @@
                                       class="form-control" rows="2"></textarea>
                         </div>
                     </b-col>
-                </b-row>
+                </b-row> -->
 
 
 <!--               <&#45;&#45; 2 different buttons depending on if q has previously been completed or not&ndash;&gt;-->
@@ -130,7 +130,7 @@
         },
         data() {
             return {
-                selected: 0,  // It looks weird if 1st option isn't selected - but maybe this will screw with our data?
+                selected: 0,  // Default select first option (0 indexed)
                 surveyText: "",
                 displayError: false,
                 image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', // default placeholder image from CDN
