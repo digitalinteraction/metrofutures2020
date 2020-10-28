@@ -10,24 +10,19 @@
       
       <MainHeader :title="personaName+`'s Journey`"></MainHeader>
 
-      <b-row class="demoQuestions" v-show="!getDemographic">
-        <b-col>
-          <BasicDemo></BasicDemo>
-        </b-col>
-      </b-row>
 
-      <b-row v-show="getDemographic">
+      <b-row>
         <b-col>
-          <b-progress class="mt-2" :max="8" show-value>
+          <b-progress class="mt-2" :max="7" show-value>
             <b-progress-bar :value="currentQuestionId+1" variant="warning">
-              <span class="progressLabel">Stop: {{ currentQuestionId+1 }} / 8</span>
+              <span class="progressLabel">Stop: {{ currentQuestionId+1 }} / 7</span>
             </b-progress-bar>
           </b-progress>
         </b-col>
       </b-row>
       
       
-      <b-row v-show="getDemographic">
+      <b-row>
       <!-- <b-row> -->
         <b-col class="col-12" :class="videoWidth()">
 
@@ -123,11 +118,8 @@
           <!-- Finalised content -->
           <span class="finished-wrapper" v-if="personaFinished">
             <!-- Optional demographic information if we haven't done it elsewhere -->
-            <div class="optDemographic" v-show="!getOnlyInfo">
-              <OptDemo></OptDemo>
-            </div>
 
-            <div v-show="getOnlyInfo">
+            <div>
               <div class="finalButtons">
                 <b-button to="/journeys" variant="primary" block>Experience more journeys</b-button>
               </div>
@@ -166,7 +158,7 @@
           </span>
         </b-col>
       </b-row>
-      <b-row v-show="getDemographic && !personaFinished && !mainVid.finished">
+      <b-row v-show="!personaFinished && !mainVid.finished">
         <b-col>
           <div class="retinopathy" v-if="personaName==='Desmond'"><strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a></div>
           <b-button @click="toggleTranscript()" variant="primary" class="transcriptButton">
@@ -191,16 +183,12 @@
 <script>
 import {mapGetters, mapState} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
-import BasicDemo from '@/components/BasicDemo.vue'
-import OptDemo from '@/components/OptDemo.vue'
 import welcomeConsent from "../components/WelcomeConsent";
 
 export default {
   name: "PersonaViewer",
   components: {
     MainHeader,
-    BasicDemo,
-    OptDemo,
     welcomeConsent,
   },
   data() {
@@ -245,7 +233,7 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['getDemographic', 'getOnlyInfo', 'getUuid', 'privacyNotice']),
+    ...mapGetters(['getUuid', 'privacyNotice']),
     ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
@@ -311,6 +299,7 @@ export default {
             // Final question will be rendered by now, so progress to final question
             this.currentQuestionId += 1
             this.finalQuestion = true
+            this.finalisePersona()  // We only have 1 final question now so can trigger finalise here
           } else {
             this.currentQuestionId += 1
             this.finalisePersona()

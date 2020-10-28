@@ -18,7 +18,6 @@ export default [
       {id: 4, text: "How clear are the door light and sound indications?", options: "", comment: true, likert: "unclear"},
       // Final questions must always be present
       {id: 5, text: "Thinking about Jessica's journey, how well do the new trains suit the needs of someone like Jessica?", options: "", comment: true, likert: "verywell"},
-      {id: 6, text: "Please explain what works well and what works less well in the new trains.", options: "", comment: true, likert: false},
     ],
     transcript: [ 
       {text: "It’s Friday afternoon and me and the kids are at Haymarket waiting to catch a Metro back to Gateshead. We’ve been to the Great North Museum but we’re at the station later than I wanted and the platform is packed with commuters. I couldn’t get Holly out of the soft-play room! It’s been a hot day, and the kids are tired, hungry, and cross. At last, a train’s coming in. But where’s the thing on the doors that shows where the pushchair space is? I’m trying to spot it and stop Holly getting too near the platform edge."},
@@ -48,7 +47,6 @@ export default [
       {id: 4, text: "How well is the multipurpose area indicated?", options: "", comment: true, likert: "poor"},
       // Final questions must always be present
       {id: 5, text: "Thinking about Sanjeev's journey, how well do the new trains suit the needs of someone like Sanjeev?", options: "", comment: true, likert: "verywell", },
-      {id: 6, text: "Please explain what works well and what works less well in the new trains.", options: "", comment: true, likert: false},
     ],
     transcript: [ 
       {text: "A long shift at the hospital today but starting early means I’m at the Metro station by four o’clock in the afternoon. Drew and I are having a bit of a house-warming party tonight so, I’ve got bags of nibbles from the supermarket as well as my bike and the usual work stuff. I know where to stand on the platform to get on at the right doors for the bike spaces on the train."},
@@ -78,7 +76,6 @@ export default [
       {id: 4, text: "Which side wall panel colour is best for Desmond?", options: "sidewall", comment: true, likert: false},
       // Final questions must always be present
       {id: 5, text: "Thinking about Desmond's journey, how well do the new trains suit the needs of someone like Desmond?", options: "", comment: true, likert: "verywell", },
-      {id: 6, text: "Please explain what works well and what works less well in the new trains.", options: "", comment: true, likert: false},
     ],
     transcript: [ 
       {text: "It’s Saturday evening and I’m dressed in style. Me and the boys are having an evening of culture at the Sage. I’m meeting them at Gateshead Interchange and we’ll walk there together. The Metro train arrives at Tyne Dock station. As I’m getting on, I need to watch out for the pole in the middle of the entrance area – I’ve bashed into it in the past."},
@@ -108,7 +105,6 @@ export default [
       {id: 4, text: "How clear are the door light and sound indications?", options: "", comment: true, likert: "unclear"},
       // Final questions must always be present
       {id: 5, text: "Thinking about Polly's journey, how well do the new trains suit the needs of someone like Polly?", options: "", comment: true, likert: "verywell", },
-      {id: 6, text: "Please explain what works well and what works less well in the new trains.", options: "", comment: true, likert: false},
     ],
     transcript: [ 
       {text: "I walk along the coast to get to the Metro in the morning. It’s usually very cold and this morning it’s absolutely freezing! I've got music and PE today, so I've got tons of stuff to carry – PE kit, saxophone and school bag! It takes me ten minutes to walk to the Metro station. I like getting to school 'bang on time' so, I get the train just after 7 am. I know exactly where to stand—and on a good day it goes exactly as planned—next to the second piece of glass at the station. When the Metro arrives, it’s quite busy. It looks like there are still a few seats left, but I stand in the multi-purpose space for my journey, rather than sit between people."},
@@ -138,7 +134,6 @@ export default [
       {id: 4, text: "Which pole is best for Robert?", options: "pole", comment: true, likert: false},
       // Final questions must always be present
       {id: 5, text: "Thinking about Robert's journey, how well do the new trains suit the needs of someone like Robert?", options: "", comment: true, likert: "verywell", },
-      {id: 6, text: "Please explain what works well and what works less well in the new trains.", options: "", comment: true, likert: false},
     ],
     transcript: [ 
       {text: "I use a wheelchair to get around including getting to work. Some parts of the North East are really hilly so the Metro is handy for getting around. I leave my house around nine to head to work and make my way to South Gosforth Metro Station. My job allows me to work flexibly so, I arrive and leave work a little later to avoid the rush hours. I arrive at the station around 9:30am. From experience, I know where the Metro train doors will be that are closest to the wheelchair area when it arrives. As the train comes into the station I try to predict where it’s going to stop. It doesn’t look particularly busy today."},
@@ -168,7 +163,6 @@ export default [
       {id: 4, text: "How clear are the door light and sound indications?", options: "", comment: true, likert: "unclear"},
       // Final questions must always be present
       {id: 5, text: "Thinking about Mary's journey, how well do the new trains suit the needs of someone like Mary?", options: "", comment: true, likert: "verywell", },
-      {id: 6, text: "Please explain what works well and what works less well in the new trains.", options: "", comment: true, likert: false},
     ],
     transcript: [ 
       {text: "The weather has been lovely this week and on Friday I’m off to the coast to meet my friends for a coffee and a bit of window shopping. We’re going to meet in South Shields at 3 o’clock so, I leave home in plenty of time to get to there – the journey usually takes around forty minutes. I’m waiting at Gateshead Stadium Metro Station. It's quite quiet, like it normally is in the afternoon. The arthritis in my knees has been getting worse recently so, I don’t like standing for long if I can help it. When I get on the train, I’m on the lookout for a priority seat but there’s already a couple sat there."},
