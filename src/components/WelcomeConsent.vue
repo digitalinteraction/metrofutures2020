@@ -14,16 +14,15 @@
         <h2>{{title}}</h2>
       </template>
       <div id="explore" v-if="page === 'explore'" class="text-left">
-        <!-- <h2>Explore your new Metro!</h2>-->
         <router-link to="/" id="info-back-button" v-if="getInfoCompleted === false" @click="exitBack">
           <b-icon-chevron-left></b-icon-chevron-left>
           Home
         </router-link>
-        <p>Move around 360-degree images at seven points in and around the train to discover new features and provide feedback on them. Use the toggle switch to explore the train with and without people on board. Some features appear in more than one image.</p>
+        <p>Move around 360-degree images at seven points in and around the train to discover new features. Use the toggle switch to explore the train with and without people on board. Some features appear in more than one image.</p>
       </div>
       <div id="choices" class="modal-container" v-if="page === 'choices'">
         <!--  <h2>Add the Finishing Touches!</h2> -->
-        <p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media.</p>
+        <p>This part of the public consultation is now closed. You can still explore the preferences by trying out options for seven different features of the new Metro trains.</p>
       </div>
       <div id="journeys" class="modal-container" v-if="page === 'journeys'">
         <!--   <h2>Step into Someone Else’s Shoes</h2> -->
@@ -46,14 +45,13 @@
       <!-- if privacy is not collected -->
       <div id="privacy-container" class="modal-container" v-if="privacyNotice===false && page !== 'explore'">
         <div>
-          <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project.</p>
+          <p>This part of the public consultation is now closed. Any information you give to the site (e.g. your choices for the design of the metro) will not be recorded. In using this site, you agree that you are happy with the following:</p>
 
           <p>We collect the following data about you:</p>
           <ul class="privacy-list">
-            <li>Your choices for the design of the metro</li>
-            <li>Any free text answers you provide</li>
-            <li>If you chose to be contacted for further consultation about the Metro Futures, your email address</li>
+            <li>Each page you visit (Google Analytics)</li>
           </ul>
+          <p><strong>Cookie Notice:</strong> We store a cookie in your web browser in order to prevent unauthorised use of our website. In using this website you accept this functional cookie.</p>
         </div>
 
         <div class="privacy-check">
@@ -61,7 +59,7 @@
             id="privacy-checkbox"
             name="privacy-checkbox"
             v-model="tick"
-          >I agree to participate in this consultation, and accept the terms of use and privacy notice of this website.</b-form-checkbox>
+          >I agree and accept the terms of use and privacy notice of this website.</b-form-checkbox>
         </div>
 
         <div class="modal-footer privacy-buttons">
