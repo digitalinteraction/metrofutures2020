@@ -317,32 +317,8 @@ export default {
       // }
     },
     sendResponse() {
-      // API call of our response
-      // Mapped questionID to stageID as there are 2 extra questions where stageID does not increment
-      let payload = {
-        personaName: this.personaName,
-        stageId: this.currentQuestionId,
-      }
-
-      if (this.commentText) {
-        payload.comment = this.commentText
-      }
-
-      if (this.likertRating) {
-        payload.likert = this.likertRating
-      }
-
-      if (this.optionSelection === 0 || this.optionSelection) {
-        payload.option = this.optionSelection
-      }
-
-      this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/journey`, {
-        params: payload
-      })
-        .then(response => {
-          console.info('Survey response:', response);
-        })
-        .catch(error => error.response ? console.log(error.response.data) : console.log(error))
+      // No need to call the API here.
+      return
     },
     getNextQuestionId(stageIndex) {
       // Given the passed in stage, get the correct question ** Doesn't actually search by ID yet **

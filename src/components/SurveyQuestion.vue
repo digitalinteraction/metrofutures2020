@@ -202,34 +202,7 @@
                             comment: this.surveyText
                         }
 
-                        if (this.index !== 6) {
-
-                        this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
-                            headers: {
-                                Cookie: this.$cookies.get('mfsid')
-                            },
-                            params: payload
-                        })
-                            .then(response => {
-                                console.info('Survey response: ' + response);
-                            })
-                            .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-                    } else {
-                            console.log('save new question');
-                            // question 6 endpoint
-                            // todo add in new endpoint here
-                            // this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/survey`, {
-                            //     headers: {
-                            //         Cookie: this.$cookies.get('mfsid')
-                            //     },
-                            //     params: payload
-                            // })
-                            //     .then(response => {
-                            //         console.info('Survey response: ' + response);
-                            //     })
-                            //     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-                        }
+                        // No need to call API now
 
                         // update stored answers
                         this.addConfigAnswer(payload);
