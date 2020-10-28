@@ -6,85 +6,19 @@
 
         <b-row v-if="!imageFull">
             <b-col class="largeImgColumn col-lg-9 col-12">
-                <!--                Local authority question image-->
                 <b-img fluid src="https://cdn.metrofutures.org.uk/conf/Camera13_0_0_0_0_0_0_1.jpg"></b-img>
             </b-col>
 
-            <!--            LA q-->
             <b-col class="col-lg-3 col-12">
-                <b-row id="localAuthority" v-if="checkLAQuestion()">
-                    <p class="calvert">Before you begin, please tell us:</p>
-                    <p class="calvert"><span class="bold">Where do you live? (Which local authority?)</span></p>
-                    <br>
-                    <b-form-select @change="changeLA" v-model="localAuthority" :options="authorities">
-                        <template v-slot:first>
-                            <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
-                        </template>
-                        Please select an option
-                    </b-form-select>
-                    <div v-if="otherLA" id="LATextDiv">
-                        <textarea
-                                id="textarea"
-                                v-model="LAOtherText"
-                                placeholder="Enter where you live..."
-                                rows="2" class="form-control"
-
-                        ></textarea>
-                    </div>
-                    <br>
-                    <br>
-                    <p class="calvert question"><span class="bold">How old are you?</span></p>
-                    <b-form-select @change="changeAge" v-model="age" :options="ages">
-                        <template v-slot:first>
-                            <b-form-select-option :value="null" selected>-- Please select an option --</b-form-select-option>
-                        </template>
-                        Please select an option
-                    </b-form-select>
-                    <span v-if="displayError"><strong>Please answer the two questions to continue.</strong> This information is important for the consultation and your answers are given anonymously.</span>
-                    <b-button id="LAButton" block variant="outline-secondary" @click="submitLA">Get Started</b-button>
-                </b-row>
-                <b-row class="continue-row" v-if="!checkLAQuestion()">
-                    <b-col>
-                        <div class="calvert text-center">External Train Livery</div>
-                        <div class="text-center">Configure your choices for seven internal features</div>
-                        <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="typeof(this.getConfigAnswerFirst) === 'undefined'">Get Started</b-button>
-                        <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="this.getConfigAnswerFirst >= 0">Continue</b-button>
-                    </b-col>
-                </b-row>
+                <b-col>
+                    <div class="calvert text-center">External Train Livery</div>
+                    <div class="text-center">Configure your choices for seven internal features</div>
+                    <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="typeof(this.getConfigAnswerFirst) === 'undefined'">Get Started</b-button>
+                    <b-button class="continueButton" block variant="outline-secondary" @click="continueClick" v-if="this.getConfigAnswerFirst >= 0">Continue</b-button>
+                </b-col>
             </b-col>
 
         </b-row>
-
-
-
-        <!--    modal TODO call welcomeConsent instead
-
-        <b-modal hide-footer centered ok-only no-close-on-esc no-close-on-backdrop hide-header-close id="privacyNoticeModal" title="Add the Finishing Touches!">
-            <p>Some design decisions remain to be made on your new Metro. Let us know your preferences by trying out options for seven different features. You can then share your ideal Metro with us and on social media. </p>
-            <br>
-            <div >
-                <p>In using this site, you agree that you are happy for your responses and interactions on this website to be included in the consultation for the Metro Futures 2020 project. </p>
-
-                <p>We collect the following data about you:</p>
-                <ul>
-                    <li>Your choices for the design of the metro</li>
-                    <li>Any free text answers you provide</li>
-                    <li>If you chose to be contacted for further consultation about the Metro Futures, your email address</li>
-                </ul>
-
-            </div>
-
-            <div class="privacy-check">
-                <b-form-checkbox id="privacy-checkbox" name="privacy-checkbox" v-model="tick">
-                    I agree to participate in this consultation, and accept the terms of use and privacy notice of this website.
-                </b-form-checkbox>
-            </div>
-
-            <div class="modal-footer privacy-buttons">
-                <b-button @click="confirmPrivacy" :disabled="tick === false">Continue</b-button>
-            </div>
-
-        </b-modal>-->
 
         <b-row v-if="welcomeScreen">
             <welcomeConsent title="Add the Finishing Touches!" page="choices" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
@@ -111,22 +45,6 @@
                 imageURL:'',
                 imageFull: true,
                 LAQuestion: false,
-                localAuthority: '',
-                authorities: [
-                    {value: 'CountyDurham', text: 'County Durham'},
-                    {value: 'Gateshead', text: 'Gateshead'},
-                    {value: 'Newcastle', text: 'Newcastle'},
-                    {value: 'NorthTyneside', text: 'North Tyneside'},
-                    {value: 'Northumberland', text: 'Northumberland'},
-                    {value: 'SouthTyneside', text: 'South Tyneside'},
-                    {value: 'Sunderland', text: 'Sunderland'},
-                    {value: 'OtherNorthEast', text: 'Other North East'},
-                    {value: 'Other', text: 'Other'}
-                ],
-                age: '',
-                ages: ['16 or under', '17-24', '25-34', '35-44', '45-54', '55-65', '66-75', '76+'],
-                otherLA: false,
-                displayError: false
             }
         },
         mounted() {
@@ -146,56 +64,9 @@
             triggerLAQuestion() {
                 this.imageFull = false;
             },
-            submitLA() {
-                if (!this.localAuthority || !this.age) {
-                    // no answer for one or both fields
-                    this.displayError = true;
-                } else {
-                    this.completeDemographic();
-                    //if answered 'other' and user has entered free text send that instead
-                    if (this.localAuthority === 'Other' && this.LAOtherText) {
-                        if (this.LAOtherText.length > 0) {
-                            this.localAuthority = this.LAOtherText;
-                        }
-                    }
-
-                    let payload = {
-                        0: this.localAuthority,
-                        1: this.age,
-                    }
-
-                    this.axios.post(`${process.env.VUE_APP_API_URL}/api/response/participant`, {
-                        headers: {
-                            Cookie: this.$cookies.get('mfsid')
-                        },
-                        params: payload
-                    })
-                        .then(response => {
-                            console.log(response);
-                        })
-                        .catch(error => error.response ? console.log("Error submitting demographic info:",error.response.data) : console.log("Error submitting demographic info:", error))
-
-                    this.$emit('finishedWelcome');
-
-                }
-            },
             continueClick() {
                 // If we have answered the demographic questions, we just continue
                 this.$emit('finishedWelcome');
-            },
-            changeLA() {
-                // if other is selected display free text box
-                if (this.localAuthority === 'Other') {
-                    this.otherLA = true;
-                }
-                if (this.localAuthority && this.age) {
-                    this.displayError = false
-                }
-            },
-            changeAge() {
-                if (this.localAuthority && this.age) {
-                    this.displayError = false
-                }
             },
 
             fetchFrontImage() {
@@ -219,17 +90,6 @@
                         this.frontImg = response.data;
                     })
                     .catch(error => error.response ? console.log(error.response.data) : console.log(error))
-
-
-
-            },
-            checkLAQuestion() {
-                if (this.getDemographic === true) {
-                    // We have done the demographic question
-                    return false
-                } else {
-                    return true
-                }
             },
         }
     }
