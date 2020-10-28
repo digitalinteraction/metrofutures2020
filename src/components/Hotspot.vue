@@ -18,7 +18,7 @@
         <div class="hotspot_text">
           <span>{{ data.text }}</span>
 
-          <span v-if="data.likert">
+          <!-- <span v-if="data.likert">
             <div class="likert_text" v-if="data.likert === 'clear'">1 = very un{{data.likert}}, 5 = very {{data.likert}}</div>
             <div class="likert_text" v-if="data.likert === 'safe'">1 = no {{data.likert}}r, 5 = much {{data.likert}}r</div>
             <b-form-rating 
@@ -28,7 +28,7 @@
               icon-full="circle-fill"
               variant="warning"
             ></b-form-rating>
-          </span>
+          </span> -->
 
           <span v-if="data.link">
             Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
@@ -61,7 +61,7 @@
 
           </div>
 
-          <b-form v-if="!submitted">
+          <!-- <b-form v-if="!submitted">
             <label for="hotspot_input" class="sr-only" hidden></label>
             <b-form-input
               id="hotspot_input"
@@ -71,12 +71,12 @@
             <div class="text-center">
               <b-button class="hotspot_button" variant="primary" :disabled="!valid()" v-on:click="submit()">Send</b-button>
             </div>
-          </b-form>
+          </b-form> -->
 
-          <div v-if="submitted" class="text-center thanks-notif">
+          <!-- <div v-if="submitted" class="text-center thanks-notif">
             <span v-show="likertRating === 0"><b-icon icon="patch-check-fll" font-scale="1" class="thanks-check"></b-icon> Thanks for your comment.</span>
             <span v-show="!hotspotText && likertRating > 0"><b-icon icon="patch-check-fll" font-scale="1" class="thanks-check"></b-icon> Thanks for your rating.</span>
-          </div>
+          </div> -->
 
         </div>
         
