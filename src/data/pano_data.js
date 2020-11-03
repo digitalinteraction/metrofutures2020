@@ -328,28 +328,60 @@ export default[
             "pitch": 0.4232916623545169,
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -0.19924987526594506,
             "pitch": 0.5169235598568562,
             "title": "Multipurpose Space Floor",
             "text": "We asked: How clearly is the multipurpose space indicated with floor markings?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 2.2282781536492635,
             "pitch": 0.4776184758101447,
             "title": "Priority Seats Decals",
             "text": "We asked: How clearly are the priority seats indicated by window decals?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 2.2092864538209307,
             "pitch": -0.4098654342294754,
             "title": "Passenger Information Screens",
             "text": "We asked: How clear are the passenger information screens in this position?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -3.0946846043059697,
@@ -363,7 +395,15 @@ export default[
             "pitch": -0.4046128448142028,
             "title": "CCTV",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
-            "likert": "safe"
+            "likert": "safe",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           }
         ]
       },
@@ -402,28 +442,60 @@ export default[
             "pitch": 0.4232916623545169,
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -0.19924987526594506,
             "pitch": 0.5169235598568562,
             "title": "Multipurpose Space Floor",
             "text": "We asked: How clearly is the multipurpose space indicated with floor markings?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 2.2282781536492635,
             "pitch": 0.4776184758101447,
             "title": "Priority Seats Decals",
             "text": "We asked: How clearly are the priority seats indicated by window decals?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 2.2092864538209307,
             "pitch": -0.4098654342294754,
             "title": "Passenger Information Screens",
             "text": "We asked: How clear are the passenger information screens in this position?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -3.0946846043059697,
@@ -437,7 +509,15 @@ export default[
             "pitch": -0.4046128448142028,
             "title": "CCTV",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
-            "likert": "safe"
+            "likert": "safe",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           }
         ]
       },
@@ -476,28 +556,60 @@ export default[
             "pitch": 0.12323266998806126,
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 0.4977260744764571,
             "pitch": -0.6755239218801243,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -2.6696343035602723,
             "pitch": -0.2643477078072074,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 2.298466467777665,
             "pitch": 0.14868571577706113,
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -0.6966485834794334,
@@ -511,7 +623,15 @@ export default[
             "pitch": 1.1266788657130178,
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           }
         ]
       },
@@ -550,28 +670,60 @@ export default[
             "pitch": 0.12323266998806126,
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 0.4977260744764571,
             "pitch": -0.6755239218801243,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -2.6696343035602723,
             "pitch": -0.2643477078072074,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 2.298466467777665,
             "pitch": 0.14868571577706113,
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -0.6966485834794334,
@@ -585,7 +737,15 @@ export default[
             "pitch": 1.1266788657130178,
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           }
         ]
       },
@@ -625,6 +785,14 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
             "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
           },
           {
@@ -638,14 +806,30 @@ export default[
             "pitch": -0.1530467912020086,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -2.9502758366148907,
             "pitch": -0.04844194116519418,
             "title": "Single Corridor Train",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
-            "likert": "safe"
+            "likert": "safe",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -0.04951106935910943,
@@ -697,6 +881,14 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
             "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
           },
           {
@@ -710,14 +902,30 @@ export default[
             "pitch": -0.1530467912020086,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -2.9502758366148907,
             "pitch": -0.04844194116519418,
             "title": "Single Corridor Train",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
-            "likert": "safe"
+            "likert": "safe",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -0.04951106935910943,
@@ -768,7 +976,15 @@ export default[
             "pitch": 0.19524388331702447,
             "title": "Priority Seat Decals",
             "text": "We asked: How clearly are the priority seats indicated by the window decals?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 2.3122814836046786,
@@ -781,21 +997,45 @@ export default[
             "pitch": 0.07223669612430506,
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 1.5474214283263583,
             "pitch": -0.5003120202527533,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 1.5146695287274374,
             "pitch": 0.7904299278228528,
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 0.3266127432183019,
@@ -840,7 +1080,15 @@ export default[
             "pitch": 0.19524388331702447,
             "title": "Priority Seat Decals",
             "text": "We asked: How clearly are the priority seats indicated by the window decals?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 2.3122814836046786,
@@ -853,21 +1101,45 @@ export default[
             "pitch": 0.07223669612430506,
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 1.5474214283263583,
             "pitch": -0.5003120202527533,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 1.5146695287274374,
             "pitch": 0.7904299278228528,
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 0.3266127432183019,
@@ -912,14 +1184,30 @@ export default[
             "pitch": 0.6371755549919254,
             "title": "Multipurpose Space Window",
             "text": "We asked: How clearly is the multipurpose space indicated by the window decals?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -2.2149852870861473,
             "pitch": 0.7760468469483506,
             "title": "Multipurpose Space",
             "text": "We asked: How clearly is the multipurpose indicated by floor markings?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 0.37670298463485885,
@@ -954,7 +1242,15 @@ export default[
             "pitch": -0.7315439287466887,
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from this position?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           }
         ]
       },
@@ -993,14 +1289,30 @@ export default[
             "pitch": 0.6371755549919254,
             "title": "Multipurpose Space Window",
             "text": "We asked: How clearly is the multipurpose space indicated by the window decals?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -2.2149852870861473,
             "pitch": 0.7760468469483506,
             "title": "Multipurpose Space",
             "text": "We asked: How clearly is the multipurpose indicated by floor markings?",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": 0.37670298463485885,
@@ -1035,7 +1347,15 @@ export default[
             "pitch": -0.7315439287466887,
             "title": "Passenger Information Screen",
             "text": "How clear is the passenger information screen from this position",
-            "likert": "clear"
+            "likert": "clear",
+             "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           }
         ]
       }
