@@ -142,13 +142,30 @@ export default[
             "pitch": 0.12195200726714539,
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 4,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -2.3397083094491204,
             "pitch": 0.06487713590313682,
             "title": "Multipurpose Space Doors",
-            "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?"
+            "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
+            "likert": "clear",
+            "likertAvg": 4,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -1.4120780940420286,
@@ -161,6 +178,15 @@ export default[
             "pitch": 0.4111241783467712,
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
+            "likert": "clear",
+            "likertAvg": 4,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
             "visual": "https://cdn.metrofutures.org.uk/doors/DoorExterior.mp4",
           },
           {
@@ -212,14 +238,30 @@ export default[
             "pitch": 0.12195200726714539,
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -2.3397083094491204,
             "pitch": 0.06487713590313682,
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
-            "likert": "clear"
+            "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
           },
           {
             "yaw": -1.4120780940420286,
@@ -233,6 +275,14 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
+            "likertAvg": 3,
+            "likertData": [
+              {"rating": 5, "percentage": "10%"},
+              {"rating": 4, "percentage": "70%"},
+              {"rating": 3, "percentage": "20%"},
+              {"rating": 2, "percentage": "0%"},
+              {"rating": 1, "percentage": "0%"},
+            ],
             "visual": "https://cdn.metrofutures.org.uk/doors/DoorExterior.mp4",
           },
           {

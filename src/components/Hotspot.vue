@@ -18,17 +18,24 @@
         <div class="hotspot_text">
           <span>{{ data.text }}</span>
 
-          <!-- <span v-if="data.likert">
-            <div class="likert_text" v-if="data.likert === 'clear'">1 = very un{{data.likert}}, 5 = very {{data.likert}}</div>
-            <div class="likert_text" v-if="data.likert === 'safe'">1 = no {{data.likert}}r, 5 = much {{data.likert}}r</div>
+          <span v-if="data.likert">
+            <div>You said:</div>
             <b-form-rating 
               class="likert_item"
-              v-model="likertRating"
+              :value="data.likertAvg"
               icon-empty="circle"
               icon-full="circle-fill"
               variant="warning"
+              readonly
             ></b-form-rating>
-          </span> -->
+            <div class="likert_text" v-if="data.likert === 'clear'">1 = very un{{data.likert}}, 5 = very {{data.likert}}</div>
+            <div class="likert_text" v-if="data.likert === 'safe'">1 = no {{data.likert}}r, 5 = much {{data.likert}}r</div>
+            
+            <button @click="toggleLikert()">More details</button>
+            <div class="likert-details" v-if="likertDetails">
+              <b-table small striped hover :items="data.likertData"></b-table>
+            </div>
+          </span>
 
           <span v-if="data.link">
             Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
@@ -100,6 +107,7 @@ export default {
       videoPlaying: false,
       videoEl: false,
       vidFullscreen: false,
+      likertDetails: false,
     }
   },
   methods: {
@@ -178,6 +186,9 @@ export default {
         return false
       }
     },
+    toggleLikert() {
+      this.likertDetails = !this.likertDetails;
+    }
   },
   mounted() {
     if (this.data.visual) {
