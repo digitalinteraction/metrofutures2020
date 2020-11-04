@@ -1,10 +1,10 @@
 <template>
   <b-container>
-      <MainHeader title="About Metro Futures" resultMessage /> 
+      <MainHeader title="Public Consultation Results" /> 
 
       <b-row>
           <b-col>
-              Results
+              Blah blah results go here
           </b-col>
       </b-row>
 

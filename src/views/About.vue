@@ -1,7 +1,7 @@
 <template>
     <div class="about text-left">
         <b-container>
-            <MainHeader title="About Metro Futures" resultsMessage="true" />
+            <MainHeader title="About Metro Futures" resultsMessage />
 
             <b-row>
                 <b-col>

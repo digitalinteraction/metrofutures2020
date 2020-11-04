@@ -64,6 +64,11 @@ export default {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
   background-color: lightgreen;
+
+  & a {
+    color: black;
+    text-decoration: underline;
+  }
 }
 
 // .dd-menu {
