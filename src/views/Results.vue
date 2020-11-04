@@ -1,6 +1,6 @@
 <template>
   <b-container>
-      <MainHeader title="About Metro Futures" resultMessage="false" /> 
+      <MainHeader title="About Metro Futures" resultMessage /> 
 
       <b-row>
           <b-col>

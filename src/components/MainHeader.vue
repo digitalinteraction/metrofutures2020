@@ -16,8 +16,10 @@
       
     </b-row>
       
-    <b-row class="results-header" v-show="displayResults">
-      <b-col>resultMessage: {{ resultMessage }}, displayresults: {{ displayResults }} Consultation is now closed, click here to see the <router-link to="/results">results</router-link>.</b-col>
+    <b-row class="results-header" v-show="resultMessage">
+      <b-col>
+        Consultation is now closed, click here to see the <router-link to="/results">results</router-link>.
+      </b-col>
     </b-row>
   </div>
 </template>
@@ -35,7 +37,6 @@ export default {
   },
   data: function() {
     return {
-      displayResults: this.resultMessage
     }
   }
 
