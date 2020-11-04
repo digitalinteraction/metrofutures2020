@@ -52,6 +52,14 @@ Vue.use(Meta)
     name: 'Metro Futures - Explore Your Metro',
     component: () => import(/* webpackChunkName: "explore" */ '../views/Pano.vue')
   },
+  {
+    path: '/results',
+    name: 'Results',
+    component: () => import(/* webpackChunkName: "results" */ '../views/Results.vue'),
+    meta: {
+      title: 'Metro Futures - Consultation Results'
+    }
+  },
   // {
   //   path: '/workshops',
   //   name: 'Workshops',

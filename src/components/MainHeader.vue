@@ -1,19 +1,25 @@
 <template>
-  <b-row id="headerRow" align-v="center">
-    <b-col >
+  <div>
+    <b-row id="headerRow" align-v="center">
+      <b-col >
       <router-link to="/">
-        <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
+      <b-img class="float-left" id="logo" src="../assets/metroLogoTemp.png" fluid alt="Metro logo"></b-img>
       </router-link>
-    </b-col>
-    <b-col class="dd-menu">
+      </b-col>
+      <b-col class="dd-menu">
       <h3 class="calvert"> {{ title }}</h3>
-    </b-col>
-
-    <b-col>
+      </b-col>
+      
+      <b-col>
       <MainMenu></MainMenu>
-    </b-col>
-
-  </b-row>
+      </b-col>
+      
+    </b-row>
+      
+    <b-row class="results-header" v-show="displayResults">
+      <b-col>resultMessage: {{ resultMessage }}, displayresults: {{ displayResults }} Consultation is now closed, click here to see the <router-link to="/results">results</router-link>.</b-col>
+    </b-row>
+  </div>
 </template>
 
 <script>
@@ -21,10 +27,16 @@ import MainMenu from '@/components/MainMenu.vue'
 export default {
   name: "MainHeader",
   props: {
-    title: String
+    title: String,
+    resultMessage: Boolean,
   },
   components: {
     MainMenu
+  },
+  data: function() {
+    return {
+      displayResults: this.resultMessage
+    }
   }
 
 }
@@ -45,6 +57,12 @@ export default {
     border-bottom: 1px solid #FEC600;
     cursor: pointer;
     color: $font-color;
+}
+
+.results-header {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-color: lightgreen;
 }
 
 // .dd-menu {
