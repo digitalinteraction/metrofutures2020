@@ -3,7 +3,7 @@
   <b-row v-if="welcomeScreen">
         <welcomeConsent title="Explore your new Metro!" page="explore" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
       </b-row>
-  <MainHeader title="Explore Your Metro"/> 
+  <MainHeader title="Explore Your Metro" resultMessage /> 
   <b-row class="pano_frame">
     <b-col >
       <div class="controls">

@@ -4,7 +4,7 @@
 
         <b-container align="center" fluid>
 
-            <MainHeader title="Configure Your Choices"/> 
+            <MainHeader title="Configure Your Choices" resultMessage /> 
 
             <b-row align-v="center" class="surveyBreadcrumb fullScreenMenu">
                 <b-col class="firstMenuCol breadItem" id="breadcrumb0"

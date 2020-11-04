@@ -6,7 +6,7 @@
       </b-row>
       <b-row>
         <b-col>
-          <MainHeader title="Explore Your Journeys"></MainHeader>
+          <MainHeader title="Explore Your Journeys" resultMessage></MainHeader>
         </b-col>
       </b-row>
 
