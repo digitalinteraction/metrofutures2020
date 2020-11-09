@@ -1,76 +1,76 @@
 export default [
   {
     id: 0,
-    question: "Select your preferred seating style:",
+    question: "Select seating style:",
     options: [
       {
-        desc: "Light grey, dots, dots",
+        desc: "Light grey, dots, dots (10%)",
         img: "Square_Configurator_swatches-01.svg"
       },
       {
-        desc: "Green, plain, stripes",
+        desc: "Green, plain, stripes (20%)",
         img: "Square_Configurator_swatches-02.svg"
       },
       {
-        desc: "Dark grey, logo, logo",
+        desc: "Dark grey, logo, logo (70%)",
         img: "Square_Configurator_swatches-03.svg"
       }
     ]
   },
   {
     id: 1,
-    question: "Select your preferred combination of pole and door colours, and floor markings:",
+    question: "Select combination of pole and door colours, and floor markings:",
     options: [
       {
-        desc: "Yellow door, metal pole, yellow floor marking",
+        desc: "Yellow door, metal pole, yellow floor marking (10%)",
         img: "Square_Configurator_swatches-12.svg"
       },
       {
-        desc: "Grey door, yellow pole, white floor marking",
+        desc: "Grey door, yellow pole, white floor marking (10%)",
         img: "Square_Configurator_swatches-13.svg"
       },
       {
-        desc: "Yellow door, grey pole, yellow floor marking",
+        desc: "Yellow door, grey pole, yellow floor marking (10%)",
         img: "Square_Configurator_swatches-14.svg"
       },
       {
-        desc: "Grey door, metal pole, white floor marking",
+        desc: "Grey door, metal pole, white floor marking (10%)",
         img: "Square_Configurator_swatches-15.svg"
       }
     ]
   },
   {
     id: 2,
-    question: "Select your preferred pole design:",
+    question: "Select pole design:",
     options: [
       {
-        desc: "Single pole",
+        desc: "Single pole (10%)",
         img: "Square_Configurator_swatches-06.svg"
       },
       {
-        desc: "Double pole",
+        desc: "Double pole (10%)",
         img: "Square_Configurator_swatches-07.svg"
       },
       {
-        desc: "Ring",
+        desc: "Ring (10%)",
         img: "Square_Configurator_swatches-08.svg"
       }
     ]
   },
   {
     id: 3,
-    question: "Select your preferred bike stand:",
+    question: "Select bike stand:",
     options: [
       {
-        desc: "Strap",
+        desc: "Strap (10%)",
         img: "Square_Configurator_swatches-09.svg"
       },
       {
-        desc: "Hook",
+        desc: "Hook (10%)",
         img: "Square_Configurator_swatches-10.svg"
       },
       {
-        desc: "Clamp",
+        desc: "Clamp (10%)",
         img: "Square_Configurator_swatches-11.svg"
       }
     ]
@@ -80,55 +80,55 @@ export default [
     question: "Select whether priority seats should be indicated with separate colours:",
     options: [
       {
-        desc: "Yes",
+        desc: "Yes (10%)",
         img: "Square_Configurator_swatches-05.svg"
       },
       {
-        desc: "No",
+        desc: "No (10%)",
         img: "Square_Configurator_swatches-04.svg"
       }
     ]
   },
   {
     id: 5,
-    question: "Select your preferred side wall colour:",
+    question: "Select side wall colour:",
     options: [
       {
-        desc: "White",
+        desc: "White (10%)",
         img: "Square_Configurator_swatches-16.svg"
       },
       {
-        desc: "Light grey",
+        desc: "Light grey (10%)",
         img: "Square_Configurator_swatches-17.svg"
       },
       {
-        desc: "Dark grey",
+        desc: "Dark grey (10%)",
         img: "Square_Configurator_swatches-18.svg"
       }
     ]
   },
       {
         id: 6,
-        question: "Select your preferred end wall style (examples shown):",
+        question: "Select end wall style (examples shown):",
         options: [
           {
-            desc: "Blank",
+            desc: "Blank (10%)",
             img: "Square_Configurator_swatches-19.svg"
           },
           {
-            desc: "Comissioned Artwork",
+            desc: "Comissioned Artwork (10%)",
             img: "Square_Configurator_swatches-20.svg"
           },
           {
-            desc: "North East Landmarks",
+            desc: "North East Landmarks (10%)",
             img: "Square_Configurator_swatches-21.svg"
           },
           {
-            desc: "North East People",
+            desc: "North East People (10%)",
             img: "Square_Configurator_swatches-22.svg"
           },
           {
-            desc: "Something else",
+            desc: "Something else (10%)",
             img: "Square_Configurator_swatches-23.svg"
           }
         ]
