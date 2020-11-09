@@ -77,41 +77,7 @@
             
             <!-- Likert -->
             <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
-              <LikertDetails></LikertDetails>
-              <!-- <div>You said:</div>
-                <b-form-rating 
-                  class="likert_item"
-                  :value="data.likertAvg"
-                  icon-empty="circle"
-                  icon-full="circle-fill"
-                  variant="warning"
-                  readonly
-                ></b-form-rating>
-                <div class="likert_text" v-if="data.likert === 'clear'">1 = very un{{data.likert}}, 5 = very {{data.likert}}</div>
-                <div class="likert_text" v-if="data.likert === 'safe'">1 = no {{data.likert}}r, 5 = much {{data.likert}}r</div>
-                
-                <button @click="toggleLikert()">More details</button>
-                <div class="likert-details" v-if="likertDetails">
-                  <b-table small striped hover :items="data.likertData"></b-table>
-              </div> -->
-
-              <!-- <label for="likertInput" class="likert-text">{{ getLikertText(stageInfo.questions[currentQuestionId].likert) }}</label>
-              <b-form-rating
-              id="likertInput"
-              class="likert-item"
-              v-model="likertRating"
-              icon-empty="circle"
-              icon-full="circle-fill"
-              variant="warning"
-              >
-              </b-form-rating>
-              <b-row align-h="center" class="rating-label">
-                <span class="flex-grow-1">1</span>
-                <span class="flex-grow-1">2</span>
-                <span class="flex-grow-1">3</span>
-                <span class="flex-grow-1">4</span>
-                <span class="flex-grow-1">5</span>
-              </b-row> -->
+              <LikertDetails :likertAvg="likertAvg" :likertData="likertData"></LikertDetails>
             </div>
             
             <!-- Submit button -->
@@ -235,7 +201,17 @@ export default {
       likertRating: 0,
       commentText: "",
       optionSelection: false,
-      optLetters: ["A", "B", "C", "D", "E", "F"]
+      optLetters: ["A", "B", "C", "D", "E", "F"],
+
+      // Placeholder likert data
+      likertAvg: 3,
+      likertData: [
+          {"rating": 5, "percentage": "10%"},
+          {"rating": 4, "percentage": "70%"},
+          {"rating": 3, "percentage": "20%"},
+          {"rating": 2, "percentage": "0%"},
+          {"rating": 1, "percentage": "0%"},
+      ],
     }
   },
   computed: {

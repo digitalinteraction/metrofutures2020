@@ -13,7 +13,7 @@
     <div class="likert_text" v-if="data.likert === 'safe'">1 = no {{data.likert}}r, 5 = much {{data.likert}}r</div>
 
     <button @click="toggleLikert()">More details</button>
-    <div class="likert-details" v-if="likertDetails">
+    <div class="likert-details" v-if="details">
         <b-table small striped hover :items="data.likertData"></b-table>
     </div>
 
@@ -24,21 +24,25 @@
 export default {
     name: "LikertDetails",
     props: {
-        dataProp: Object
+        likertAvg: Number,
+        likertData: Object,
     },
     data() {
         return {
-            data: {
-                likert: true,
-                likertAvg: 3,
-                likertData: [
-                    {"rating": 5, "percentage": "10%"},
-                    {"rating": 4, "percentage": "70%"},
-                    {"rating": 3, "percentage": "20%"},
-                    {"rating": 2, "percentage": "0%"},
-                    {"rating": 1, "percentage": "0%"},
-                ],
-            }
+            details: false,
+            // likertAvg: 3,
+            // likertData: [
+            //     {"rating": 5, "percentage": "10%"},
+            //     {"rating": 4, "percentage": "70%"},
+            //     {"rating": 3, "percentage": "20%"},
+            //     {"rating": 2, "percentage": "0%"},
+            //     {"rating": 1, "percentage": "0%"},
+            // ],
+        }
+    },
+    methods: {
+        toggleLikert() {
+            this.details = !this.details
         }
     }
 
