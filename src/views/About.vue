@@ -45,7 +45,7 @@
 
                     </p>
                     <br>
-                    <p>Nexus owns and operates Metro as a public service. Beyond this is provides, plan and promotes all
+                    <p>Nexus owns and operates Metro as a public service. Beyond this it provides, plans and promotes all
                         public transport to improve the economic prosperity of Tyne and Wear, and the daily lives of its
                         people. </p>
                     <br>
