@@ -52,7 +52,7 @@
           
           <span class="question-wrapper" v-if="!personaFinished">
             <div class="question-text">
-              {{ stageInfo.questions[currentQuestionId].text }}
+              We asked: {{ stageInfo.questions[currentQuestionId].text }}
             </div>
             
             <!-- Options -->
@@ -77,7 +77,25 @@
             
             <!-- Likert -->
             <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
-              <label for="likertInput" class="likert-text">{{ getLikertText(stageInfo.questions[currentQuestionId].likert) }}</label>
+              <LikertDetails></LikertDetails>
+              <!-- <div>You said:</div>
+                <b-form-rating 
+                  class="likert_item"
+                  :value="data.likertAvg"
+                  icon-empty="circle"
+                  icon-full="circle-fill"
+                  variant="warning"
+                  readonly
+                ></b-form-rating>
+                <div class="likert_text" v-if="data.likert === 'clear'">1 = very un{{data.likert}}, 5 = very {{data.likert}}</div>
+                <div class="likert_text" v-if="data.likert === 'safe'">1 = no {{data.likert}}r, 5 = much {{data.likert}}r</div>
+                
+                <button @click="toggleLikert()">More details</button>
+                <div class="likert-details" v-if="likertDetails">
+                  <b-table small striped hover :items="data.likertData"></b-table>
+              </div> -->
+
+              <!-- <label for="likertInput" class="likert-text">{{ getLikertText(stageInfo.questions[currentQuestionId].likert) }}</label>
               <b-form-rating
               id="likertInput"
               class="likert-item"
@@ -93,21 +111,7 @@
                 <span class="flex-grow-1">3</span>
                 <span class="flex-grow-1">4</span>
                 <span class="flex-grow-1">5</span>
-              </b-row>
-            </div>
-            
-            <!-- Free comment -->
-            <div class="surveyFreeText" v-if="stageInfo.questions[currentQuestionId].comment">
-              <label for="commentInput" class="sr-only" label-sr-only>Your comment...</label>
-              <textarea
-                id="commentInput"
-                v-model="commentText"
-                placeholder="Your comment..."
-                class="form-control"
-                rows="2"
-                :state="commentText.length >= 2"
-              >
-              </textarea>
+              </b-row> -->
             </div>
             
             <!-- Submit button -->
@@ -184,12 +188,14 @@
 import {mapGetters, mapState} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
 import welcomeConsent from "../components/WelcomeConsent";
+import LikertDetails from "../components/LikertDetails"
 
 export default {
   name: "PersonaViewer",
   components: {
     MainHeader,
     welcomeConsent,
+    LikertDetails,
   },
   data() {
     return {
