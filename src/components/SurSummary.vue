@@ -98,7 +98,7 @@
 
         <b-row>
             <b-col>
-                <p class="summaryText">Review, download and share your chosen finishing touches for your new Metro here. First, please tell us a little more about yourself and your Metro journeys (optional).</p>
+                <p class="summaryText">Review, download and share how you configured the Metro here.</p>
             </b-col>
         </b-row>
 
@@ -112,8 +112,8 @@
                             <ShareNetwork
                                 network="facebook"
                                 url="https://metrofutures.org.uk"
-                                title="I just customised my perfect Metro."
-                                description="Have a play around and make your own at: metrofutures.org.uk"
+                                title="Explore the future Metro."
+                                description="See the different options at: metrofutures.org.uk"
                                 hashtags="ShapeYourMetro"
                             > Facebook
                         <b-img src="../assets/Facebook_logo_36x36.svg"></b-img>
@@ -125,7 +125,7 @@
                             <ShareNetwork
                                 network="twitter"
                                 url="https://metrofutures.org.uk"
-                                title="I've just customised my Metro. You can make your own at:"
+                                title="Explore features of the future Metro at:"
                                 twitter-user="My_Metro"
                                 hashtags="ShapeYourMetro"
                             > Twitter
