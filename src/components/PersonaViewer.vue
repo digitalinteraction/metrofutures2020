@@ -82,7 +82,7 @@
             
             <!-- Submit button -->
             <!-- <b-button block variant="outline-secondary" @click="submitQuestion()">Continue</b-button> -->
-            <b-button block variant="warning" @click="submitQuestion()" :disabled="invalidForm()" class="continueButton">Continue</b-button>
+            <b-button block variant="warning" @click="submitQuestion()" class="continueButton">Continue</b-button>
           </span>
 
           <!-- Finalised content -->
@@ -268,35 +268,25 @@ export default {
       // Get the next video and load it into the element
     },
     submitQuestion() {
-      // Check validity of responses
-      if(!this.invalidForm()) {
-        // Fire off the response to the API
-        this.sendResponse()
-
-
-        if(this.currentStageId < this.stageInfo.stages.length-1) {
-          this.nextScene()
+      if(this.currentStageId < this.stageInfo.stages.length-1) {
+        this.nextScene()
+      } else {
+        if(this.finalQuestion === false) {
+          // Final question will be rendered by now, so progress to final question
+          this.currentQuestionId += 1
+          this.finalQuestion = true
+          this.finalisePersona()  // We only have 1 final question now so can trigger finalise here
         } else {
-          if(this.finalQuestion === false) {
-            // Final question will be rendered by now, so progress to final question
-            this.currentQuestionId += 1
-            this.finalQuestion = true
-            this.finalisePersona()  // We only have 1 final question now so can trigger finalise here
-          } else {
-            this.currentQuestionId += 1
-            this.finalisePersona()
-          }
+          this.currentQuestionId += 1
+          this.finalisePersona()
         }
-        // Reset the form elements
-        this.likertRating = 0;
-        this.commentText = "";
-        this.optionSelection = false;
+      }
+      // Reset the form elements
+      this.likertRating = 0;
+      this.commentText = "";
+      this.optionSelection = false;
 
-      } 
-      // else {
-      //   console.log("Form is not valid")
 
-      // }
     },
     sendResponse() {
       // No need to call the API here.

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>You said:</div>
+    <div>You said: {{ likertAvg }}/5</div>
     <b-form-rating 
         class="likert_item"
         :value="likertAvg"
@@ -9,9 +9,13 @@
         variant="warning"
         readonly
     ></b-form-rating>
-    <div class="likert_text" v-if="likert === 'clear'">1 = very un{{likert}}, 5 = very {{likert}}</div>
-    <div class="likert_text" v-if="likert === 'safe'">1 = no {{likert}}r, 5 = much {{likert}}r</div>
-    <div class="likert_text" v-if="likert === 'poor'">1 = very {{likert}}, 5 = very good</div>
+
+    <div class="likert_label">
+        <div class="likert_text" v-if="likert === 'clear'">1 = very un{{likert}}, 5 = very {{likert}}</div>
+        <div class="likert_text" v-if="likert === 'safe'">1 = no {{likert}}r, 5 = much {{likert}}r</div>
+        <div class="likert_text" v-if="likert === 'poor'">1 = very {{likert}}, 5 = very well</div>
+        <div class="likert_text" v-if="likert === 'useful'">1 = not {{likert}}, 5 = very {{likert}}</div>
+    </div>
 
     <b-button block @click="toggleLikert()">More details</b-button>
     <div class="likert-details" v-if="details">
@@ -52,5 +56,11 @@ export default {
 </script>
 
 <style>
+
+.likert_label {
+    padding-top: 0.5em;
+    padding-bottom: 1em;
+}
+
 
 </style>
