@@ -8,7 +8,7 @@
     
     <b-container class="personaContent">
       
-      <MainHeader :title="personaName+`'s Journey`"></MainHeader>
+      <MainHeader :title="personaName+`'s Journey`" resultMessage></MainHeader>
 
 
       <b-row>
@@ -77,7 +77,11 @@
             
             <!-- Likert -->
             <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
-              <LikertDetails :likert="stageInfo.questions[currentQuestionId].likert" :likertAvg="stageInfo.questions[currentQuestionId].likertAvg" :likertData="stageInfo.questions[currentQuestionId].likertData"></LikertDetails>
+              <LikertDetails 
+                :likert="stageInfo.questions[currentQuestionId].likert" 
+                :likertAvg="stageInfo.questions[currentQuestionId].likertAvg" 
+                :likertData="stageInfo.questions[currentQuestionId].likertData">
+              </LikertDetails>
             </div>
             
             <!-- Submit button -->
