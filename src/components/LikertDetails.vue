@@ -3,18 +3,19 @@
     <div>You said:</div>
     <b-form-rating 
         class="likert_item"
-        :value="data.likertAvg"
+        :value="likertAvg"
         icon-empty="circle"
         icon-full="circle-fill"
         variant="warning"
         readonly
     ></b-form-rating>
-    <div class="likert_text" v-if="data.likert === 'clear'">1 = very un{{data.likert}}, 5 = very {{data.likert}}</div>
-    <div class="likert_text" v-if="data.likert === 'safe'">1 = no {{data.likert}}r, 5 = much {{data.likert}}r</div>
+    <div class="likert_text" v-if="likert === 'clear'">1 = very un{{likert}}, 5 = very {{likert}}</div>
+    <div class="likert_text" v-if="likert === 'safe'">1 = no {{likert}}r, 5 = much {{likert}}r</div>
+    <div class="likert_text" v-if="likert === 'poor'">1 = very {{likert}}, 5 = very good</div>
 
-    <button @click="toggleLikert()">More details</button>
+    <b-button block @click="toggleLikert()">More details</b-button>
     <div class="likert-details" v-if="details">
-        <b-table small striped hover :items="data.likertData"></b-table>
+        <b-table small striped hover :items="likertData"></b-table>
     </div>
 
   </div>
@@ -24,8 +25,9 @@
 export default {
     name: "LikertDetails",
     props: {
+        likert: String,
         likertAvg: Number,
-        likertData: Object,
+        likertData: Array,
     },
     data() {
         return {

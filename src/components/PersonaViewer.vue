@@ -77,7 +77,7 @@
             
             <!-- Likert -->
             <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
-              <LikertDetails :likertAvg="likertAvg" :likertData="likertData"></LikertDetails>
+              <LikertDetails :likert="stageInfo.questions[currentQuestionId].likert" :likertAvg="likertAvg" :likertData="likertData"></LikertDetails>
             </div>
             
             <!-- Submit button -->
