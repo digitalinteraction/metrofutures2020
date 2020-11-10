@@ -90,7 +90,8 @@
         </b-col>
       </b-row>
       <!--/Desktop-->
-      <!--Mobile-->
+
+      <!--Mobile Version-->
       <div class="menu-col-wrapper">
         <div class="mobile-option" v-on:click="goTo('/explore')">
           <div class="mobile-header">
@@ -127,7 +128,13 @@
       <!--/Mobile-->
 
       <br />
-      <br />
+      <!-- <br /> -->
+      <b-row>
+        <b-col class="consultation-banner">
+          Consultation is now closed, click here to see the <router-link to="/results">results</router-link>.
+        </b-col>
+      </b-row>
+
       <b-row>
         <Footer></Footer>
       </b-row>
@@ -293,6 +300,18 @@ export default {
     margin: 1em 2em 2em 2em;
     font-size: smaller;
     font-family: "Open Sans", sans-serif;}
+}
+
+.consultation-banner {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  background-color: lightgreen;
+  z-index: 0;
+
+  & a {
+    color: black;
+    text-decoration: underline;
+  }
 }
 
 
