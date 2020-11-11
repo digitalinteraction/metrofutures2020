@@ -14,9 +14,6 @@
       <strong>IF YOU DO NOT AGREE TO THIS PRIVACY POLICY YOU MAY NOT ACCESS OR OTHERWISE USE OUR SITE.</strong>
     </p>
     <p class="termsText">
-      <strong>Personal Information that we collect:</strong> We do not collect personal information from you unless you voluntarily provide it to us, such as when you register for the Site or submit a comment (defined below).
-    </p>
-    <p class="termsText">
       <strong>Non-personal or Aggregate Information that we collect:</strong> We may collect non-personally identifiable information, such as IP host address, pages viewed, browser type, duration and frequency of visits or other data, and may aggregate any information collected in a manner which does not identify any individual ("Aggregate Information"). Aggregate Information obtained in connection with the Site may be intermingled with and used by us in conjunction with information obtained through sources other than the Site, including both offline and online sources. Aggregate Information may be shared by us with third parties by allowing them to link to and collect data from the Site. This data will be used for their benefit and for ours, for marketing advertising or other purposes, including analysis of the Site for purposes of improving your experience with the Site and academic publication.
     </p>
     <p class="termsText">
@@ -27,7 +24,7 @@
     </p>
 
     <p class="termsText">
-      <strong>Cookies:</strong> Our Site may pass a "cookie" (a string of information that is sent by a website to reside on your system’s hard drive and/or temporarily in your computer's memory blocks) or similar items, such as web beacons, gifs, and tags. The purpose of a cookie is to tell the web server that you have returned to a particular page. You may set your browser to decline cookies. If you do so, however, you may not be able to fully experience some features of the Site. Additionally, we may include small graphic images in our email messages and newsletters to you in order to determine whether these messages were opened and whether any links contained in these messages were viewed.
+      <strong>Cookies:</strong> Our Site passes a "cookie" (a string of information that is sent by a website to reside on your system’s hard drive and/or temporarily in your computer's memory blocks) or similar items, such as web beacons, gifs, and tags. The purpose of a cookie is to tell the web server that you have returned to a particular page. You may set your browser to decline cookies. If you do so, however, you may not be able to fully experience some features of the Site. Additionally, we may include small graphic images in our email messages and newsletters to you in order to determine whether these messages were opened and whether any links contained in these messages were viewed.
     </p>
     <p class="termsText">
       <strong>Security:</strong> We will ensure that we put in place and will maintain appropriate technical and organizational measures to safeguard any personal information submitted onto the Site. However, you acknowledge that due to the inherent open nature of the Internet, no transmission via the Internet can be guaranteed to be 100% secure. As a result of this and other factors beyond our control, we cannot guarantee the security of the information that you transmit to or through our Site. Therefore, you assume that risk by using the Site.
@@ -49,9 +46,6 @@
     </p>
     <p class="termsText">
       <strong>Opt-Out Process:</strong> If you have provided us with your email address for updates, will may occasionally email you to inform you of opportunities for engagement. Your email address will only be used to inform you. We will not be able to link your email address to any comments that you make through the website. You can unsubcribe from the email notifications by either emailing us and asking us to remove you (<a v-bind:href="'mailto:'+ email">{{ email }}</a>). You will also have the option of clicking on a link included in email correspondence you receive from us in order to remove yourself from our mailing list.
-    </p>
-    <p class="termsText">
-      We will delete your email address at the end of the engagement.
     </p>
     <p class="termsText">
       <strong>Communications with Us:</strong> By providing your email address to us, you expressly consent to receive emails from us.
