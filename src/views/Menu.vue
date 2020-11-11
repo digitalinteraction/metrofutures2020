@@ -37,7 +37,7 @@
             <b-img class="enlargeImg" src="../assets/yourMetro.png" fluid alt="image of inside of carriage"></b-img>
             <div class="moreInfo w-100">
               <h3>Explore Your Metro</h3>
-              <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
+              <p>Explore features of the new trains in 360 degrees.</p>
             </div>
           </div>
         </b-col>
@@ -63,12 +63,11 @@
             ></b-img>
             <div class="moreInfo w-100">
               <h3>Configure Your Metro</h3>
-              <p>Some internal options are still to be decided. Configure your Metro to help us decide.</p>
+              <p>Explore and configure the internal options of the future Metro.</p>
             </div>
           </div>
         </b-col>
 
-        <!--                --------------- Your Journeys option-->
         <b-col
           @click="goTo('/journeys')"
           @mouseover="hoverYourJourney = true"
@@ -84,7 +83,7 @@
             <b-img class="enlargeImg" src="../assets/yourJourneys2.jpg" fluid alt="image of example metro passenger"></b-img>
             <div class="moreInfo w-100">
               <h3>Your Journeys</h3>
-              <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
+              <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to explore.</p>
             </div>
           </div>
         </b-col>
@@ -100,7 +99,7 @@
               <h3>Explore Your Metro</h3>
             </div>
           </div>
-          <p>Explore features of the new trains, tell us what you think, and help us check the trains work for you.</p>
+          <p>Explore features of the new trains in 360 degrees.</p>
         </div>
 
         <div class="mobile-option" @click="goTo('/configure')">
@@ -110,7 +109,7 @@
               <h3>Configure Your Metro</h3>
             </div>
           </div>
-          <p>Some internal options are still to be decided. Configure your Metro to help us decide.</p>
+          <p>Explore and configure the internal options of the future Metro.</p>
         </div>
         
        <div class="mobile-option" @click="goTo('/journeys')">
@@ -120,7 +119,7 @@
               <h3>Your Journeys</h3>
             </div>
           </div>
-          <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to help us check.</p>
+          <p>New trains need to work for different people and different journeys. Put yourself in someone else’s shoes to explore.</p>
         </div>
 
       </div>

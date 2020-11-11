@@ -18,8 +18,15 @@
         <div class="hotspot_text">
           <span>{{ data.text }}</span>
 
+
           <span v-if="data.likert">
-            <div>You said:</div>
+            <LikertDetails 
+              :likert="data.likert" 
+              :likertAvg="data.likertAvg" 
+              :likertData="data.likertData">
+            </LikertDetails>
+
+            <!-- <div>People said:</div>
             <b-form-rating 
               class="likert_item"
               :value="data.likertAvg"
@@ -34,7 +41,7 @@
             <button @click="toggleLikert()">More details</button>
             <div class="likert-details" v-if="likertDetails">
               <b-table small striped hover :items="data.likertData"></b-table>
-            </div>
+            </div> -->
           </span>
 
           <span v-if="data.link">
@@ -93,10 +100,15 @@
 </template>
 
 <script>
+import LikertDetails from '@/components/LikertDetails.vue'
+
 export default {
   name: "Hotspot",
   props: {
     data: Object
+  },
+  components: {
+    LikertDetails,
   },
   data() {
     return {

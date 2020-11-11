@@ -29,7 +29,7 @@
       </div>
 
       <div id="menu" class="modal-container" v-if="page === 'menu'">
-        Help shape your new Metro in three ways. Choose a section to begin.
+        Explore the future Metro in three ways. Choose a section to begin.
       </div>
 
       <!-- if privacy is not collected, display here -->

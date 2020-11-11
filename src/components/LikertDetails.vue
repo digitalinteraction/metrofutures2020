@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>You said: {{ likertAvg }}/5</div>
+    <div>People said: {{ likertAvg }}/5</div>
     <b-form-rating 
         class="likert_item"
         :value="likertAvg"
