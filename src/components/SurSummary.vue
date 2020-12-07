@@ -1,7 +1,7 @@
 <template>
     <b-container fluid>
         <b-row>
-            <b-col>
+            <b-col class="col-lg-9 col-12" >
                 <b-carousel
                     id="carousel-1"
                     :interval="0"
@@ -51,62 +51,52 @@
                     <b-carousel-slide>
                         <template v-slot:img>
                             <img
-                                    class="d-block img-fluid w-100"
-                                    width="1024"
-                                    height="480"
-                                    v-bind:src="images[3]"
-                                    alt="image slot"
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[3]"
+                                alt="image slot"
                             >
                         </template>
                     </b-carousel-slide>
                     <b-carousel-slide>
                         <template v-slot:img>
                             <img
-                                    class="d-block img-fluid w-100"
-                                    width="1024"
-                                    height="480"
-                                    v-bind:src="images[4]"
-                                    alt="image slot"
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[4]"
+                                alt="image slot"
                             >
                         </template>
                     </b-carousel-slide>
                     <b-carousel-slide>
                         <template v-slot:img>
                             <img
-                                    class="d-block img-fluid w-100"
-                                    width="1024"
-                                    height="480"
-                                    v-bind:src="images[5]"
-                                    alt="image slot"
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[5]"
+                                alt="image slot"
                             >
                         </template>
                     </b-carousel-slide>
                     <b-carousel-slide>
                         <template v-slot:img>
                             <img
-                                    class="d-block img-fluid w-100"
-                                    width="1024"
-                                    height="480"
-                                    v-bind:src="images[6]"
-                                    alt="image slot"
+                                class="d-block img-fluid w-100"
+                                width="1024"
+                                height="480"
+                                v-bind:src="images[6]"
+                                alt="image slot"
                             >
                         </template>
                     </b-carousel-slide>
                 </b-carousel>
             </b-col>
-        </b-row>
+            <b-col class="col-lg-3 col-12 sidebar">
+                <p class="summaryText">These are the final images for your configuration of the Metro.</p>
 
-        <b-row>
-            <b-col>
-                <p class="summaryText">Review, download and share how you configured the Metro here.</p>
-            </b-col>
-        </b-row>
-
-        <b-row id="optionsRow">
-            <b-col id="option1" class="option col-lg-6 text-right" @click="toggleFeatures()"><p class="text-right borderRight"><b-icon-info-circle></b-icon-info-circle> VIEW STANDARD FEATURES </p></b-col>
-            <b-col id="option3" class="option"  @click="createPDF"><p class="text-center"><b-icon-envelope></b-icon-envelope> SEND PDF</p></b-col>
-                <b-col class="option"> <router-link to="/"><p class="text-center">RETURN TO HOME</p></router-link></b-col>
-            <b-col  class="option" id="shareCol">
                 <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
                     <b-dropdown-item>   
                             <ShareNetwork
@@ -120,7 +110,6 @@
                             </ShareNetwork>
                     </b-dropdown-item>
 
-
                     <b-dropdown-item>
                             <ShareNetwork
                                 network="twitter"
@@ -132,44 +121,37 @@
                                 <b-img src="../assets/twitter.png" height="30px;"></b-img>
                             </ShareNetwork>
                     </b-dropdown-item>
-
                 </b-dropdown>
-            </b-col>
 
-        </b-row>
+                <b-button @click="toggleFeatures()" class="featuresButton">View Standard Features</b-button>
 
-        <b-row v-if="viewFeatures">
-            <b-col>
-                <b-row class="featuresRow">
-                    <b-col>
-                    Exterior
-                    </b-col>
-                    <b-col>
-                    <p>5 Carriages</p>
-                    <p>One connected space</p>
-                    <p>8 pairs of double doors per side</p>
-                    <p>LED highlights</p>
-                    </b-col>
-                </b-row>
+                <div class="features" v-if="viewFeatures">
+                    <div class="featuresRow">
+                        <b>Exterior</b>
+                        <span class="featureItem">5 Carriages</span>
+                        <span class="featureItem">One connected space</span>
+                        <span class="featureItem">8 pairs of double doors per side</span>
+                        <span class="featureItem">LED highlights</span>
+                    </div>
 
-                <b-row class="featuresRow">
-                    <b-col>Interior</b-col>
-                    <b-col>
-                        <p>108 Seating capacity (with potential for additional tip-up seats in multi-use zones under consideration)</p>
-                        <p>4 dedicated wheelchair spaces</p>
-                        <p>4 multi-use bike & pram zones</p>
-                        <p>22 priority seats for older and pregnant people</p>
-                        <p>600 passengers maximum train capacity</p>
-                        <p>Passenger information displays</p>
-                        <p>Onboard seamless connectivity</p>
-                    </b-col>
-                </b-row>
+                    <div class="featuresRow">
+                        <b>Interior</b>
+                        <span class="featureItem">8 Seating capacity (with potential for additional tip-up seats in multi-use zones under consideration)</span>
+                        <span class="featureItem">4 dedicated wheelchair spaces</span>
+                        <span class="featureItem">4 multi-use bike & pram zones</span>
+                        <span class="featureItem">22 priority seats for older and pregnant people</span>
+                        <span class="featureItem">600 passengers maximum train capacity</span>
+                        <span class="featureItem">Passenger information displays</span>
+                        <span class="featureItem">Onboard seamless connectivity</span>
+                    </div>
+                </div>
+
             </b-col>
         </b-row>
 
-      <b-row id="stadlerFooter">
-        <b-img src="../assets/stadlerBlack.svg"></b-img>
-      </b-row>
+        <b-row id="stadlerFooter">
+            <b-img src="../assets/stadlerBlack.svg"></b-img>
+        </b-row>
 
       </b-container>
 </template>
@@ -439,6 +421,7 @@ padding-top: 1em;
 
 .summaryText {
   text-align: justify;
+  padding-top: 1em;
 }
 
 .submitButton {
@@ -472,9 +455,34 @@ p.text-right {
     }
   }
 
+  .featureItem {
+      display: block;
+  }
+
+  .featuresButton {
+      margin-top: 0.5em;
+    //   margin-bottom: 0.5em;
+      display: block;
+  }
+
     #stadlerFooter {
         background-color: #DDDDDD;
         padding-top: 1em;
         padding-bottom: 1em;
     }
+
+    // Small screens
+    @media only screen and (max-width: 764px) {
+        .sidebar {
+            padding-bottom: 1em;
+            
+        }
+
+        .summaryText {
+            text-align: center;
+        }
+
+
+    }
+
 </style>

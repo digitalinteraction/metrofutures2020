@@ -21,7 +21,7 @@
         </b-row>
 
         <b-row v-if="welcomeScreen">
-            <welcomeConsent title="Add the Finishing Touches!" page="choices" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
+            <welcomeConsent title="Configure Metro options" page="choices" @finishedWelcome="welcomeScreen=false"></welcomeConsent>
         </b-row>
 
     </b-container>
