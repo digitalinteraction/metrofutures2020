@@ -47,6 +47,13 @@ export default {
     },
     getUuid(state) {
         return state.uuid;
+    },
+    getFindings(state) {
+        return state.findings;
+    },
+    getFindingsByName: (state) => (name) => {
+        let result = state.findings.find(finding => finding.name === name)
+        return result
     }
     
 }

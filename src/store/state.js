@@ -2,6 +2,7 @@ import questions from "@/data/survey.js"
 import pano_data from "@/data/pano_data.js"
 import personas from "@/data/personas.js"
 import personaStages from "@/data/persona_data.js"
+import findings from "@/data/results.js"
 import { uuid } from 'vue-uuid';
 
 export default {
@@ -23,5 +24,6 @@ export default {
     privacyNotice: false,  // Privacy and terms
     demographic: false,  // Mandatory demographics
     infoFormDone: false,  // The optional part of demographic info
-    welcomeModal: true,  // Disaply the welcome modal on menu
+    welcomeModal: true,  // Disaply the welcome modal on menu,
+    findings,
 }
