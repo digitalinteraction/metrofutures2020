@@ -7,7 +7,7 @@
   <b-row class="pano_frame">
     <b-col >
       <div class="controls">
-        <b-dropdown text="Select View" class="select">
+        <b-dropdown text="Explore more" class="select">
           <b-dropdown-item
           v-for="(name, index) in this.sceneNames"
           v-bind:key="index"
