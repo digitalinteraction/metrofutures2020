@@ -53,11 +53,11 @@ Vue.use(Meta)
     component: () => import(/* webpackChunkName: "explore" */ '../views/Pano.vue')
   },
   {
-    path: '/results',
-    name: 'Results',
-    component: () => import(/* webpackChunkName: "results" */ '../views/Results.vue'),
+    path: '/findings',
+    name: 'Findings',
+    component: () => import(/* webpackChunkName: "results" */ '../views/Findings.vue'),
     meta: {
-      title: 'Metro Futures - Consultation Results'
+      title: 'Metro Futures - Findings'
     }
   },
   // {

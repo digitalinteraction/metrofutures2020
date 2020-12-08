@@ -18,7 +18,7 @@
       
     <b-row class="results-header" v-show="resultMessage">
       <b-col>
-        Consultation is now closed, click here to see the <router-link to="/results">results</router-link>.
+        The 2020 public consultation is now closed, click here to see the <router-link to="/findings">findings</router-link>.
       </b-col>
     </b-row>
   </div>

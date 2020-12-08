@@ -6,7 +6,7 @@
         Menu
         </template>
         <b-dropdown-item to="/">Home</b-dropdown-item>
-        <b-dropdown-item to="/results">Results</b-dropdown-item>
+        <b-dropdown-item to="/findings">Findings</b-dropdown-item>
         <b-dropdown-item to="/explore">Explore</b-dropdown-item>
         <b-dropdown-item to="/configure">Configure</b-dropdown-item>
         <b-dropdown-item to="/journeys">Journeys</b-dropdown-item>
@@ -22,7 +22,7 @@
         ☰
         </template>
         <b-dropdown-item to="/">Home</b-dropdown-item>
-        <b-dropdown-item to="/results">Results</b-dropdown-item>
+        <b-dropdown-item to="/findings">Findings</b-dropdown-item>
         <b-dropdown-item to="/explore">Explore</b-dropdown-item>
         <b-dropdown-item to="/configure">Configure</b-dropdown-item>
         <b-dropdown-item to="/journeys">Journeys</b-dropdown-item>

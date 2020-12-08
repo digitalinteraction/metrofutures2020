@@ -2,7 +2,7 @@
   <div class="menu">
     <b-container>
       <b-row v-if="getWelcome">
-        <welcomeConsent title="Welcome" page="menu" @finishedWelcome="disableWelcomeModal()"></welcomeConsent>
+        <welcomeConsent title="Consultation Now Closed" page="menu" @finishedWelcome="disableWelcomeModal()"></welcomeConsent>
       </b-row>
       <b-row>
         <b-col></b-col>
@@ -130,7 +130,7 @@
       <!-- <br /> -->
       <b-row>
         <b-col class="consultation-banner">
-          Consultation is now closed, click here to see the <router-link to="/results">results</router-link>.
+          The 2020 public consultation is now closed, click here to see the <router-link to="/findings">findings</router-link>.
         </b-col>
       </b-row>
 
