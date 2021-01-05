@@ -114,7 +114,7 @@
                             <ShareNetwork
                                 network="twitter"
                                 url="https://metrofutures.org.uk"
-                                title="Explore features of the future Metro at:"
+                                title="I explored the new Tyne and Wear Metro at:"
                                 twitter-user="My_Metro"
                                 hashtags="ShapeYourMetro"
                             > Twitter
