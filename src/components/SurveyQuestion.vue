@@ -62,7 +62,9 @@
                                 </b-iconstack>
                             </b-col>
                             <b-col class="optionText col-8">
-                                <p>{{ option.desc }}</p>
+                                <div>{{ option.desc }}</div>
+                                <div>{{ option.result }}</div>
+                                <!-- <p>{{ option.desc }}</p> -->
                             </b-col>
                         </b-row>
                     </b-col>
