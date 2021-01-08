@@ -3,6 +3,7 @@ import pano_data from "@/data/pano_data.js"
 import personas from "@/data/personas.js"
 import personaStages from "@/data/persona_data.js"
 import findings from "@/data/results.js"
+import likertFindings from "@/data/likert_findings.js"
 import { uuid } from 'vue-uuid';
 
 export default {
@@ -26,4 +27,5 @@ export default {
     infoFormDone: false,  // The optional part of demographic info
     welcomeModal: true,  // Disaply the welcome modal on menu,
     findings,
+    likertFindings,
 }

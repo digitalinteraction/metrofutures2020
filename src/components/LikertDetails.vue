@@ -1,14 +1,6 @@
 <template>
   <div>
-    <div>People rated: {{ likertAvg }}/5</div>
-    <b-form-rating 
-        class="likert_item"
-        :value="likertAvg"
-        icon-empty="circle"
-        icon-full="circle-fill"
-        variant="warning"
-        readonly
-    ></b-form-rating>
+    <div>People rated:</div>
 
     <div class="likert_label">
         <div class="likert_text" v-if="likert === 'clear'">1 = very un{{likert}}, 5 = very {{likert}}</div>
@@ -19,39 +11,39 @@
         <div class="likert_text" v-if="likert === 'verywell'">1 = not very well, 5 = very well</div>
     </div>
 
-    <b-button block @click="toggleLikert()">More details</b-button>
-    <div class="likert-details" v-if="details">
-        <b-table small striped hover :items="likertData"></b-table>
+    <div class="likert-details">
+        <BarChart :chart-data="findingsData.chart"></BarChart>
     </div>
 
   </div>
 </template>
 
 <script>
+import BarChart from '@/charts/BarChart.js'
+import {mapGetters} from 'vuex'
+
 export default {
     name: "LikertDetails",
     props: {
-        likert: String,
-        likertAvg: Number,
-        likertData: Array,
+        likert: String,  // Type of min max text values
+        findingName: String,
+    },
+    components: {
+        BarChart,
+    },
+    computed: {
+        ...mapGetters(['getLikertFindingsByName', 'getLikertFindings']),
     },
     data() {
         return {
-            details: false,
-            // likertAvg: 3,
-            // likertData: [
-            //     {"rating": 5, "percentage": "10%"},
-            //     {"rating": 4, "percentage": "70%"},
-            //     {"rating": 3, "percentage": "20%"},
-            //     {"rating": 2, "percentage": "0%"},
-            //     {"rating": 1, "percentage": "0%"},
-            // ],
+            findingsData: {},
+            allData: {},
         }
     },
-    methods: {
-        toggleLikert() {
-            this.details = !this.details
-        }
+    mounted() {
+        // this.findingsData = this.getFindingsByName(this.findingName)
+        this.findingsData = this.getLikertFindingsByName("multi_floor_marking")
+        this.allData = this.getLikertFindings
     }
 
 }

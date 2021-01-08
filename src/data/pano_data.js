@@ -143,14 +143,7 @@ export default[
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
             "likert": "clear",
-            "likertAvg": 4,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
           },
           {
             "yaw": -2.3397083094491204,
@@ -158,14 +151,7 @@ export default[
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear",
-            "likertAvg": 4,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
           },
           {
             "yaw": -1.4120780940420286,
@@ -179,14 +165,7 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "likertAvg": 4,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
             "visual": "https://cdn.metrofutures.org.uk/doors/DoorExterior.mp4",
           },
           {
@@ -239,14 +218,7 @@ export default[
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
           },
           {
             "yaw": -2.3397083094491204,
@@ -254,14 +226,8 @@ export default[
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -1.4120780940420286,
@@ -275,14 +241,8 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
             "visual": "https://cdn.metrofutures.org.uk/doors/DoorExterior.mp4",
           },
           {
@@ -329,14 +289,8 @@ export default[
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -0.19924987526594506,
@@ -344,14 +298,8 @@ export default[
             "title": "Multipurpose Space Floor",
             "text": "We asked: How clearly is the multipurpose space indicated with floor markings?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 2.2282781536492635,
@@ -359,14 +307,8 @@ export default[
             "title": "Priority Seats Decals",
             "text": "We asked: How clearly are the priority seats indicated by window decals?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 2.2092864538209307,
@@ -374,14 +316,8 @@ export default[
             "title": "Passenger Information Screens",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -3.0946846043059697,
@@ -396,14 +332,8 @@ export default[
             "title": "CCTV",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           }
         ]
       },
@@ -443,14 +373,8 @@ export default[
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -0.19924987526594506,
@@ -458,14 +382,8 @@ export default[
             "title": "Multipurpose Space Floor",
             "text": "We asked: How clearly is the multipurpose space indicated with floor markings?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 2.2282781536492635,
@@ -473,14 +391,8 @@ export default[
             "title": "Priority Seats Decals",
             "text": "We asked: How clearly are the priority seats indicated by window decals?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 2.2092864538209307,
@@ -488,14 +400,8 @@ export default[
             "title": "Passenger Information Screens",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -3.0946846043059697,
@@ -510,14 +416,8 @@ export default[
             "title": "CCTV",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           }
         ]
       },
@@ -557,14 +457,8 @@ export default[
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 0.4977260744764571,
@@ -572,14 +466,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -2.6696343035602723,
@@ -587,14 +475,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 2.298466467777665,
@@ -602,14 +484,8 @@ export default[
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -0.6966485834794334,
@@ -624,14 +500,8 @@ export default[
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           }
         ]
       },
@@ -671,14 +541,8 @@ export default[
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 0.4977260744764571,
@@ -686,14 +550,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -2.6696343035602723,
@@ -701,14 +559,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 2.298466467777665,
@@ -716,14 +568,8 @@ export default[
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -0.6966485834794334,
@@ -738,14 +584,8 @@ export default[
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           }
         ]
       },
@@ -785,14 +625,8 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
             "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
           },
           {
@@ -807,14 +641,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -2.9502758366148907,
@@ -822,14 +650,8 @@ export default[
             "title": "Single Corridor Train",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -0.04951106935910943,
@@ -881,14 +703,8 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
             "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
           },
           {
@@ -903,14 +719,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -2.9502758366148907,
@@ -918,14 +728,8 @@ export default[
             "title": "Single Corridor Train",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -0.04951106935910943,
@@ -977,14 +781,8 @@ export default[
             "title": "Priority Seat Decals",
             "text": "We asked: How clearly are the priority seats indicated by the window decals?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 2.3122814836046786,
@@ -998,14 +796,8 @@ export default[
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 1.5474214283263583,
@@ -1013,14 +805,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 1.5146695287274374,
@@ -1028,14 +814,8 @@ export default[
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 0.3266127432183019,
@@ -1081,14 +861,8 @@ export default[
             "title": "Priority Seat Decals",
             "text": "We asked: How clearly are the priority seats indicated by the window decals?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 2.3122814836046786,
@@ -1102,14 +876,8 @@ export default[
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 1.5474214283263583,
@@ -1117,14 +885,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 1.5146695287274374,
@@ -1132,14 +894,8 @@ export default[
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": 0.3266127432183019,
@@ -1185,14 +941,8 @@ export default[
             "title": "Multipurpose Space Window",
             "text": "We asked: How clearly is the multipurpose space indicated by the window decals?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+            
           },
           {
             "yaw": -2.2149852870861473,
@@ -1200,14 +950,8 @@ export default[
             "title": "Multipurpose Space",
             "text": "We asked: How clearly is the multipurpose indicated by floor markings?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+             
           },
           {
             "yaw": 0.37670298463485885,
@@ -1243,14 +987,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from this position?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+             
           }
         ]
       },
@@ -1290,14 +1028,8 @@ export default[
             "title": "Multipurpose Space Window",
             "text": "We asked: How clearly is the multipurpose space indicated by the window decals?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+             
           },
           {
             "yaw": -2.2149852870861473,
@@ -1305,14 +1037,8 @@ export default[
             "title": "Multipurpose Space",
             "text": "We asked: How clearly is the multipurpose indicated by floor markings?",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+             
           },
           {
             "yaw": 0.37670298463485885,
@@ -1348,14 +1074,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "How clear is the passenger information screen from this position",
             "likert": "clear",
-             "likertAvg": 3,
-            "likertData": [
-              {"rating": 5, "percentage": "10%"},
-              {"rating": 4, "percentage": "70%"},
-              {"rating": 3, "percentage": "20%"},
-              {"rating": 2, "percentage": "0%"},
-              {"rating": 1, "percentage": "0%"},
-            ],
+            "likertName": "multi_floor_marking",
+             
           }
         ]
       }

@@ -54,6 +54,13 @@ export default {
     getFindingsByName: (state) => (name) => {
         let result = state.findings.find(finding => finding.name === name)
         return result
-    }
+    },
+    getLikertFindings(state) {
+        return state.likertFindings;
+    },
+    getLikertFindingsByName: (state) => (name) => {
+        let result = state.likertFindings.find(finding => finding.name === name)
+        return result
+    },
     
 }
