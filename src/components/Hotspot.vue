@@ -26,9 +26,15 @@
             </LikertDetails>
           </span>
 
-          <span v-if="data.link">
-            Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
+          <span v-if="!data.likert && data.comments">
+            People said:
+            <span class="comment_text" v-for="(comment, index) in data.comments" :key="index">{{ comment }}</span>
+            
           </span>
+
+          <!-- <span v-if="data.link">
+            Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
+          </span> -->
 
           <div v-if="data.visual">
 
@@ -272,6 +278,15 @@ export default {
   .likert_text {
     font-size: 0.75em;
     text-align: center;
+  }
+
+  .comment_text {
+    font-style: italic;
+    font-size: 0.9em;
+    display: block;
+    border: 1px solid grey;
+    border-radius: 0.5em;
+    margin-bottom: 1px;
   }
 
   /* .likert_item {

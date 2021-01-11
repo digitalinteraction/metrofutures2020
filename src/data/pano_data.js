@@ -333,7 +333,6 @@ export default[
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
             "likertName": "cctv",
-            
           }
         ]
       },
@@ -408,7 +407,13 @@ export default[
             "pitch": 0.10175772399065863,
             "title": "Front Wall Design",
             "text": "We asked: What should be on this wall?",
-            "link": "/configure"
+            "link": "/configure",
+            "comments": [
+              "How to report any issues and make comments, reporting of anti-social behaviour issues by SMS so it can be reported live by passengers. ",
+              "Local art work, murals, photographs of the region from local artists.",
+              "North East landmarks. Any of the bridges, Angel of the North, Grey's Monument, Swan House,  Northumberland Street, Central Motorway, Whitley Bay etc.",
+              "Window must remain at the front, everyone loves pretending to drive the train!"
+            ]
           },
           {
             "yaw": -1.4876248470598696,
@@ -492,7 +497,12 @@ export default[
             "pitch": 0.6352049336199777,
             "title": "Glass Partitions",
             "text": "We asked: What patterns should be displayed on the glass partitions?",
-            "link": "/configure"
+            "link": "/configure",
+            "comments": [
+              "Be careful they don't obscure the view of the destination indicator. The pattern shown is otherwise ok.",
+              "Dots. Softer on the eyes than jagged lines of the Metro logo option. Do you really need to see the logo to know you are riding on the Metro?",
+              "Partition needs bumper against to stop injury or bumping when braking."
+            ]
           },
           {
             "yaw": -2.465900155956419,
@@ -576,7 +586,12 @@ export default[
             "pitch": 0.6352049336199777,
             "title": "Glass Partitions",
             "text": "We asked: What patterns should be displayed on the glass partitions.",
-            "link": "/configure"
+            "link": "/configure",
+            "comments": [
+              "Be careful they don't obscure the view of the destination indicator. The pattern shown is otherwise ok.",
+              "Dots. Softer on the eyes than jagged lines of the Metro logo option. Do you really need to see the logo to know you are riding on the Metro?",
+              "Partition needs bumper against to stop injury or bumping when braking."
+            ]
           },
           {
             "yaw": -2.465900155956419,
@@ -956,14 +971,25 @@ export default[
             "pitch": 0.947540394161539,
             "title": "Bicycle Stands",
             "text": "We asked: What form of bicycle stand should be used?",
-            "link": "/configure"
+            "link": "/configure",
+            "comments": [
+              "Strap would potentially cause less damage to bikes if they are knocked.  Clamps can bend the wheels if the bike is moved unintentionally.",
+              "Good to see that bicycles are being allowed onto the trains this time. Although there should be some restrictions I.e. not when the train is busy or peak times.",
+              "A clamp isn't great as bike tyre width varies, a hook is more practical but I think a strap is best."
+            ]
           },
           {
             "yaw": -0.13135868213260693,
             "pitch": 0.21625544930805773,
             "title": "Front Wall Design",
             "text": "We asked: What should be on this wall?",
-            "link": "/configure"
+            "link": "/configure",
+            "comments": [
+              "How to report any issues and make comments, reporting of anti-social behaviour issues by SMS so it can be reported live by passengers. ",
+              "Local art work, murals, photographs of the region from local artists.",
+              "North East landmarks. Any of the bridges, Angel of the North, Grey's Monument, Swan House,  Northumberland Street, Central Motorway, Whitley Bay etc.",
+              "Window must remain at the front, everyone loves pretending to drive the train!"
+            ]
           },
           {
             "yaw": -2.565578079961881,
@@ -971,7 +997,11 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
+            "likertName": "door_indicators"
+,            "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
+            "comments": [
+              "",
+            ],
           },
           {
             "yaw": -1.0683552939279153,
@@ -1042,14 +1072,25 @@ export default[
             "pitch": 0.947540394161539,
             "title": "Bicycle Stands",
             "text": "We asked: What form of bicycle stand should be used?",
-            "link": "/configure"
+            "link": "/configure",
+            "comments": [
+              "Strap would potentially cause less damage to bikes if they are knocked.  Clamps can bend the wheels if the bike is moved unintentionally.",
+              "Good to see that bicycles are being allowed onto the trains this time. Although there should be some restrictions I.e. not when the train is busy or peak times.",
+              "A clamp isn't great as bike tyre width varies, a hook is more practical but I think a strap is best."
+            ]
           },
           {
             "yaw": -0.13135868213260693,
             "pitch": 0.21625544930805773,
             "title": "Front Wall Design",
             "text": "We asked: What should be on this wall?",
-            "link": "/configure"
+            "link": "/configure",
+            "comments": [
+              "How to report any issues and make comments, reporting of anti-social behaviour issues by SMS so it can be reported live by passengers. ",
+              "Local art work, murals, photographs of the region from local artists.",
+              "North East landmarks. Any of the bridges, Angel of the North, Grey's Monument, Swan House,  Northumberland Street, Central Motorway, Whitley Bay etc.",
+              "Window must remain at the front, everyone loves pretending to drive the train!"
+            ]
           },
           {
             "yaw": -2.565578079961881,
@@ -1057,6 +1098,7 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
+            "likertName": "door_indicators",
             "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
           },
           {
