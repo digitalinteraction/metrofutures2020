@@ -143,7 +143,7 @@ export default[
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_door_outside",
           },
           {
             "yaw": -2.3397083094491204,
@@ -151,7 +151,7 @@ export default[
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "multi_door_outside",
           },
           {
             "yaw": -1.4120780940420286,
@@ -165,7 +165,7 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "door_indicators",
             "visual": "https://cdn.metrofutures.org.uk/doors/DoorExterior.mp4",
           },
           {
@@ -218,7 +218,7 @@ export default[
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_door_outside",
           },
           {
             "yaw": -2.3397083094491204,
@@ -226,7 +226,7 @@ export default[
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "multi_door_outside",
             
           },
           {
@@ -241,7 +241,7 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "door_indicators",
             
             "visual": "https://cdn.metrofutures.org.uk/doors/DoorExterior.mp4",
           },
@@ -289,7 +289,7 @@ export default[
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "multi_door_inside",
             
           },
           {
@@ -307,7 +307,7 @@ export default[
             "title": "Priority Seats Decals",
             "text": "We asked: How clearly are the priority seats indicated by window decals?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "priority_seat",
             
           },
           {
@@ -316,7 +316,7 @@ export default[
             "title": "Passenger Information Screens",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
             
           },
           {
@@ -332,7 +332,7 @@ export default[
             "title": "CCTV",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
-            "likertName": "multi_floor_marking",
+            "likertName": "cctv",
             
           }
         ]
@@ -373,7 +373,7 @@ export default[
             "title": "Multipurpose Space Doors",
             "text": "We asked: How clearly are the doors to the multipurpose spaces indicated?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "multi_door_inside",
             
           },
           {
@@ -391,7 +391,7 @@ export default[
             "title": "Priority Seats Decals",
             "text": "We asked: How clearly are the priority seats indicated by window decals?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "priority_seat",
             
           },
           {
@@ -400,7 +400,7 @@ export default[
             "title": "Passenger Information Screens",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
             
           },
           {
@@ -416,7 +416,7 @@ export default[
             "title": "CCTV",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
-            "likertName": "multi_floor_marking",
+            "likertName": "cctv",
             
           }
         ]
@@ -457,7 +457,7 @@ export default[
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_door_inside",
             
           },
           {
@@ -466,7 +466,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
             
           },
           {
@@ -484,7 +484,7 @@ export default[
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_window_decal",
             
           },
           {
@@ -500,7 +500,7 @@ export default[
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_floor_marking",
             
           }
         ]
@@ -541,7 +541,7 @@ export default[
             "title": "Wheelchair Space Door",
             "text": "We asked: How clearly is the door to the wheelchair space indicated?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_door_inside",
             
           },
           {
@@ -550,7 +550,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
             
           },
           {
@@ -559,7 +559,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
             
           },
           {
@@ -568,7 +568,7 @@ export default[
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_window_decal",
             
           },
           {
@@ -584,7 +584,7 @@ export default[
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_floor_marking",
             
           }
         ]
@@ -625,7 +625,7 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "door_indicators",
             
             "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
           },
@@ -641,7 +641,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
             
           },
           {
@@ -650,7 +650,7 @@ export default[
             "title": "Single Corridor Train",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
-            "likertName": "multi_floor_marking",
+            "likertName": "cctv",
             
           },
           {
@@ -703,7 +703,7 @@ export default[
             "title": "Door Indicators",
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "door_indicators",
             
             "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
           },
@@ -719,7 +719,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
             
           },
           {
@@ -728,7 +728,7 @@ export default[
             "title": "Single Corridor Train",
             "text": "We asked: How safe does CCTV and a single corridor train make you feel?",
             "likert": "safe",
-            "likertName": "multi_floor_marking",
+            "likertName": "cctv",
             
           },
           {
@@ -781,7 +781,7 @@ export default[
             "title": "Priority Seat Decals",
             "text": "We asked: How clearly are the priority seats indicated by the window decals?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "priority_seat",
             
           },
           {
@@ -796,7 +796,7 @@ export default[
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_window_decal",
             
           },
           {
@@ -805,7 +805,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screen",
             
           },
           {
@@ -814,7 +814,7 @@ export default[
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_floor_marking",
             
           },
           {
@@ -861,7 +861,7 @@ export default[
             "title": "Priority Seat Decals",
             "text": "We asked: How clearly are the priority seats indicated by the window decals?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "priority_seat",
             
           },
           {
@@ -876,7 +876,7 @@ export default[
             "title": "Wheelchair Space Decals",
             "text": "We asked: How clearly is the wheelchair space indicated by the window decal?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_window_decal",
             
           },
           {
@@ -885,7 +885,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
             
           },
           {
@@ -894,7 +894,7 @@ export default[
             "title": "Wheelchair Space",
             "text": "We asked: How clearly is the wheelchair space indicated by floor markings?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "wheel_floor_marking",
             
           },
           {
@@ -941,8 +941,7 @@ export default[
             "title": "Multipurpose Space Window",
             "text": "We asked: How clearly is the multipurpose space indicated by the window decals?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
-            
+            "likertName": "multi_window_decals",
           },
           {
             "yaw": -2.2149852870861473,
@@ -951,7 +950,6 @@ export default[
             "text": "We asked: How clearly is the multipurpose indicated by floor markings?",
             "likert": "clear",
             "likertName": "multi_floor_marking",
-             
           },
           {
             "yaw": 0.37670298463485885,
@@ -987,8 +985,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from this position?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
-             
+            "likertName": "info_screens",
           }
         ]
       },
@@ -1028,7 +1025,7 @@ export default[
             "title": "Multipurpose Space Window",
             "text": "We asked: How clearly is the multipurpose space indicated by the window decals?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "multi_window_decals",
              
           },
           {
@@ -1074,7 +1071,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "How clear is the passenger information screen from this position",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens",
              
           }
         ]

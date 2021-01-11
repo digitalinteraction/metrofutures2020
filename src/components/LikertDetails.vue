@@ -37,13 +37,10 @@ export default {
     data() {
         return {
             findingsData: {},
-            allData: {},
         }
     },
     mounted() {
-        // this.findingsData = this.getFindingsByName(this.findingName)
-        this.findingsData = this.getLikertFindingsByName("multi_floor_marking")
-        this.allData = this.getLikertFindings
+        this.findingsData = this.getLikertFindingsByName(this.findingName)
     }
 
 }

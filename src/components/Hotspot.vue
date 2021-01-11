@@ -22,8 +22,7 @@
           <span v-if="data.likert">
             <LikertDetails 
               :likert="data.likert" 
-              :likertAvg="data.likertAvg" 
-              :likertData="data.likertData">
+              :findingName="data.likertName">
             </LikertDetails>
           </span>
 
