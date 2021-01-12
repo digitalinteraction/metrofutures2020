@@ -35,19 +35,35 @@ export default[
             "yaw": -0.14023522364884577,
             "pitch": 0.11475964612484191,
             "title": "Livery",
-            "text": "Tyne and Wear Metro has a completely new livery!"
+            "text": "Tyne and Wear Metro has a completely new livery!",
+            "comments": [
+              "A black and yellow contrast would better suit my taste. But the new livery is fresh and rejuvenating to the service.",
+              "Good but is it easy to keep clean every day and after several years of service?",
+              "Mehhhh",
+              "Should be completely new to emphasise the difference to the old Metros"
+            ]
           },
           {
             "yaw": -0.8358385796154355,
             "pitch": 0.30236171550205526,
             "title": "Lights",
-            "text": "Your new Metro features a state-of-the-art LED head and tail light system, and a glowing 'M'."
+            "text": "Your new Metro features a state-of-the-art LED head and tail light system, and a glowing 'M'.",
+            "comments": [
+              "Could the glow of the M also be the colour of the line too? I think it would look nice.",
+              "High intensity or flickering LEDs can cause visual disturbance, evaluate this with Visually Impaired people suffering from photophobia.",
+              "You should incorporate solar panels into the roof to power all internal / external led lighting."
+            ]
           },
           {
             "yaw": -1.0892431152132307,
             "pitch": 0.43463794138405376,
             "title": "Decoupler",
-            "text": "State-of-the-art automatic decoupler."
+            "text": "State-of-the-art automatic decoupler.",
+            "comments": [
+              "Could an anti-suicide system be fitted to the metro to stop deaths at slower speeds such as in stations, for example external airbags?",
+              "Good if it is easy to maintain.",
+              "Looks a bit bulky and big for the front of the train."
+            ]
           }
         ]
       },
@@ -85,19 +101,35 @@ export default[
             "yaw": -0.14023522364884577,
             "pitch": 0.11475964612484191,
             "title": "Livery",
-            "text": "Tyne and Wear Metro has a completely new livery!"
+            "text": "Tyne and Wear Metro has a completely new livery!",
+            "comments": [
+              "A black and yellow contrast would better suit my taste. But the new livery is fresh and rejuvenating to the service.",
+              "Good but is it easy to keep clean every day and after several years of service?",
+              "Mehhhh",
+              "Should be completely new to emphasise the difference to the old Metros"
+            ]
           },
           {
             "yaw": -0.8358385796154355,
             "pitch": 0.30236171550205526,
             "title": "Lights",
-            "text": "Your new Metro features a state-of-the-art LED head and tail light system, and a glowing 'M'."
+            "text": "Your new Metro features a state-of-the-art LED head and tail light system, and a glowing 'M'.",
+            "comments": [
+              "Could the glow of the M also be the colour of the line too? I think it would look nice.",
+              "High intensity or flickering LEDs can cause visual disturbance, evaluate this with Visually Impaired people suffering from photophobia.",
+              "You should incorporate solar panels into the roof to power all internal / external led lighting."
+            ]
           },
           {
             "yaw": -1.0892431152132307,
             "pitch": 0.43463794138405376,
             "title": "Decoupler",
-            "text": "State-of-the-art automatic decoupler."
+            "text": "State-of-the-art automatic decoupler.",
+            "comments": [
+              "Could an anti-suicide system be fitted to the metro to stop deaths at slower speeds such as in stations, for example external airbags?",
+              "Good if it is easy to maintain.",
+              "Looks a bit bulky and big for the front of the train."
+            ]
           }
         ]
       },
@@ -135,7 +167,12 @@ export default[
             "yaw": -0.5783536906530493,
             "pitch": 0.38058887054710056,
             "title": "Sliding Step",
-            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm."
+            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm.",
+            "comments": [
+              "Additional moving parts mean higher chance of faults and breakdowns. Leading to trains been removed from service.",
+              "Excellent idea! Will make it much easier for people with disabilities to be independent as well as those with prams or are slightly less mobile.",
+              "How long will this add to the time the doors take to open? The doors take longer to open and people force them open quicker."
+            ]
           },
           {
             "yaw": -0.4027377241770509,
@@ -157,7 +194,13 @@ export default[
             "yaw": -1.4120780940420286,
             "pitch": 0.45766868400424343,
             "title": "Livery",
-            "text": "Tyne and Wear Metro has a completely new livery!"
+            "text": "Tyne and Wear Metro has a completely new livery!",
+            "comments": [
+              "A black and yellow contrast would better suit my taste. But the new livery is fresh and rejuvenating to the service.",
+              "Good but is it easy to keep clean every day and after several years of service?",
+              "Mehhhh",
+              "Should be completely new to emphasise the difference to the old Metros"
+            ]
           },
           {
             "yaw": -2.4254996714844204,
@@ -172,7 +215,13 @@ export default[
             "yaw": -2.649150928470453,
             "pitch": -0.10276089704911762,
             "title": "Destination Display",
-            "text": "Destination displays on the side of each carriage show the passengers that they are boarding the correct train."
+            "text": "Destination displays on the side of each carriage show the passengers that they are boarding the correct train.",
+            "comments": [
+              "Excellent. Would be helpful if they flicked between 'Yellow Line'/'Green Line' & the destination.",
+              "Great idea. Saves looking for the station signs and potentially missing your train.",
+              "These look a bit small for visually impaired maybe brighter text too to stand out.",
+              "Will it show next stop?"
+            ]
           }
         ]
       },
@@ -210,7 +259,12 @@ export default[
             "yaw": -0.5783536906530493,
             "pitch": 0.38058887054710056,
             "title": "Sliding Step",
-            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm."
+            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm.",
+            "comments": [
+              "Additional moving parts mean higher chance of faults and breakdowns. Leading to trains been removed from service.",
+              "Excellent idea! Will make it much easier for people with disabilities to be independent as well as those with prams or are slightly less mobile.",
+              "How long will this add to the time the doors take to open? The doors take longer to open and people force them open quicker."
+            ]
           },
           {
             "yaw": -0.4027377241770509,
@@ -233,7 +287,13 @@ export default[
             "yaw": -1.4120780940420286,
             "pitch": 0.45766868400424343,
             "title": "Livery",
-            "text": "Tyne and Wear Metro has a completely new livery!"
+            "text": "Tyne and Wear Metro has a completely new livery!",
+            "comments": [
+              "A black and yellow contrast would better suit my taste. But the new livery is fresh and rejuvenating to the service.",
+              "Good but is it easy to keep clean every day and after several years of service?",
+              "Mehhhh",
+              "Should be completely new to emphasise the difference to the old Metros"
+            ]
           },
           {
             "yaw": -2.4254996714844204,
@@ -249,7 +309,13 @@ export default[
             "yaw": -2.649150928470453,
             "pitch": -0.10276089704911762,
             "title": "Destination Display",
-            "text": "Destination displays on the side of each carriage show the passengers that they are boarding the correct train."
+            "text": "Destination displays on the side of each carriage show the passengers that they are boarding the correct train.",
+            "comments": [
+              "Excellent. Would be helpful if they flicked between 'Yellow Line'/'Green Line' & the destination.",
+              "Great idea. Saves looking for the station signs and potentially missing your train.",
+              "These look a bit small for visually impaired maybe brighter text too to stand out.",
+              "Will it show next stop?"
+            ]
           }
         ]
       },
@@ -323,8 +389,14 @@ export default[
             "yaw": -3.0946846043059697,
             "pitch": 0.10175772399065863,
             "title": "Front Wall Design",
-            "text": "What should be on this wall?",
-            "link": "/configure"
+            "text": "We asked: What should be on this wall?",
+            "link": "/configure",
+            "comments": [
+              "How to report any issues and make comments, reporting of anti-social behaviour issues by SMS so it can be reported live by passengers. ",
+              "Local art work, murals, photographs of the region from local artists.",
+              "North East landmarks. Any of the bridges, Angel of the North, Grey's Monument, Swan House,  Northumberland Street, Central Motorway, Whitley Bay etc.",
+              "Window must remain at the front, everyone loves pretending to drive the train!"
+            ]
           },
           {
             "yaw": -1.4876248470598696,
@@ -672,13 +744,24 @@ export default[
             "yaw": -0.04951106935910943,
             "pitch": 0.31951545371209633,
             "title": "Open Carriage Layout",
-            "text": "Wide gangways between the carriages create an open, fully walk-through vehicle and provide additional standing space."
+            "text": "Wide gangways between the carriages create an open, fully walk-through vehicle and provide additional standing space.",
+            "comments": [
+              "Don't need to be that wide, many people aren't comfortable travelling sideways, it's hard to watch 3 children when they're not all within reach, etc.",
+              "Having travelled on trains in other cities with sideways seating and lots of standing space, I find it more difficult to get to the doors through a myriad of people at busy times compared to the current metro carriages.",
+              "Much better. Makes the space feel bigger and lets you move away from people if you want to, rather than having to wait until the next station to change carriages.",
+              "Prefer separate carriages. Therefore if you feel unsafe because of other passengers on the metro you can get off and change carriages to be away from them."
+            ]
           },
           {
             "yaw": -2.315518528958055,
             "pitch": -0.1309617572310735,
             "title": "Grab Poles",
-            "text": "Grab poles at short, regular intervals throughout the train."
+            "text": "Grab poles at short, regular intervals throughout the train.",
+            "comments": [
+              "Given the design of the seating and the decreased number of seats, there is a distinct lack of grab poles for commuters standing.",
+              "Have less grab poles by seats and more ones suspended from the middle of the roof. Try and prevent people from standing near people sitting where possible. Grab poles are an obstruction and having them between every other seat just gets in the way.",
+              "These are good for people a bit wobbly on their feet, or when the train is packed to hold on so you dont fall over each other.",
+            ]
           }
         ]
       },
@@ -750,13 +833,24 @@ export default[
             "yaw": -0.04951106935910943,
             "pitch": 0.31951545371209633,
             "title": "Open Carriage Layout",
-            "text": "Wide gangways between the carriages create an open, fully walk-through vehicle and provide additional standing space."
+            "text": "Wide gangways between the carriages create an open, fully walk-through vehicle and provide additional standing space.",
+            "comments": [
+              "Don't need to be that wide, many people aren't comfortable travelling sideways, it's hard to watch 3 children when they're not all within reach, etc.",
+              "Having travelled on trains in other cities with sideways seating and lots of standing space, I find it more difficult to get to the doors through a myriad of people at busy times compared to the current metro carriages.",
+              "Much better. Makes the space feel bigger and lets you move away from people if you want to, rather than having to wait until the next station to change carriages.",
+              "Prefer separate carriages. Therefore if you feel unsafe because of other passengers on the metro you can get off and change carriages to be away from them."
+            ]
           },
           {
             "yaw": -2.315518528958055,
             "pitch": -0.1309617572310735,
             "title": "Grab Poles",
-            "text": "Grab poles at short, regular intervals throughout the train."
+            "text": "Grab poles at short, regular intervals throughout the train.",
+            "comments": [
+              "Given the design of the seating and the decreased number of seats, there is a distinct lack of grab poles for commuters standing.",
+              "Have less grab poles by seats and more ones suspended from the middle of the roof. Try and prevent people from standing near people sitting where possible. Grab poles are an obstruction and having them between every other seat just gets in the way.",
+              "These are good for people a bit wobbly on their feet, or when the train is packed to hold on so you dont fall over each other.",
+            ]
           }
         ]
       },
@@ -803,7 +897,12 @@ export default[
             "yaw": 2.3122814836046786,
             "pitch": 0.40231039939005164,
             "title": "Sliding Step",
-            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm."
+            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm.",
+            "comments": [
+              "Additional moving parts mean higher chance of faults and breakdowns. Leading to trains been removed from service.",
+              "Excellent idea! Will make it much easier for people with disabilities to be independent as well as those with prams or are slightly less mobile.",
+              "How long will this add to the time the doors take to open? The doors take longer to open and people force them open quicker."
+            ]
           },
           {
             "yaw": 1.6831437713774324,
@@ -836,7 +935,12 @@ export default[
             "yaw": 0.3266127432183019,
             "pitch": 0.3658904315536269,
             "title": "Wide Aisles",
-            "text": "Wide aisles give passengers more space to get past each other. Passengers are therefore able to move further down the train more quickly."
+            "text": "Wide aisles give passengers more space to get past each other. Passengers are therefore able to move further down the train more quickly.",
+            "comments": [
+              "Good idea, if people will move along the carriages instead of crowding the space around the doors as they do at present.",
+              "Passengers with walking difficulties may find moving through wide aisles challenging. Seats for poor mobility walking passengers should be allocated close to doors.",
+              "While there will be fewer seats I can see that this improves accessibility."
+            ]
           }
         ]
       },
@@ -883,7 +987,12 @@ export default[
             "yaw": 2.3122814836046786,
             "pitch": 0.40231039939005164,
             "title": "Sliding Step",
-            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm."
+            "text": "When the doors open, this step slides out to reduce the gap with the platform to 3cm.",
+            "comments": [
+              "Additional moving parts mean higher chance of faults and breakdowns. Leading to trains been removed from service.",
+              "Excellent idea! Will make it much easier for people with disabilities to be independent as well as those with prams or are slightly less mobile.",
+              "How long will this add to the time the doors take to open? The doors take longer to open and people force them open quicker."
+            ]
           },
           {
             "yaw": 1.6831437713774324,
@@ -916,7 +1025,12 @@ export default[
             "yaw": 0.3266127432183019,
             "pitch": 0.3658904315536269,
             "title": "Wide Aisles",
-            "text": "Wide aisles give passengers more space to get past each other. Passengers are therefore able to move further down the train more quickly."
+            "text": "Wide aisles give passengers more space to get past each other. Passengers are therefore able to move further down the train more quickly.",
+            "comments": [
+              "Good idea, if people will move along the carriages instead of crowding the space around the doors as they do at present.",
+              "Passengers with walking difficulties may find moving through wide aisles challenging. Seats for poor mobility walking passengers should be allocated close to doors.",
+              "While there will be fewer seats I can see that this improves accessibility."
+            ]
           }
         ]
       },
@@ -1007,7 +1121,12 @@ export default[
             "yaw": -1.0683552939279153,
             "pitch": 0.5405413195840172,
             "title": "Stand Back Areas",
-            "text": "Stand back areas next to entrances facilitate passenger flow in and out of the carriages as fewer people are standing by the doors."
+            "text": "Stand back areas next to entrances facilitate passenger flow in and out of the carriages as fewer people are standing by the doors.",
+            "comments": [
+              "I like this idea however I still see the entryway getting blocked as groups congregate round the central pole",
+              "This will hopefully make it a lot quicker and easier to get on or off.",
+              "While I like the idea of fewer people being around the doors, I do not see anything here which will prevent people from gathering there."
+            ]
           },
           {
             "yaw": 1.4494955010677604,
@@ -1105,7 +1224,12 @@ export default[
             "yaw": -1.0683552939279153,
             "pitch": 0.5405413195840172,
             "title": "Stand Back Areas",
-            "text": "Stand back areas next to entrances facilitate passenger flow in and out of the carriages as fewer people are standing by the doors."
+            "text": "Stand back areas next to entrances facilitate passenger flow in and out of the carriages as fewer people are standing by the doors.",
+            "comments": [
+              "I like this idea however I still see the entryway getting blocked as groups congregate round the central pole",
+              "This will hopefully make it a lot quicker and easier to get on or off.",
+              "While I like the idea of fewer people being around the doors, I do not see anything here which will prevent people from gathering there."
+            ]
           },
           {
             "yaw": 1.4494955010677604,
