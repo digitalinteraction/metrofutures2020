@@ -412,7 +412,7 @@
 
         },
         mounted() {
-            if (this.index === 5) {
+            if (this.index === 6) {
                 // do alternate API call for final question
                 this.generateOptionURLsFinalQ();
             } else {
