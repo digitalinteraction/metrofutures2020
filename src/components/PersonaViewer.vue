@@ -71,6 +71,7 @@
                     <!-- <span class="option-letter" v-if="stageInfo.questions[currentQuestionId].options != 'priority'">{{ optionLetter(x) }} - </span> -->
                     <span class="option-letter">{{ optionLetter(x) }} - </span>
                     {{ opt.desc }}
+                    <div class="option_finding">({{ opt.finding }} people preferred)</div>
                 </b-col>
             </b-row>
             </div>

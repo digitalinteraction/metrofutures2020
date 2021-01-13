@@ -30,7 +30,7 @@
             People said:
             <div class="comment_text">{{ data.comments[commentId] }}</div>
             <div class="comment_controls">
-              <div>Comment {{ commentId+1 }} of {{ data.comments.length }}</div> 
+              <div>Sample Comment {{ commentId+1 }} of {{ data.comments.length }}</div> 
               <div class="comment_next" @click="nextComment()">Next</div>
             </div>
           </div>

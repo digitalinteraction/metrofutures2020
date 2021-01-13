@@ -49,11 +49,21 @@ export default [
       {id: 0, text: "How well is the door for the bicycle space indicated?", 
       options: "", comment: true, likert: "poor", findingName: "multi_door_outside_sanjeev",},
       {id: 1, text: "Which pole is best for Sanjeev?", 
-      options: "pole", comment: true, likert: false},
+      options: "pole", comment: true, likert: false,
+      comments: [
+        "Given the design of the seating and the decreased number of seats, there is a distinct lack of grab poles for commuters standing.",
+        "Have less grab poles by seats and more ones suspended from the middle of the roof. Try and prevent people from standing near people sitting where possible. Grab poles are an obstruction and having them between every other seat just gets in the way.",
+        "These are good for people a bit wobbly on their feet, or when the train is packed to hold on so you dont fall over each other.",
+      ]},
       {id: 2, text: "Which sort of bike stand is best for Sanjeev?", 
-      options: "bike", comment: true, likert: false},
+      options: "bike", comment: true, likert: false, 
+      comments: [
+        "Strap would potentially cause less damage to bikes if they are knocked.  Clamps can bend the wheels if the bike is moved unintentionally.",
+        "Good to see that bicycles are being allowed onto the trains this time. Although there should be some restrictions I.e. not when the train is busy or peak times.",
+        "A clamp isn't great as bike tyre width varies, a hook is more practical but I think a strap is best."
+      ]},
       {id: 3, text: "How useful would Sanjeev find uninterrupted Internet access on the train?", 
-      options: "", comment: true, likert: "useful", findingName: "",},
+      options: "", comment: true, likert: "useful", findingName: "internet_sanjeev",},
       {id: 4, text: "How well is the multipurpose area indicated?", 
       options: "", comment: true, likert: "poor", findingName: "multi_window_inside_sanjeev",},
       // Final questions must always be present
