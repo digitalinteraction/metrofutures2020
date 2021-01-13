@@ -325,4 +325,298 @@ export default [
       ]
     }
   },
+  {
+    name: "door_indicators_jessica",
+    desc: "Door Indicators",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [2, 2, 10, 20, 45]
+        },
+      ]
+    }
+  },
+  {
+    name: "multi_door_inside_jessica",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [2, 5, 15, 25, 43]
+        },
+      ]
+    }
+  },
+  {
+    name: "info_screens_jessica",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [4, 7, 20, 18, 31]
+        },
+      ]
+    }
+  },{
+    name: "safety_jessica",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [12, 18, 28, 14, 9]
+        },
+      ]
+    }
+  },{
+    name: "multi_window_inside_sanjeev",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [3, 0, 8, 9, 20]
+        },
+      ]
+    }
+  },{
+    name: "multi_door_outside_sanjeev",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [1, 1, 6, 8, 31]
+        },
+      ]
+    }
+  },{
+    name: "door_indicators_mary",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [2, 0, 1, 9, 12]
+        },
+      ]
+    }
+  },{
+    name: "info_screens_mary",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [0, 0, 2, 10, 13]
+        },
+      ]
+    }
+  },{
+    name: "cctv_mary",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [1, 1, 6, 12, 5]
+        },
+      ]
+    }
+  },{
+    name: "door_indicators_polly",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [1, 0, 2, 8, 19]
+        },
+      ]
+    }
+  },{
+    name: "multi_window_polly",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [4, 4, 6, 11, 12]
+        },
+      ]
+    }
+  },{
+    name: "info_screens_polly",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [1, 3, 3, 7, 16]
+        },
+      ]
+    }
+  },{
+    name: "door_indicators_robert",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [2, 0, 2, 6, 13]
+        },
+      ]
+    }
+  },{
+    name: "wheel_window_decal_robert",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [1, 0, 2, 6, 13]
+        },
+      ]
+    }
+  },{
+    name: "wheel_door_decal_robert",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [0, 0, 1, 4, 20]
+        },
+      ]
+    }
+  },{
+    name: "info_screens_robert",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [0, 1, 1, 4, 16]
+        },
+      ]
+    }
+  },{
+    name: "info_screens_desmond",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [2, 4, 13, 16, 11]
+        },
+      ]
+    }
+  },
+  {
+    name: "internet_sanjeev",
+    desc: "",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [0, 1, 2, 11, 26]
+        },
+      ]
+    }
+  },
+  
+
 ]

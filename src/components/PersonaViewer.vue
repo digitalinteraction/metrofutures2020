@@ -133,12 +133,12 @@
       </b-row>
       <b-row v-show="!personaFinished && !mainVid.finished">
         <b-col>
-          <b-button @click="videoStop()" variant="primary" class="transcriptButton">
-            Skip Video
-          </b-button>
           <div class="retinopathy" v-if="personaName==='Desmond'">
             <strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a>
           </div>
+          <b-button @click="videoStop()" variant="primary" class="transcriptButton">
+            Skip Video
+          </b-button>
           <b-button @click="toggleTranscript()" variant="primary" class="transcriptButton">
             Transcript 
             <b-icon font-scale="1" icon="chevron-down" v-show="!transcript"></b-icon>
@@ -676,6 +676,10 @@ export default {
   .progressLabel {
     color: black;
     font-weight: 400;
+  }
+
+  .retinopathy {
+    margin-top: 0.25em;
   }
   
   // Media rules for tablets and horizontal phones
