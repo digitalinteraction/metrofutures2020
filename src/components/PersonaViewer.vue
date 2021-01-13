@@ -79,8 +79,7 @@
             <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
               <LikertDetails 
                 :likert="stageInfo.questions[currentQuestionId].likert" 
-                :likertAvg="stageInfo.questions[currentQuestionId].likertAvg" 
-                :likertData="stageInfo.questions[currentQuestionId].likertData">
+                :findingName="stageInfo.questions[currentQuestionId].findingName">
               </LikertDetails>
             </div>
             
@@ -134,7 +133,12 @@
       </b-row>
       <b-row v-show="!personaFinished && !mainVid.finished">
         <b-col>
-          <div class="retinopathy" v-if="personaName==='Desmond'"><strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a></div>
+          <b-button @click="videoStop()" variant="primary" class="transcriptButton">
+            Skip Video
+          </b-button>
+          <div class="retinopathy" v-if="personaName==='Desmond'">
+            <strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a>
+          </div>
           <b-button @click="toggleTranscript()" variant="primary" class="transcriptButton">
             Transcript 
             <b-icon font-scale="1" icon="chevron-down" v-show="!transcript"></b-icon>
@@ -145,9 +149,7 @@
               {{ stageInfo.transcript[currentStageId].text }}
             </p>
           </div>
-          
         </b-col>
-        
       </b-row>
     </b-container>
     
@@ -661,6 +663,8 @@ export default {
 
   .transcriptButton {
     margin-top: 1em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
   }
 
   .transcript p {
