@@ -321,7 +321,7 @@ export default {
      const o5 = answers[4] !== undefined ? answers[4]+1 : 1
      const o6 = answers[5] !== undefined ? answers[5]+1 : 1
      const o7 = this.lighting ? parseInt(this.lighting) : 1
-     const design = answers[6] !== undefined ? answers[5]+1 : 1
+     const design = answers[6] !== undefined ? answers[6]+1 : 1
 
     // for each camera angle, add on question answers and get image from API
     const cameraAngles = [1, 2, 3, 4, 5, 6, 13];

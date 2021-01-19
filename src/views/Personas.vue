@@ -192,6 +192,7 @@ export default {
   }
 
   .subCard {
+    z-index: 100;
     padding-top: 1.5em;
     padding-left: 1.5em;
     padding-right: 1.5em;
@@ -202,6 +203,7 @@ export default {
   .personaDesc {
     padding-left: 1em;
     padding-right: 1em;
+    margin-bottom: 1em;
   }
 
   .followButton {
