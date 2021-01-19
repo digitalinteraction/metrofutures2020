@@ -132,7 +132,8 @@
         },
         data() {
             return {
-                selected: 0,  // Default select first option (0 indexed)
+                // selected: 0,  // Default select first option (0 indexed)
+                selected: this.getConfigAnswers ? this.getConfigAnswers[this.index] : 0,
                 surveyText: "",
                 displayError: false,
                 image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', // default placeholder image from CDN
@@ -412,6 +413,9 @@
 
         },
         mounted() {
+            if (this.getConfigAnswers[this.index]) {
+                this.selected = this.getConfigAnswers[this.index]
+            }
             if (this.index === 6) {
                 // do alternate API call for final question
                 this.generateOptionURLsFinalQ();
