@@ -3,11 +3,13 @@
     <b-row>
         <b-col>
           <!-- TO DO write template for each paragraph -->
-          <p 
+          <div 
             v-for="(text, index) in findingsData.leftCol" 
-            v-bind:key="index">
-            {{ text }}
-          </p>
+            v-bind:key="index"
+            class="leftCol-text">
+            <span v-html="text"></span>
+            <!-- {{ text }} -->
+          </div>
         </b-col>
         <b-col>
           <BarChart :chart-data="findingsData.rightCol"></BarChart>
@@ -49,5 +51,14 @@ export default {
 
 <style lang="scss">
   @import '@/assets/_variables.scss';
+
+  .leftCol-text {
+      text-align: left;
+      margin-bottom: 1em;
+  }
+
+  .leftCol-text:last-child {
+      margin-bottom: 1.5em;
+  }
 
 </style>

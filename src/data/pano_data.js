@@ -720,7 +720,13 @@ export default[
             "yaw": 0.9738039530410099,
             "pitch": -0.5876734585715866,
             "title": "CCTV",
-            "text": "CCTV cameras mounted throughout the train"
+            "text": "CCTV cameras mounted throughout the train",
+            "comments": [
+              "Average. Maybe CCTV should be viewable on in car screens too.",
+              "CCTV is comforting. Single corridor train less so. Should an antisocial behaviour incident happen it will be difficult to get away on the single corridor.",
+              "If people being aggressive, CCTV not going to stop them and nowhere to hide. At least you can see them coming.",
+              "The CCTV helps but only if it monitored and proactively used to deal with antisocial behaviour. It shouldn't only be used to prosecute after the fact",
+            ]
           },
           {
             "yaw": 2.3010557823641182,
@@ -802,14 +808,19 @@ export default[
             "text": "We asked: How clear are the door light and sound indicators?",
             "likert": "clear",
             "likertName": "door_indicators",
-            
             "visual": "https://cdn.metrofutures.org.uk/doors/Door_Interior.mp4",
           },
           {
             "yaw": 0.9738039530410099,
             "pitch": -0.5876734585715866,
             "title": "CCTV",
-            "text": "CCTV cameras mounted throughout the train"
+            "text": "CCTV cameras mounted throughout the train",
+            "comments": [
+              "Average. Maybe CCTV should be viewable on in car screens too.",
+              "CCTV is comforting. Single corridor train less so. Should an antisocial behaviour incident happen it will be difficult to get away on the single corridor.",
+              "If people being aggressive, CCTV not going to stop them and nowhere to hide. At least you can see them coming.",
+              "The CCTV helps but only if it monitored and proactively used to deal with antisocial behaviour. It shouldn't only be used to prosecute after the fact",
+            ]
           },
           {
             "yaw": 2.3010557823641182,
@@ -919,7 +930,8 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "info_screen",
+            "likertName": "info_screens",
+            
             
           },
           {

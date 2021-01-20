@@ -97,7 +97,7 @@
             <b-col class="col-lg-3 col-12 sidebar">
                 <p class="summaryText">These are the final images for your configuration of the Metro.</p>
 
-                <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
+                <!-- <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
                     <b-dropdown-item>   
                             <ShareNetwork
                                 network="facebook"
@@ -121,7 +121,7 @@
                                 <b-img src="../assets/twitter.png" height="30px;"></b-img>
                             </ShareNetwork>
                     </b-dropdown-item>
-                </b-dropdown>
+                </b-dropdown> -->
 
                 <b-button @click="toggleFeatures()" class="featuresButton">View Standard Features</b-button>
 

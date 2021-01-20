@@ -62,5 +62,9 @@ export default {
         let result = state.likertFindings.find(finding => finding.name === name)
         return result
     },
+    getJourneyCommentsByName: (state) => (name) => {
+        let result = state.journeyComments.find(finding => finding.name === name)
+        return result.comments
+    },
     
 }

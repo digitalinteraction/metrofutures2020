@@ -94,6 +94,13 @@
             <!-- Optional demographic information if we haven't done it elsewhere -->
 
             <div>
+              <div>
+                <div class="comment_title">
+                  Sample comments about {{ personaName }}'s journey:
+                </div>
+                <FindingComment :comments="getJourneyCommentsByName(personaName.toLowerCase())"></FindingComment>
+              </div>
+
               <div class="finalButtons">
                 <b-button to="/journeys" variant="primary" block>Experience more journeys</b-button>
               </div>
@@ -102,7 +109,8 @@
                 <b-button to="/" variant="primary" block>Return to Home</b-button>
               </div>
 
-              <div class="finalButtons">
+              <!-- Sharing functions not required in results version of the site -->
+              <!-- <div class="finalButtons">
                 <b-button class="fbShare" block>
                   <ShareNetwork
                     network="facebook"
@@ -114,9 +122,9 @@
                     Share on Facebook
                   </ShareNetwork>
                 </b-button>
-              </div>
+              </div> -->
               
-              <div class="finalButtons">
+              <!-- <div class="finalButtons">
                 <b-button class="twitterShare" block>
                   <ShareNetwork
                   network="twitter"
@@ -127,7 +135,7 @@
                   >Share on Twitter
                   </ShareNetwork>
                 </b-button>
-              </div>
+              </div> -->
             </div>
           </span>
         </b-col>
@@ -138,7 +146,7 @@
             <strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a>
           </div>
           <b-button @click="videoStop()" variant="primary" class="transcriptButton">
-            Skip Video
+            Show Results
           </b-button>
           <b-button @click="toggleTranscript()" variant="primary" class="transcriptButton">
             Transcript 
@@ -162,6 +170,7 @@ import {mapGetters, mapState} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
 import welcomeConsent from "../components/WelcomeConsent";
 import LikertDetails from "../components/LikertDetails"
+import FindingComment from "../components/FindingComment"
 
 export default {
   name: "PersonaViewer",
@@ -169,6 +178,7 @@ export default {
     MainHeader,
     welcomeConsent,
     LikertDetails,
+    FindingComment,
   },
   data() {
     return {
@@ -209,20 +219,10 @@ export default {
       commentText: "",
       optionSelection: false,
       optLetters: ["A", "B", "C", "D", "E", "F"],
-
-      // Placeholder likert data
-      likertAvg: 3,
-      likertData: [
-          {"rating": 5, "percentage": "10%"},
-          {"rating": 4, "percentage": "70%"},
-          {"rating": 3, "percentage": "20%"},
-          {"rating": 2, "percentage": "0%"},
-          {"rating": 1, "percentage": "0%"},
-      ],
     }
   },
   computed: {
-    ...mapGetters(['getUuid', 'privacyNotice']),
+    ...mapGetters(['getUuid', 'privacyNotice', 'getJourneyCommentsByName']),
     ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
@@ -681,6 +681,16 @@ export default {
 
   .retinopathy {
     margin-top: 0.25em;
+  }
+
+  .comment_title {
+    margin-top: 1em;
+    font-weight: bold;
+  }
+
+  .comment_block {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
   }
   
   // Media rules for tablets and horizontal phones

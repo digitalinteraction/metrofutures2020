@@ -10,6 +10,7 @@
         <div class="likert_text" v-if="likert === 'clear'">1 = very un{{likert}}, 5 = very {{likert}}</div>
         <div class="likert_text" v-if="likert === 'unclear'">1 = very {{likert}}, 5 = very clear</div>
         <div class="likert_text" v-if="likert === 'safe'">1 = no {{likert}}r, 5 = much {{likert}}r</div>
+        <div class="likert_text" v-if="likert === 'safer'">1 = no {{likert}}, 5 = much {{likert}}</div>
         <div class="likert_text" v-if="likert === 'poor'">1 = very {{likert}}, 5 = very well</div>
         <div class="likert_text" v-if="likert === 'useful'">1 = not {{likert}}, 5 = very {{likert}}</div>
         <div class="likert_text" v-if="likert === 'verywell'">1 = not very well, 5 = very well</div>

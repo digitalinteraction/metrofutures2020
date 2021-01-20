@@ -26,14 +26,11 @@
             </LikertDetails>
           </span>
 
-          <div class="comment_block" v-if="!data.likert && data.comments">
-            People said:
-            <div class="comment_text">{{ data.comments[commentId] }}</div>
-            <div class="comment_controls">
-              <div>Sample Comment {{ commentId+1 }} of {{ data.comments.length }}</div> 
-              <div class="comment_next" @click="nextComment()">Next</div>
-            </div>
-          </div>
+          <!-- Displays a set of comments if there is no likert to display, and we have comments -->
+          <FindingComment 
+            v-if="!data.likert && data.comments"
+            :comments="data.comments"
+          ></FindingComment>
 
           <!-- <span v-if="data.link">
             Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
@@ -92,6 +89,7 @@
 
 <script>
 import LikertDetails from '@/components/LikertDetails.vue'
+import FindingComment from '@/components/FindingComment.vue'
 
 export default {
   name: "Hotspot",
@@ -100,6 +98,7 @@ export default {
   },
   components: {
     LikertDetails,
+    FindingComment,
   },
   data() {
     return {
@@ -111,7 +110,7 @@ export default {
       videoEl: false,
       vidFullscreen: false,
       likertDetails: false,
-      commentId: 0,
+      // commentId: 0,
     }
   },
   methods: {
@@ -193,13 +192,6 @@ export default {
     toggleLikert() {
       this.likertDetails = !this.likertDetails;
     },
-    nextComment() {
-      if(this.commentId+2 > this.data.comments.length) {
-        this.commentId = 0
-      } else {
-        this.commentId++;
-      }
-    }
   },
   mounted() {
     if (this.data.visual) {
@@ -214,9 +206,6 @@ export default {
 
 <style lang="scss">
   @import '@/assets/_variables.scss';
-
-  // .hotspot_container {
-  // }
 
   .hidden {
     background: none;
@@ -291,37 +280,6 @@ export default {
     text-align: center;
   }
 
-  .comment_block {
-    border-top: 1px solid black;
-    margin-top: 0.5em;
-    padding-top: 0.5em;
-  }
-
-  .comment_controls {
-    text-align: center;
-  }
-
-  .comment_next {
-    display:inline-block;
-    background: white;
-    color: black;
-    padding: 0.3em 0.8em;
-    border: 1px solid black;
-    border-radius: 0.3em;
-  }
-
-  .comment_text {
-    font-style: italic;
-    // font-size: 0.9em;
-    background-color: white;
-    border: 1px solid grey;
-    border-radius: 0.5em;
-    padding: 0.25em;
-    // padding-right: 0.25em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-  }
-
   .choices-link {
     display: inline-block;
     border-bottom: 1px solid #FEC600;
@@ -340,6 +298,12 @@ export default {
 
   .embed-video {
     width: 198px;
+  }
+
+  .comment_block {
+    border-top: 1px solid black;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
   }
 
   // .embed-large {
