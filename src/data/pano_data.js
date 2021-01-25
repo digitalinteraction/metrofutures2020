@@ -382,7 +382,7 @@ export default[
             "title": "Passenger Information Screens",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_stand_front",
             
           },
           {
@@ -471,7 +471,7 @@ export default[
             "title": "Passenger Information Screens",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_stand_front",
             
           },
           {
@@ -543,7 +543,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_sit_wheel",
             
           },
           {
@@ -552,7 +552,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertName": "multi_floor_marking",
+            "likertName": "info_screens_sit_wheel",
             
           },
           {
@@ -632,7 +632,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_sit_wheel",
             
           },
           {
@@ -641,7 +641,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from the wheelchair space?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_sit_wheel",
             
           },
           {
@@ -734,7 +734,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_stand_mid",
             
           },
           {
@@ -828,7 +828,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_stand_mid",
             
           },
           {
@@ -930,7 +930,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_sit_priority",
             
             
           },
@@ -1021,7 +1021,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear are the passenger information screens in this position?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_sit_priority",
             
           },
           {
@@ -1146,7 +1146,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "We asked: How clear is the passenger information screen from this position?",
             "likert": "clear",
-            "likertName": "info_screens",
+            "likertName": "info_screens_lean",
           }
         ]
       },
@@ -1249,8 +1249,7 @@ export default[
             "title": "Passenger Information Screen",
             "text": "How clear is the passenger information screen from this position",
             "likert": "clear",
-            "likertName": "info_screens",
-             
+            "likertName": "info_screens_lean",
           }
         ]
       }

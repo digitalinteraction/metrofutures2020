@@ -190,6 +190,91 @@ export default [
     }
   },
   {
+    name: "info_screens_stand_front",
+    desc: "Passenger information screens",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [1, 11, 36, 81, 157]
+        },
+      ]
+    }
+  },
+  {
+    name: "info_screens_sit_wheel",
+    desc: "Passenger information screens",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [124, 145, 107, 54, 92]
+        },
+      ]
+    }
+  },
+  {
+    name: "info_screens_stand_mid",
+    desc: "Passenger information screens",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [6, 16, 39, 60, 159]
+        },
+      ]
+    }
+  },
+  {
+    name: "info_screens_sit_priority",
+    desc: "Passenger information screens",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [3, 13, 30, 46, 167]
+        },
+      ]
+    }
+  },
+  {
+    name: "info_screens_lean",
+    desc: "Passenger information screens",
+    type: "clear",
+    avg: 4.49,
+    chart: {
+      labels: 
+      ["1", "2", "3", "4" ,"5"],
+      datasets: [
+        {
+          label: defaultLabel,
+          backgroundColor: defaultColour,
+          data: [0, 2, 7, 10, 32]
+        },
+      ]
+    }
+  },
+  {
     name: "cctv",
     desc: "How safer CCTV and single corridor makes train",
     type: "clear",
