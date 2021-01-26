@@ -2,16 +2,15 @@
 
     <b-row>
         <b-col>
-          <!-- TO DO write template for each paragraph -->
           <div 
             v-for="(text, index) in findingsData.leftCol" 
             v-bind:key="index"
             class="leftCol-text">
             <span v-html="text"></span>
-            <!-- {{ text }} -->
           </div>
         </b-col>
         <b-col>
+            <!-- TO DO add more logic for right col (handle charts and table) -->
           <BarChart :chart-data="findingsData.rightCol"></BarChart>
         </b-col>
     </b-row>

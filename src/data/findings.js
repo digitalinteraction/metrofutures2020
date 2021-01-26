@@ -9,15 +9,36 @@ export default [
       `Public votes for the seven design options are presented as charts under relevant headings. Design option preferences are given as a percentage of responses within each strand (Twitter polls, Facebook, website – Configure Your Metro, Your Journeys) plus a <strong>mean average</strong> of strand percentages, and as a percentage of the <strong>responses total</strong> across all strands. The mean average percentage therefore gives equal weighting to each strand regardless of the number of responses within it, and the responses total gives equal weighting to each response. <strong>Responses total</strong> therefore provides the public preference for design options as a consensus view but does not take account of the depth of engagement. <strong>Mean average</strong> of percentages across the strands accounts somewhat for the depth of engagement in that narrower (and deeper) strands carry as much weight as wider/shallower strands.`,
     ],
     rightCol: {
-      labels: 
-      ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
-      datasets: [
+      charts: [
         {
-          label: "Engagements",
-          backgroundColor: '#FEC600',
-          data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-        },
-      ]
+          labels: 
+            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+          datasets: [
+            {
+              label: "Engagements",
+              backgroundColor: '#FEC600',
+              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+            },
+          ]
+        }
+      ],
+      tables: [
+        {
+          rows: [
+            ["Online Tool or Activity",	"Engagements",	"Depth"],
+            ["Twitter and Facebook polls",	"14100",	"Shallow"],
+            ["Website",	"8160",	"Mid"],
+            ["Webinar, Active Participants (Slido)",	"824",	"Mid"],
+            ["Workshop Attendances",	"53",	"Deep"],
+            ["Total",	"23137", ""],
+          ],
+
+        }
+      ],
+      images: [
+
+      ],
+      
     }
   },
   {
@@ -36,15 +57,19 @@ export default [
 
     ],
     rightCol: {
-      labels: 
-      ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
-      datasets: [
+      charts: [
         {
-          label: "Engagements",
-          backgroundColor: '#FEC600',
-          data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-        },
-      ]
+          labels: 
+            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+          datasets: [
+            {
+              label: "Engagements",
+              backgroundColor: '#FEC600',
+              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+            },
+          ]
+        }
+      ],
     }
   },
   {
@@ -60,15 +85,19 @@ export default [
       "Opinion was divided over whether the single corridor layout made trains safer with some participants concerned that antisocial behaviour would spread and could not be contained, and other participants positive about the ability to move away from antisocial behaviour mid-journey.",
     ],
     rightCol: {
-      labels: 
-      ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
-      datasets: [
+      charts: [
         {
-          label: "Engagements",
-          backgroundColor: '#FEC600',
-          data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-        },
-      ]
+          labels: 
+            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+          datasets: [
+            {
+              label: "Engagements",
+              backgroundColor: '#FEC600',
+              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+            },
+          ]
+        }
+      ],
     }
   },
   {
@@ -93,15 +122,19 @@ export default [
 
     ],
     rightCol: {
-      labels: 
-      ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
-      datasets: [
+      charts: [
         {
-          label: "Engagements",
-          backgroundColor: '#FEC600',
-          data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-        },
-      ]
+          labels: 
+            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+          datasets: [
+            {
+              label: "Engagements",
+              backgroundColor: '#FEC600',
+              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+            },
+          ]
+        }
+      ],
     }
   },
   {
@@ -121,15 +154,19 @@ export default [
       "Suggestions were made for additional useful content on PIS, e.g. time to next stop, time to destination.",
     ],
     rightCol: {
-      labels: 
-      ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
-      datasets: [
+      charts: [
         {
-          label: "Engagements",
-          backgroundColor: '#FEC600',
-          data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-        },
-      ]
+          labels: 
+            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+          datasets: [
+            {
+              label: "Engagements",
+              backgroundColor: '#FEC600',
+              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+            },
+          ]
+        }
+      ],
     }
   },
   {
@@ -142,15 +179,19 @@ export default [
       "Air conditioning on trains rather than opening windows was generally welcomed.",
     ],
     rightCol: {
-      labels: 
-      ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
-      datasets: [
+      charts: [
         {
-          label: "Engagements",
-          backgroundColor: '#FEC600',
-          data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-        },
-      ]
+          labels: 
+            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+          datasets: [
+            {
+              label: "Engagements",
+              backgroundColor: '#FEC600',
+              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+            },
+          ]
+        }
+      ],
     }
   },
 ]
