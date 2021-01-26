@@ -45,6 +45,7 @@ export default [
     rightCol: {
       charts: [
         {
+          title: "Floor, seats, and glass partitions",
           stacked: true,
           labels: 
             ["Twitter", "Facebook*", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)" , "Responses Total (%)"],
@@ -65,7 +66,57 @@ export default [
               data: [41.70, 62.31, 50.00, 47.36, 53.19, 50.91, 47.16,]
             },
           ],
-          
+        },
+        {
+          title: "Doors, grab poles, and floor markings",
+          stacked: true,
+          labels: 
+            ["Twitter", "Webinars", "Website /configure", "Website /journeys" ,"Average % (mean)" ,"Responses Total (%)"],
+          datasets: [
+            {
+              label: "A: yellow door, metal pole, yellow floor marking",
+              backgroundColor: '#CCCCCC',
+              data: [17.80, 21.67, 23.20, 15.00, 19.42, 21.97]
+            },
+            {
+              label: "B: grey door, yellow pole, white floor marking",
+              backgroundColor: '#5BB064',
+              data: [35.60, 36.00, 36.02, 66.25, 43.47, 36.37]
+            },
+            {
+              label: "C: yellow door, grey pole, yellow floor marking",
+              backgroundColor: '#666666',
+              data: [15.80, 30.00, 16.86, 10.00, 18.16, 16.65]
+            },
+            {
+              label: "D: grey door, metal pole, white floor marking",
+              backgroundColor: '#0066CC',
+              data: [30.80, 12.33, 23.92, 8.75, 18.95, 25.01]
+            },
+          ],
+        },
+        {
+          title: "Lower Sidewall Colour",
+          stacked: true,
+          labels: 
+            ["Twitter", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)", "Responses Total (%)"],
+          datasets: [
+            {
+              label: "A: white",
+              backgroundColor: '#CCCCCC',
+              data: [20.50,	33.33,	32.90,	84.44,	42.79,	31.52,]
+            },
+            {
+              label: "B: light grey",
+              backgroundColor: '#5BB064',
+              data: [46.90,	60.33,	35.37,	6.67,	37.32,	37.03,]
+            },
+            {
+              label: "C: dark grey",
+              backgroundColor: '#666666',
+              data: [32.70,	6.00,	31.74,	8.89,	19.83,	31.45,]
+            },
+          ],
         }
       ],
     }
@@ -84,17 +135,7 @@ export default [
     ],
     rightCol: {
       charts: [
-        {
-          labels: 
-            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
-          datasets: [
-            {
-              label: "Engagements",
-              backgroundColor: '#FEC600',
-              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-            },
-          ]
-        }
+        
       ],
     }
   },

@@ -15,6 +15,7 @@
                   v-for="(chart, index) in findingsData.rightCol.charts"
                   v-bind:key="index"
                 >
+                  <h4>{{ chart.title }}</h4>
                   <StackedBarChart v-if="chart.stacked" :chart-data="chart"></StackedBarChart>
                   <BarChart v-else :chart-data="chart"></BarChart>
                 </div>
