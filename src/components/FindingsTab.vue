@@ -10,8 +10,26 @@
           </div>
         </b-col>
         <b-col>
-            <!-- TO DO add more logic for right col (handle charts and table) -->
-          <BarChart :chart-data="findingsData.rightCol"></BarChart>
+            <div v-if="findingsData.rightCol.charts">
+                <div
+                  v-for="(chart, index) in findingsData.rightCol.charts"
+                  v-bind:key="index"
+                >
+                  <StackedBarChart v-if="chart.stacked" :chart-data="chart"></StackedBarChart>
+                  <BarChart v-else :chart-data="chart"></BarChart>
+                </div>
+                
+            </div>
+
+            <div v-if="findingsData.rightCol.tables">
+              <div 
+                v-for="(table, index) in findingsData.rightCol.tables"
+                v-bind:key="`tab_${index}`"
+                class="rightCol-tables"
+              >
+                <b-table striped hover :items="table.rows"></b-table>
+              </div>
+            </div>
         </b-col>
     </b-row>
 
@@ -21,12 +39,14 @@
 
 <script>
 import BarChart from '@/charts/BarChart.js'
+import StackedBarChart from '@/charts/StackedBarChart.js'
 import {mapGetters} from 'vuex'
 
 export default {
     name: "FindingsTab",
     components: {
         // LineChart
+        StackedBarChart,
         BarChart,
     },
     props: {
@@ -40,7 +60,7 @@ export default {
             findingsData: {},
         }
     },
-    mounted() {
+    beforeMount() {
         this.findingsData = this.getFindingsByName(this.findingName)
     }
     
@@ -58,6 +78,10 @@ export default {
 
   .leftCol-text:last-child {
       margin-bottom: 1.5em;
+  }
+
+  .rightCol-tables {
+    margin-top: 2em;
   }
 
 </style>

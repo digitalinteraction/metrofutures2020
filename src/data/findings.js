@@ -9,28 +9,14 @@ export default [
       `Public votes for the seven design options are presented as charts under relevant headings. Design option preferences are given as a percentage of responses within each strand (Twitter polls, Facebook, website – Configure Your Metro, Your Journeys) plus a <strong>mean average</strong> of strand percentages, and as a percentage of the <strong>responses total</strong> across all strands. The mean average percentage therefore gives equal weighting to each strand regardless of the number of responses within it, and the responses total gives equal weighting to each response. <strong>Responses total</strong> therefore provides the public preference for design options as a consensus view but does not take account of the depth of engagement. <strong>Mean average</strong> of percentages across the strands accounts somewhat for the depth of engagement in that narrower (and deeper) strands carry as much weight as wider/shallower strands.`,
     ],
     rightCol: {
-      charts: [
-        {
-          labels: 
-            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
-          datasets: [
-            {
-              label: "Engagements",
-              backgroundColor: '#FEC600',
-              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-            },
-          ]
-        }
-      ],
       tables: [
         {
           rows: [
-            ["Online Tool or Activity",	"Engagements",	"Depth"],
-            ["Twitter and Facebook polls",	"14100",	"Shallow"],
-            ["Website",	"8160",	"Mid"],
-            ["Webinar, Active Participants (Slido)",	"824",	"Mid"],
-            ["Workshop Attendances",	"53",	"Deep"],
-            ["Total",	"23137", ""],
+            {online_tool_or_activity: "Twitter and Facebook polls", engagements: 14100, depth: "Shallow"},
+            {online_tool_or_activity: "Website", engagements: 8160, depth: "Mid"},
+            {online_tool_or_activity: "Webinar, Active Participants (Slido)", engagements: 824, depth: "Mid"},
+            {online_tool_or_activity: "Workshop Attendances", engagements: 53, depth: "Deep"},
+            {online_tool_or_activity: "Total", engagements: 23137, depth: ""},
           ],
 
         }
@@ -59,15 +45,27 @@ export default [
     rightCol: {
       charts: [
         {
+          stacked: true,
           labels: 
-            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+            ["Twitter", "Facebook*", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)" , "Responses Total (%)"],
           datasets: [
             {
-              label: "Engagements",
-              backgroundColor: '#FEC600',
-              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+              label: "A: light grey, dots, dots",
+              backgroundColor: '#CCCCCC',
+              data: [26.30, 19.60, 40.33, 33.68, 34.04, 30.79, 31.76,]
             },
-          ]
+            {
+              label: "B: green, plain, stripes,",
+              backgroundColor: '#5BB064',
+              data: [32.10, 18.09, 10.00, 18.96, 12.77, 18.38, 21.08,]
+            },
+            {
+              label: "C: dark grey, logo, logo",
+              backgroundColor: '#666666',
+              data: [41.70, 62.31, 50.00, 47.36, 53.19, 50.91, 47.16,]
+            },
+          ],
+          
         }
       ],
     }
