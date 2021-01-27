@@ -1,3 +1,11 @@
+let barColours = [
+  "#0066CC",
+  "#FF9900",
+  "#999999",
+  "#FEC600",
+  "#66CCFF",
+];
+
 export default [
   {
     name: "summary",
@@ -52,17 +60,17 @@ export default [
           datasets: [
             {
               label: "A: light grey, dots, dots",
-              backgroundColor: '#CCCCCC',
+              backgroundColor: barColours[0],
               data: [26.30, 19.60, 40.33, 33.68, 34.04, 30.79, 31.76,]
             },
             {
               label: "B: green, plain, stripes,",
-              backgroundColor: '#5BB064',
+              backgroundColor: barColours[1],
               data: [32.10, 18.09, 10.00, 18.96, 12.77, 18.38, 21.08,]
             },
             {
               label: "C: dark grey, logo, logo",
-              backgroundColor: '#666666',
+              backgroundColor: barColours[2],
               data: [41.70, 62.31, 50.00, 47.36, 53.19, 50.91, 47.16,]
             },
           ],
@@ -75,22 +83,22 @@ export default [
           datasets: [
             {
               label: "A: yellow door, metal pole, yellow floor marking",
-              backgroundColor: '#CCCCCC',
+              backgroundColor: barColours[0],
               data: [17.80, 21.67, 23.20, 15.00, 19.42, 21.97]
             },
             {
               label: "B: grey door, yellow pole, white floor marking",
-              backgroundColor: '#5BB064',
+              backgroundColor: barColours[1],
               data: [35.60, 36.00, 36.02, 66.25, 43.47, 36.37]
             },
             {
               label: "C: yellow door, grey pole, yellow floor marking",
-              backgroundColor: '#666666',
+              backgroundColor: barColours[2],
               data: [15.80, 30.00, 16.86, 10.00, 18.16, 16.65]
             },
             {
               label: "D: grey door, metal pole, white floor marking",
-              backgroundColor: '#0066CC',
+              backgroundColor: barColours[3],
               data: [30.80, 12.33, 23.92, 8.75, 18.95, 25.01]
             },
           ],
@@ -103,17 +111,17 @@ export default [
           datasets: [
             {
               label: "A: white",
-              backgroundColor: '#CCCCCC',
+              backgroundColor: barColours[0],
               data: [20.50,	33.33,	32.90,	84.44,	42.79,	31.52,]
             },
             {
               label: "B: light grey",
-              backgroundColor: '#5BB064',
+              backgroundColor: barColours[1],
               data: [46.90,	60.33,	35.37,	6.67,	37.32,	37.03,]
             },
             {
               label: "C: dark grey",
-              backgroundColor: '#666666',
+              backgroundColor: barColours[2],
               data: [32.70,	6.00,	31.74,	8.89,	19.83,	31.45,]
             },
           ],
@@ -135,7 +143,42 @@ export default [
     ],
     rightCol: {
       charts: [
-        
+        {
+          title: "Centre Grab Pole Shape",
+          stacked: true,
+          labels: 
+            ["Twitter", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)", "Responses Total (%)"],
+          datasets: [
+            {
+              label: "A: single pole",
+              backgroundColor: barColours[0],
+              data: [13.20,	19.33,	17.17,	31.25,	20.24,	16.26,]
+            },
+            {
+              label: "B: double pole",
+              backgroundColor: barColours[1],
+              data: [79.20,	73.67,	72.41,	51.70,	69.25,	73.99,]
+            },
+            {
+              label: "C: ring",
+              backgroundColor: barColours[2],
+              data: [7.70,	7.33,	10.42,	17.05,	10.63,	9.76,]
+            },
+          ],
+        },
+        {
+          title: "How much safer CCTV and single corridor makes train",
+          stacked: true,
+          labels: 
+            ["1", "2", "3", "4", "5"],
+          datasets: [
+            {
+              label: "Rating",
+              backgroundColor: barColours[0],
+              data: [77,52,148,207,311]
+            }
+          ],
+        }
       ],
     }
   },
@@ -163,15 +206,40 @@ export default [
     rightCol: {
       charts: [
         {
+          title: "Bike Racks",
+          stacked: true,
           labels: 
-            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+            ["Twitter", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)", "Responses Total (%)"],
           datasets: [
             {
-              label: "Engagements",
-              backgroundColor: '#FEC600',
-              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+              label: "A: white",
+              backgroundColor: barColours[0],
+              data: [30.80,	51.00,	36.21,	59.21,	44.31,	35.56,]
             },
-          ]
+            {
+              label: "B: light grey",
+              backgroundColor: barColours[1],
+              data: [11.90,	5.67,	14.45,	7.89,	9.98,	13.85,]
+            },
+            {
+              label: "C: dark grey",
+              backgroundColor: barColours[2],
+              data: [57.30,	43.33,	49.33,	32.89,	45.72,	50.60,]
+            },
+          ],
+        },
+        {
+          title: "Safety for Young Children - Journeys",
+          stacked: true,
+          labels: 
+            ["1", "2", "3", "4", "5"],
+          datasets: [
+            {
+              label: "Rating",
+              backgroundColor: barColours[0],
+              data: [12,18,28,14,9]
+            }
+          ],
         }
       ],
     }
@@ -195,15 +263,17 @@ export default [
     rightCol: {
       charts: [
         {
+          title: "Passenger Information Screens",
+          stacked: true,
           labels: 
-            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+            ["1", "2", "3", "4", "5"],
           datasets: [
             {
-              label: "Engagements",
-              backgroundColor: '#FEC600',
-              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
-            },
-          ]
+              label: "Rating",
+              backgroundColor: barColours[0],
+              data: [134,182,219,251,607]
+            }
+          ],
         }
       ],
     }
@@ -220,15 +290,37 @@ export default [
     rightCol: {
       charts: [
         {
+          title: "End Wall Style",
+          stacked: true,
           labels: 
-            ["Website explore", "Website configure", "Website - Journeys", "Explore, Configure, Journeys total" ,"Website - Demographics" ,"Twitter and Facebook polls" , "Webinar Active Participants (Slido)", "Workshop Attendances"],
+            ["Twitter", "Webinars", "Average % (mean)" ,"Responses Total (%)" ],
           datasets: [
             {
-              label: "Engagements",
-              backgroundColor: '#FEC600',
-              data: [1176, 5448, 90, 6714, 8160, 14100, 824, 53]
+              label: "A: Blank",
+              backgroundColor: barColours[0],
+              data: [8.70,11.00,9.85,8.68,]
             },
-          ]
+            {
+              label: "B: Commissioned artwork",
+              backgroundColor: barColours[1],
+              data: [13.80,11.67,12.73,13.79,]
+            },
+            {
+              label: "C: North East landmarks",
+              backgroundColor: barColours[2],
+              data: [39.90,64.67,52.28,40.57,]
+            },
+            {
+              label: "D: North East people",
+              backgroundColor: barColours[3],
+              data: [37.70,4.67,21.18,36.82,]
+            },
+            {
+              label: "E: Something else (not an option on Twitter poll)",
+              backgroundColor: barColours[4],
+              data: [0.00,8.33,4.17,0.14,]
+            },
+          ],
         }
       ],
     }
