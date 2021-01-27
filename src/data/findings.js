@@ -26,7 +26,7 @@ export default [
             {online_tool_or_activity: "Workshop Attendances", engagements: 53, depth: "Deep"},
             {online_tool_or_activity: "Total", engagements: 23137, depth: ""},
           ],
-
+          caption: "",
         }
       ],
       images: [

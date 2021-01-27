@@ -78,6 +78,7 @@ export default {
     color: white;
     border-top-right-radius: 1em;
     border-top-left-radius: 1em;
+    height: 100%;  // This makes all tabs same size
   }
 
   .active {

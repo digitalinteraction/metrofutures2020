@@ -1,7 +1,7 @@
 <template>
 
     <b-row>
-        <b-col>
+        <b-col class="leftCol">
           <div 
             v-for="(text, index) in findingsData.leftCol" 
             v-bind:key="index"
@@ -16,8 +16,16 @@
                   v-bind:key="index"
                 >
                   <h4>{{ chart.title }}</h4>
-                  <StackedBarChart v-if="chart.stacked" :chart-data="chart"></StackedBarChart>
-                  <BarChart v-else :chart-data="chart"></BarChart>
+                  <StackedBarChart 
+                    v-if="chart.stacked" 
+                    :chart-data="chart"
+                    class="rightCol-chart"
+                  ></StackedBarChart>
+                  <BarChart 
+                    v-else 
+                    :chart-data="chart"
+                    class="rightCol-chart"
+                  ></BarChart>
                 </div>
                 
             </div>
@@ -29,6 +37,7 @@
                 class="rightCol-tables"
               >
                 <b-table striped hover :items="table.rows"></b-table>
+                <p>{{ table.caption }}</p>
               </div>
             </div>
         </b-col>
@@ -72,9 +81,27 @@ export default {
 <style lang="scss">
   @import '@/assets/_variables.scss';
 
+  .leftCol {
+    padding-top: 1em;
+  }
+
   .leftCol-text {
       text-align: left;
       margin-bottom: 1em;
+      padding-left: 0.5em;
+      padding-right: 0.5em;
+  }
+  
+  // Background rules for links (too bright otherwise)
+  .leftCol-text a {
+    display: inline-block;
+    background-color: grey;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+  }
+
+  .leftCol-text a:hover {
+    background-color: lightgrey;
   }
 
   .leftCol-text:last-child {
@@ -83,6 +110,12 @@ export default {
 
   .rightCol-tables {
     margin-top: 2em;
+    padding-right: 0.5em;
   }
+
+  .rightCol-chart {
+    padding-left: 0.5em;
+  }
+
 
 </style>
