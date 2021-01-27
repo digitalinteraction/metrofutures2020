@@ -108,6 +108,10 @@ export default {
       margin-bottom: 1.5em;
   }
 
+  .leftCol-text ul {
+    font-size: 1rem;
+  }
+
   .rightCol-tables {
     margin-top: 2em;
     padding-right: 0.5em;
