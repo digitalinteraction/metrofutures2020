@@ -9,6 +9,7 @@ export default {
     // this.chartData is created in the mixin.
     // If you want to pass options please create a local options object
     this.localOptions = {
+      response: true,
       scales: {
         xAxes: [{
           stacked: true

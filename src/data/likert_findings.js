@@ -277,7 +277,7 @@ export default [
   {
     name: "cctv",
     desc: "How safer CCTV and single corridor makes train",
-    type: "clear",
+    type: "safer",
     avg: 4.49,
     chart: {
       labels: 
@@ -294,7 +294,7 @@ export default [
   {
     name: "young_safety",
     desc: "Train in general, safety for young children",
-    type: "clear",
+    type: "safer",
     avg: 4.49,
     chart: {
       labels: 
@@ -311,7 +311,7 @@ export default [
   {
     name: "persona_jessica",
     desc: "How well does the train work for [this persona]?",
-    type: "clear",
+    type: "verywell",
     avg: 4.49,
     chart: {
       labels: 
@@ -328,7 +328,7 @@ export default [
   {
     name: "persona_sanjeev",
     desc: "How well does the train work for [this persona]?",
-    type: "clear",
+    type: "verywell",
     avg: 4.49,
     chart: {
       labels: 
@@ -345,7 +345,7 @@ export default [
   {
     name: "persona_mary",
     desc: "How well does the train work for [this persona]?",
-    type: "clear",
+    type: "verywell",
     avg: 4.49,
     chart: {
       labels: 
@@ -362,7 +362,7 @@ export default [
   {
     name: "persona_polly",
     desc: "How well does the train work for [this persona]?",
-    type: "clear",
+    type: "verywell",
     avg: 4.49,
     chart: {
       labels: 
@@ -379,7 +379,7 @@ export default [
   {
     name: "persona_robert",
     desc: "How well does the train work for [this persona]?",
-    type: "clear",
+    type: "verywell",
     avg: 4.49,
     chart: {
       labels: 
@@ -396,7 +396,7 @@ export default [
   {
     name: "persona_desmond",
     desc: "How well does the train work for [this persona]?",
-    type: "clear",
+    type: "verywell",
     avg: 4.49,
     chart: {
       labels: 
@@ -463,7 +463,7 @@ export default [
   },{
     name: "safety_jessica",
     desc: "",
-    type: "clear",
+    type: "safer",
     avg: 4.49,
     chart: {
       labels: 
@@ -543,7 +543,7 @@ export default [
   },{
     name: "cctv_mary",
     desc: "",
-    type: "clear",
+    type: "safer",
     avg: 4.49,
     chart: {
       labels: 

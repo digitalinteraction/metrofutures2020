@@ -1,7 +1,41 @@
 <template>
+  <b-container class="mt-4">
+    <template v-if="findingsData.rightCol.charts">
+      <b-row
+        v-for="(chart, index) in findingsData.rightCol.charts"
+        v-bind:key="index"
+        >
+        <b-col :md-cols="columnWidth(index)" v-if="index == 0">
+          <div 
+            v-for="(text, index) in findingsData.leftCol" 
+            v-bind:key="index"
+            class="leftCol-text">
+            <span v-html="text"></span>
+          </div>
+        </b-col>
+        <b-col :md-cols="columnWidth(index)" class="mx-auto">
+        <!-- <b-col> -->
+          <h4>{{ chart.title }}</h4>
+          <StackedBarChart
+            v-if="chart.stacked"
+            :chart-data="chart"
+            class="rightCol-chart"
+          ></StackedBarChart>
+          <BarChart
+            v-else
+            :chart-data="chart"
+            class="rightCol-chart"
+          ></BarChart>
+        </b-col>
+      </b-row>
+    </template>
 
-    <b-row>
-        <b-col class="leftCol">
+    <template v-if="findingsData.rightCol.tables">
+      <b-row
+        v-for="(table, index) in findingsData.rightCol.tables"
+        v-bind:key="`tab_${index}`"
+        >
+        <b-col v-if="index == 0">
           <div 
             v-for="(text, index) in findingsData.leftCol" 
             v-bind:key="index"
@@ -10,38 +44,13 @@
           </div>
         </b-col>
         <b-col>
-            <div v-if="findingsData.rightCol.charts">
-                <div
-                  v-for="(chart, index) in findingsData.rightCol.charts"
-                  v-bind:key="index"
-                >
-                  <h4>{{ chart.title }}</h4>
-                  <StackedBarChart 
-                    v-if="chart.stacked" 
-                    :chart-data="chart"
-                    class="rightCol-chart"
-                  ></StackedBarChart>
-                  <BarChart 
-                    v-else 
-                    :chart-data="chart"
-                    class="rightCol-chart"
-                  ></BarChart>
-                </div>
-                
-            </div>
-
-            <div v-if="findingsData.rightCol.tables">
-              <div 
-                v-for="(table, index) in findingsData.rightCol.tables"
-                v-bind:key="`tab_${index}`"
-                class="rightCol-tables"
-              >
-                <b-table striped hover :items="table.rows"></b-table>
-                <p>{{ table.caption }}</p>
-              </div>
-            </div>
+          <b-table striped hover :items="table.rows"></b-table>
+          <p>{{ table.caption }}</p>
         </b-col>
-    </b-row>
+      </b-row>
+    </template>
+  </b-container>
+
 
 
   
@@ -72,7 +81,13 @@ export default {
     },
     beforeMount() {
         this.findingsData = this.getFindingsByName(this.findingName)
-    }
+    },
+    methods: {
+      columnWidth(index) {
+        // Return width based on index
+        return ( index === 0) ? '6' :  '10';
+      },
+    },
     
 
 }
@@ -92,17 +107,21 @@ export default {
       padding-right: 0.5em;
   }
   
-  // Background rules for links (too bright otherwise)
   .leftCol-text a {
-    display: inline-block;
-    background-color: grey;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
+    font-weight: bold;
   }
 
-  .leftCol-text a:hover {
-    background-color: lightgrey;
-  }
+    // Background rules for links (too bright otherwise)
+  // .leftCol-text a {
+  //   display: inline-block;
+  //   background-color: grey;
+  //   padding-left: 0.25em;
+  //   padding-right: 0.25em;
+  // }
+
+  // .leftCol-text a:hover {
+  //   background-color: lightgrey;
+  // }
 
   .leftCol-text:last-child {
       margin-bottom: 1.5em;
@@ -117,8 +136,16 @@ export default {
     padding-right: 0.5em;
   }
 
+  .rightCol {
+    margin-top: 1em;
+  }
+
   .rightCol-chart {
-    padding-left: 0.5em;
+    margin-top: 2em;
+  }
+
+  .rightCol-chart {
+    margin-bottom: 2em;
   }
 
 

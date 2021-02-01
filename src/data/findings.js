@@ -39,15 +39,14 @@ export default [
     name: "explore",
     title: "Visual Usability",
     leftCol: [
-      `<ul><li>Overall preference (50.91%) for the combination of dark grey floor, logo pattern seats, and logo pattern glass partitions.</li>
-      <li>Opposition to leather seating material – not vegan/ethical, not comfortable, durability concerns.</li>
-      <li>Glass partitions need to be visible enough for visually impaired people but retain some transparency.</li>
-      <li>Strong preference for having priority seats differ from standard seats (88.59%) but respondents would like to see a greater contrast or colour difference.</li>
-      <li>Whilst there was a preference for grey doors, yellow grab poles, and white floor markings, workshop discussions revealed that none of the four options were suitable. Suggestions were made to add contrasting borders to grey doors to make them visually distinct from walls and to use yellow rather than white floor markings.</li>
-      <li>Door buttons need greater contrast against doors.</li>
-      <li>Paler lower sidewall colours were preferred (with white preferred slightly more than light grey) to provide contrast with bags under seats and floor. However, respondents recognised that paler sidewalls become dirtier more easily.</li>
-      <li>Decals on doors indicate the multipurpose space and wheelchair space well (although decals on both doors were suggested), but there were some concerns about the visibility of window decals for multipurpose space, wheelchair space, and priority seats. Suggestions were made for larger and clearer window decals.</li>
-      <li>Train wrapping (e.g. for advertising, promotion) reduces contrast and legibility of doors etc.</li></ul>`,
+      "Overall preference (50.91%) for the combination of dark grey floor, logo pattern seats, and logo pattern glass partitions. Opposition to leather seating material – not vegan/ethical, not comfortable, durability concerns.",
+      "Glass partitions need to be visible enough for visually impaired people but retain some transparency.",
+      "Strong preference for having priority seats differ from standard seats (88.59%) but respondents would like to see a greater contrast or colour difference.",
+      "Whilst there was a preference for grey doors, yellow grab poles, and white floor markings, workshop discussions revealed that none of the four options were suitable. Suggestions were made to add contrasting borders to grey doors to make them visually distinct from walls and to use yellow rather than white floor markings.",
+      "Door buttons need greater contrast against doors.",
+      "Paler lower sidewall colours were preferred (with white preferred slightly more than light grey) to provide contrast with bags under seats and floor. However, respondents recognised that paler sidewalls become dirtier more easily.",
+      "Decals on doors indicate the multipurpose space and wheelchair space well (although decals on both doors were suggested), but there were some concerns about the visibility of window decals for multipurpose space, wheelchair space, and priority seats. Suggestions were made for larger and clearer window decals.",
+      "Train wrapping (e.g. for advertising, promotion) reduces contrast and legibility of doors etc.",
 
     ],
     rightCol: {
@@ -170,7 +169,7 @@ export default [
           title: "How much safer CCTV and single corridor makes train",
           stacked: true,
           labels: 
-            ["1", "2", "3", "4", "5"],
+            ["1 - no safer", "2", "3", "4", "5 - much safer"],
           datasets: [
             {
               label: "Rating",
@@ -232,7 +231,7 @@ export default [
           title: "Safety for Young Children - Journeys",
           stacked: true,
           labels: 
-            ["1", "2", "3", "4", "5"],
+            ["1 - no safer", "2", "3", "4", "5 - much safer"],
           datasets: [
             {
               label: "Rating",
@@ -266,7 +265,7 @@ export default [
           title: "Passenger Information Screens",
           stacked: true,
           labels: 
-            ["1", "2", "3", "4", "5"],
+            ["1 - very unclear", "2", "3", "4", "5 - very clear"],
           datasets: [
             {
               label: "Rating",
