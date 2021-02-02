@@ -5,7 +5,7 @@
         v-for="(chart, index) in findingsData.rightCol.charts"
         v-bind:key="index"
         >
-        <b-col :md-cols="columnWidth(index)" v-if="index == 0">
+        <b-col :sm-cols="columnWidth(index)" v-if="index == 0">
           <div 
             v-for="(text, index) in findingsData.leftCol" 
             v-bind:key="index"
@@ -14,7 +14,7 @@
           </div>
         </b-col>
         <!-- <b-col :md-cols="columnWidth(index)" class="mx-auto"> -->
-        <b-col :cols="columnWidth(index)" class="mx-auto">
+        <b-col :sm="columnWidth(index)" class="mx-auto">
           <h4>{{ chart.title }}</h4>
           <StackedBarChart
             v-if="chart.stacked"
