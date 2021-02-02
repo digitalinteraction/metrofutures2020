@@ -13,6 +13,13 @@
             <span v-html="text"></span>
           </div>
         </b-col>
+
+        <!-- This is a bit hacky to get an image to display -->
+        <template v-if="renderOptions(index)">
+          <b-col>
+            <OptionBrowser :optionType="findingsData.rightCol.images"></OptionBrowser>
+          </b-col>
+        </template>
         <!-- <b-col :md-cols="columnWidth(index)" class="mx-auto"> -->
         <b-col :sm="columnWidth(index)" class="mx-auto">
           <h4>{{ chart.title }}</h4>
@@ -50,15 +57,12 @@
       </b-row>
     </template>
   </b-container>
-
-
-
-  
 </template>
 
 <script>
 import BarChart from '@/charts/BarChart.js'
 import StackedBarChart from '@/charts/StackedBarChart.js'
+import OptionBrowser from '@/components/OptionBrowser.vue'
 import {mapGetters} from 'vuex'
 
 export default {
@@ -67,6 +71,7 @@ export default {
         // LineChart
         StackedBarChart,
         BarChart,
+        OptionBrowser,
     },
     props: {
         findingName: String,
@@ -87,6 +92,12 @@ export default {
         // Return width based on index
         return ( index === 0) ? '6' :  '6';
       },
+      renderOptions(index) {
+        if (this.findingsData.rightCol.images && index === 1) {
+          return true
+        }
+        return false
+      }
     },
     
 
