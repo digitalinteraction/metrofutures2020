@@ -13,8 +13,8 @@
             <span v-html="text"></span>
           </div>
         </b-col>
-        <b-col :md-cols="columnWidth(index)" class="mx-auto">
-        <!-- <b-col> -->
+        <!-- <b-col :md-cols="columnWidth(index)" class="mx-auto"> -->
+        <b-col :cols="columnWidth(index)" class="mx-auto">
           <h4>{{ chart.title }}</h4>
           <StackedBarChart
             v-if="chart.stacked"
@@ -85,7 +85,7 @@ export default {
     methods: {
       columnWidth(index) {
         // Return width based on index
-        return ( index === 0) ? '6' :  '10';
+        return ( index === 0) ? '6' :  '6';
       },
     },
     
@@ -142,6 +142,7 @@ export default {
 
   .rightCol-chart {
     margin-top: 2em;
+    // height: 20rem;
   }
 
   .rightCol-chart {
