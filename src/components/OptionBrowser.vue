@@ -1,13 +1,20 @@
 <template>
   <b-container>
     <b-row>
+      <b-col>
+        <span>{{ caption }}</span>
+      </b-col>
+    </b-row>
+    <b-row>
       <b-col
+        md="4"
         v-for="(image, index) in urls"
         v-bind:key="`opt_${index}`"
       >
         <b-img :src="image" fluid></b-img>
       </b-col>
     </b-row>
+    
   </b-container>
 </template>
 
@@ -17,7 +24,7 @@ export default {
 
   props: {
     optionType: String,
-    
+    caption: String,
   },
 
   data() {
@@ -39,12 +46,18 @@ export default {
   methods: {
     getImageSet() {
       switch(this.optionType) {
-        case "door":
+        case "floor": 
           return 0
-        case "pole":
+        case "door":
           return 1
-        case "bike":
+        case "pole":
           return 2
+        case "bike":
+          return 3
+        case "priority":
+          return 4
+        case "sidewall":
+          return 5
         case "endwall":
           return 3
         default:

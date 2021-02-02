@@ -1,6 +1,63 @@
 <template>
   <b-container class="mt-4">
-    <template v-if="findingsData.rightCol.charts">
+
+    <b-row
+      v-for="(row, i) in findingsData.rows"
+      v-bind:key="i"
+    >
+      <template v-for="(col, index) in row">
+        <!-- <b-col v-bind:key="`col_${index}`"> -->
+        <!-- Text -->
+        <template v-if="col.type === 'text'">
+          <b-col v-bind:key="`col_${index}`">
+            <div 
+              v-for="(text, index) in col.content" 
+              v-bind:key="`text_${index}`"
+              class="leftCol-text">
+                <span v-html="text"></span>
+            </div>
+          </b-col>
+        </template>
+
+        <!-- Tables -->
+        <template v-if="col.type === 'table'">
+          <b-col v-bind:key="`col_${index}`">
+            <b-table striped hover :items="col.content.rows"></b-table>
+            <p>{{ col.content.caption }}</p>
+          </b-col>
+        </template>
+
+        <!-- Chart -->
+        <template v-if="col.type === 'chart'">
+          <!-- Hack to get charts sensible size -->
+          <b-col 
+            sm="6"
+            class="mx-auto"
+            v-bind:key="`col_${index}`"
+          >
+            <h4>{{ col.content.title }}</h4>
+            <StackedBarChart
+              v-if="col.content.stacked"
+              :chart-data="col.content"
+              class="rightCol-chart"
+            ></StackedBarChart>
+            <BarChart
+              v-else
+              :chart-data="col.content"
+              class="rightCol-chart"
+            ></BarChart>
+          </b-col>
+        </template>
+
+        <!-- Option Images -->
+        <template v-if="col.type === 'image'">
+          <b-col v-bind:key="`col_${index}`">
+            <OptionBrowser :optionType="col.content.type" :caption="col.content.caption"></OptionBrowser>
+          </b-col>
+        </template>
+      </template>
+    </b-row>
+    <!-- <template v-if="findingsData.rightCol.charts">
       <b-row
         v-for="(chart, index) in findingsData.rightCol.charts"
         v-bind:key="index"
@@ -12,16 +69,18 @@
             class="leftCol-text">
             <span v-html="text"></span>
           </div>
-        </b-col>
+        </b-col> -->
 
         <!-- This is a bit hacky to get an image to display -->
-        <template v-if="renderOptions(index)">
+        <!-- <template v-if="renderOptions(index)">
           <b-col>
             <OptionBrowser :optionType="findingsData.rightCol.images"></OptionBrowser>
           </b-col>
-        </template>
+        </template> -->
+        
         <!-- <b-col :md-cols="columnWidth(index)" class="mx-auto"> -->
-        <b-col :sm="columnWidth(index)" class="mx-auto">
+
+        <!-- <b-col :sm="columnWidth(index)" class="mx-auto">
           <h4>{{ chart.title }}</h4>
           <StackedBarChart
             v-if="chart.stacked"
@@ -55,7 +114,7 @@
           <p>{{ table.caption }}</p>
         </b-col>
       </b-row>
-    </template>
+    </template> -->
   </b-container>
 </template>
 
@@ -68,7 +127,6 @@ import {mapGetters} from 'vuex'
 export default {
     name: "FindingsTab",
     components: {
-        // LineChart
         StackedBarChart,
         BarChart,
         OptionBrowser,
