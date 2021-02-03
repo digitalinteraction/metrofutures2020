@@ -5,8 +5,9 @@
     <b-row class="tab-row">
       <b-col
         v-for="(finding, index) in getFindings"
-        v-bind:key="index">
-        <div class="tab-button" :class="activeTab(finding.name)"  @click="setDisplayTab(finding.name)">{{ finding.title }}</div>
+        v-bind:key="index"
+      >
+          <div class="tab-button" :class="activeTab(finding.name)"  @click="setDisplayTab(finding.name)">{{ finding.title }}</div>
       </b-col>
     </b-row>
 
@@ -67,6 +68,7 @@ export default {
   .col {
     padding-left: 0.1em;
     padding-right: 0.1em;
+    margin-bottom: 0.25em;
   }
 
   .tab-button {
