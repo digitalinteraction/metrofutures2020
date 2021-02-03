@@ -14,9 +14,16 @@ export default {
         xAxes: [{
           stacked: true
         }],
-        yAxes: [{
-          stacked: true
-        }]
+        yAxes: [
+          {
+            stacked: true,
+            scaleLabel: {
+              display: true,
+              labelString: this.options.label,
+              fontColor: "black",
+            }
+          },
+        ]
       }
     }
     this.renderChart(this.chartData, this.localOptions)

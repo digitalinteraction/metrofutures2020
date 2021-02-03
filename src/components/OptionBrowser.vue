@@ -17,9 +17,7 @@
       >
         <b-img :src="urlObj.url" fluid :class="getBorderStyle(urlObj.chosen)">
         </b-img>
-          <!-- <b-icon v-if="urlObj.chosen" icon="check" variant="success" class="h3"></b-icon> -->
-          <b-badge v-if="urlObj.chosen" icon="check" variant="success" class="h3">Most popular</b-badge>
-        
+        <b-badge v-if="urlObj.chosen" icon="check" variant="success" class="h3">Most popular</b-badge>
       </b-col>
     </b-row>
     

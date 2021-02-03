@@ -60,23 +60,24 @@ export default [
           content: {
             title: "Floor, seats, and glass partitions",
             stacked: true,
+            yLabel: "Responses - percent (%)",
             labels: 
               ["Twitter", "Facebook*", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)" , "Responses Total (%)"],
             datasets: [
               {
                 label: "A: light grey, dots, dots",
                 backgroundColor: barColours[0],
-                data: [26.30, 19.60, 40.33, 33.68, 34.04, 30.79, 31.76,]
+                data: [26.30, 19.60, 40.00, 33.68, 34.04, 30.79, 31.76,]
               },
               {
                 label: "B: green, plain, stripes,",
                 backgroundColor: barColours[1],
-                data: [32.10, 18.09, 10.00, 18.96, 12.77, 18.38, 21.08,]
+                data: [32.10, 18.09, 10.00, 18.96, 12.77, 18.30, 21.08,]
               },
               {
                 label: "C: dark grey, logo, logo",
                 backgroundColor: barColours[2],
-                data: [41.70, 62.31, 50.00, 47.36, 53.19, 50.91, 47.16,]
+                data: [41.60, 62.31, 50.00, 47.36, 53.19, 50.91, 47.16,]
               },
             ],
           },
@@ -97,6 +98,7 @@ export default [
           content: {
             title: "Doors, grab poles, and floor markings",
             stacked: true,
+            yLabel: "Responses - percent (%)",
             labels: 
               ["Twitter", "Webinars", "Website /configure", "Website /journeys" ,"Average % (mean)" ,"Responses Total (%)"],
             datasets: [
@@ -130,6 +132,7 @@ export default [
           content: {
             title: "Lower Sidewall Colour",
             stacked: true,
+            yLabel: "Responses - percent (%)",
             labels: 
               ["Twitter", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)", "Responses Total (%)"],
             datasets: [
@@ -141,12 +144,12 @@ export default [
               {
                 label: "B: light grey",
                 backgroundColor: barColours[1],
-                data: [46.90,	60.33,	35.37,	6.67,	37.32,	37.03,]
+                data: [46.80,	60.67,	35.37,	6.67,	37.32,	37.03,]
               },
               {
                 label: "C: dark grey",
                 backgroundColor: barColours[2],
-                data: [32.70,	6.00,	31.74,	8.89,	19.83,	31.45,]
+                data: [32.70,	6.00,	31.73,	8.89,	19.83,	31.45,]
               },
             ],
           }
@@ -176,23 +179,24 @@ export default [
           content: {
             title: "Centre Grab Pole Shape",
             stacked: true,
+            yLabel: "Responses - percent (%)",
             labels: 
               ["Twitter", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)", "Responses Total (%)"],
             datasets: [
               {
                 label: "A: single pole",
                 backgroundColor: barColours[0],
-                data: [13.20,	19.33,	17.17,	31.25,	20.24,	16.26,]
+                data: [13.20,	19.33,	17.17,	31.25,	20.12,	16.26,]
               },
               {
                 label: "B: double pole",
                 backgroundColor: barColours[1],
-                data: [79.20,	73.67,	72.41,	51.70,	69.25,	73.99,]
+                data: [79.10,	73.67,	72.41,	51.70,	69.25,	73.99,]
               },
               {
                 label: "C: ring",
                 backgroundColor: barColours[2],
-                data: [7.70,	7.33,	10.42,	17.05,	10.63,	9.76,]
+                data: [7.70,	7.00,	10.42,	17.05,	10.63,	9.75,]
               },
             ],
           },
@@ -212,7 +216,8 @@ export default [
           type: "chart", 
           content: {
             title: "How much safer CCTV and single corridor makes train",
-            stacked: true,
+            stacked: false,
+            yLabel: "Responses - number",
             labels: 
               ["1 - no safer", "2", "3", "4", "5 - much safer"],
             datasets: [
@@ -257,13 +262,14 @@ export default [
           content: {
             title: "Bike Racks",
             stacked: true,
+            yLabel: "Responses - percent (%)",
             labels: 
               ["Twitter", "Webinars", "Website /configure" ,"Website /journeys" ,"Average % (mean)", "Responses Total (%)"],
             datasets: [
               {
                 label: "A: white",
                 backgroundColor: barColours[0],
-                data: [30.80,	51.00,	36.21,	59.21,	44.31,	35.56,]
+                data: [30.80,	51.00,	36.21,	59.21,	44.31,	35.55,]
               },
               {
                 label: "B: light grey",
@@ -273,7 +279,7 @@ export default [
               {
                 label: "C: dark grey",
                 backgroundColor: barColours[2],
-                data: [57.30,	43.33,	49.33,	32.89,	45.72,	50.60,]
+                data: [57.30,	43.33,	49.34,	32.90,	45.71,	50.60,]
               },
             ],
           },
@@ -293,7 +299,8 @@ export default [
           type: "chart", 
           content: {
             title: "Safety for Young Children - Journeys",
-            stacked: true,
+            stacked: false,
+            yLabel: "Responses - number",
             labels: 
               ["1 - no safer", "2", "3", "4", "5 - much safer"],
             datasets: [
@@ -333,7 +340,8 @@ export default [
           type: "chart", 
           content: {
             title: "Passenger Information Screens",
-            stacked: true,
+            stacked: false,
+            yLabel: "Responses - number",
             labels: 
               ["1 - very unclear", "2", "3", "4", "5 - very clear"],
             datasets: [
@@ -377,18 +385,19 @@ export default [
           content: {
             title: "End Wall Style",
             stacked: true,
+            yLabel: "Responses - percent (%)",
             labels: 
               ["Twitter", "Webinars", "Average % (mean)" ,"Responses Total (%)" ],
             datasets: [
               {
                 label: "A: Blank",
                 backgroundColor: barColours[0],
-                data: [8.70,11.00,9.85,8.68,]
+                data: [8.69,11.00,9.85,8.68,]
               },
               {
                 label: "B: Commissioned artwork",
                 backgroundColor: barColours[1],
-                data: [13.80,11.67,12.73,13.79,]
+                data: [13.80,11.66,12.51,13.78,]
               },
               {
                 label: "C: North East landmarks",
@@ -398,7 +407,7 @@ export default [
               {
                 label: "D: North East people",
                 backgroundColor: barColours[3],
-                data: [37.70,4.67,21.18,36.82,]
+                data: [37.60,4.33,21.18,36.82,]
               },
               {
                 label: "E: Something else (not an option on Twitter poll)",

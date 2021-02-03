@@ -37,11 +37,13 @@
             <StackedBarChart
               v-if="col.content.stacked"
               :chart-data="col.content"
+              :options="{label: col.content.yLabel}"
               class="rightCol-chart"
             ></StackedBarChart>
             <BarChart
               v-else
               :chart-data="col.content"
+              :options="{label: col.content.yLabel}"
               class="rightCol-chart"
             ></BarChart>
           </b-col>
