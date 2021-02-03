@@ -86,8 +86,8 @@ export default [
         {
           type: "image", 
           content: {
-            type: "door",
-            caption: "Door, floor and seat material combinations"
+            type: "winning",
+            caption: "Most popular choices"
           }
         },
       ],
@@ -203,7 +203,7 @@ export default [
           type: "image", 
           content: {
             type: "pole",
-            caption: "Centre grab poles"
+            caption: "Centre grab pole options"
         }
         },
       ],
@@ -284,7 +284,7 @@ export default [
           type: "image", 
           content: {
             type: "bike",
-            caption: "Bike racks"
+            caption: "Bike rack options"
           }
         },
       ],
@@ -414,7 +414,7 @@ export default [
           type: "image", 
           content: {
             type: "endwall",
-            caption: "Endwall designs"
+            caption: "Endwall design options"
           }
         },
       ],

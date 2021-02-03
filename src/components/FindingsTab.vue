@@ -6,7 +6,6 @@
       v-bind:key="i"
     >
       <template v-for="(col, index) in row">
-        <!-- <b-col v-bind:key="`col_${index}`"> -->
         <!-- Text -->
         <template v-if="col.type === 'text'">
           <b-col v-bind:key="`col_${index}`">
@@ -29,10 +28,9 @@
 
         <!-- Chart -->
         <template v-if="col.type === 'chart'">
-          <!-- Hack to get charts sensible size -->
           <b-col 
             sm="6"
-            class="mx-auto"
+            class="mx-auto my-2"
             v-bind:key="`col_${index}`"
           >
             <h4>{{ col.content.title }}</h4>
@@ -57,64 +55,6 @@
         </template>
       </template>
     </b-row>
-    <!-- <template v-if="findingsData.rightCol.charts">
-      <b-row
-        v-for="(chart, index) in findingsData.rightCol.charts"
-        v-bind:key="index"
-        >
-        <b-col :sm-cols="columnWidth(index)" v-if="index == 0">
-          <div 
-            v-for="(text, index) in findingsData.leftCol" 
-            v-bind:key="index"
-            class="leftCol-text">
-            <span v-html="text"></span>
-          </div>
-        </b-col> -->
-
-        <!-- This is a bit hacky to get an image to display -->
-        <!-- <template v-if="renderOptions(index)">
-          <b-col>
-            <OptionBrowser :optionType="findingsData.rightCol.images"></OptionBrowser>
-          </b-col>
-        </template> -->
-        
-        <!-- <b-col :md-cols="columnWidth(index)" class="mx-auto"> -->
-
-        <!-- <b-col :sm="columnWidth(index)" class="mx-auto">
-          <h4>{{ chart.title }}</h4>
-          <StackedBarChart
-            v-if="chart.stacked"
-            :chart-data="chart"
-            class="rightCol-chart"
-          ></StackedBarChart>
-          <BarChart
-            v-else
-            :chart-data="chart"
-            class="rightCol-chart"
-          ></BarChart>
-        </b-col>
-      </b-row>
-    </template>
-
-    <template v-if="findingsData.rightCol.tables">
-      <b-row
-        v-for="(table, index) in findingsData.rightCol.tables"
-        v-bind:key="`tab_${index}`"
-        >
-        <b-col v-if="index == 0">
-          <div 
-            v-for="(text, index) in findingsData.leftCol" 
-            v-bind:key="index"
-            class="leftCol-text">
-            <span v-html="text"></span>
-          </div>
-        </b-col>
-        <b-col>
-          <b-table striped hover :items="table.rows"></b-table>
-          <p>{{ table.caption }}</p>
-        </b-col>
-      </b-row>
-    </template> -->
   </b-container>
 </template>
 
@@ -164,11 +104,7 @@ export default {
 
 <style lang="scss">
   @import '@/assets/_variables.scss';
-
-  .leftCol {
-    padding-top: 1em;
-  }
-
+  
   .leftCol-text {
       text-align: left;
       margin-bottom: 1em;
@@ -179,44 +115,5 @@ export default {
   .leftCol-text a {
     font-weight: bold;
   }
-
-    // Background rules for links (too bright otherwise)
-  // .leftCol-text a {
-  //   display: inline-block;
-  //   background-color: grey;
-  //   padding-left: 0.25em;
-  //   padding-right: 0.25em;
-  // }
-
-  // .leftCol-text a:hover {
-  //   background-color: lightgrey;
-  // }
-
-  .leftCol-text:last-child {
-      margin-bottom: 1.5em;
-  }
-
-  .leftCol-text ul {
-    font-size: 1rem;
-  }
-
-  .rightCol-tables {
-    margin-top: 2em;
-    padding-right: 0.5em;
-  }
-
-  .rightCol {
-    margin-top: 1em;
-  }
-
-  .rightCol-chart {
-    margin-top: 2em;
-    // height: 20rem;
-  }
-
-  .rightCol-chart {
-    margin-bottom: 2em;
-  }
-
 
 </style>
