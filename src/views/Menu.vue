@@ -126,11 +126,11 @@
 
       <!--/Mobile-->
 
-      <br />
+      <!-- <br /> -->
       <!-- <br /> -->
       <b-row>
-        <b-col class="consultation-banner">
-          The 2020 public consultation is now closed, click here to see the <router-link to="/findings">findings</router-link>.
+        <b-col class="consultation-banner mb-1">
+          The 2020 public consultation is now closed, click here to see the <router-link to="/findings">findings</router-link>. Images are of 2020 proposed design that are currently being revised.
         </b-col>
       </b-row>
 
@@ -302,7 +302,7 @@ export default {
 }
 
 .consultation-banner {
-  padding-top: 0.5em;
+  padding-top: 0.75em;
   padding-bottom: 0.5em;
   background-color: lightgreen;
   z-index: 0;

@@ -16,9 +16,9 @@
       
     </b-row>
       
-    <b-row class="results-header" v-show="resultMessage">
+    <b-row class="results-header px-2 px-md-0" v-show="resultMessage">
       <b-col>
-        The 2020 public consultation is now closed, click here to see the <router-link to="/findings">findings</router-link>.
+        The 2020 public consultation is now closed, click here to see the <router-link to="/findings">findings</router-link>. Images are of 2020 proposed design that are currently being revised.
       </b-col>
     </b-row>
   </div>
