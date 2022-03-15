@@ -131,8 +131,7 @@
                             email: this.email
                         }
                     })
-                        .then(response => {
-                            console.log(response.data)
+                        .then(() => {
                             this.confirmed = true;
                         })
                         .catch(error => error.response ? console.log(error.response.data) : console.log(error))

@@ -150,7 +150,6 @@
         watch: {
             lighting: function() {
                 if (this.lighting === "1") {
-                    // console.log("Setting to daylight")
                     this.image = this.optionImages.day[this.selected]
 
                 } else if (this.lighting === "2") {
@@ -165,10 +164,8 @@
 
                     if (this.index === 6) {
                         // do alternate API call for final question
-                        console.log(`Q${this.index} (final question): Detected answers changed, fetching new URLs`)
                         this.generateOptionURLsFinalQ();
                     } else {
-                        console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
                         this.generateOptionURLs()
                     }
                 },
@@ -270,11 +267,7 @@
                     payload.qindex = this.index+1
                     // Get day and night option image Urls and store in respective arrays
                     this.allUrlsAPICall(payload)
-                } else {
-                    console.log("Ignoring call for q7")
-                }
-                
-                   
+                } 
             },
             async generateOptionURLsFinalQ() {
                 // Fetch all day and night URLs for our current index
@@ -355,8 +348,6 @@
                             } else {
                                 this.setFirstImage(response.data.day[0])
                             }
-                        } else {
-                            console.log("no options returned:", response.data)
                         }
                     })
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
@@ -380,8 +371,6 @@
                             } else {
                                 this.setFirstImage(response.data.day[0])
                             }
-                        } else {
-                            console.log("no options returned:", response.data)
                         }
                     })
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
@@ -395,12 +384,10 @@
             },
             getOptionImage(imagePath) {
                 const path = process.env.VUE_APP_SQUARES_URL + imagePath;
-                console.log(path);
                 return path;
             },
             checkLighting(light) {
                 // Attempted to get the radio buttons to 
-                console.log(light, this.lighting)
                 if(light === this.lighting) {
                     return true
                 } else {

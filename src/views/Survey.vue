@@ -183,8 +183,6 @@
                 if (qindex > 0) {
                     this.toggleScreen(qindex)
                     this.toggleScreen(qindex - 1)
-                } else {
-                    console.log("Can't decrement as:", qindex)
                 }
             },
             moveMobileMenul(breadcrumbIndex) {
@@ -247,7 +245,6 @@
                 }
             },
             clickBreadcrumb(breadcrumbIndex) {
-                console.log(breadcrumbIndex)
                 // navigate to previously completed questions but not current index or uncompleted questions
                 if (breadcrumbIndex !== this.index && this.configAnswers[breadcrumbIndex] !== undefined) {
                     this.setIndex(breadcrumbIndex);
@@ -255,7 +252,6 @@
                 }
             },
             clickSummaryBreadcrumb() {
-                console.log('survey clicked');
                 // Navigate to summary if the user has answered all questions
                 if (this.surveyComplete()) {
                     this.setIndex(this.questions.length);
@@ -265,12 +261,10 @@
                 for (const answer in this.getConfigAnswers) {
                     if (Object.prototype.hasOwnProperty.call(this.getConfigAnswers, answer)) {
                         if (this.getConfigAnswers[answer] === undefined) {
-                            console.log('survey incomplete');
                             return false;
                         }
                     }
                 }
-                console.log('survey complete');
                 return true;
             },
             goTo(route) {
@@ -278,7 +272,6 @@
             },
             moveMobileMenuL() {
                 this.prevScreen(this.index);
-                console.log('move to' + this.index - 1);
             },
             async analyticsPost() {
                 // google analytics post

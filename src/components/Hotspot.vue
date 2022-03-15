@@ -123,7 +123,6 @@ export default {
     },
     submit() {
       let correctId = this.$parent.getSceneIDByDropdown(this.$parent.selectedId);
-      console.log(`Looking at scene ${correctId}, hotspot ${this.data.title}. Submitting content: ${this.hotspotText}`)
       let payload = {
         "hotspotName": this.data.title,
         "sceneId": correctId,
@@ -159,7 +158,6 @@ export default {
       this.videoPlaying = !this.videoPlaying
     },
     videoFull() {
-      console.log("Going fullscreen now")
       if (this.videoEl.requestFullscreen) {
         this.videoEl.requestFullscreen();
       } else if (this.videoEl.mozRequestFullScreen) {
@@ -172,18 +170,16 @@ export default {
       this.vidFullscreen = true;
     },
     videoShrink() {
-      console.log("Shrinking")
       this.vidFullscreen = false;
     },
     videoStop() {
-      console.log("Detected video stopped")
       this.videoEl.pause()
       this.videoPlaying = false;
     },
     checkFullscreen() {
       if (this.data.visual) {
         // Needs to be run on the document not element
-        console.log("Returning:", this.videoEl.fullscreenEnabled)
+        // console.log("Returning:", this.videoEl.fullscreenEnabled)
         return this.videoEl.fullscreenEnabled
       } else {
         return false

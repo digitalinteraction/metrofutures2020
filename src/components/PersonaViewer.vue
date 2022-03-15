@@ -479,7 +479,6 @@ export default {
   beforeRouteUpdate (to, from, next) {
     // react to route changes...
     // If personaName is not in our list, don't update
-    console.log(`Came from ${from}, wishing to go to ${to}`)
     // don't forget to call next()
     next();
     next(false);  // Will cancel the route (use if not valid route)
