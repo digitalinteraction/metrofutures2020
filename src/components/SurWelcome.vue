@@ -81,7 +81,6 @@
                     o7: 1,
                 }
                 this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-                    withCredentials: true,
                     params: payload
                 })
                     .then(response => {
