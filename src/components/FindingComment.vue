@@ -16,7 +16,7 @@ export default {
   name: "FindingComment",
 
   props: {
-    comments: Object,
+    comments: Array,
   },
 
   data() {

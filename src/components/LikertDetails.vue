@@ -3,7 +3,7 @@
     <div>People rated:</div>
 
     <div class="likert-details">
-        <BarChart :chart-data="findingsData.chart"></BarChart>
+        <BarChart :chartData="findingsData.chart" :options="chartOptions"></BarChart>
     </div>
 
     <div class="likert_label">
@@ -38,6 +38,7 @@ export default {
     data() {
         return {
             findingsData: {},
+            chartOptions: {},
         }
     },
     mounted() {
