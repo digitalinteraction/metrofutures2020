@@ -3,6 +3,12 @@ const cookies = {
   'SameSite' : 'Strict',
 };
 
+const differentCookies = {
+  __stripe_mid: '7777-1111-ae86',
+  _ga_DD3BZ2WQN3: '1742111019.11.1',
+  _ga: '11111111'
+};
+
 const validImgInput = {
   'cam': '4',
   'o1': '1',
@@ -103,6 +109,7 @@ const invalidPersonaInput = {
 
 export { 
   cookies,
+  differentCookies,
   validImgInput,
   invalidImgInput,
   validEndwallInput,

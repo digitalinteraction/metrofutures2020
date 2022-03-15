@@ -81,9 +81,7 @@
                     o7: 1,
                 }
                 this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/image`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
+                    withCredentials: true,
                     params: payload
                 })
                     .then(response => {

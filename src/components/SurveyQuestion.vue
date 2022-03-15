@@ -338,9 +338,9 @@
 
                 // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
                 this.axios.get(`/api/images/optionUrls`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
+                    // headers: {
+                    //     Cookie: this.$cookies.get('mfsid')
+                    // },
                     params: payload
                 })
                     .then(response => {
@@ -366,9 +366,6 @@
 
                 // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
                 this.axios.get(`/api/images/endwall`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
                     params: payload
                 })
                     .then(response => {
