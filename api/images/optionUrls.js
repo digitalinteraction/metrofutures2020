@@ -4,7 +4,7 @@ const imageFolder = "conf";
 // Get all the image URLs for a given question index and set of options(day + night)
 
 module.exports = async(req, res) => {
-  if(!req.cookies.mfsid){
+  if(!req.cookies || !req.cookies.mfsid){
     console.log('Unauthorized');
     sendResponse(req, res, 403, "Unauthorized");
   } else {
