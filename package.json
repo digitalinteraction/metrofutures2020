@@ -1,31 +1,27 @@
 {
   "name": "metrofutures",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "test": "jest"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.30",
-    "@fortawesome/free-regular-svg-icons": "^5.14.0",
-    "@fortawesome/free-solid-svg-icons": "^5.14.0",
-    "@fortawesome/vue-fontawesome": "^2.0.0",
     "@sendgrid/mail": "^7.2.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bootstrap": "^4.5.2",
     "bootstrap-vue": "^2.16.0",
     "chart.js": "^2.9.4",
     "core-js": "^3.6.5",
     "dotenv": "^8.2.0",
+    "handlebars": "^4.7.6",
     "jspdf": "^2.1.1",
     "marzipano": "^0.9.1",
     "pg": "^8.3.0",
     "pg-hstore": "^2.3.3",
-    "ph": "^0.1.10",
     "sequelize": "^6.3.4",
-    "sharing": "^1.0.7",
     "uuid": "^8.3.0",
     "validator": "^13.1.1",
     "vue": "^2.6.11",
@@ -49,8 +45,10 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "jest": "^27.5.1",
     "node-sass": "^4.12.0",
     "sass-loader": "^8.0.2",
+    "vercel-serverless-tests": "^1.0.1",
     "vue-template-compiler": "^2.6.11"
   },
   "engines": {

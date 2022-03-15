@@ -97,7 +97,7 @@
             <b-col class="col-lg-3 col-12 sidebar">
                 <p class="summaryText">These are the final images for your configuration of the Metro.</p>
 
-                <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
+                <!-- <b-dropdown id="dropdown-1" text="SHARE" class="m-md-2" variant="primary">
                     <b-dropdown-item>   
                             <ShareNetwork
                                 network="facebook"
@@ -114,14 +114,14 @@
                             <ShareNetwork
                                 network="twitter"
                                 url="https://metrofutures.org.uk"
-                                title="Explore features of the future Metro at:"
+                                title="I explored the new Tyne and Wear Metro at:"
                                 twitter-user="My_Metro"
                                 hashtags="ShapeYourMetro"
                             > Twitter
                                 <b-img src="../assets/twitter.png" height="30px;"></b-img>
                             </ShareNetwork>
                     </b-dropdown-item>
-                </b-dropdown>
+                </b-dropdown> -->
 
                 <b-button @click="toggleFeatures()" class="featuresButton">View Standard Features</b-button>
 
@@ -321,7 +321,7 @@ export default {
      const o5 = answers[4] !== undefined ? answers[4]+1 : 1
      const o6 = answers[5] !== undefined ? answers[5]+1 : 1
      const o7 = this.lighting ? parseInt(this.lighting) : 1
-     const design = answers[6] !== undefined ? answers[5]+1 : 1
+     const design = answers[6] !== undefined ? answers[6]+1 : 1
 
     // for each camera angle, add on question answers and get image from API
     const cameraAngles = [1, 2, 3, 4, 5, 6, 13];

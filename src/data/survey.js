@@ -4,15 +4,18 @@ export default [
     question: "Select seating style:",
     options: [
       {
-        desc: "Light grey, dots, dots (10% people preferred)",
+        desc: "Light grey, dots, dots",
+        result: "(33.68% people preferred)",
         img: "Square_Configurator_swatches-01.svg"
       },
       {
-        desc: "Green, plain, stripes (20% people preferred)",
+        desc: "Green, plain, stripes",
+        result: "(18.96% people preferred)",
         img: "Square_Configurator_swatches-02.svg"
       },
       {
-        desc: "Dark grey, logo, logo (70% people preferred)",
+        desc: "Dark grey, logo, logo",
+        result: "(47.36% people preferred)",
         img: "Square_Configurator_swatches-03.svg"
       }
     ]
@@ -22,19 +25,23 @@ export default [
     question: "Select combination of pole and door colours, and floor markings:",
     options: [
       {
-        desc: "Yellow door, metal pole, yellow floor marking (10% people preferred)",
+        desc: "Yellow door, metal pole, yellow floor marking",
+        result: "(23.20% people preferred)",
         img: "Square_Configurator_swatches-12.svg"
       },
       {
-        desc: "Grey door, yellow pole, white floor marking (10% people preferred)",
+        desc: "Grey door, yellow pole, white floor marking",
+        result: "(36.02% people preferred)",
         img: "Square_Configurator_swatches-13.svg"
       },
       {
-        desc: "Yellow door, grey pole, yellow floor marking (10% people preferred)",
+        desc: "Yellow door, grey pole, yellow floor marking",
+        result: "(16.86% people preferred)",
         img: "Square_Configurator_swatches-14.svg"
       },
       {
-        desc: "Grey door, metal pole, white floor marking (10% people preferred)",
+        desc: "Grey door, metal pole, white floor marking",
+        result: "(23.92% people preferred)",
         img: "Square_Configurator_swatches-15.svg"
       }
     ]
@@ -44,15 +51,18 @@ export default [
     question: "Select pole design:",
     options: [
       {
-        desc: "Single pole (10% people preferred)",
+        desc: "Single pole",
+        result: "(17.17% people preferred)",
         img: "Square_Configurator_swatches-06.svg"
       },
       {
-        desc: "Double pole (10% people preferred)",
+        desc: "Double pole",
+        result: "(72.41% people preferred)",
         img: "Square_Configurator_swatches-07.svg"
       },
       {
-        desc: "Ring (10% people preferred)",
+        desc: "Ring",
+        result: "(10.42% people preferred)",
         img: "Square_Configurator_swatches-08.svg"
       }
     ]
@@ -62,15 +72,18 @@ export default [
     question: "Select bike stand:",
     options: [
       {
-        desc: "Strap (10% people preferred)",
+        desc: "Strap",
+        result: "(36.21% people preferred)",
         img: "Square_Configurator_swatches-09.svg"
       },
       {
-        desc: "Hook (10% people preferred)",
+        desc: "Hook",
+        result: "(14.45% people preferred)",
         img: "Square_Configurator_swatches-10.svg"
       },
       {
-        desc: "Clamp (10% people preferred)",
+        desc: "Clamp",
+        result: "(49.33% people preferred)",
         img: "Square_Configurator_swatches-11.svg"
       }
     ]
@@ -80,11 +93,13 @@ export default [
     question: "Select whether priority seats should be indicated with separate colours:",
     options: [
       {
-        desc: "Yes (10% people preferred)",
+        desc: "Yes",
+        result: "(84.02% people preferred)",
         img: "Square_Configurator_swatches-05.svg"
       },
       {
-        desc: "No (10% people preferred)",
+        desc: "No",
+        result: "(15.98% people preferred)",
         img: "Square_Configurator_swatches-04.svg"
       }
     ]
@@ -94,15 +109,18 @@ export default [
     question: "Select side wall colour:",
     options: [
       {
-        desc: "White (10% people preferred)",
+        desc: "White",
+        result: "(32.90% people preferred)",
         img: "Square_Configurator_swatches-16.svg"
       },
       {
-        desc: "Light grey (10% people preferred)",
+        desc: "Light grey",
+        result: "(35.37% people preferred)",
         img: "Square_Configurator_swatches-17.svg"
       },
       {
-        desc: "Dark grey (10% people preferred)",
+        desc: "Dark grey",
+        result: "(31.74% people preferred)",
         img: "Square_Configurator_swatches-18.svg"
       }
     ]
@@ -112,23 +130,28 @@ export default [
         question: "Select end wall style (examples shown):",
         options: [
           {
-            desc: "Blank (10% people preferred)",
+            desc: "Blank",
+            result: "(9.85% people preferred)",
             img: "Square_Configurator_swatches-19.svg"
           },
           {
-            desc: "Comissioned Artwork (10% people preferred)",
+            desc: "Comissioned Artwork",
+            result: "(12.73% people preferred)",
             img: "Square_Configurator_swatches-20.svg"
           },
           {
-            desc: "North East Landmarks (10% people preferred)",
+            desc: "North East Landmarks",
+            result: "(52.28% people preferred)",
             img: "Square_Configurator_swatches-21.svg"
           },
           {
-            desc: "North East People (10% people preferred)",
+            desc: "North East People",
+            result: "(21.18% people preferred)",
             img: "Square_Configurator_swatches-22.svg"
           },
           {
-            desc: "Something else (10% people preferred)",
+            desc: "Something else",
+            result: "(4.17% people preferred)",
             img: "Square_Configurator_swatches-23.svg"
           }
         ]

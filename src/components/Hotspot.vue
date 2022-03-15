@@ -22,31 +22,19 @@
           <span v-if="data.likert">
             <LikertDetails 
               :likert="data.likert" 
-              :likertAvg="data.likertAvg" 
-              :likertData="data.likertData">
+              :findingName="data.likertName">
             </LikertDetails>
-
-            <!-- <div>People said:</div>
-            <b-form-rating 
-              class="likert_item"
-              :value="data.likertAvg"
-              icon-empty="circle"
-              icon-full="circle-fill"
-              variant="warning"
-              readonly
-            ></b-form-rating>
-            <div class="likert_text" v-if="data.likert === 'clear'">1 = very un{{data.likert}}, 5 = very {{data.likert}}</div>
-            <div class="likert_text" v-if="data.likert === 'safe'">1 = no {{data.likert}}r, 5 = much {{data.likert}}r</div>
-            
-            <button @click="toggleLikert()">More details</button>
-            <div class="likert-details" v-if="likertDetails">
-              <b-table small striped hover :items="data.likertData"></b-table>
-            </div> -->
           </span>
 
-          <span v-if="data.link">
+          <!-- Displays a set of comments if there is no likert to display, and we have comments -->
+          <FindingComment 
+            v-if="!data.likert && data.comments"
+            :comments="data.comments"
+          ></FindingComment>
+
+          <!-- <span v-if="data.link">
             Visit the <router-link :to="data.link" class="choices-link">Your Choices</router-link> section of the website to choose your preferred option.
-          </span>
+          </span> -->
 
           <div v-if="data.visual">
 
@@ -101,6 +89,7 @@
 
 <script>
 import LikertDetails from '@/components/LikertDetails.vue'
+import FindingComment from '@/components/FindingComment.vue'
 
 export default {
   name: "Hotspot",
@@ -109,6 +98,7 @@ export default {
   },
   components: {
     LikertDetails,
+    FindingComment,
   },
   data() {
     return {
@@ -120,6 +110,7 @@ export default {
       videoEl: false,
       vidFullscreen: false,
       likertDetails: false,
+      // commentId: 0,
     }
   },
   methods: {
@@ -132,7 +123,6 @@ export default {
     },
     submit() {
       let correctId = this.$parent.getSceneIDByDropdown(this.$parent.selectedId);
-      console.log(`Looking at scene ${correctId}, hotspot ${this.data.title}. Submitting content: ${this.hotspotText}`)
       let payload = {
         "hotspotName": this.data.title,
         "sceneId": correctId,
@@ -168,7 +158,6 @@ export default {
       this.videoPlaying = !this.videoPlaying
     },
     videoFull() {
-      console.log("Going fullscreen now")
       if (this.videoEl.requestFullscreen) {
         this.videoEl.requestFullscreen();
       } else if (this.videoEl.mozRequestFullScreen) {
@@ -181,18 +170,16 @@ export default {
       this.vidFullscreen = true;
     },
     videoShrink() {
-      console.log("Shrinking")
       this.vidFullscreen = false;
     },
     videoStop() {
-      console.log("Detected video stopped")
       this.videoEl.pause()
       this.videoPlaying = false;
     },
     checkFullscreen() {
       if (this.data.visual) {
         // Needs to be run on the document not element
-        console.log("Returning:", this.videoEl.fullscreenEnabled)
+        // console.log("Returning:", this.videoEl.fullscreenEnabled)
         return this.videoEl.fullscreenEnabled
       } else {
         return false
@@ -200,7 +187,7 @@ export default {
     },
     toggleLikert() {
       this.likertDetails = !this.likertDetails;
-    }
+    },
   },
   mounted() {
     if (this.data.visual) {
@@ -215,9 +202,6 @@ export default {
 
 <style lang="scss">
   @import '@/assets/_variables.scss';
-
-  // .hotspot_container {
-  // }
 
   .hidden {
     background: none;
@@ -292,18 +276,11 @@ export default {
     text-align: center;
   }
 
-  /* .likert_item {
-    background: gray;
-  } */
-
   .choices-link {
     display: inline-block;
     border-bottom: 1px solid #FEC600;
     color: $font-color;
   }
-
-  // .hotspot_button {
-  // }
 
   .thanks-check {
     color: $metro-green;
@@ -317,6 +294,12 @@ export default {
 
   .embed-video {
     width: 198px;
+  }
+
+  .comment_block {
+    border-top: 1px solid black;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
   }
 
   // .embed-large {

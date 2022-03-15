@@ -62,7 +62,9 @@
                                 </b-iconstack>
                             </b-col>
                             <b-col class="optionText col-8">
-                                <p>{{ option.desc }}</p>
+                                <div>{{ option.desc }}</div>
+                                <div>{{ option.result }}</div>
+                                <!-- <p>{{ option.desc }}</p> -->
                             </b-col>
                         </b-row>
                     </b-col>
@@ -130,7 +132,8 @@
         },
         data() {
             return {
-                selected: 0,  // Default select first option (0 indexed)
+                // selected: 0,  // Default select first option (0 indexed)
+                selected: this.getConfigAnswers ? this.getConfigAnswers[this.index] : 0,
                 surveyText: "",
                 displayError: false,
                 image: 'https://cdn.metrofutures.org.uk/conf/Camera1_1_1_0_0_0_1_1.jpg', // default placeholder image from CDN
@@ -147,7 +150,6 @@
         watch: {
             lighting: function() {
                 if (this.lighting === "1") {
-                    // console.log("Setting to daylight")
                     this.image = this.optionImages.day[this.selected]
 
                 } else if (this.lighting === "2") {
@@ -162,10 +164,8 @@
 
                     if (this.index === 6) {
                         // do alternate API call for final question
-                        console.log(`Q${this.index} (final question): Detected answers changed, fetching new URLs`)
                         this.generateOptionURLsFinalQ();
                     } else {
-                        console.log(`Q${this.index}: Detected answers changed, fetching new URLs`)
                         this.generateOptionURLs()
                     }
                 },
@@ -267,11 +267,7 @@
                     payload.qindex = this.index+1
                     // Get day and night option image Urls and store in respective arrays
                     this.allUrlsAPICall(payload)
-                } else {
-                    console.log("Ignoring call for q7")
-                }
-                
-                   
+                } 
             },
             async generateOptionURLsFinalQ() {
                 // Fetch all day and night URLs for our current index
@@ -335,9 +331,9 @@
 
                 // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
                 this.axios.get(`/api/images/optionUrls`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
+                    // headers: {
+                    //     Cookie: this.$cookies.get('mfsid')
+                    // },
                     params: payload
                 })
                     .then(response => {
@@ -352,8 +348,6 @@
                             } else {
                                 this.setFirstImage(response.data.day[0])
                             }
-                        } else {
-                            console.log("no options returned:", response.data)
                         }
                     })
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
@@ -363,9 +357,6 @@
 
                 // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
                 this.axios.get(`/api/images/endwall`, {
-                    headers: {
-                        Cookie: this.$cookies.get('mfsid')
-                    },
                     params: payload
                 })
                     .then(response => {
@@ -380,8 +371,6 @@
                             } else {
                                 this.setFirstImage(response.data.day[0])
                             }
-                        } else {
-                            console.log("no options returned:", response.data)
                         }
                     })
                     .catch(error => error.response ? console.log('fetch image error',error.response.data, "payload", payload) : console.log('fetch image error',error,"payload", payload))
@@ -395,12 +384,10 @@
             },
             getOptionImage(imagePath) {
                 const path = process.env.VUE_APP_SQUARES_URL + imagePath;
-                console.log(path);
                 return path;
             },
             checkLighting(light) {
                 // Attempted to get the radio buttons to 
-                console.log(light, this.lighting)
                 if(light === this.lighting) {
                     return true
                 } else {
@@ -410,7 +397,10 @@
 
         },
         mounted() {
-            if (this.index === 5) {
+            if (this.getConfigAnswers[this.index]) {
+                this.selected = this.getConfigAnswers[this.index]
+            }
+            if (this.index === 6) {
                 // do alternate API call for final question
                 this.generateOptionURLsFinalQ();
             } else {

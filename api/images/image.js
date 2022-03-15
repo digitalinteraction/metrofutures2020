@@ -2,8 +2,7 @@ require('dotenv').config()
 const imageFolder = "conf";
 
 module.exports = async(req, res) => {
-  if(!req.cookies.mfsid){
-    console.log('Unauthorized');
+  if(!req.cookies || !req.cookies.mfsid){
     sendResponse(req, res, 403, "Unauthorized");
   } else {
     try {

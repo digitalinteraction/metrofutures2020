@@ -71,6 +71,7 @@
                     <!-- <span class="option-letter" v-if="stageInfo.questions[currentQuestionId].options != 'priority'">{{ optionLetter(x) }} - </span> -->
                     <span class="option-letter">{{ optionLetter(x) }} - </span>
                     {{ opt.desc }}
+                    <div class="option_finding">{{ opt.result }}</div>
                 </b-col>
             </b-row>
             </div>
@@ -79,8 +80,7 @@
             <div class="likert" v-if="stageInfo.questions[currentQuestionId].likert">
               <LikertDetails 
                 :likert="stageInfo.questions[currentQuestionId].likert" 
-                :likertAvg="stageInfo.questions[currentQuestionId].likertAvg" 
-                :likertData="stageInfo.questions[currentQuestionId].likertData">
+                :findingName="stageInfo.questions[currentQuestionId].findingName">
               </LikertDetails>
             </div>
             
@@ -94,6 +94,13 @@
             <!-- Optional demographic information if we haven't done it elsewhere -->
 
             <div>
+              <div>
+                <div class="comment_title">
+                  Sample comments about {{ personaName }}'s journey:
+                </div>
+                <FindingComment :comments="getJourneyCommentsByName(personaName.toLowerCase())"></FindingComment>
+              </div>
+
               <div class="finalButtons">
                 <b-button to="/journeys" variant="primary" block>Experience more journeys</b-button>
               </div>
@@ -102,7 +109,8 @@
                 <b-button to="/" variant="primary" block>Return to Home</b-button>
               </div>
 
-              <div class="finalButtons">
+              <!-- Sharing functions not required in results version of the site -->
+              <!-- <div class="finalButtons">
                 <b-button class="fbShare" block>
                   <ShareNetwork
                     network="facebook"
@@ -114,9 +122,9 @@
                     Share on Facebook
                   </ShareNetwork>
                 </b-button>
-              </div>
+              </div> -->
               
-              <div class="finalButtons">
+              <!-- <div class="finalButtons">
                 <b-button class="twitterShare" block>
                   <ShareNetwork
                   network="twitter"
@@ -127,14 +135,19 @@
                   >Share on Twitter
                   </ShareNetwork>
                 </b-button>
-              </div>
+              </div> -->
             </div>
           </span>
         </b-col>
       </b-row>
       <b-row v-show="!personaFinished && !mainVid.finished">
         <b-col>
-          <div class="retinopathy" v-if="personaName==='Desmond'"><strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a></div>
+          <div class="retinopathy" v-if="personaName==='Desmond'">
+            <strong>Note:</strong> Images modified to simulate diabetic retinopathy. For more information see: <a href="https://www.nhs.uk/conditions/diabetic-retinopathy/">NHS Diabetic Retinopathy</a>
+          </div>
+          <b-button @click="videoStop()" variant="primary" class="transcriptButton">
+            Show Results
+          </b-button>
           <b-button @click="toggleTranscript()" variant="primary" class="transcriptButton">
             Transcript 
             <b-icon font-scale="1" icon="chevron-down" v-show="!transcript"></b-icon>
@@ -145,9 +158,7 @@
               {{ stageInfo.transcript[currentStageId].text }}
             </p>
           </div>
-          
         </b-col>
-        
       </b-row>
     </b-container>
     
@@ -159,6 +170,7 @@ import {mapGetters, mapState} from 'vuex'
 import MainHeader from '@/components/MainHeader.vue';
 import welcomeConsent from "../components/WelcomeConsent";
 import LikertDetails from "../components/LikertDetails"
+import FindingComment from "../components/FindingComment"
 
 export default {
   name: "PersonaViewer",
@@ -166,6 +178,7 @@ export default {
     MainHeader,
     welcomeConsent,
     LikertDetails,
+    FindingComment,
   },
   data() {
     return {
@@ -206,20 +219,10 @@ export default {
       commentText: "",
       optionSelection: false,
       optLetters: ["A", "B", "C", "D", "E", "F"],
-
-      // Placeholder likert data
-      likertAvg: 3,
-      likertData: [
-          {"rating": 5, "percentage": "10%"},
-          {"rating": 4, "percentage": "70%"},
-          {"rating": 3, "percentage": "20%"},
-          {"rating": 2, "percentage": "0%"},
-          {"rating": 1, "percentage": "0%"},
-      ],
     }
   },
   computed: {
-    ...mapGetters(['getUuid', 'privacyNotice']),
+    ...mapGetters(['getUuid', 'privacyNotice', 'getJourneyCommentsByName']),
     ...mapState(['questions']),
     commentValid() {
       if(this.commentText === "") {
@@ -476,7 +479,6 @@ export default {
   beforeRouteUpdate (to, from, next) {
     // react to route changes...
     // If personaName is not in our list, don't update
-    console.log(`Came from ${from}, wishing to go to ${to}`)
     // don't forget to call next()
     next();
     next(false);  // Will cancel the route (use if not valid route)
@@ -661,6 +663,8 @@ export default {
 
   .transcriptButton {
     margin-top: 1em;
+    margin-left: 0.25em;
+    margin-right: 0.25em;
   }
 
   .transcript p {
@@ -672,6 +676,20 @@ export default {
   .progressLabel {
     color: black;
     font-weight: 400;
+  }
+
+  .retinopathy {
+    margin-top: 0.25em;
+  }
+
+  .comment_title {
+    margin-top: 1em;
+    font-weight: bold;
+  }
+
+  .comment_block {
+    margin-top: 0.5em;
+    padding-top: 0.5em;
   }
   
   // Media rules for tablets and horizontal phones

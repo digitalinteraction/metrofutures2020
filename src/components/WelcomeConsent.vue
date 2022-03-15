@@ -14,31 +14,31 @@
         <h2>{{title}}</h2>
       </template>
 
-      <!-- Text for each page -->
+      <!-- Intro text for each page -->
 
       <div id="explore" v-if="page === 'explore'" class="text-left">
-        <p>Move around 360-degree images at seven points in and around the train to discover new features. Use the toggle switch to explore the train with and without people on board. Some features appear in more than one image.</p>
+        <p>Whilst this part of the public consultation is now closed, you can still explore the 2020 proposed design. Move around 360-degree images at seven points in and around the train to discover new features. Use the toggle switch to explore the train with and without people on board. Some features appear in more than one image.</p>
       </div>
 
       <div id="choices" class="modal-container" v-if="page === 'choices'">
-        <p>This part of the public consultation is now closed. You can still explore the preferences by trying out options for seven different features of the new Metro trains.</p>
+        <p>Whilst this part of the public consultation is now closed, you can still explore the 2020 proposed design. Here you can try out options for seven different features of the new Metro trains.</p>
       </div>
 
       <div id="journeys" class="modal-container" v-if="page === 'journeys'">
-        <p>Pick one of six people, go on a typical Metro journey with them and consider how well the new trains fit their needs. These are not real people but the issues they face are real and reflect what people like them have told us about travelling on trains. Each journey consists of six video clips with a question after each.</p>
+        <p>Whilst this part of the public consultation is now closed, you can still explore the 2020 proposed design. Pick one of six people, go on a typical Metro journey with them and consider how well the new trains fit their needs. These are not real people but the issues they face are real and reflect what people like them have told us about travelling on trains. Each journey consists of six video clips with a question after each.</p>
       </div>
 
       <div id="menu" class="modal-container" v-if="page === 'menu'">
-        Explore the future Metro in three ways. Choose a section to begin.
+        <p>Whilst this part of the public consultation is now closed, you can still explore the 2020 proposed design and public feedback on it in three ways. A revised design incorporating the consultation feedback in now being made.</p>
       </div>
 
       <!-- if privacy is not collected, display here -->
       <div id="privacy-container" class="modal-container" v-if="privacyNotice===false">
         <div>
-          <p>This part of the public consultation is now closed. Any information you give to the site (e.g. your choices for the design of the metro) will not be recorded. In using this site, you agree that you are happy with the following:</p>
+          <p>Any information you give to the site (e.g. your choices for the design of the metro) will not be recorded. In using this site, you agree that you are happy with the following:</p>
 
           <p>We collect the following data about you:</p>
-          <ul class="privacy-list">
+          <ul class="privacy-list mb-1">
             <li>Each page you visit (Google Analytics)</li>
           </ul>
           <p><strong>Cookie Notice:</strong> We store a cookie in your web browser in order to prevent unauthorised use of our website. In using this website you accept this functional cookie.</p>
@@ -56,10 +56,10 @@
           <b-button block @click="confirmPrivacy" :disabled="tick === false">Continue</b-button>
         </div>
 
-        <p class="modal-links"><a href="#" v-b-modal.privacy-modal>Privacy Policy</a> | <a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></p>
+        <div class="modal-links"><a href="#" v-b-modal.privacy-modal>Privacy Policy</a> | <a href="#" v-b-modal.terms-modal>Terms &amp; Conditions</a></div>
       </div>
 
-      <!-- continue, if privacy done already -->
+      <!-- display continue button, if privacy done already -->
       <div v-if="noQuestions">
         <b-button block @click="close">Continue</b-button>
       </div>

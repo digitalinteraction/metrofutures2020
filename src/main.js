@@ -28,6 +28,8 @@ Vue.use(VueSocialSharing);
 Vue.use(UUID);
 Vue.use(browserDetect);
 
+axios.defaults.withCredentials = true;
+
 new Vue({
   router,
   store,

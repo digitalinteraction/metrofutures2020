@@ -4,15 +4,19 @@ const { reactiveProp } = mixins
 export default {
   extends: Bar,
   mixins: [reactiveProp],
-  props: ['chartData', 'options'],
+  props: ['options'],
   mounted () {
     // this.chartData is created in the mixin.
     // If you want to pass options please create a local options object
     this.localOptions = {
       // response: true,
       scales: {
+        xAxes: [{
+          stacked: true
+        }],
         yAxes: [
           {
+            stacked: true,
             scaleLabel: {
               display: true,
               labelString: this.options.label,

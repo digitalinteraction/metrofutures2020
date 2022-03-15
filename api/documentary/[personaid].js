@@ -49,11 +49,12 @@ const Documentary = sequelize.define('Documentary', {
 module.exports = async(req, res) => {
   console.log(req.query)
   // Check cookie
-  if(!req.cookies.mfsid){
+  if(!req.cookies || !req.cookies.mfsid){
     console.log('Unauthorized');
     sendResponse(req, res, 403, "Unauthorized");
   } else {
     if (req.query.personaid) {
+
       // Check stageid present, if not, default to 0
       let stageid;
       if(!req.query.stageid) {
