@@ -21,7 +21,7 @@
     "marzipano": "^0.9.1",
     "pg": "^8.3.0",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.3.4",
+    "sequelize": "^6.28.2",
     "uuid": "^8.3.0",
     "validator": "^13.1.1",
     "vue": "^2.6.11",
