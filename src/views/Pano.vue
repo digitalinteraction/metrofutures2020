@@ -496,7 +496,7 @@
         }
       },
       async initialRequests() {
-        this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+        // this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
 
         // google analytics post
         const measurementID = process.env.VUE_APP_GA_ID;

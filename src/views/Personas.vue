@@ -132,7 +132,7 @@ export default {
       return `url(${url})`
     },
     getSession() {
-      this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+      // this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
     },
     postGA() {
       // google analytics post request

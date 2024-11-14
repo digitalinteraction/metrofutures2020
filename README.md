@@ -39,3 +39,12 @@ To get the `.env` variables, pull them from Vercel
 ```
 vercel env pull
 ```
+
+---
+
+# Docker archive
+
+
+```sh
+docker build -t ghcr.io/digitalinteraction/metrofutures2020:archive-02 --platform=linux/arm64,linux/amd64 .
+```

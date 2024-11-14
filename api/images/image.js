@@ -2,9 +2,9 @@ require('dotenv').config()
 const imageFolder = "conf";
 
 module.exports = async(req, res) => {
-  if(!req.cookies || !req.cookies.mfsid){
-    sendResponse(req, res, 403, "Unauthorized");
-  } else {
+  // if(!req.cookies || !req.cookies.mfsid){
+  //   sendResponse(req, res, 403, "Unauthorized");
+  // } else {
     try {
       let options = validateQuery(req.query)
       if (options) {
@@ -21,7 +21,7 @@ module.exports = async(req, res) => {
     } catch (error) {
       sendResponse(req, res, 400, "Error");
     }
-  }
+  // }
 }
 
 function sendResponse(req, res, status, message, options) {
@@ -35,7 +35,7 @@ function sendResponse(req, res, status, message, options) {
     responseObj = message
   }
   res.status(status);
-  res.send(responseObj);
+  res.json(responseObj);
 }
 
 function validateQuery(query) {

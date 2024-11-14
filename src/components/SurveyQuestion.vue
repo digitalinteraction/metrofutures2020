@@ -329,8 +329,8 @@
             async allUrlsAPICall(payload) {
                 // console.log('requesting image with this payload:', payload);
 
-                // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
-                this.axios.get(`/api/images/optionUrls`, {
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
+                // this.axios.get(`/api/images/optionUrls`, {
                     // headers: {
                     //     Cookie: this.$cookies.get('mfsid')
                     // },
@@ -355,8 +355,8 @@
             async allUrlsAPICallFinalQ(payload) {
                 // console.log('requesting image with this payload:', payload);
 
-                // this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
-                this.axios.get(`/api/images/endwall`, {
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
+                // this.axios.get(`/api/images/endwall`, {
                     params: payload
                 })
                     .then(response => {

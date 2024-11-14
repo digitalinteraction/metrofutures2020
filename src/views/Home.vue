@@ -154,7 +154,8 @@
 
         },
         async mounted() {
-            this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+            // this.axios.get(`${process.env.VUE_APP_API_URL}/api/get-session`)
+            
                 // .then(response => {
                 //     console.log(response);
                 // })

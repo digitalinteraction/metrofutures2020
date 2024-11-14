@@ -3,10 +3,10 @@ const imageFolder = "endwall";
 const seatIdMap = ["A", "B", "C", "D", "A"];
 
 module.exports = async(req, res) => {
-  if(!req.cookies.mfsid){
-    console.log('Unauthorized');
-    sendResponse(req, res, 403, "Unauthorized");
-  } else {
+  // if(!req.cookies.mfsid){
+  //   console.log('Unauthorized');
+  //   sendResponse(req, res, 403, "Unauthorized");
+  // } else {
     try {
       // Design can be optional - if it's not specified return all possible URLs
 
@@ -40,7 +40,7 @@ module.exports = async(req, res) => {
     } catch (error) {
       sendResponse(req, res, 400, "Error");
     }
-  }
+  // }
 }
 
 function sendResponse(req, res, status, message, options) {
@@ -54,7 +54,7 @@ function sendResponse(req, res, status, message, options) {
     responseObj = message
   }
   res.status(status);
-  res.send(responseObj);
+  res.json(responseObj);
 }
 
 function validateQuery(query) {

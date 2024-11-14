@@ -4,10 +4,10 @@ const imageFolder = "conf";
 // Get all the image URLs for a given question index and set of options(day + night)
 
 module.exports = async(req, res) => {
-  if(!req.cookies || !req.cookies.mfsid){
-    console.log('Unauthorized');
-    sendResponse(req, res, 403, "Unauthorized");
-  } else {
+  // if(!req.cookies || !req.cookies.mfsid){
+  //   console.log('Unauthorized');
+  //   sendResponse(req, res, 403, "Unauthorized");
+  // } else {
     try {
       let options = validateQuery(req.query)
       let optionUrls = []
@@ -26,12 +26,12 @@ module.exports = async(req, res) => {
     } catch (error) {
       sendResponse(req, res, 400, "Error");
     }
-  }
+  // }
 }
 
 function sendResponse(req, res, status, message) {
   res.status(status);
-  res.send(message);
+  res.json(message);
 }
 
 function validateQuery(query) {
