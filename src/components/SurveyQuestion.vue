@@ -355,7 +355,7 @@
             async allUrlsAPICallFinalQ(payload) {
                 // console.log('requesting image with this payload:', payload);
 
-                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/optionUrls`, {
+                this.axios.get(`${process.env.VUE_APP_API_URL}/api/images/endwall`, {
                 // this.axios.get(`/api/images/endwall`, {
                     params: payload
                 })
