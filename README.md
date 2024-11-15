@@ -46,5 +46,5 @@ vercel env pull
 
 
 ```sh
-docker build -t ghcr.io/digitalinteraction/metrofutures2020:archive-02 --platform=linux/arm64,linux/amd64 .
+docker build -t ghcr.io/digitalinteraction/metrofutures2020:archive-03 --platform=linux/arm64,linux/amd64 .
 ```
